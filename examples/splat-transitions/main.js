@@ -1,13 +1,18 @@
 import { SparkRenderer } from "@sparkjsdev/spark";
 import { GUI } from "lil-gui";
 import * as THREE from "three";
+import {
+  createRenderer,
+  showRendererStatus,
+} from "/examples/js/create-renderer.js";
 
 // Central renderer/scene/camera shared by effects
 const canvas = document.getElementById("canvas");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+const renderer = await createRenderer({ canvas, antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 renderer.setClearColor(0x000000, 1);
+showRendererStatus(renderer);
 
 const scene = new THREE.Scene();
 const spark = new SparkRenderer({ renderer });

@@ -463,10 +463,41 @@ export class SparkViewpoint {
   // This is called automatically by SparkRenderer, there is no need to call it!
   // The method cannot be private because then SparkRenderer would
   // not be able to call it.
-  autoPoll({ accumulator }: { accumulator?: SplatAccumulator }) {
+  autoPoll({
+    accumulator,
+    forceStochastic = false,
+  }: {
+    accumulator?: SplatAccumulator;
+    forceStochastic?: boolean;
+  }) {
     if (this.camera) {
       this.camera.updateMatrixWorld();
       this.viewToWorld = this.camera.matrixWorld.clone();
+    }
+
+    // For WebGPU, skip GPU-based sorting and use simple in-order rendering
+    if (forceStochastic && accumulator) {
+      const { numSplats, maxSplats } = accumulator.splats;
+      if (numSplats > 0) {
+        // Hold a reference to the accumulator
+        accumulator.refCount += 1;
+
+        // Create ordering array with splats in original order
+        const ordering = this.orderingFreelist.alloc(maxSplats);
+        for (let i = 0; i < numSplats; ++i) {
+          ordering[i] = i;
+        }
+
+        // Directly update display without GPU sorting
+        this.updateDisplay({
+          accumulator,
+          viewToWorld: this.viewToWorld,
+          ordering,
+          activeSplats: numSplats,
+          displayed: false,
+        });
+      }
+      return;
     }
 
     let needsSort = false;

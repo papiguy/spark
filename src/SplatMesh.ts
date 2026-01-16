@@ -39,7 +39,7 @@ import {
   unindent,
   unindentLines,
 } from "./dyno";
-import { getTextureSize } from "./utils";
+import { getTextureSize, setTextureInternalFormat } from "./utils";
 
 export type SplatMeshOptions = {
   // URL to fetch a Gaussian splat file from(supports .ply, .splat, .ksplat,
@@ -673,7 +673,7 @@ export class SplatMesh extends SplatGenerator {
       const texture = new THREE.DataArrayTexture(sh1, width, height, depth);
       texture.format = THREE.RGIntegerFormat;
       texture.type = THREE.UnsignedIntType;
-      texture.internalFormat = "RG32UI";
+      setTextureInternalFormat(texture, "RG32UI");
       texture.needsUpdate = true;
 
       sh1Texture = new DynoUsampler2DArray({
@@ -705,7 +705,7 @@ export class SplatMesh extends SplatGenerator {
       const texture = new THREE.DataArrayTexture(sh2, width, height, depth);
       texture.format = THREE.RGBAIntegerFormat;
       texture.type = THREE.UnsignedIntType;
-      texture.internalFormat = "RGBA32UI";
+      setTextureInternalFormat(texture, "RGBA32UI");
       texture.needsUpdate = true;
 
       sh2Texture = new DynoUsampler2DArray({
@@ -737,7 +737,7 @@ export class SplatMesh extends SplatGenerator {
       const texture = new THREE.DataArrayTexture(sh3, width, height, depth);
       texture.format = THREE.RGBAIntegerFormat;
       texture.type = THREE.UnsignedIntType;
-      texture.internalFormat = "RGBA32UI";
+      setTextureInternalFormat(texture, "RGBA32UI");
       texture.needsUpdate = true;
 
       sh3Texture = new DynoUsampler2DArray({
@@ -937,14 +937,35 @@ export function evaluateSH3(
   }).outputs.rgb;
 }
 
+// Empty geometry with minimal attributes for WebGPU compatibility
 const EMPTY_GEOMETRY = new THREE.BufferGeometry();
-const EMPTY_MATERIAL = new THREE.ShaderMaterial();
+EMPTY_GEOMETRY.setAttribute(
+  "position",
+  new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3),
+);
+
+// Shared detection material - MeshBasicMaterial works with both WebGL and WebGPU
+// Note: Using opacity: 0 instead of visible: false because visible: false
+// may prevent onBeforeRender from being called in WebGPU
+let detectionMaterial: THREE.MeshBasicMaterial | null = null;
+
+function getDetectionMaterial(): THREE.Material {
+  if (!detectionMaterial) {
+    detectionMaterial = new THREE.MeshBasicMaterial({
+      transparent: true,
+      opacity: 0,
+      depthWrite: false,
+    });
+  }
+  return detectionMaterial;
+}
 
 // Creates an empty mesh to hook into Three.js rendering.
 // This is used to detect if a SparkRenderer is present in the scene.
 // If not, one will be injected automatically.
 function createRendererDetectionMesh(): THREE.Mesh {
-  const mesh = new THREE.Mesh(EMPTY_GEOMETRY, EMPTY_MATERIAL);
+  // Use MeshBasicMaterial which works with both WebGL and WebGPU
+  const mesh = new THREE.Mesh(EMPTY_GEOMETRY, getDetectionMaterial());
   mesh.frustumCulled = false;
   mesh.onBeforeRender = function (renderer, scene) {
     if (!scene.isScene) {

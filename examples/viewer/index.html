@@ -187,19 +187,21 @@
     import * as THREE from "three";
     import { SplatMesh, transcodeSpz, SparkControls } from "@sparkjsdev/spark";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const sparkCanvasEl = document.querySelector(".spark-canvas");
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1000);
     camera.position.set(0, 0, 1);
-    const renderer = new THREE.WebGLRenderer({canvas: sparkCanvasEl});
+
+    // Create renderer (supports ?webgpu or ?webgl URL params)
+    const renderer = await createRenderer({ canvas: sparkCanvasEl });
     const width = sparkCanvasEl.clientWidth;
     const height = sparkCanvasEl.clientHeight;
     var fileName;
     var fileBytes;
     renderer.setSize(width, height, false);
-
-    debugger;
+    showRendererStatus(renderer);
     const controls = new SparkControls({ canvas: sparkCanvasEl });
     // const orbitControls = new OrbitControls(camera, renderer.domElement);
     // orbitControls.target.set(0, 0, 0);

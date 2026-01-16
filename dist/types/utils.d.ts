@@ -178,4 +178,8 @@ export declare class GunzipReader {
     });
     read(numBytes: number): Promise<Uint8Array>;
 }
+export declare function isWebGPURenderer(renderer: THREE.WebGLRenderer | unknown): boolean;
+export declare function setUsingWebGPU(value: boolean): void;
+export declare function isUsingWebGPU(): boolean;
+export declare function setTextureInternalFormat(texture: THREE.Texture, format: string): void;
 export {};

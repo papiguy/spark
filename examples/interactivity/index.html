@@ -39,6 +39,7 @@
     import { FOOD_ASSETS, FOOD_URL } from './food.js';
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
     import { preloadSplats } from "/examples/js/preloader.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     // Add food items to the menu
     FOOD_ASSETS.forEach((food, i) => {
@@ -58,10 +59,11 @@
     });
 
     const scene = new THREE.Scene();
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.shadowMap.enabled = true;
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     // Setup camera
     const camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 1000);

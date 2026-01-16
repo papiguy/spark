@@ -87,15 +87,18 @@
     } from "@sparkjsdev/spark";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
 
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
+
     const canvas = document.getElementById("canvas");
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
     camera.position.set(0, 0.3, -2.5);
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     window.addEventListener('resize', onWindowResize, false);
     function onWindowResize() {

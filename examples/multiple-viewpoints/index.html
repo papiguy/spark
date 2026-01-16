@@ -29,14 +29,16 @@
 
     import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     const header_height = document.querySelector('header').getBoundingClientRect().height;
     renderer.setSize(window.innerWidth, window.innerHeight - header_height);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     window.addEventListener('resize', onWindowResize, false);
     function onWindowResize() {

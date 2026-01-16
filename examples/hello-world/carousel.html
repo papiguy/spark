@@ -25,13 +25,15 @@
     import { SplatMesh } from "@sparkjsdev/spark";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.setClearColor(0x000000, 1);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     // Setup mouse controls to orbit the camera around
     const controls = new OrbitControls(camera, renderer.domElement);

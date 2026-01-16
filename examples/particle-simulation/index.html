@@ -35,6 +35,7 @@
     } from "@sparkjsdev/spark";
     import GUI from "lil-gui";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const SCENE_CONFIG = {
       SNOW_HEIGHT: 8,
@@ -52,9 +53,10 @@
       1000
     );
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     const spark = new SparkRenderer({ renderer });
     scene.add(spark);

@@ -22,7 +22,12 @@ import {
 } from "./dyno";
 import { TPackedSplats, definePackedSplats } from "./dyno/splats";
 import { getShaders } from "./shaders";
-import { getTextureSize, setPackedSplat, unpackSplat } from "./utils";
+import {
+  getTextureSize,
+  setPackedSplat,
+  setTextureInternalFormat,
+  unpackSplat,
+} from "./utils";
 
 export type SplatEncoding = {
   rgbMin?: number;
@@ -473,7 +478,7 @@ export class PackedSplats {
     });
     this.target.texture.format = THREE.RGBAIntegerFormat;
     this.target.texture.type = THREE.UnsignedIntType;
-    this.target.texture.internalFormat = "RGBA32UI";
+    setTextureInternalFormat(this.target.texture, "RGBA32UI");
     this.target.scissorTest = true;
     return true;
   }
@@ -540,7 +545,7 @@ export class PackedSplats {
         );
         this.source.format = THREE.RGBAIntegerFormat;
         this.source.type = THREE.UnsignedIntType;
-        this.source.internalFormat = "RGBA32UI";
+        setTextureInternalFormat(this.source, "RGBA32UI");
         this.source.needsUpdate = true;
       } else if (this.packedArray.buffer !== this.source.image.data.buffer) {
         // The source texture is the right size, update the data
@@ -568,7 +573,7 @@ export class PackedSplats {
       );
       PackedSplats.emptySource.format = THREE.RGBAIntegerFormat;
       PackedSplats.emptySource.type = THREE.UnsignedIntType;
-      PackedSplats.emptySource.internalFormat = "RGBA32UI";
+      setTextureInternalFormat(PackedSplats.emptySource, "RGBA32UI");
       PackedSplats.emptySource.needsUpdate = true;
     }
     return PackedSplats.emptySource;

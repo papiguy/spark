@@ -24,4 +24,9 @@ export declare class SplatAccumulator {
         originToWorld: THREE.Matrix4;
     }): boolean;
     hasCorrespondence(other: SplatAccumulator): boolean;
+    generateSplatsCpu({ generators, originToWorld, }: {
+        generators: GeneratorMapping[];
+        originToWorld: THREE.Matrix4;
+    }): boolean;
+    ensureGenerateCpu(maxSplats: number): void;
 }

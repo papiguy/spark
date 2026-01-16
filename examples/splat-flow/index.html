@@ -26,6 +26,7 @@
       import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
       import { getAssetFileURL } from "/examples/js/get-asset-url.js";
       import { GUI } from "lil-gui";
+      import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
       const splatFiles = ["woobles.spz", "dessert.spz", "robot-head.spz"];
       const skyFile = "dali-env.glb";
@@ -120,10 +121,11 @@
       }
 
       const canvas = document.getElementById("canvas");
-      const renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
+      const renderer = await createRenderer({ canvas, antialias: false });
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
       renderer.setClearColor(0x000000, 1);
+      showRendererStatus(renderer);
 
       const scene = new THREE.Scene();
       const spark = new SparkRenderer({ renderer });

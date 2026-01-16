@@ -21,7 +21,7 @@ import {
   unindent,
   unindentLines,
 } from "./dyno";
-import { getTextureSize } from "./utils";
+import { getTextureSize, setTextureInternalFormat } from "./utils";
 
 export type SplatSkinningOptions = {
   // Specifies the SplatMesh that will be animated.
@@ -63,7 +63,7 @@ export class SplatSkinning {
     );
     this.skinTexture.format = THREE.RGBAIntegerFormat;
     this.skinTexture.type = THREE.UnsignedShortType;
-    this.skinTexture.internalFormat = "RGBA16UI";
+    setTextureInternalFormat(this.skinTexture, "RGBA16UI");
     this.skinTexture.needsUpdate = true;
 
     this.numBones = options.numBones ?? 256;
@@ -75,7 +75,7 @@ export class SplatSkinning {
       THREE.RGBAFormat,
       THREE.FloatType,
     );
-    this.boneTexture.internalFormat = "RGBA32F";
+    setTextureInternalFormat(this.boneTexture, "RGBA32F");
     this.boneTexture.needsUpdate = true;
 
     this.uniform = new DynoUniform({

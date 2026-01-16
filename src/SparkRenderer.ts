@@ -27,8 +27,12 @@ import {
   averagePositions,
   averageQuaternions,
   cloneClock,
+  isUsingWebGPU,
+  isWebGPURenderer,
+  setUsingWebGPU,
   withinCoorientDist,
 } from "./utils";
+import { WebGPUSplatPipeline } from "./webgpu/WebGPUSplatPipeline";
 
 // SparkRenderer aggregates splats from multiple generators into a single
 // accumulated collection per frame. In normal operation we only need a
@@ -42,10 +46,13 @@ const MAX_ACCUMULATORS = 5;
 
 export type SparkRendererOptions = {
   /**
-   * Pass in your THREE.WebGLRenderer instance so Spark can perform work
-   * outside the usual render loop. Should be created with antialias: false
-   * (default setting) as WebGL anti-aliasing doesn't improve Gaussian Splatting
-   * rendering and significantly reduces performance.
+   * Pass in your THREE.WebGLRenderer or THREE.WebGPURenderer instance so Spark
+   * can perform work outside the usual render loop. For WebGLRenderer, should
+   * be created with antialias: false (default setting) as WebGL anti-aliasing
+   * doesn't improve Gaussian Splatting rendering and significantly reduces
+   * performance.
+   *
+   * Note: WebGPURenderer can be passed by casting it: `renderer as any`
    */
   renderer: THREE.WebGLRenderer;
   /**
@@ -167,7 +174,7 @@ export type SparkRendererOptions = {
 export class SparkRenderer extends THREE.Mesh {
   renderer: THREE.WebGLRenderer;
   premultipliedAlpha: boolean;
-  material: THREE.ShaderMaterial;
+  material: THREE.Material;
   uniforms: ReturnType<typeof SparkRenderer.makeUniforms>;
 
   autoUpdate: boolean;
@@ -240,6 +247,9 @@ export class SparkRenderer extends THREE.Mesh {
   // Internal SparkViewpoint used for environment map rendering.
   private envViewpoint: SparkViewpoint | null = null;
 
+  // WebGPU compute pipeline (only used when WebGPU is detected)
+  private computePipeline: WebGPUSplatPipeline | null = null;
+
   // Data and buffers used for environment map rendering
   private static cubeRender: {
     target: THREE.WebGLCubeRenderTarget;
@@ -253,24 +263,115 @@ export class SparkRenderer extends THREE.Mesh {
 
   constructor(options: SparkRendererOptions) {
     const uniforms = SparkRenderer.makeUniforms();
-    const shaders = getShaders();
     const premultipliedAlpha = options.premultipliedAlpha ?? true;
-    const material = new THREE.ShaderMaterial({
-      glslVersion: THREE.GLSL3,
-      vertexShader: shaders.splatVertex,
-      fragmentShader: shaders.splatFragment,
-      uniforms,
-      premultipliedAlpha,
-      transparent: true,
-      depthTest: true,
-      depthWrite: false,
-      side: THREE.DoubleSide,
-    });
 
+    let material: THREE.Material;
+    let computePipeline: WebGPUSplatPipeline | null = null;
+
+    if (isWebGPURenderer(options.renderer)) {
+      // WebGPU path - uses compute shader approach with instanced rendering
+      setUsingWebGPU(true);
+
+      // Create compute pipeline - it manages its own Mesh
+      computePipeline = new WebGPUSplatPipeline(
+        options.renderer as any, // WebGPURenderer type not in @types/three
+        {
+          maxSplats: 1024 * 1024, // 1M max splats
+          materialOptions: {
+            premultipliedAlpha: options.premultipliedAlpha ?? true,
+            falloff: options.falloff ?? 1.0,
+            minAlpha: options.minAlpha ?? 0.5 * (1.0 / 255.0),
+          },
+        },
+      );
+
+      // For WebGPU, use a simple invisible material for SparkRenderer itself
+      // The actual rendering is done by computePipeline.mesh (added as child)
+      material = new THREE.MeshBasicMaterial({
+        visible: false,
+      });
+    } else {
+      // WebGL path - explicitly set flag to false
+      setUsingWebGPU(false);
+
+      // WebGL path - existing code, UNCHANGED
+      const shaders = getShaders();
+      material = new THREE.ShaderMaterial({
+        glslVersion: THREE.GLSL3,
+        vertexShader: shaders.splatVertex,
+        fragmentShader: shaders.splatFragment,
+        uniforms,
+        premultipliedAlpha,
+        transparent: true,
+        depthTest: true,
+        depthWrite: false,
+        side: THREE.DoubleSide,
+      });
+    }
+
+    // For WebGPU, SparkRenderer uses empty geometry (actual rendering via child mesh)
+    // For WebGL, use standard instanced geometry
     super(EMPTY_GEOMETRY, material);
+
+    // Store compute pipeline after super() call
+    this.computePipeline = computePipeline;
+
+    // For WebGPU, add the compute mesh as a child of SparkRenderer
+    // This way transforms propagate correctly
+    if (computePipeline) {
+      this.add(computePipeline.mesh);
+      console.log("[SparkRenderer] Added WebGPU pipeline mesh as child");
+      console.log("[SparkRenderer] Setting up onBeforeRender on compute mesh");
+      computePipeline.mesh.onBeforeRender = (renderer, scene, camera) => {
+        // Trigger the update/accumulation system (normally done by SparkRenderer.onBeforeRender)
+        if (this.autoUpdate) {
+          this.defaultView.viewToWorld = camera.matrixWorld.clone();
+          this.update({ scene, viewToWorld: this.defaultView.viewToWorld });
+        }
+
+        // Prepare viewpoint to update uniforms
+        this.prepareViewpoint();
+
+        // Only run compute if we have splats
+        if (this.uniforms.numSplats.value > 0) {
+          console.log(
+            "[SparkRenderer] Running WebGPU compute for",
+            this.uniforms.numSplats.value,
+            "splats",
+          );
+
+          // Get accumulator toWorld transform
+          const accumToWorld =
+            this.viewpoint.display?.accumulator.toWorld ?? new THREE.Matrix4();
+
+          void computePipeline.update({
+            packedSplatsTexture: this.uniforms.packedSplats
+              .value as THREE.DataArrayTexture,
+            numSplats: this.uniforms.numSplats.value,
+            camera: camera,
+            accumToWorld: accumToWorld,
+            renderSize: this.uniforms.renderSize.value,
+            rgbMinMaxLnScaleMinMax: this.uniforms.rgbMinMaxLnScaleMinMax.value,
+            maxStdDev: this.maxStdDev,
+            minAlpha: this.minAlpha,
+            minPixelRadius: this.minPixelRadius,
+            maxPixelRadius: this.maxPixelRadius,
+            clipXY: this.clipXY,
+            focalAdjustment: this.focalAdjustment,
+            blurAmount: this.blurAmount,
+            preBlurAmount: this.preBlurAmount,
+            sortRadial: this.viewpoint.sortRadial ?? true,
+            depthBias: this.viewpoint.depthBias ?? 1.0,
+          });
+        }
+      };
+    }
     // Disable frustum culling because we want to always draw them all
     // and cull Gsplats individually in the shader
     this.frustumCulled = false;
+
+    // Note: For WebGPU, SparkRenderer's onBeforeRender won't fire because it uses
+    // an invisible material. The compute pipeline is triggered via computePipeline.mesh.onBeforeRender
 
     this.renderer = options.renderer;
     this.material = material;
@@ -597,6 +698,10 @@ export class SparkRenderer extends THREE.Mesh {
       this.uniforms.renderToViewQuat.value,
       new THREE.Vector3(),
     );
+
+    // Note: WebGPU compute is now triggered via computePipeline.mesh.onBeforeRender
+    // This onBeforeRender is only called for WebGL path since WebGPU SparkRenderer
+    // uses an invisible material
   }
 
   // Update the uniforms for the given viewpoint.
@@ -608,7 +713,8 @@ export class SparkRenderer extends THREE.Mesh {
 
     if (this.viewpoint.display) {
       const { accumulator, geometry } = this.viewpoint.display;
-      this.uniforms.numSplats.value = accumulator.splats.numSplats;
+      const numSplats = accumulator.splats.numSplats;
+      this.uniforms.numSplats.value = numSplats;
       this.uniforms.packedSplats.value = accumulator.splats.getTexture();
       this.uniforms.rgbMinMaxLnScaleMinMax.value.set(
         accumulator.splats.splatEncoding?.rgbMin ?? 0.0,
@@ -616,7 +722,14 @@ export class SparkRenderer extends THREE.Mesh {
         accumulator.splats.splatEncoding?.lnScaleMin ?? LN_SCALE_MIN,
         accumulator.splats.splatEncoding?.lnScaleMax ?? LN_SCALE_MAX,
       );
-      this.geometry = geometry;
+
+      // For WebGPU compute pipeline, keep the compute geometry
+      // For WebGL, use the SplatGeometry from display
+      if (!this.computePipeline) {
+        this.geometry = geometry;
+      }
+      // For compute pipeline, geometry is already set to compute output
+
       this.material.transparent = !this.viewpoint.stochastic;
       this.material.depthWrite = this.viewpoint.stochastic;
       this.material.needsUpdate = true;
@@ -624,7 +737,11 @@ export class SparkRenderer extends THREE.Mesh {
       // No Gsplats to display for this viewpoint yet
       this.uniforms.numSplats.value = 0;
       this.uniforms.packedSplats.value = PackedSplats.getEmpty();
-      this.geometry = EMPTY_GEOMETRY;
+
+      // For WebGPU compute pipeline, keep the compute geometry
+      if (!this.computePipeline) {
+        this.geometry = EMPTY_GEOMETRY;
+      }
     }
   }
 
@@ -662,8 +779,8 @@ export class SparkRenderer extends THREE.Mesh {
             viewToWorld,
           });
 
-          if (updated) {
-            // Flush to encourage eager execution
+          if (updated && !isWebGPURenderer(this.renderer)) {
+            // Flush to encourage eager execution (WebGL only)
             const gl = this.renderer.getContext() as WebGL2RenderingContext;
             gl.flush();
           }
@@ -821,15 +938,27 @@ export class SparkRenderer extends THREE.Mesh {
         );
 
       // Generate the Gsplats according to the mapping that need updating
-      accumulator.ensureGenerate(maxSplats);
-      accumulator.splats.splatEncoding = { ...this.splatEncoding };
-      const generated = accumulator.generateSplats({
-        renderer: this.renderer,
-        modifier: this.modifier,
-        generators: newGenerators,
-        forceUpdate: originChanged,
-        originToWorld,
-      });
+      if (isWebGPURenderer(this.renderer)) {
+        // WebGPU path: Use CPU fallback to copy packed splat data directly
+        // Note: This doesn't apply transforms - for full support, TSL compute needed
+        accumulator.ensureGenerateCpu(maxSplats);
+        accumulator.splats.splatEncoding = { ...this.splatEncoding };
+        accumulator.generateSplatsCpu({
+          generators: newGenerators,
+          originToWorld,
+        });
+      } else {
+        // WebGL path: Use GPU-based generation with dyno shaders
+        accumulator.ensureGenerate(maxSplats);
+        accumulator.splats.splatEncoding = { ...this.splatEncoding };
+        accumulator.generateSplats({
+          renderer: this.renderer,
+          modifier: this.modifier,
+          generators: newGenerators,
+          forceUpdate: originChanged,
+          originToWorld,
+        });
+      }
 
       // Update splat version number
       accumulator.splatsVersion = this.active.splatsVersion + 1;
@@ -848,7 +977,13 @@ export class SparkRenderer extends THREE.Mesh {
     setTimeout(() => {
       // Notify all auto-updating viewpoints that we updated the Gsplats
       for (const view of this.autoViewpoints) {
-        view.autoPoll({ accumulator: accumulator ?? undefined });
+        // For WebGPU, use unsorted/stochastic rendering since GPU sorting
+        // with RawShaderMaterial isn't compatible
+        const forceStochastic = isWebGPURenderer(this.renderer);
+        view.autoPoll({
+          accumulator: accumulator ?? undefined,
+          forceStochastic,
+        });
       }
     }, 1);
 
@@ -904,6 +1039,8 @@ export class SparkRenderer extends THREE.Mesh {
   // sorts them with respect to the provided worldCenter, renders 6 cube faces,
   // then pre-filters them using THREE.PMREMGenerator and returns a THREE.Texture
   // that can assigned directly to a THREE.MeshStandardMaterial.envMap property.
+  // Note: This function is not supported with WebGPU renderer due to PMREMGenerator
+  // using ShaderMaterial internally.
   async renderEnvMap({
     renderer,
     scene,
@@ -923,6 +1060,14 @@ export class SparkRenderer extends THREE.Mesh {
     hideObjects?: THREE.Object3D[];
     update?: boolean;
   }): Promise<THREE.Texture> {
+    // Guard: renderEnvMap uses PMREMGenerator which is not compatible with WebGPU
+    if (isWebGPURenderer(this.renderer)) {
+      console.warn(
+        "SparkRenderer.renderEnvMap is not supported with WebGPU renderer. " +
+          "PMREMGenerator uses ShaderMaterial internally which is incompatible.",
+      );
+      return SparkRenderer.EMPTY_SPLAT_TEXTURE;
+    }
     if (!this.envViewpoint) {
       this.envViewpoint = this.newViewpoint({ sort360: true });
     }

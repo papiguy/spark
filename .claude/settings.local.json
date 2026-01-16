@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:sbcode.net)",
+      "WebFetch(domain:threejsroadmap.com)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:dev:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(pkill:*)",
+      "Bash(curl:*)",
+      "Bash(grep:*)"
+    ]
+  }
+}

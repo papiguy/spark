@@ -5,7 +5,7 @@ import { SPLAT_TEX_HEIGHT, SPLAT_TEX_WIDTH } from "./defines";
 import { type Dyno, OutputRgba8, dynoBlock } from "./dyno";
 import { DynoProgram, DynoProgramTemplate } from "./dyno/program";
 import { getShaders } from "./shaders";
-import { getTextureSize } from "./utils";
+import { getTextureSize, setTextureInternalFormat } from "./utils";
 
 // Readback can be used to run a Dyno program that maps an index to a 32-bit
 // RGBA8 value, which is the only allowed, portable readback format for WebGL2.
@@ -84,7 +84,7 @@ export class Readback {
       });
       this.target.texture.format = THREE.RGBAFormat;
       this.target.texture.type = THREE.UnsignedByteType;
-      this.target.texture.internalFormat = "RGBA8";
+      setTextureInternalFormat(this.target.texture, "RGBA8");
       this.target.scissorTest = true;
     }
   }

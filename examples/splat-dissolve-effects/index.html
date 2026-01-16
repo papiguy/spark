@@ -26,16 +26,18 @@
 		import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 		import { SplatMesh, dyno } from "@sparkjsdev/spark";
 		import { getAssetFileURL } from "/examples/js/get-asset-url.js";
+		import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
 		const flyPos = new THREE.Vector3(0, 0, -0.5);
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-		const renderer = new THREE.WebGLRenderer();
+		const renderer = await createRenderer();
 		const controls = new OrbitControls(camera, renderer.domElement);
 		controls.target.copy(flyPos);
 		controls.enablePan = false;
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		document.body.appendChild(renderer.domElement);
+		showRendererStatus(renderer);
 
 		window.addEventListener('resize', onWindowResize, false);
 		function onWindowResize() {

@@ -6,10 +6,13 @@ import { SplatGenerator } from './SplatGenerator';
 import * as THREE from "three";
 export type SparkRendererOptions = {
     /**
-     * Pass in your THREE.WebGLRenderer instance so Spark can perform work
-     * outside the usual render loop. Should be created with antialias: false
-     * (default setting) as WebGL anti-aliasing doesn't improve Gaussian Splatting
-     * rendering and significantly reduces performance.
+     * Pass in your THREE.WebGLRenderer or THREE.WebGPURenderer instance so Spark
+     * can perform work outside the usual render loop. For WebGLRenderer, should
+     * be created with antialias: false (default setting) as WebGL anti-aliasing
+     * doesn't improve Gaussian Splatting rendering and significantly reduces
+     * performance.
+     *
+     * Note: WebGPURenderer can be passed by casting it: `renderer as any`
      */
     renderer: THREE.WebGLRenderer;
     /**
@@ -130,7 +133,7 @@ export type SparkRendererOptions = {
 export declare class SparkRenderer extends THREE.Mesh {
     renderer: THREE.WebGLRenderer;
     premultipliedAlpha: boolean;
-    material: THREE.ShaderMaterial;
+    material: THREE.Material;
     uniforms: ReturnType<typeof SparkRenderer.makeUniforms>;
     autoUpdate: boolean;
     preUpdate: boolean;
@@ -176,6 +179,7 @@ export declare class SparkRenderer extends THREE.Mesh {
     viewpoint: SparkViewpoint;
     private pendingUpdate;
     private envViewpoint;
+    private computePipeline;
     private static cubeRender;
     private static pmrem;
     static EMPTY_SPLAT_TEXTURE: THREE.Data3DTexture;

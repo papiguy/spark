@@ -9,7 +9,7 @@ import {
   unindent,
   unindentLines,
 } from "./dyno";
-import { newArray } from "./utils";
+import { newArray, setTextureInternalFormat } from "./utils";
 
 // Spark provides the ability to apply "edits" to Gsplats as part of the standard
 // SplatMesh pipeline. These edits take the form of a sequence of operations,
@@ -294,7 +294,7 @@ export class SplatEdits {
       THREE.RGBAIntegerFormat,
       THREE.UnsignedIntType,
     );
-    texture.internalFormat = "RGBA32UI";
+    setTextureInternalFormat(texture, "RGBA32UI");
     texture.needsUpdate = true;
     return texture;
   }

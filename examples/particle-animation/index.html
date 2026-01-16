@@ -40,6 +40,7 @@
     } from "@sparkjsdev/spark";
     import GUI from "lil-gui";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     // cloud bounds
     const BOUNDS = {
@@ -269,9 +270,10 @@
 
     scene.background = new THREE.Color(0x08a2d3);
 
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     const spark = new SparkRenderer({ renderer });
     scene.add(spark);

@@ -5,13 +5,18 @@ import {
   dyno,
 } from "@sparkjsdev/spark";
 import * as THREE from "three";
+import {
+  createRenderer,
+  showRendererStatus,
+} from "/examples/js/create-renderer.js";
 import { getAssetFileURL } from "/examples/js/get-asset-url.js";
 
 const canvas = document.getElementById("canvas");
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+const renderer = await createRenderer({ canvas, antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 renderer.setClearColor(0x000000, 1);
+showRendererStatus(renderer);
 
 const scene = new THREE.Scene();
 const spark = new SparkRenderer({ renderer });

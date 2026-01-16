@@ -149,13 +149,14 @@ export declare class SparkViewpoint {
         update?: boolean;
         forceOrigin?: boolean;
     }): Promise<Uint8Array<ArrayBufferLike>>;
-    autoPoll({ accumulator }: {
+    autoPoll({ accumulator, forceStochastic, }: {
         accumulator?: SplatAccumulator;
+        forceStochastic?: boolean;
     }): void;
     private driveSort;
     private sortUpdate;
     private updateDisplay;
-    static EMPTY_TEXTURE: THREE.Texture;
+    static EMPTY_TEXTURE: THREE.Texture<unknown>;
     private static dynos;
     private static makeSorter;
 }

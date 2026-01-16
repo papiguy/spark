@@ -16,7 +16,7 @@ import {
   unindent,
   unindentLines,
 } from "./dyno";
-import { getTextureSize } from "./utils";
+import { getTextureSize, setTextureInternalFormat } from "./utils";
 
 // An RgbaArray is a collection of ordered RGBA8 values, which can be used as a dyno
 // data source, for example for recoloring Gsplats via SplatMesh.splatRgba.
@@ -139,7 +139,7 @@ export class RgbaArray {
         );
         this.source.format = THREE.RGBAFormat;
         this.source.type = THREE.UnsignedByteType;
-        this.source.internalFormat = "RGBA8";
+        setTextureInternalFormat(this.source, "RGBA8");
         this.source.needsUpdate = true;
       } else if (this.array.buffer !== this.source.image.data.buffer) {
         this.source.image.data = new Uint8Array(this.array.buffer);
@@ -205,7 +205,7 @@ export class RgbaArray {
       RgbaArray.emptySource = new THREE.DataArrayTexture(emptyArray, 1, 1, 1);
       RgbaArray.emptySource.format = THREE.RGBAFormat;
       RgbaArray.emptySource.type = THREE.UnsignedByteType;
-      RgbaArray.emptySource.internalFormat = "RGBA8";
+      setTextureInternalFormat(RgbaArray.emptySource, "RGBA8");
       RgbaArray.emptySource.needsUpdate = true;
     }
     return RgbaArray.emptySource;

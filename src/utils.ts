@@ -1392,3 +1392,54 @@ export class GunzipReader {
     return result;
   }
 }
+
+// Check if the renderer is a THREE.js WebGPURenderer.
+// This is used to conditionally select between WebGL and WebGPU code paths.
+export function isWebGPURenderer(
+  renderer: THREE.WebGLRenderer | unknown,
+): boolean {
+  if (renderer == null || typeof renderer !== "object") {
+    return false;
+  }
+
+  // Check Three.js native property
+  if (
+    "isWebGPURenderer" in renderer &&
+    (renderer as { isWebGPURenderer: boolean }).isWebGPURenderer === true
+  ) {
+    return true;
+  }
+
+  // Also check our custom flag from create-renderer.js
+  if (
+    "_sparkRendererType" in renderer &&
+    (renderer as { _sparkRendererType: string })._sparkRendererType === "webgpu"
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+// Global flag indicating we're using WebGPU renderer.
+// Set by SparkRenderer when WebGPU is detected.
+let _usingWebGPU = false;
+
+export function setUsingWebGPU(value: boolean): void {
+  _usingWebGPU = value;
+}
+
+export function isUsingWebGPU(): boolean {
+  return _usingWebGPU;
+}
+
+// Set texture internal format for WebGL only.
+// WebGPU uses different format strings, so we skip setting it there.
+export function setTextureInternalFormat(
+  texture: THREE.Texture,
+  format: string,
+): void {
+  if (!_usingWebGPU) {
+    texture.internalFormat = format as THREE.PixelFormatGPU;
+  }
+}

@@ -117,4 +117,67 @@ export class SplatAccumulator {
       return node === otherNode && base === otherBase && count === otherCount;
     });
   }
+
+  // CPU fallback for WebGPU: directly copy packed splat data from each generator.
+  // This bypasses the GPU generation pipeline (dyno shaders) and copies raw data.
+  // Note: This does NOT apply transforms - splats will be in their original
+  // object-space coordinates. For full transform support, TSL compute shaders
+  // would be needed.
+  generateSplatsCpu({
+    generators,
+    originToWorld,
+  }: {
+    generators: GeneratorMapping[];
+    originToWorld: THREE.Matrix4;
+  }) {
+    // Calculate total splats needed
+    let numSplats = 0;
+    for (const { base, count } of generators) {
+      numSplats = Math.max(numSplats, base + count);
+    }
+
+    // Ensure we have enough space in the packedArray
+    this.splats.ensureSplats(numSplats);
+
+    // Copy packed data from each generator's source PackedSplats
+    for (const { node, base, count } of generators) {
+      if (count <= 0) continue;
+
+      // Get the source PackedSplats from the node
+      // SplatMesh has packedSplats, SplatGenerator may have different sources
+      const sourcePackedSplats = (node as { packedSplats?: PackedSplats })
+        .packedSplats;
+      if (!sourcePackedSplats?.packedArray) continue;
+
+      const sourceArray = sourcePackedSplats.packedArray;
+      const targetArray = this.splats.packedArray;
+      if (!targetArray) continue;
+
+      // Copy the packed data (4 uint32 per splat)
+      const copyCount = Math.min(count, sourcePackedSplats.numSplats);
+      for (let i = 0; i < copyCount; i++) {
+        const srcOffset = i * 4;
+        const dstOffset = (base + i) * 4;
+        targetArray[dstOffset] = sourceArray[srcOffset];
+        targetArray[dstOffset + 1] = sourceArray[srcOffset + 1];
+        targetArray[dstOffset + 2] = sourceArray[srcOffset + 2];
+        targetArray[dstOffset + 3] = sourceArray[srcOffset + 3];
+      }
+    }
+
+    this.splats.numSplats = numSplats;
+    this.splats.needsUpdate = true;
+    this.toWorld.copy(originToWorld);
+    this.mapping = generators;
+    return true;
+  }
+
+  // Ensure we have enough space for CPU-based generation (uses packedArray, not render target)
+  ensureGenerateCpu(maxSplats: number) {
+    this.splats.ensureSplats(maxSplats);
+    if (this.splats.maxSplats !== maxSplats) {
+      // If we had to resize, clear all previous mappings
+      this.mapping = [];
+    }
+  }
 }

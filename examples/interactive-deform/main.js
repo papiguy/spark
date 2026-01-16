@@ -1,6 +1,10 @@
 import { SparkRenderer, SplatMesh, dyno } from "@sparkjsdev/spark";
 import { GUI } from "lil-gui";
 import * as THREE from "three";
+import {
+  createRenderer,
+  showRendererStatus,
+} from "/examples/js/create-renderer.js";
 import { getAssetFileURL } from "/examples/js/get-asset-url.js";
 
 const scene = new THREE.Scene();
@@ -10,9 +14,10 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   1000,
 );
-const renderer = new THREE.WebGLRenderer({ antialias: false });
+const renderer = await createRenderer({ antialias: false });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+showRendererStatus(renderer);
 
 const spark = new SparkRenderer({ renderer });
 scene.add(spark);

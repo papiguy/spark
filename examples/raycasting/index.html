@@ -35,14 +35,16 @@
     import * as THREE from "three";
     import { SplatMesh, PackedSplats } from "@sparkjsdev/spark";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 10);
     camera.position.set(0, -0.25, -1.5);
     camera.lookAt(0, -0.15, 0);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = await createRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     window.addEventListener('resize', onWindowResize, false);
     function onWindowResize() {

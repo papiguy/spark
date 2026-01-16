@@ -30,17 +30,19 @@
     import { SparkControls, SplatMesh, dyno } from "@sparkjsdev/spark";
     import { getAssetFileURL } from "/examples/js/get-asset-url.js";
     import GUI from "lil-gui";
+    import { createRenderer, showRendererStatus } from "/examples/js/create-renderer.js";
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    
+
     // Initialize camera with elevated perspective
     camera.position.set(0, 2, 2.5);
     camera.lookAt(0, 0, 0);
-    
-    const renderer = new THREE.WebGLRenderer();
+
+    const renderer = await createRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
+    showRendererStatus(renderer);
 
     window.addEventListener('resize', onWindowResize, false);
     function onWindowResize() {
