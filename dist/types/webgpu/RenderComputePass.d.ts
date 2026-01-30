@@ -1,10 +1,13 @@
-import { StorageBufferAttribute } from 'three/webgpu';
 /**
  * RenderComputePass: Compute shader that generates quad vertices from packed splat data.
  *
  * This reads packed splat data from a texture, unpacks it, transforms to view space,
  * projects to 2D, computes Gaussian covariance, and outputs 4 vertices per splat
  * as a quad suitable for rendering.
+ *
+ * The compute node is built ONCE at construction time. The texture uniform and all
+ * other parameters are updated via uniform .value to avoid rebuilding the shader
+ * node graph (which causes "No stack defined" warnings).
  */
 import * as THREE from "three";
 export interface RenderComputeParams {
@@ -12,8 +15,6 @@ export interface RenderComputeParams {
     packedSplatsTexture: THREE.DataArrayTexture;
     /** Number of splats to render */
     numSplats: number;
-    /** Sorted indices buffer (or null for unsorted) */
-    sortedIndices: InstanceType<typeof StorageBufferAttribute> | null;
     /** Render-to-view quaternion */
     renderToViewQuat: THREE.Quaternion;
     /** Render-to-view position */
@@ -45,32 +46,22 @@ export interface RenderComputeParams {
 }
 /**
  * RenderComputePass generates quad vertices from packed splat data.
- * Uses select() instead of If/Return for TSL compatibility.
+ * The compute shader is built once at construction time; all parameters
+ * are updated via uniform .value. Uses select() instead of If/Return.
  */
 export declare class RenderComputePass {
     private renderer;
     private maxSplats;
-    private positionAttr;
-    private colorAttr;
-    private uvAttr;
-    private positionStorage;
-    private colorStorage;
-    private uvStorage;
+    private positionBuffer;
+    private colorBuffer;
+    private uvBuffer;
     private uniforms;
     private packedSplatsTextureUniform;
-    private currentTexture;
     private computeNode;
     geometry: THREE.BufferGeometry;
-    private sortedIndicesStorage;
-    private useSortedIndices;
-    constructor(renderer: any, maxSplats?: number);
+    constructor(renderer: any, maxSplats?: number, sortedIndicesStorage?: any);
     /**
-     * Set sorted indices storage for reading splats in sorted order.
-     */
-    setSortedIndicesStorage(sortedIndicesStorage: any): void;
-    /**
-     * Build the compute shader node.
-     * Uses select() instead of If/Return for TSL compatibility.
+     * Build the compute shader node (called once in constructor).
      */
     private buildComputeNode;
     /**

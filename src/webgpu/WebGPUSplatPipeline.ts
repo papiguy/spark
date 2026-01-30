@@ -93,9 +93,14 @@ export class WebGPUSplatPipeline {
     this.renderer = renderer;
     this.maxSplats = options.maxSplats ?? DEFAULT_MAX_SPLATS;
 
-    // Create pipeline components
+    // Create pipeline components — sorted indices are wired at construction time
+    // so compute nodes can be built once and never rebuilt.
     this.sortPass = new SortComputePass(renderer, this.maxSplats);
-    this.renderPass = new RenderComputePass(renderer, this.maxSplats);
+    this.renderPass = new RenderComputePass(
+      renderer,
+      this.maxSplats,
+      this.sortPass.getSortedIndicesStorage(),
+    );
 
     // Create material
     if (options.debug) {
@@ -186,15 +191,10 @@ export class WebGPUSplatPipeline {
 
     await this.sortPass.sort(sortParams);
 
-    // Connect sorted indices to render pass
-    const sortedIndicesStorage = this.sortPass.getSortedIndicesStorage();
-    this.renderPass.setSortedIndicesStorage(sortedIndicesStorage);
-
     // Step 2: Generate quad vertices
     const renderParams: RenderComputeParams = {
       packedSplatsTexture,
       numSplats,
-      sortedIndices: this.sortPass.sortedIndicesAttr, // Use sorted indices from sort pass
       renderToViewQuat: this.renderToViewQuat,
       renderToViewPos: this.renderToViewPos,
       projectionMatrix: camera.projectionMatrix,

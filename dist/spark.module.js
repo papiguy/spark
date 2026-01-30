@@ -1935,7 +1935,7 @@ class OutputRgba8 extends Dyno {
     return new DynoOutput(this, "rgba8");
   }
 }
-const uniform$2 = (key, type, value) => new DynoUniform({ key, type, value });
+const uniform$3 = (key, type, value) => new DynoUniform({ key, type, value });
 const dynoBool = (value = false, key) => new DynoBool({ key, value });
 const dynoUint = (value = 0, key) => new DynoUint({ key, value });
 const dynoInt = (value = 0, key) => new DynoInt({ key, value });
@@ -3639,15 +3639,15 @@ function isNanOutputType(a, operation = "isNan") {
 function isInfOutputType(a) {
   return isNanOutputType(a, "isInf");
 }
-const add$2 = (a, b) => new Add({ a, b });
-const sub$2 = (a, b) => new Sub({ a, b });
-const mul$2 = (a, b) => new Mul({ a, b });
-const div$2 = (a, b) => new Div({ a, b });
+const add$4 = (a, b) => new Add({ a, b });
+const sub$4 = (a, b) => new Sub({ a, b });
+const mul$4 = (a, b) => new Mul({ a, b });
+const div$3 = (a, b) => new Div({ a, b });
 const imod = (a, b) => new IMod({ a, b });
 const mod$1 = (a, b) => new Mod({ a, b });
 const modf = (a) => new Modf({ a }).outputs;
 const neg = (a) => new Neg({ a });
-const abs$2 = (a) => new Abs({ a });
+const abs$3 = (a) => new Abs({ a });
 const sign$1 = (a) => new Sign({ a });
 const floor$1 = (a) => new Floor({ a });
 const ceil$1 = (a) => new Ceil({ a });
@@ -3655,16 +3655,16 @@ const trunc$1 = (a) => new Trunc({ a });
 const round$1 = (a) => new Round({ a });
 const fract$1 = (a) => new Fract({ a });
 const pow$1 = (a, b) => new Pow({ a, b });
-const exp$2 = (a) => new Exp({ a });
+const exp$3 = (a) => new Exp({ a });
 const exp2$1 = (a) => new Exp2({ a });
-const log$2 = (a) => new Log({ a });
+const log$3 = (a) => new Log({ a });
 const log2$1 = (a) => new Log2({ a });
 const sqr = (a) => new Sqr({ a });
-const sqrt$2 = (a) => new Sqrt({ a });
+const sqrt$4 = (a) => new Sqrt({ a });
 const inversesqrt$1 = (a) => new InverseSqrt({ a });
 const min$3 = (a, b) => new Min({ a, b });
 const max$3 = (a, b) => new Max({ a, b });
-const clamp$2 = (a, min2, max2) => new Clamp({ a, min: min2, max: max2 });
+const clamp$3 = (a, min2, max2) => new Clamp({ a, min: min2, max: max2 });
 const mix$1 = (a, b, t) => new Mix({ a, b, t });
 const step$1 = (edge, x) => new Step({ edge, x });
 const smoothstep$2 = (edge0, edge1, x) => new Smoothstep({ edge0, edge1, x });
@@ -3965,7 +3965,7 @@ const equal$1 = (a, b) => new Equal({ a, b });
 const notEqual$1 = (a, b) => new NotEqual({ a, b });
 const any$1 = (a) => new Any({ a });
 const all$1 = (a) => new All({ a });
-const select$2 = (cond, t, f) => new Select({ cond, t, f });
+const select$4 = (cond, t, f) => new Select({ cond, t, f });
 const compXor = (a) => new CompXor({ a });
 class And extends BinaryOp {
   constructor({ a, b }) {
@@ -4202,21 +4202,21 @@ class CompXor extends UnaryOp {
   }
 }
 const bool$1 = (value) => new Bool({ value });
-const int$2 = (value) => new Int({ value });
-const uint$2 = (value) => new Uint({ value });
-const float$2 = (value) => new Float({ value });
+const int$4 = (value) => new Int({ value });
+const uint$4 = (value) => new Uint({ value });
+const float$5 = (value) => new Float({ value });
 const bvec2$1 = (value) => new BVec2({ value });
 const bvec3$1 = (value) => new BVec3({ value });
 const bvec4$1 = (value) => new BVec4({ value });
-const ivec2$1 = (value) => new IVec2({ value });
-const ivec3$2 = (value) => new IVec3({ value });
+const ivec2$3 = (value) => new IVec2({ value });
+const ivec3$4 = (value) => new IVec3({ value });
 const ivec4$1 = (value) => new IVec4({ value });
 const uvec2$1 = (value) => new UVec2({ value });
 const uvec3$1 = (value) => new UVec3({ value });
 const uvec4$1 = (value) => new UVec4({ value });
-const vec2$2 = (value) => new Vec2({ value });
-const vec3$2 = (value) => new Vec3({ value });
-const vec4$2 = (value) => new Vec4({ value });
+const vec2$3 = (value) => new Vec2({ value });
+const vec3$3 = (value) => new Vec3({ value });
+const vec4$4 = (value) => new Vec4({ value });
 const mat2$1 = (value) => new Mat2({ value });
 const mat3$1 = (value) => new Mat3({ value });
 const mat4$1 = (value) => new Mat4({ value });
@@ -4469,7 +4469,7 @@ class UintToRgba8 extends UnaryOp {
 }
 const length$1 = (a) => new Length({ a });
 const distance$1 = (a, b) => new Distance({ a, b });
-const dot$2 = (a, b) => new Dot({ a, b });
+const dot$4 = (a, b) => new Dot({ a, b });
 const cross$2 = (a, b) => new Cross({ a, b });
 const normalize$3 = (a) => new Normalize({ a });
 const faceforward$1 = (a, b, c) => new FaceForward({ a, b, c });
@@ -5142,7 +5142,7 @@ class HashFloat extends DynoBlock {
           throw new Error("value is required");
         }
         const word = hash$2(value2);
-        return { hash: mul$2(float$2(word), dynoConst("float", 1 / 2 ** 32)) };
+        return { hash: mul$4(float$5(word), dynoConst("float", 1 / 2 ** 32)) };
       }
     });
   }
@@ -5161,7 +5161,7 @@ class HashVec2 extends DynoBlock {
           throw new Error("value is required");
         }
         const words = hash2(value2);
-        return { hash: mul$2(vec2$2(words), dynoConst("float", 1 / 2 ** 32)) };
+        return { hash: mul$4(vec2$3(words), dynoConst("float", 1 / 2 ** 32)) };
       }
     });
   }
@@ -5180,7 +5180,7 @@ class HashVec3 extends DynoBlock {
           throw new Error("value is required");
         }
         const words = hash3(value2);
-        return { hash: mul$2(vec3$2(words), dynoConst("float", 1 / 2 ** 32)) };
+        return { hash: mul$4(vec3$3(words), dynoConst("float", 1 / 2 ** 32)) };
       }
     });
   }
@@ -5199,7 +5199,7 @@ class HashVec4 extends DynoBlock {
           throw new Error("value is required");
         }
         const words = hash4(value2);
-        return { hash: mul$2(vec4$2(words), dynoConst("float", 1 / 2 ** 32)) };
+        return { hash: mul$4(vec4$4(words), dynoConst("float", 1 / 2 ** 32)) };
       }
     });
   }
@@ -5348,7 +5348,7 @@ const arrayLength = () => {
   throw new Error("Not implemented");
 };
 const textureSize$1 = (texture2, lod) => new TextureSize({ texture: texture2, lod });
-const texture$2 = (texture2, coord, bias) => new Texture$1({ texture: texture2, coord, bias });
+const texture$3 = (texture2, coord, bias) => new Texture$1({ texture: texture2, coord, bias });
 const texelFetch = (texture2, coord, lod) => new TexelFetch({ texture: texture2, coord, lod });
 class TextureSize extends Dyno {
   constructor({ texture: texture2, lod }) {
@@ -5823,10 +5823,10 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   Vec3,
   Vec4,
   Xor,
-  abs: abs$2,
+  abs: abs$3,
   acos: acos$1,
   acosh,
-  add: add$2,
+  add: add$4,
   all: all$1,
   and: and$1,
   any: any$1,
@@ -5842,7 +5842,7 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   bvec3: bvec3$1,
   bvec4: bvec4$1,
   ceil: ceil$1,
-  clamp: clamp$2,
+  clamp: clamp$3,
   combine,
   combineGsplat,
   comment,
@@ -5857,8 +5857,8 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   degrees: degrees$1,
   determinant: determinant$1,
   distance: distance$1,
-  div: div$2,
-  dot: dot$2,
+  div: div$3,
+  dot: dot$4,
   dyno: dyno$1,
   dynoBlock,
   dynoBool,
@@ -5911,11 +5911,11 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   dynoVec3,
   dynoVec4,
   equal: equal$1,
-  exp: exp$2,
+  exp: exp$3,
   exp2: exp2$1,
   extendVec,
   faceforward: faceforward$1,
-  float: float$2,
+  float: float$5,
   floatBitsToInt: floatBitsToInt$1,
   floatBitsToUint: floatBitsToUint$1,
   floor: floor$1,
@@ -5932,7 +5932,7 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   hashVec3,
   hashVec4,
   imod,
-  int: int$2,
+  int: int$4,
   intBitsToFloat: intBitsToFloat$1,
   inverse: inverse$1,
   inversesqrt: inversesqrt$1,
@@ -5952,8 +5952,8 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   isVector3Type,
   isVector4Type,
   isVectorType,
-  ivec2: ivec2$1,
-  ivec3: ivec3$2,
+  ivec2: ivec2$3,
+  ivec3: ivec3$4,
   ivec4: ivec4$1,
   length: length$1,
   lessThan: lessThan$1,
@@ -5961,7 +5961,7 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   literalNegOne,
   literalOne,
   literalZero,
-  log: log$2,
+  log: log$3,
   log2: log2$1,
   mat2: mat2$1,
   mat3: mat3$1,
@@ -5971,7 +5971,7 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   mix: mix$1,
   mod: mod$1,
   modf,
-  mul: mul$2,
+  mul: mul$4,
   neg,
   normalize: normalize$3,
   normalizedDepth,
@@ -6003,7 +6003,7 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   sameSizeIvec,
   sameSizeUvec,
   sameSizeVec,
-  select: select$2,
+  select: select$4,
   sign: sign$1,
   sin: sin$2,
   sinh,
@@ -6011,14 +6011,14 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   split: split$1,
   splitGsplat,
   sqr,
-  sqrt: sqrt$2,
+  sqrt: sqrt$4,
   step: step$1,
-  sub: sub$2,
+  sub: sub$4,
   swizzle,
   tan: tan$1,
   tanh,
   texelFetch,
-  texture: texture$2,
+  texture: texture$3,
   textureSize: textureSize$1,
   transformDir,
   transformGsplat,
@@ -6027,10 +6027,10 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   transpose: transpose$1,
   trunc: trunc$1,
   typeLiteral,
-  uint: uint$2,
+  uint: uint$4,
   uintBitsToFloat: uintBitsToFloat$1,
   uintToRgba8,
-  uniform: uniform$2,
+  uniform: uniform$3,
   unindent,
   unindentLines,
   unpackHalf2x16: unpackHalf2x16$2,
@@ -6040,9 +6040,9 @@ const dyno = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty
   uvec3: uvec3$1,
   uvec4: uvec4$1,
   valType,
-  vec2: vec2$2,
-  vec3: vec3$2,
-  vec4: vec4$2,
+  vec2: vec2$3,
+  vec3: vec3$3,
+  vec4: vec4$4,
   vectorDim,
   vectorElementType,
   xor: xor$1
@@ -6467,7 +6467,7 @@ const _RgbaArray = class _RgbaArray {
           if (!index) {
             throw new Error("index is undefined");
           }
-          index = add$2(index, dynoBase);
+          index = add$4(index, dynoBase);
           const gsplat = readPackedSplatRange(
             dynoSplats,
             index,
@@ -7393,31 +7393,31 @@ const _SplatMesh = class _SplatMesh extends SplatGenerator {
           if (sh1Texture) {
             let rescaleSh = function(sNorm, minMax) {
               const { x: min2, y: max2 } = split$1(minMax).outputs;
-              const mid = mul$2(add$2(min2, max2), dynoConst("float", 0.5));
-              const scale = mul$2(sub$2(max2, min2), dynoConst("float", 0.5));
-              return add$2(mid, mul$2(sNorm, scale));
+              const mid = mul$4(add$4(min2, max2), dynoConst("float", 0.5));
+              const scale = mul$4(sub$4(max2, min2), dynoConst("float", 0.5));
+              return add$4(mid, mul$4(sNorm, scale));
             };
             const viewCenterInObject = viewToObject.translate;
             const { center } = splitGsplat(gsplat).outputs;
-            const viewDir = normalize$3(sub$2(center, viewCenterInObject));
+            const viewDir = normalize$3(sub$4(center, viewCenterInObject));
             const sh1Snorm = evaluateSH1(gsplat, sh1Texture, viewDir);
             let rgb = rescaleSh(sh1Snorm, this.packedSplats.dynoSh1MinMax);
             if (this.maxSh >= 2 && sh2Texture) {
               const sh2Snorm = evaluateSH2(gsplat, sh2Texture, viewDir);
-              rgb = add$2(
+              rgb = add$4(
                 rgb,
                 rescaleSh(sh2Snorm, this.packedSplats.dynoSh2MinMax)
               );
             }
             if (this.maxSh >= 3 && sh3Texture) {
               const sh3Snorm = evaluateSH3(gsplat, sh3Texture, viewDir);
-              rgb = add$2(
+              rgb = add$4(
                 rgb,
                 rescaleSh(sh3Snorm, this.packedSplats.dynoSh3MinMax)
               );
             }
             let { rgba } = splitGsplat(gsplat).outputs;
-            rgba = add$2(rgba, extendVec(rgb, dynoConst("float", 0)));
+            rgba = add$4(rgba, extendVec(rgb, dynoConst("float", 0)));
             gsplat = combineGsplat({ gsplat, rgba });
           }
         }
@@ -7432,7 +7432,7 @@ const _SplatMesh = class _SplatMesh extends SplatGenerator {
           gsplat = this.objectModifier.apply({ gsplat }).gsplat;
         }
         gsplat = transform.applyGsplat(gsplat);
-        const recolorRgba = mul$2(recolor, splitGsplat(gsplat).outputs.rgba);
+        const recolorRgba = mul$4(recolor, splitGsplat(gsplat).outputs.rgba);
         gsplat = combineGsplat({ gsplat, rgba: recolorRgba });
         if (this.rgbaDisplaceEdits) {
           gsplat = this.rgbaDisplaceEdits.modify(gsplat);
@@ -10268,12 +10268,12 @@ const _SparkViewpoint = class _SparkViewpoint {
             sortDepthBias: dynoDepthBias,
             sort360: dynoSort360
           };
-          const index2 = mul$2(index, dynoConst("int", 2));
+          const index2 = mul$4(index, dynoConst("int", 2));
           const gsplat0 = readPackedSplat(dynoSplats, index2);
           const metric0 = computeSortMetric({ gsplat: gsplat0, ...sortParams });
           const gsplat1 = readPackedSplat(
             dynoSplats,
-            add$2(index2, dynoConst("int", 1))
+            add$4(index2, dynoConst("int", 1))
           );
           const metric1 = computeSortMetric({ gsplat: gsplat1, ...sortParams });
           const combined = combine({
@@ -10562,7 +10562,7 @@ function createElementNS(name) {
   return document.createElementNS("http://www.w3.org/1999/xhtml", name);
 }
 const _cache$1 = {};
-function log$1(...params) {
+function log$2(...params) {
   const message = "THREE." + params.shift();
   {
     console.log(message, ...params);
@@ -10663,7 +10663,7 @@ function generateUUID() {
   const uuid = _lut[d0 & 255] + _lut[d0 >> 8 & 255] + _lut[d0 >> 16 & 255] + _lut[d0 >> 24 & 255] + "-" + _lut[d1 & 255] + _lut[d1 >> 8 & 255] + "-" + _lut[d1 >> 16 & 15 | 64] + _lut[d1 >> 24 & 255] + "-" + _lut[d2 & 63 | 128] + _lut[d2 >> 8 & 255] + "-" + _lut[d2 >> 16 & 255] + _lut[d2 >> 24 & 255] + _lut[d3 & 255] + _lut[d3 >> 8 & 255] + _lut[d3 >> 16 & 255] + _lut[d3 >> 24 & 255];
   return uuid.toLowerCase();
 }
-function clamp$1(value, min2, max2) {
+function clamp$2(value, min2, max2) {
   return Math.max(min2, Math.min(max2, value));
 }
 function euclideanModulo(n, m) {
@@ -10827,7 +10827,7 @@ const MathUtils = {
    * @param {number} max - The max value.
    * @return {number} The clamped value.
    */
-  clamp: clamp$1,
+  clamp: clamp$2,
   /**
    * Computes the Euclidean modulo of the given parameters that
    * is `( ( n % m ) + m ) % m`.
@@ -11352,8 +11352,8 @@ class Vector2 {
    * @return {Vector2} A reference to this vector.
    */
   clamp(min2, max2) {
-    this.x = clamp$1(this.x, min2.x, max2.x);
-    this.y = clamp$1(this.y, min2.y, max2.y);
+    this.x = clamp$2(this.x, min2.x, max2.x);
+    this.y = clamp$2(this.y, min2.y, max2.y);
     return this;
   }
   /**
@@ -11367,8 +11367,8 @@ class Vector2 {
    * @return {Vector2} A reference to this vector.
    */
   clampScalar(minVal, maxVal) {
-    this.x = clamp$1(this.x, minVal, maxVal);
-    this.y = clamp$1(this.y, minVal, maxVal);
+    this.x = clamp$2(this.x, minVal, maxVal);
+    this.y = clamp$2(this.y, minVal, maxVal);
     return this;
   }
   /**
@@ -11383,7 +11383,7 @@ class Vector2 {
    */
   clampLength(min2, max2) {
     const length2 = this.length();
-    return this.divideScalar(length2 || 1).multiplyScalar(clamp$1(length2, min2, max2));
+    return this.divideScalar(length2 || 1).multiplyScalar(clamp$2(length2, min2, max2));
   }
   /**
    * The components of this vector are rounded down to the nearest integer value.
@@ -11508,7 +11508,7 @@ class Vector2 {
     const denominator = Math.sqrt(this.lengthSq() * v.lengthSq());
     if (denominator === 0) return Math.PI / 2;
     const theta = this.dot(v) / denominator;
-    return Math.acos(clamp$1(theta, -1, 1));
+    return Math.acos(clamp$2(theta, -1, 1));
   }
   /**
    * Computes the distance from the given vector to this instance.
@@ -12009,7 +12009,7 @@ class Quaternion {
    * @return {number} The angle in radians.
    */
   angleTo(q) {
-    return 2 * Math.acos(Math.abs(clamp$1(this.dot(q), -1, 1)));
+    return 2 * Math.acos(Math.abs(clamp$2(this.dot(q), -1, 1)));
   }
   /**
    * Rotates this quaternion by a given angular step to the given quaternion.
@@ -12715,9 +12715,9 @@ class Vector3 {
    * @return {Vector3} A reference to this vector.
    */
   clamp(min2, max2) {
-    this.x = clamp$1(this.x, min2.x, max2.x);
-    this.y = clamp$1(this.y, min2.y, max2.y);
-    this.z = clamp$1(this.z, min2.z, max2.z);
+    this.x = clamp$2(this.x, min2.x, max2.x);
+    this.y = clamp$2(this.y, min2.y, max2.y);
+    this.z = clamp$2(this.z, min2.z, max2.z);
     return this;
   }
   /**
@@ -12731,9 +12731,9 @@ class Vector3 {
    * @return {Vector3} A reference to this vector.
    */
   clampScalar(minVal, maxVal) {
-    this.x = clamp$1(this.x, minVal, maxVal);
-    this.y = clamp$1(this.y, minVal, maxVal);
-    this.z = clamp$1(this.z, minVal, maxVal);
+    this.x = clamp$2(this.x, minVal, maxVal);
+    this.y = clamp$2(this.y, minVal, maxVal);
+    this.z = clamp$2(this.z, minVal, maxVal);
     return this;
   }
   /**
@@ -12748,7 +12748,7 @@ class Vector3 {
    */
   clampLength(min2, max2) {
     const length2 = this.length();
-    return this.divideScalar(length2 || 1).multiplyScalar(clamp$1(length2, min2, max2));
+    return this.divideScalar(length2 || 1).multiplyScalar(clamp$2(length2, min2, max2));
   }
   /**
    * The components of this vector are rounded down to the nearest integer value.
@@ -12958,7 +12958,7 @@ class Vector3 {
     const denominator = Math.sqrt(this.lengthSq() * v.lengthSq());
     if (denominator === 0) return Math.PI / 2;
     const theta = this.dot(v) / denominator;
-    return Math.acos(clamp$1(theta, -1, 1));
+    return Math.acos(clamp$2(theta, -1, 1));
   }
   /**
    * Computes the distance from the given vector to this instance.
@@ -14775,10 +14775,10 @@ class Vector4 {
    * @return {Vector4} A reference to this vector.
    */
   clamp(min2, max2) {
-    this.x = clamp$1(this.x, min2.x, max2.x);
-    this.y = clamp$1(this.y, min2.y, max2.y);
-    this.z = clamp$1(this.z, min2.z, max2.z);
-    this.w = clamp$1(this.w, min2.w, max2.w);
+    this.x = clamp$2(this.x, min2.x, max2.x);
+    this.y = clamp$2(this.y, min2.y, max2.y);
+    this.z = clamp$2(this.z, min2.z, max2.z);
+    this.w = clamp$2(this.w, min2.w, max2.w);
     return this;
   }
   /**
@@ -14792,10 +14792,10 @@ class Vector4 {
    * @return {Vector4} A reference to this vector.
    */
   clampScalar(minVal, maxVal) {
-    this.x = clamp$1(this.x, minVal, maxVal);
-    this.y = clamp$1(this.y, minVal, maxVal);
-    this.z = clamp$1(this.z, minVal, maxVal);
-    this.w = clamp$1(this.w, minVal, maxVal);
+    this.x = clamp$2(this.x, minVal, maxVal);
+    this.y = clamp$2(this.y, minVal, maxVal);
+    this.z = clamp$2(this.z, minVal, maxVal);
+    this.w = clamp$2(this.w, minVal, maxVal);
     return this;
   }
   /**
@@ -14810,7 +14810,7 @@ class Vector4 {
    */
   clampLength(min2, max2) {
     const length2 = this.length();
-    return this.divideScalar(length2 || 1).multiplyScalar(clamp$1(length2, min2, max2));
+    return this.divideScalar(length2 || 1).multiplyScalar(clamp$2(length2, min2, max2));
   }
   /**
    * The components of this vector are rounded down to the nearest integer value.
@@ -17714,7 +17714,7 @@ class Euler {
     const m31 = te[2], m32 = te[6], m33 = te[10];
     switch (order) {
       case "XYZ":
-        this._y = Math.asin(clamp$1(m13, -1, 1));
+        this._y = Math.asin(clamp$2(m13, -1, 1));
         if (Math.abs(m13) < 0.9999999) {
           this._x = Math.atan2(-m23, m33);
           this._z = Math.atan2(-m12, m11);
@@ -17724,7 +17724,7 @@ class Euler {
         }
         break;
       case "YXZ":
-        this._x = Math.asin(-clamp$1(m23, -1, 1));
+        this._x = Math.asin(-clamp$2(m23, -1, 1));
         if (Math.abs(m23) < 0.9999999) {
           this._y = Math.atan2(m13, m33);
           this._z = Math.atan2(m21, m22);
@@ -17734,7 +17734,7 @@ class Euler {
         }
         break;
       case "ZXY":
-        this._x = Math.asin(clamp$1(m32, -1, 1));
+        this._x = Math.asin(clamp$2(m32, -1, 1));
         if (Math.abs(m32) < 0.9999999) {
           this._y = Math.atan2(-m31, m33);
           this._z = Math.atan2(-m12, m22);
@@ -17744,7 +17744,7 @@ class Euler {
         }
         break;
       case "ZYX":
-        this._y = Math.asin(-clamp$1(m31, -1, 1));
+        this._y = Math.asin(-clamp$2(m31, -1, 1));
         if (Math.abs(m31) < 0.9999999) {
           this._x = Math.atan2(m32, m33);
           this._z = Math.atan2(m21, m11);
@@ -17754,7 +17754,7 @@ class Euler {
         }
         break;
       case "YZX":
-        this._z = Math.asin(clamp$1(m21, -1, 1));
+        this._z = Math.asin(clamp$2(m21, -1, 1));
         if (Math.abs(m21) < 0.9999999) {
           this._x = Math.atan2(-m23, m22);
           this._y = Math.atan2(-m31, m11);
@@ -17764,7 +17764,7 @@ class Euler {
         }
         break;
       case "XZY":
-        this._z = Math.asin(-clamp$1(m12, -1, 1));
+        this._z = Math.asin(-clamp$2(m12, -1, 1));
         if (Math.abs(m12) < 0.9999999) {
           this._x = Math.atan2(m32, m22);
           this._y = Math.atan2(m13, m11);
@@ -19496,8 +19496,8 @@ class Color {
    */
   setHSL(h, s, l, colorSpace = ColorManagement.workingColorSpace) {
     h = euclideanModulo(h, 1);
-    s = clamp$1(s, 0, 1);
-    l = clamp$1(l, 0, 1);
+    s = clamp$2(s, 0, 1);
+    l = clamp$2(l, 0, 1);
     if (s === 0) {
       this.r = this.g = this.b = l;
     } else {
@@ -19683,7 +19683,7 @@ class Color {
    */
   getHex(colorSpace = SRGBColorSpace) {
     ColorManagement.workingToColorSpace(_color.copy(this), colorSpace);
-    return Math.round(clamp$1(_color.r * 255, 0, 255)) * 65536 + Math.round(clamp$1(_color.g * 255, 0, 255)) * 256 + Math.round(clamp$1(_color.b * 255, 0, 255));
+    return Math.round(clamp$2(_color.r * 255, 0, 255)) * 65536 + Math.round(clamp$2(_color.g * 255, 0, 255)) * 256 + Math.round(clamp$2(_color.b * 255, 0, 255));
   }
   /**
    * Returns the hexadecimal value of this color as a string (for example, 'FFFFFF').
@@ -22791,7 +22791,7 @@ class InterleavedBufferAttribute {
    */
   clone(data) {
     if (data === void 0) {
-      log$1("InterleavedBufferAttribute.clone(): Cloning an interleaved buffer attribute will de-interleave buffer data.");
+      log$2("InterleavedBufferAttribute.clone(): Cloning an interleaved buffer attribute will de-interleave buffer data.");
       const array2 = [];
       for (let i = 0; i < this.count; i++) {
         const index = i * this.data.stride + this.offset;
@@ -22820,7 +22820,7 @@ class InterleavedBufferAttribute {
    */
   toJSON(data) {
     if (data === void 0) {
-      log$1("InterleavedBufferAttribute.toJSON(): Serializing an interleaved buffer attribute will de-interleave buffer data.");
+      log$2("InterleavedBufferAttribute.toJSON(): Serializing an interleaved buffer attribute will de-interleave buffer data.");
       const array2 = [];
       for (let i = 0; i < this.count; i++) {
         const index = i * this.data.stride + this.offset;
@@ -25262,7 +25262,7 @@ const ShaderNodeObject = function(obj, altType = null) {
   } else if (altType === null && (type === "float" || type === "boolean") || type && type !== "shader" && type !== "string") {
     return nodeObject(getConstNode(obj, altType));
   } else if (type === "shader") {
-    return obj.isFn ? obj : Fn$1(obj);
+    return obj.isFn ? obj : Fn$4(obj);
   }
   return obj;
 };
@@ -25653,7 +25653,7 @@ class FnNode extends Node {
     return builder.generateConst(type);
   }
 }
-function Fn$1(jsFunc, layout = null) {
+function Fn$4(jsFunc, layout = null) {
   const instance2 = new FnNode(jsFunc, layout);
   return new Proxy(() => {
   }, {
@@ -25668,11 +25668,11 @@ function Fn$1(jsFunc, layout = null) {
     }
   });
 }
-const setCurrentStack = (stack2) => {
+const setCurrentStack$3 = (stack2) => {
   currentStack = stack2;
 };
-const getCurrentStack = () => currentStack;
-const If$1 = (...params) => currentStack.If(...params);
+const getCurrentStack$3 = () => currentStack;
+const If = (...params) => currentStack.If(...params);
 const Switch = (...params) => currentStack.Switch(...params);
 function Stack(node) {
   if (currentStack) currentStack.addToStack(node);
@@ -25680,19 +25680,19 @@ function Stack(node) {
 }
 addMethodChaining("toStack", Stack);
 const color = new ConvertType("color");
-const float$1 = new ConvertType("float", cacheMaps.float);
-const int$1 = new ConvertType("int", cacheMaps.ints);
-const uint$1 = new ConvertType("uint", cacheMaps.uint);
+const float$4 = new ConvertType("float", cacheMaps.float);
+const int$3 = new ConvertType("int", cacheMaps.ints);
+const uint$3 = new ConvertType("uint", cacheMaps.uint);
 const bool = new ConvertType("bool", cacheMaps.bool);
-const vec2$1 = new ConvertType("vec2");
-const ivec2 = new ConvertType("ivec2");
+const vec2$2 = new ConvertType("vec2");
+const ivec2$2 = new ConvertType("ivec2");
 const uvec2 = new ConvertType("uvec2");
 const bvec2 = new ConvertType("bvec2");
-const vec3$1 = new ConvertType("vec3");
-const ivec3$1 = new ConvertType("ivec3");
+const vec3$2 = new ConvertType("vec3");
+const ivec3$3 = new ConvertType("ivec3");
 const uvec3 = new ConvertType("uvec3");
 const bvec3 = new ConvertType("bvec3");
-const vec4$1 = new ConvertType("vec4");
+const vec4$3 = new ConvertType("vec4");
 const ivec4 = new ConvertType("ivec4");
 const uvec4 = new ConvertType("uvec4");
 const bvec4 = new ConvertType("bvec4");
@@ -25702,19 +25702,19 @@ const mat4 = new ConvertType("mat4");
 const string = (value = "") => new ConstNode(value, "string");
 const arrayBuffer = (value) => new ConstNode(value, "ArrayBuffer");
 addMethodChaining("toColor", color);
-addMethodChaining("toFloat", float$1);
-addMethodChaining("toInt", int$1);
-addMethodChaining("toUint", uint$1);
+addMethodChaining("toFloat", float$4);
+addMethodChaining("toInt", int$3);
+addMethodChaining("toUint", uint$3);
 addMethodChaining("toBool", bool);
-addMethodChaining("toVec2", vec2$1);
-addMethodChaining("toIVec2", ivec2);
+addMethodChaining("toVec2", vec2$2);
+addMethodChaining("toIVec2", ivec2$2);
 addMethodChaining("toUVec2", uvec2);
 addMethodChaining("toBVec2", bvec2);
-addMethodChaining("toVec3", vec3$1);
-addMethodChaining("toIVec3", ivec3$1);
+addMethodChaining("toVec3", vec3$2);
+addMethodChaining("toIVec3", ivec3$3);
 addMethodChaining("toUVec3", uvec3);
 addMethodChaining("toBVec3", bvec3);
-addMethodChaining("toVec4", vec4$1);
+addMethodChaining("toVec4", vec4$3);
 addMethodChaining("toIVec4", ivec4);
 addMethodChaining("toUVec4", uvec4);
 addMethodChaining("toBVec4", bvec4);
@@ -25946,7 +25946,7 @@ class UniformNode extends InputNode {
     return builder.format(snippet, type, output2);
   }
 }
-const uniform$1 = (value, type) => {
+const uniform$2 = (value, type) => {
   const nodeType = getConstNodeType(type || value);
   if (nodeType === value) {
     value = getValueFromType(nodeType);
@@ -26213,7 +26213,7 @@ class FunctionCallNode extends TempNode {
       } else if (parameters.length < inputs.length) {
         error("TSL: The number of provided parameters is less than the expected number of inputs in 'Fn()'.");
         while (parameters.length < inputs.length) {
-          parameters.push(float$1(0));
+          parameters.push(float$4(0));
         }
       }
       for (let i = 0; i < parameters.length; i++) {
@@ -26226,7 +26226,7 @@ class FunctionCallNode extends TempNode {
           params.push(generateInput(node, inputNode));
         } else {
           error(`TSL: Input '${inputNode.name}' not found in 'Fn()'.`);
-          params.push(generateInput(float$1(0), inputNode));
+          params.push(generateInput(float$4(0), inputNode));
         }
       }
     }
@@ -26437,10 +26437,10 @@ class OperatorNode extends TempNode {
     this.op = data.op;
   }
 }
-const add$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "+").setParameterLength(2, Infinity).setName("add");
-const sub$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "-").setParameterLength(2, Infinity).setName("sub");
-const mul$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "*").setParameterLength(2, Infinity).setName("mul");
-const div$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "/").setParameterLength(2, Infinity).setName("div");
+const add$3 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "+").setParameterLength(2, Infinity).setName("add");
+const sub$3 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "-").setParameterLength(2, Infinity).setName("sub");
+const mul$3 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "*").setParameterLength(2, Infinity).setName("mul");
+const div$2 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "/").setParameterLength(2, Infinity).setName("div");
 const mod = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "%").setParameterLength(2).setName("mod");
 const equal = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "==").setParameterLength(2).setName("equal");
 const notEqual = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "!=").setParameterLength(2).setName("notEqual");
@@ -26456,30 +26456,30 @@ const bitAnd$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "&").setParameter
 const bitNot = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "~").setParameterLength(1).setName("bitNot");
 const bitOr$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "|").setParameterLength(2).setName("bitOr");
 const bitXor = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "^").setParameterLength(2).setName("bitXor");
-const shiftLeft = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "<<").setParameterLength(2).setName("shiftLeft");
+const shiftLeft$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, "<<").setParameterLength(2).setName("shiftLeft");
 const shiftRight$1 = /* @__PURE__ */ nodeProxyIntent(OperatorNode, ">>").setParameterLength(2).setName("shiftRight");
-const incrementBefore = Fn$1(([a]) => {
+const incrementBefore = Fn$4(([a]) => {
   a.addAssign(1);
   return a;
 });
-const decrementBefore = Fn$1(([a]) => {
+const decrementBefore = Fn$4(([a]) => {
   a.subAssign(1);
   return a;
 });
-const increment = /* @__PURE__ */ Fn$1(([a]) => {
-  const temp = int$1(a).toConst();
+const increment = /* @__PURE__ */ Fn$4(([a]) => {
+  const temp = int$3(a).toConst();
   a.addAssign(1);
   return temp;
 });
-const decrement = /* @__PURE__ */ Fn$1(([a]) => {
-  const temp = int$1(a).toConst();
+const decrement = /* @__PURE__ */ Fn$4(([a]) => {
+  const temp = int$3(a).toConst();
   a.subAssign(1);
   return temp;
 });
-addMethodChaining("add", add$1);
-addMethodChaining("sub", sub$1);
-addMethodChaining("mul", mul$1);
-addMethodChaining("div", div$1);
+addMethodChaining("add", add$3);
+addMethodChaining("sub", sub$3);
+addMethodChaining("mul", mul$3);
+addMethodChaining("div", div$2);
 addMethodChaining("mod", mod);
 addMethodChaining("equal", equal);
 addMethodChaining("notEqual", notEqual);
@@ -26495,7 +26495,7 @@ addMethodChaining("bitAnd", bitAnd$1);
 addMethodChaining("bitNot", bitNot);
 addMethodChaining("bitOr", bitOr$1);
 addMethodChaining("bitXor", bitXor);
-addMethodChaining("shiftLeft", shiftLeft);
+addMethodChaining("shiftLeft", shiftLeft$1);
 addMethodChaining("shiftRight", shiftRight$1);
 addMethodChaining("incrementBefore", incrementBefore);
 addMethodChaining("decrementBefore", decrementBefore);
@@ -26503,7 +26503,7 @@ addMethodChaining("increment", increment);
 addMethodChaining("decrement", decrement);
 const modInt = (a, b) => {
   warn('TSL: "modInt()" is deprecated. Use "mod( int( ... ) )" instead.');
-  return mod(int$1(a), int$1(b));
+  return mod(int$3(a), int$3(b));
 };
 addMethodChaining("modInt", modInt);
 class MathNode extends TempNode {
@@ -26581,20 +26581,20 @@ class MathNode extends TempNode {
     const { aNode, bNode, method } = this;
     let outputNode = null;
     if (method === MathNode.ONE_MINUS) {
-      outputNode = sub$1(1, aNode);
+      outputNode = sub$3(1, aNode);
     } else if (method === MathNode.RECIPROCAL) {
-      outputNode = div$1(1, aNode);
+      outputNode = div$2(1, aNode);
     } else if (method === MathNode.DIFFERENCE) {
-      outputNode = abs$1(sub$1(aNode, bNode));
+      outputNode = abs$2(sub$3(aNode, bNode));
     } else if (method === MathNode.TRANSFORM_DIRECTION) {
       let tA = aNode;
       let tB = bNode;
       if (builder.isMatrix(tA.getNodeType(builder))) {
-        tB = vec4$1(vec3$1(tB), 0);
+        tB = vec4$3(vec3$2(tB), 0);
       } else {
-        tA = vec4$1(vec3$1(tA), 0);
+        tA = vec4$3(vec3$2(tA), 0);
       }
-      const mulNode = mul$1(tA, tB).xyz;
+      const mulNode = mul$3(tA, tB).xyz;
       outputNode = normalize$1(mulNode);
     }
     if (outputNode !== null) {
@@ -26720,21 +26720,21 @@ MathNode.CLAMP = "clamp";
 MathNode.REFRACT = "refract";
 MathNode.SMOOTHSTEP = "smoothstep";
 MathNode.FACEFORWARD = "faceforward";
-const EPSILON = /* @__PURE__ */ float$1(1e-6);
-const INFINITY = /* @__PURE__ */ float$1(1e6);
-const PI$1 = /* @__PURE__ */ float$1(Math.PI);
-const PI2 = /* @__PURE__ */ float$1(Math.PI * 2);
-const TWO_PI = /* @__PURE__ */ float$1(Math.PI * 2);
-const HALF_PI = /* @__PURE__ */ float$1(Math.PI * 0.5);
+const EPSILON = /* @__PURE__ */ float$4(1e-6);
+const INFINITY = /* @__PURE__ */ float$4(1e6);
+const PI$1 = /* @__PURE__ */ float$4(Math.PI);
+const PI2 = /* @__PURE__ */ float$4(Math.PI * 2);
+const TWO_PI = /* @__PURE__ */ float$4(Math.PI * 2);
+const HALF_PI = /* @__PURE__ */ float$4(Math.PI * 0.5);
 const all = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ALL).setParameterLength(1);
 const any = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ANY).setParameterLength(1);
 const radians = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.RADIANS).setParameterLength(1);
 const degrees = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.DEGREES).setParameterLength(1);
-const exp$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.EXP).setParameterLength(1);
+const exp$2 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.EXP).setParameterLength(1);
 const exp2 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.EXP2).setParameterLength(1);
-const log = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.LOG).setParameterLength(1);
+const log$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.LOG).setParameterLength(1);
 const log2 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.LOG2).setParameterLength(1);
-const sqrt$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.SQRT).setParameterLength(1);
+const sqrt$3 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.SQRT).setParameterLength(1);
 const inverseSqrt = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.INVERSE_SQRT).setParameterLength(1);
 const floor = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.FLOOR).setParameterLength(1);
 const ceil = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.CEIL).setParameterLength(1);
@@ -26746,7 +26746,7 @@ const tan = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.TAN).setParameter
 const asin = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ASIN).setParameterLength(1);
 const acos = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ACOS).setParameterLength(1);
 const atan = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ATAN).setParameterLength(1, 2);
-const abs$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ABS).setParameterLength(1);
+const abs$2 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.ABS).setParameterLength(1);
 const sign = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.SIGN).setParameterLength(1);
 const length = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.LENGTH).setParameterLength(1);
 const negate = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.NEGATE).setParameterLength(1);
@@ -26764,30 +26764,30 @@ const equals = (x, y) => {
   warn('TSL: "equals" is deprecated. Use "equal" inside a vector instead, like: "bvec*( equal( ... ) )"');
   return equal(x, y);
 };
-const min$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.MIN).setParameterLength(2, Infinity);
-const max$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.MAX).setParameterLength(2, Infinity);
+const min$1$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.MIN).setParameterLength(2, Infinity);
+const max$1$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.MAX).setParameterLength(2, Infinity);
 const step = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.STEP).setParameterLength(2);
 const reflect = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.REFLECT).setParameterLength(2);
 const distance = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.DISTANCE).setParameterLength(2);
 const difference = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.DIFFERENCE).setParameterLength(2);
-const dot$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.DOT).setParameterLength(2);
+const dot$3 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.DOT).setParameterLength(2);
 const cross$1 = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.CROSS).setParameterLength(2);
 const pow = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.POW).setParameterLength(2);
-const pow2 = (x) => mul$1(x, x);
-const pow3 = (x) => mul$1(x, x, x);
-const pow4 = (x) => mul$1(x, x, x, x);
+const pow2 = (x) => mul$3(x, x);
+const pow3 = (x) => mul$3(x, x, x);
+const pow4 = (x) => mul$3(x, x, x, x);
 const transformDirection = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.TRANSFORM_DIRECTION).setParameterLength(2);
-const cbrt = (a) => mul$1(sign(a), pow(abs$1(a), 1 / 3));
-const lengthSq = (a) => dot$1(a, a);
+const cbrt = (a) => mul$3(sign(a), pow(abs$2(a), 1 / 3));
+const lengthSq = (a) => dot$3(a, a);
 const mix = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.MIX).setParameterLength(3);
-const clamp = (value, low = 0, high = 1) => nodeObject(new MathNode(MathNode.CLAMP, nodeObject(value), nodeObject(low), nodeObject(high)));
-const saturate = (value) => clamp(value);
+const clamp$1 = (value, low = 0, high = 1) => nodeObject(new MathNode(MathNode.CLAMP, nodeObject(value), nodeObject(low), nodeObject(high)));
+const saturate = (value) => clamp$1(value);
 const refract = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.REFRACT).setParameterLength(3);
 const smoothstep = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.SMOOTHSTEP).setParameterLength(3);
 const faceForward = /* @__PURE__ */ nodeProxyIntent(MathNode, MathNode.FACEFORWARD).setParameterLength(3);
-const rand = /* @__PURE__ */ Fn$1(([uv2]) => {
+const rand = /* @__PURE__ */ Fn$4(([uv2]) => {
   const a = 12.9898, b = 78.233, c = 43758.5453;
-  const dt = dot$1(uv2.xy, vec2$1(a, b)), sn = mod(dt, PI$1);
+  const dt = dot$3(uv2.xy, vec2$2(a, b)), sn = mod(dt, PI$1);
   return fract(sin$1(sn).mul(c));
 });
 const mixElement = (t, e1, e2) => mix(e1, e2, t);
@@ -26804,11 +26804,11 @@ addMethodChaining("any", any);
 addMethodChaining("equals", equals);
 addMethodChaining("radians", radians);
 addMethodChaining("degrees", degrees);
-addMethodChaining("exp", exp$1);
+addMethodChaining("exp", exp$2);
 addMethodChaining("exp2", exp2);
-addMethodChaining("log", log);
+addMethodChaining("log", log$1);
 addMethodChaining("log2", log2);
-addMethodChaining("sqrt", sqrt$1);
+addMethodChaining("sqrt", sqrt$3);
 addMethodChaining("inverseSqrt", inverseSqrt);
 addMethodChaining("floor", floor);
 addMethodChaining("ceil", ceil);
@@ -26820,7 +26820,7 @@ addMethodChaining("tan", tan);
 addMethodChaining("asin", asin);
 addMethodChaining("acos", acos);
 addMethodChaining("atan", atan);
-addMethodChaining("abs", abs$1);
+addMethodChaining("abs", abs$2);
 addMethodChaining("sign", sign);
 addMethodChaining("length", length);
 addMethodChaining("lengthSq", lengthSq);
@@ -26833,12 +26833,12 @@ addMethodChaining("reciprocal", reciprocal);
 addMethodChaining("trunc", trunc);
 addMethodChaining("fwidth", fwidth);
 addMethodChaining("atan2", atan2);
-addMethodChaining("min", min$1);
-addMethodChaining("max", max$1);
+addMethodChaining("min", min$1$1);
+addMethodChaining("max", max$1$1);
 addMethodChaining("step", stepElement);
 addMethodChaining("reflect", reflect);
 addMethodChaining("distance", distance);
-addMethodChaining("dot", dot$1);
+addMethodChaining("dot", dot$3);
 addMethodChaining("cross", cross$1);
 addMethodChaining("pow", pow);
 addMethodChaining("pow2", pow2);
@@ -26846,7 +26846,7 @@ addMethodChaining("pow3", pow3);
 addMethodChaining("pow4", pow4);
 addMethodChaining("transformDirection", transformDirection);
 addMethodChaining("mix", mixElement);
-addMethodChaining("clamp", clamp);
+addMethodChaining("clamp", clamp$1);
 addMethodChaining("refract", refract);
 addMethodChaining("smoothstep", smoothstepElement);
 addMethodChaining("faceForward", faceForward);
@@ -26966,8 +26966,8 @@ ${builder.tab}if ( ${nodeSnippet} ) {
     return builder.format(nodeProperty, type, output2);
   }
 }
-const select$1 = /* @__PURE__ */ nodeProxy(ConditionalNode).setParameterLength(2, 3);
-addMethodChaining("select", select$1);
+const select$3 = /* @__PURE__ */ nodeProxy(ConditionalNode).setParameterLength(2, 3);
+addMethodChaining("select", select$3);
 class ContextNode extends Node {
   static get type() {
     return "ContextNode";
@@ -27345,7 +27345,7 @@ addMethodChaining("vertexStage", (...params) => {
   warn("TSL: .vertexStage() has been renamed to .toVertexStage().");
   return varying(...params);
 });
-const sRGBTransferEOTF = /* @__PURE__ */ Fn$1(([color2]) => {
+const sRGBTransferEOTF = /* @__PURE__ */ Fn$4(([color2]) => {
   const a = color2.mul(0.9478672986).add(0.0521327014).pow(2.4);
   const b = color2.mul(0.0773993808);
   const factor = color2.lessThanEqual(0.04045);
@@ -27358,7 +27358,7 @@ const sRGBTransferEOTF = /* @__PURE__ */ Fn$1(([color2]) => {
     { name: "color", type: "vec3" }
   ]
 });
-const sRGBTransferOETF = /* @__PURE__ */ Fn$1(([color2]) => {
+const sRGBTransferOETF = /* @__PURE__ */ Fn$4(([color2]) => {
   const a = color2.pow(0.41666).mul(1.055).sub(0.055);
   const b = color2.mul(12.92);
   const factor = color2.lessThanEqual(31308e-7);
@@ -27416,16 +27416,16 @@ class ColorSpaceNode extends TempNode {
       return outputNode;
     }
     if (ColorManagement.getTransfer(source) === SRGBTransfer) {
-      outputNode = vec4$1(sRGBTransferEOTF(outputNode.rgb), outputNode.a);
+      outputNode = vec4$3(sRGBTransferEOTF(outputNode.rgb), outputNode.a);
     }
     if (ColorManagement.getPrimaries(source) !== ColorManagement.getPrimaries(target)) {
-      outputNode = vec4$1(
+      outputNode = vec4$3(
         mat3(ColorManagement._getMatrix(new Matrix3(), source, target)).mul(outputNode.rgb),
         outputNode.a
       );
     }
     if (ColorManagement.getTransfer(target) === SRGBTransfer) {
-      outputNode = vec4$1(sRGBTransferOETF(outputNode.rgb), outputNode.a);
+      outputNode = vec4$3(sRGBTransferOETF(outputNode.rgb), outputNode.a);
     }
     return outputNode;
   }
@@ -27517,7 +27517,7 @@ class ReferenceBaseNode extends Node {
    * @param {string} uniformType - The type to set.
    */
   setNodeType(uniformType) {
-    const node = uniform$1(null, uniformType);
+    const node = uniform$2(null, uniformType);
     if (this.group !== null) {
       node.setGroup(this.group);
     }
@@ -27674,7 +27674,7 @@ class ToneMappingNode extends TempNode {
     let outputNode = null;
     const toneMappingFn = builder.renderer.library.getToneMappingFunction(toneMapping2);
     if (toneMappingFn !== null) {
-      outputNode = vec4$1(toneMappingFn(colorNode.rgb, this.exposureNode), colorNode.a);
+      outputNode = vec4$3(toneMappingFn(colorNode.rgb, this.exposureNode), colorNode.a);
     } else {
       error("ToneMappingNode: Unsupported Tone Mapping configuration.", toneMapping2);
       outputNode = colorNode;
@@ -28071,7 +28071,7 @@ class RemapNode extends Node {
    * @param {Node} [outLowNode=float(0)] - The target lower bound of the range.
    * @param {Node} [outHighNode=float(1)] - The target upper bound of the range.
    */
-  constructor(node, inLowNode, inHighNode, outLowNode = float$1(0), outHighNode = float$1(1)) {
+  constructor(node, inLowNode, inHighNode, outLowNode = float$4(0), outHighNode = float$4(1)) {
     super();
     this.node = node;
     this.inLowNode = inLowNode;
@@ -28116,7 +28116,7 @@ class ExpressionNode extends Node {
   }
 }
 const expression = /* @__PURE__ */ nodeProxy(ExpressionNode).setParameterLength(1, 2);
-const Discard$1 = (conditional) => (conditional ? select$1(conditional, expression("discard")) : expression("discard")).toStack();
+const Discard$1 = (conditional) => (conditional ? select$3(conditional, expression("discard")) : expression("discard")).toStack();
 const Return = () => expression("return").toStack();
 addMethodChaining("discard", Discard$1);
 class RenderOutputNode extends TempNode {
@@ -28201,7 +28201,7 @@ class DebugNode extends TempNode {
     if (callback !== null) {
       callback(builder, code2);
     } else {
-      log$1(code2);
+      log$2(code2);
     }
     return snippet;
   }
@@ -28651,8 +28651,8 @@ class TextureNode extends UniformNode {
    * @return {Node} The transformed uv node.
    */
   getTransformedUV(uvNode) {
-    if (this._matrixUniform === null) this._matrixUniform = uniform$1(this.value.matrix);
-    return this._matrixUniform.mul(vec3$1(uvNode, 1)).xy;
+    if (this._matrixUniform === null) this._matrixUniform = uniform$2(this.value.matrix);
+    return this._matrixUniform.mul(vec3$2(uvNode, 1)).xy;
   }
   /**
    * Defines whether the uv transformation matrix should automatically be updated or not.
@@ -28674,12 +28674,12 @@ class TextureNode extends UniformNode {
    */
   setupUV(builder, uvNode) {
     if (builder.isFlipY()) {
-      if (this._flipYUniform === null) this._flipYUniform = uniform$1(false);
+      if (this._flipYUniform === null) this._flipYUniform = uniform$2(false);
       uvNode = uvNode.toVar();
       if (this.sampler) {
         uvNode = this._flipYUniform.select(uvNode.flipY(), uvNode);
       } else {
-        uvNode = this._flipYUniform.select(uvNode.setY(int$1(textureSize(this, this.levelNode).y).sub(uvNode.y).sub(1)), uvNode);
+        uvNode = this._flipYUniform.select(uvNode.setY(int$3(textureSize(this, this.levelNode).y).sub(uvNode.y).sub(1)), uvNode);
       }
     }
     return uvNode;
@@ -28696,7 +28696,7 @@ class TextureNode extends UniformNode {
     if (!texture2 || texture2.isTexture !== true) {
       throw new Error("THREE.TSL: `texture( value )` function expects a valid instance of THREE.Texture().");
     }
-    const uvNode = Fn$1(() => {
+    const uvNode = Fn$4(() => {
       let uvNode2 = this.uvNode;
       if ((uvNode2 === null || builder.context.forceUVContext === true) && builder.context.getUV) {
         uvNode2 = builder.context.getUV(this, builder);
@@ -29018,7 +29018,7 @@ class TextureNode extends UniformNode {
   }
 }
 const textureBase = /* @__PURE__ */ nodeProxy(TextureNode).setParameterLength(1, 4).setName("texture");
-const texture$1 = (value = EmptyTexture$1, uvNode = null, levelNode = null, biasNode = null) => {
+const texture$2 = (value = EmptyTexture$1, uvNode = null, levelNode = null, biasNode = null) => {
   let textureNode;
   if (value && value.isTextureNode === true) {
     textureNode = nodeObject(value.clone());
@@ -29031,11 +29031,11 @@ const texture$1 = (value = EmptyTexture$1, uvNode = null, levelNode = null, bias
   }
   return textureNode;
 };
-const uniformTexture = (value = EmptyTexture$1) => texture$1(value);
-const textureLoad$1 = (...params) => texture$1(...params).setSampler(false);
-const textureLevel = (value, uv2, level) => texture$1(value, uv2).level(level);
-const sampler = (value) => (value.isNode === true ? value : texture$1(value)).convert("sampler");
-const samplerComparison = (value) => (value.isNode === true ? value : texture$1(value)).convert("samplerComparison");
+const uniformTexture = (value = EmptyTexture$1) => texture$2(value);
+const textureLoad$2 = (...params) => texture$2(...params).setSampler(false);
+const textureLevel = (value, uv2, level) => texture$2(value, uv2).level(level);
+const sampler = (value) => (value.isNode === true ? value : texture$2(value)).convert("sampler");
+const samplerComparison = (value) => (value.isNode === true ? value : texture$2(value)).convert("samplerComparison");
 class BufferNode extends UniformNode {
   static get type() {
     return "BufferNode";
@@ -29353,13 +29353,13 @@ class ScreenNode extends Node {
     const scope = this.scope;
     let output2 = null;
     if (scope === ScreenNode.SIZE) {
-      output2 = uniform$1(_screenSizeVec || (_screenSizeVec = new Vector2()));
+      output2 = uniform$2(_screenSizeVec || (_screenSizeVec = new Vector2()));
     } else if (scope === ScreenNode.VIEWPORT) {
-      output2 = uniform$1(_viewportVec || (_viewportVec = new Vector4()));
+      output2 = uniform$2(_viewportVec || (_viewportVec = new Vector4()));
     } else if (scope === ScreenNode.DPR) {
-      output2 = uniform$1(1);
+      output2 = uniform$2(1);
     } else {
-      output2 = vec2$1(screenCoordinate.div(screenSize));
+      output2 = vec2$2(screenCoordinate.div(screenSize));
     }
     this._output = output2;
     return output2;
@@ -29389,14 +29389,14 @@ const viewport = /* @__PURE__ */ nodeImmutable(ScreenNode, ScreenNode.VIEWPORT);
 const viewportSize = viewport.zw;
 const viewportCoordinate = /* @__PURE__ */ screenCoordinate.sub(viewport.xy);
 const viewportUV = /* @__PURE__ */ viewportCoordinate.div(viewportSize);
-const viewportResolution = /* @__PURE__ */ Fn$1(() => {
+const viewportResolution = /* @__PURE__ */ Fn$4(() => {
   warn('TSL: "viewportResolution" is deprecated. Use "screenSize" instead.');
   return screenSize;
 }, "vec2").once()();
-const cameraIndex = /* @__PURE__ */ uniform$1(0, "uint").setName("u_cameraIndex").setGroup(sharedUniformGroup("cameraIndex")).toVarying("v_cameraIndex");
-const cameraNear = /* @__PURE__ */ uniform$1("float").setName("cameraNear").setGroup(renderGroup).onRenderUpdate(({ camera }) => camera.near);
-const cameraFar = /* @__PURE__ */ uniform$1("float").setName("cameraFar").setGroup(renderGroup).onRenderUpdate(({ camera }) => camera.far);
-const cameraProjectionMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraIndex = /* @__PURE__ */ uniform$2(0, "uint").setName("u_cameraIndex").setGroup(sharedUniformGroup("cameraIndex")).toVarying("v_cameraIndex");
+const cameraNear = /* @__PURE__ */ uniform$2("float").setName("cameraNear").setGroup(renderGroup).onRenderUpdate(({ camera }) => camera.near);
+const cameraFar = /* @__PURE__ */ uniform$2("float").setName("cameraFar").setGroup(renderGroup).onRenderUpdate(({ camera }) => camera.far);
+const cameraProjectionMatrix = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraProjectionMatrix2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const matrices = [];
@@ -29406,11 +29406,11 @@ const cameraProjectionMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraProjectionMatrices = uniformArray(matrices).setGroup(renderGroup).setName("cameraProjectionMatrices");
     cameraProjectionMatrix2 = cameraProjectionMatrices.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraProjectionMatrix");
   } else {
-    cameraProjectionMatrix2 = uniform$1("mat4").setName("cameraProjectionMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.projectionMatrix);
+    cameraProjectionMatrix2 = uniform$2("mat4").setName("cameraProjectionMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.projectionMatrix);
   }
   return cameraProjectionMatrix2;
 }).once()();
-const cameraProjectionMatrixInverse = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraProjectionMatrixInverse = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraProjectionMatrixInverse2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const matrices = [];
@@ -29420,11 +29420,11 @@ const cameraProjectionMatrixInverse = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraProjectionMatricesInverse = uniformArray(matrices).setGroup(renderGroup).setName("cameraProjectionMatricesInverse");
     cameraProjectionMatrixInverse2 = cameraProjectionMatricesInverse.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraProjectionMatrixInverse");
   } else {
-    cameraProjectionMatrixInverse2 = uniform$1("mat4").setName("cameraProjectionMatrixInverse").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.projectionMatrixInverse);
+    cameraProjectionMatrixInverse2 = uniform$2("mat4").setName("cameraProjectionMatrixInverse").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.projectionMatrixInverse);
   }
   return cameraProjectionMatrixInverse2;
 }).once()();
-const cameraViewMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraViewMatrix = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraViewMatrix2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const matrices = [];
@@ -29434,11 +29434,11 @@ const cameraViewMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraViewMatrices = uniformArray(matrices).setGroup(renderGroup).setName("cameraViewMatrices");
     cameraViewMatrix2 = cameraViewMatrices.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraViewMatrix");
   } else {
-    cameraViewMatrix2 = uniform$1("mat4").setName("cameraViewMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.matrixWorldInverse);
+    cameraViewMatrix2 = uniform$2("mat4").setName("cameraViewMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.matrixWorldInverse);
   }
   return cameraViewMatrix2;
 }).once()();
-const cameraWorldMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraWorldMatrix = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraWorldMatrix2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const matrices = [];
@@ -29448,11 +29448,11 @@ const cameraWorldMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraWorldMatrices = uniformArray(matrices).setGroup(renderGroup).setName("cameraWorldMatrices");
     cameraWorldMatrix2 = cameraWorldMatrices.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraWorldMatrix");
   } else {
-    cameraWorldMatrix2 = uniform$1("mat4").setName("cameraWorldMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.matrixWorld);
+    cameraWorldMatrix2 = uniform$2("mat4").setName("cameraWorldMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.matrixWorld);
   }
   return cameraWorldMatrix2;
 }).once()();
-const cameraNormalMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraNormalMatrix = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraNormalMatrix2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const matrices = [];
@@ -29462,11 +29462,11 @@ const cameraNormalMatrix = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraNormalMatrices = uniformArray(matrices).setGroup(renderGroup).setName("cameraNormalMatrices");
     cameraNormalMatrix2 = cameraNormalMatrices.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraNormalMatrix");
   } else {
-    cameraNormalMatrix2 = uniform$1("mat3").setName("cameraNormalMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.normalMatrix);
+    cameraNormalMatrix2 = uniform$2("mat3").setName("cameraNormalMatrix").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }) => camera2.normalMatrix);
   }
   return cameraNormalMatrix2;
 }).once()();
-const cameraPosition = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraPosition = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraPosition2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const positions = [];
@@ -29482,11 +29482,11 @@ const cameraPosition = /* @__PURE__ */ Fn$1(({ camera }) => {
     });
     cameraPosition2 = cameraPositions.element(camera.isMultiViewCamera ? builtin("gl_ViewID_OVR") : cameraIndex).toConst("cameraPosition");
   } else {
-    cameraPosition2 = uniform$1(new Vector3()).setName("cameraPosition").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }, self2) => self2.value.setFromMatrixPosition(camera2.matrixWorld));
+    cameraPosition2 = uniform$2(new Vector3()).setName("cameraPosition").setGroup(renderGroup).onRenderUpdate(({ camera: camera2 }, self2) => self2.value.setFromMatrixPosition(camera2.matrixWorld));
   }
   return cameraPosition2;
 }).once()();
-const cameraViewport = /* @__PURE__ */ Fn$1(({ camera }) => {
+const cameraViewport = /* @__PURE__ */ Fn$4(({ camera }) => {
   let cameraViewport2;
   if (camera.isArrayCamera && camera.cameras.length > 0) {
     const viewports = [];
@@ -29496,7 +29496,7 @@ const cameraViewport = /* @__PURE__ */ Fn$1(({ camera }) => {
     const cameraViewports = uniformArray(viewports, "vec4").setGroup(renderGroup).setName("cameraViewports");
     cameraViewport2 = cameraViewports.element(cameraIndex).toConst("cameraViewport");
   } else {
-    cameraViewport2 = vec4$1(0, 0, screenSize.x, screenSize.y).toConst("cameraViewport");
+    cameraViewport2 = vec4$3(0, 0, screenSize.x, screenSize.y).toConst("cameraViewport");
   }
   return cameraViewport2;
 }).once()();
@@ -29633,21 +29633,21 @@ const modelPosition = /* @__PURE__ */ nodeImmutable(ModelNode, ModelNode.POSITIO
 const modelScale = /* @__PURE__ */ nodeImmutable(ModelNode, ModelNode.SCALE);
 const modelViewPosition = /* @__PURE__ */ nodeImmutable(ModelNode, ModelNode.VIEW_POSITION);
 const modelRadius = /* @__PURE__ */ nodeImmutable(ModelNode, ModelNode.RADIUS);
-const modelNormalMatrix = /* @__PURE__ */ uniform$1(new Matrix3()).onObjectUpdate(({ object }, self2) => self2.value.getNormalMatrix(object.matrixWorld));
-const modelWorldMatrixInverse = /* @__PURE__ */ uniform$1(new Matrix4()).onObjectUpdate(({ object }, self2) => self2.value.copy(object.matrixWorld).invert());
-const modelViewMatrix = /* @__PURE__ */ Fn$1((builder) => {
+const modelNormalMatrix = /* @__PURE__ */ uniform$2(new Matrix3()).onObjectUpdate(({ object }, self2) => self2.value.getNormalMatrix(object.matrixWorld));
+const modelWorldMatrixInverse = /* @__PURE__ */ uniform$2(new Matrix4()).onObjectUpdate(({ object }, self2) => self2.value.copy(object.matrixWorld).invert());
+const modelViewMatrix = /* @__PURE__ */ Fn$4((builder) => {
   return builder.context.modelViewMatrix || mediumpModelViewMatrix;
 }).once()().toVar("modelViewMatrix");
 const mediumpModelViewMatrix = /* @__PURE__ */ cameraViewMatrix.mul(modelWorldMatrix);
-const highpModelViewMatrix = /* @__PURE__ */ Fn$1((builder) => {
+const highpModelViewMatrix = /* @__PURE__ */ Fn$4((builder) => {
   builder.context.isHighPrecisionModelViewMatrix = true;
-  return uniform$1("mat4").onObjectUpdate(({ object, camera }) => {
+  return uniform$2("mat4").onObjectUpdate(({ object, camera }) => {
     return object.modelViewMatrix.multiplyMatrices(camera.matrixWorldInverse, object.matrixWorld);
   });
 }).once()().toVar("highpModelViewMatrix");
-const highpModelNormalViewMatrix = /* @__PURE__ */ Fn$1((builder) => {
+const highpModelNormalViewMatrix = /* @__PURE__ */ Fn$4((builder) => {
   const isHighPrecisionModelViewMatrix = builder.context.isHighPrecisionModelViewMatrix;
-  return uniform$1("mat3").onObjectUpdate(({ object, camera }) => {
+  return uniform$2("mat3").onObjectUpdate(({ object, camera }) => {
     if (isHighPrecisionModelViewMatrix !== true) {
       object.modelViewMatrix.multiplyMatrices(camera.matrixWorldInverse, object.matrixWorld);
     }
@@ -29657,20 +29657,20 @@ const highpModelNormalViewMatrix = /* @__PURE__ */ Fn$1((builder) => {
 const positionGeometry = /* @__PURE__ */ attribute$1("position", "vec3");
 const positionLocal$1 = /* @__PURE__ */ positionGeometry.toVarying("positionLocal");
 const positionPrevious = /* @__PURE__ */ positionGeometry.toVarying("positionPrevious");
-const positionWorld = /* @__PURE__ */ Fn$1((builder) => {
+const positionWorld = /* @__PURE__ */ Fn$4((builder) => {
   return modelWorldMatrix.mul(positionLocal$1).xyz.toVarying(builder.getSubBuildProperty("v_positionWorld"));
 }, "vec3").once(["POSITION"])();
-const positionWorldDirection = /* @__PURE__ */ Fn$1(() => {
+const positionWorldDirection = /* @__PURE__ */ Fn$4(() => {
   const vertexPWD = positionLocal$1.transformDirection(modelWorldMatrix).toVarying("v_positionWorldDirection");
   return vertexPWD.normalize().toVar("positionWorldDirection");
 }, "vec3").once(["POSITION"])();
-const positionView = /* @__PURE__ */ Fn$1((builder) => {
+const positionView = /* @__PURE__ */ Fn$4((builder) => {
   return builder.context.setupPositionView().toVarying("v_positionView");
 }, "vec3").once(["POSITION"])();
-const positionViewDirection = /* @__PURE__ */ Fn$1((builder) => {
+const positionViewDirection = /* @__PURE__ */ Fn$4((builder) => {
   let output2;
   if (builder.camera.isOrthographicCamera) {
-    output2 = vec3$1(0, 0, 1);
+    output2 = vec3$2(0, 0, 1);
   } else {
     output2 = positionView.negate().toVarying("v_positionViewDirection").normalize();
   }
@@ -29697,8 +29697,8 @@ class FrontFacingNode extends Node {
   }
 }
 const frontFacing = /* @__PURE__ */ nodeImmutable(FrontFacingNode);
-const faceDirection = /* @__PURE__ */ float$1(frontFacing).mul(2).sub(1);
-const directionToFaceDirection = /* @__PURE__ */ Fn$1(([direction], { material }) => {
+const faceDirection = /* @__PURE__ */ float$4(frontFacing).mul(2).sub(1);
+const directionToFaceDirection = /* @__PURE__ */ Fn$4(([direction], { material }) => {
   const side = material.side;
   if (side === BackSide) {
     direction = direction.mul(-1);
@@ -29708,15 +29708,15 @@ const directionToFaceDirection = /* @__PURE__ */ Fn$1(([direction], { material }
   return direction;
 });
 const normalGeometry = /* @__PURE__ */ attribute$1("normal", "vec3");
-const normalLocal = /* @__PURE__ */ Fn$1((builder) => {
+const normalLocal = /* @__PURE__ */ Fn$4((builder) => {
   if (builder.geometry.hasAttribute("normal") === false) {
     warn('TSL: Vertex attribute "normal" not found on geometry.');
-    return vec3$1(0, 1, 0);
+    return vec3$2(0, 1, 0);
   }
   return normalGeometry;
 }, "vec3").once()().toVar("normalLocal");
 const normalFlat = /* @__PURE__ */ positionView.dFdx().cross(positionView.dFdy()).normalize().toVar("normalFlat");
-const normalViewGeometry = /* @__PURE__ */ Fn$1((builder) => {
+const normalViewGeometry = /* @__PURE__ */ Fn$4((builder) => {
   let node;
   if (builder.material.flatShading === true) {
     node = normalFlat;
@@ -29725,14 +29725,14 @@ const normalViewGeometry = /* @__PURE__ */ Fn$1((builder) => {
   }
   return node;
 }, "vec3").once()().toVar("normalViewGeometry");
-const normalWorldGeometry = /* @__PURE__ */ Fn$1((builder) => {
+const normalWorldGeometry = /* @__PURE__ */ Fn$4((builder) => {
   let normal2 = normalViewGeometry.transformDirection(cameraViewMatrix);
   if (builder.material.flatShading !== true) {
     normal2 = normal2.toVarying("v_normalWorldGeometry");
   }
   return normal2.normalize().toVar("normalWorldGeometry");
 }, "vec3").once()();
-const normalView = /* @__PURE__ */ Fn$1(({ subBuildFn, material, context: context2 }) => {
+const normalView = /* @__PURE__ */ Fn$4(({ subBuildFn, material, context: context2 }) => {
   let node;
   if (subBuildFn === "NORMAL" || subBuildFn === "VERTEX") {
     node = normalViewGeometry;
@@ -29745,7 +29745,7 @@ const normalView = /* @__PURE__ */ Fn$1(({ subBuildFn, material, context: contex
   return node;
 }, "vec3").once(["NORMAL", "VERTEX"])().toVar("normalView");
 const normalWorld = /* @__PURE__ */ normalView.transformDirection(cameraViewMatrix).toVar("normalWorld");
-const clearcoatNormalView = /* @__PURE__ */ Fn$1(({ subBuildFn, context: context2 }) => {
+const clearcoatNormalView = /* @__PURE__ */ Fn$4(({ subBuildFn, context: context2 }) => {
   let node;
   if (subBuildFn === "NORMAL" || subBuildFn === "VERTEX") {
     node = normalView;
@@ -29754,12 +29754,12 @@ const clearcoatNormalView = /* @__PURE__ */ Fn$1(({ subBuildFn, context: context
   }
   return node;
 }, "vec3").once(["NORMAL", "VERTEX"])().toVar("clearcoatNormalView");
-const transformNormal = /* @__PURE__ */ Fn$1(([normal2, matrix = modelWorldMatrix]) => {
+const transformNormal = /* @__PURE__ */ Fn$4(([normal2, matrix = modelWorldMatrix]) => {
   const m = mat3(matrix);
-  const transformedNormal = normal2.div(vec3$1(m[0].dot(m[0]), m[1].dot(m[1]), m[2].dot(m[2])));
+  const transformedNormal = normal2.div(vec3$2(m[0].dot(m[0]), m[1].dot(m[1]), m[2].dot(m[2])));
   return m.mul(transformedNormal).xyz;
 });
-const transformNormalToView = /* @__PURE__ */ Fn$1(([normal2], builder) => {
+const transformNormalToView = /* @__PURE__ */ Fn$4(([normal2], builder) => {
   const modelNormalViewMatrix = builder.context.modelNormalViewMatrix;
   if (modelNormalViewMatrix) {
     return modelNormalViewMatrix.transformDirection(normal2);
@@ -29767,25 +29767,25 @@ const transformNormalToView = /* @__PURE__ */ Fn$1(([normal2], builder) => {
   const transformedNormal = modelNormalMatrix.mul(normal2);
   return cameraViewMatrix.transformDirection(transformedNormal);
 });
-const transformedNormalView = Fn$1(() => {
+const transformedNormalView = Fn$4(() => {
   warn('TSL: "transformedNormalView" is deprecated. Use "normalView" instead.');
   return normalView;
 }).once(["NORMAL", "VERTEX"])();
-const transformedNormalWorld = Fn$1(() => {
+const transformedNormalWorld = Fn$4(() => {
   warn('TSL: "transformedNormalWorld" is deprecated. Use "normalWorld" instead.');
   return normalWorld;
 }).once(["NORMAL", "VERTEX"])();
-const transformedClearcoatNormalView = Fn$1(() => {
+const transformedClearcoatNormalView = Fn$4(() => {
   warn('TSL: "transformedClearcoatNormalView" is deprecated. Use "clearcoatNormalView" instead.');
   return clearcoatNormalView;
 }).once(["NORMAL", "VERTEX"])();
 const _e1$1 = /* @__PURE__ */ new Euler();
 const _m1$1 = /* @__PURE__ */ new Matrix4();
-const materialRefractionRatio = /* @__PURE__ */ uniform$1(0).onReference(({ material }) => material).onObjectUpdate(({ material }) => material.refractionRatio);
-const materialEnvIntensity = /* @__PURE__ */ uniform$1(1).onReference(({ material }) => material).onObjectUpdate(function({ material, scene }) {
+const materialRefractionRatio = /* @__PURE__ */ uniform$2(0).onReference(({ material }) => material).onObjectUpdate(({ material }) => material.refractionRatio);
+const materialEnvIntensity = /* @__PURE__ */ uniform$2(1).onReference(({ material }) => material).onObjectUpdate(function({ material, scene }) {
   return material.envMap ? material.envMapIntensity : scene.environmentIntensity;
 });
-const materialEnvRotation = /* @__PURE__ */ uniform$1(new Matrix4()).onReference(function(frame) {
+const materialEnvRotation = /* @__PURE__ */ uniform$2(new Matrix4()).onReference(function(frame) {
   return frame.material;
 }).onObjectUpdate(function({ material, scene }) {
   const rotation = scene.environment !== null && material.envMap === null ? scene.environmentRotation : material.envMapRotation;
@@ -29843,7 +29843,7 @@ class CubeTextureNode extends TextureNode {
       return refractVector;
     } else {
       error('CubeTextureNode: Mapping "%s" not supported.', texture2.mapping);
-      return vec3$1(0, 0, 0);
+      return vec3$2(0, 0, 0);
     }
   }
   /**
@@ -29867,12 +29867,12 @@ class CubeTextureNode extends TextureNode {
     const texture2 = this.value;
     if (texture2.isDepthTexture === true) {
       if (builder.renderer.coordinateSystem === WebGPUCoordinateSystem) {
-        return vec3$1(uvNode.x, uvNode.y.negate(), uvNode.z);
+        return vec3$2(uvNode.x, uvNode.y.negate(), uvNode.z);
       }
       return uvNode;
     }
     if (builder.renderer.coordinateSystem === WebGPUCoordinateSystem || !texture2.isRenderTargetTexture) {
-      uvNode = vec3$1(uvNode.x.negate(), uvNode.yz);
+      uvNode = vec3$2(uvNode.x.negate(), uvNode.yz);
     }
     return materialEnvRotation.mul(uvNode);
   }
@@ -30012,11 +30012,11 @@ class ReferenceNode extends Node {
     } else if (Array.isArray(this.getValueFromReference())) {
       node = uniformArray(null, uniformType);
     } else if (uniformType === "texture") {
-      node = texture$1(null);
+      node = texture$2(null);
     } else if (uniformType === "cubeTexture") {
       node = cubeTexture(null);
     } else {
-      node = uniform$1(null, uniformType);
+      node = uniform$2(null, uniformType);
     }
     if (this.group !== null) {
       node.setGroup(this.group);
@@ -30143,10 +30143,10 @@ const tangentViewFrame = /* @__PURE__ */ T.mul(scale$1).toVar("tangentViewFrame"
 const bitangentViewFrame = /* @__PURE__ */ B.mul(scale$1).toVar("bitangentViewFrame");
 const tangentGeometry = /* @__PURE__ */ attribute$1("tangent", "vec4");
 const tangentLocal = /* @__PURE__ */ tangentGeometry.xyz.toVar("tangentLocal");
-const tangentView = /* @__PURE__ */ Fn$1(({ subBuildFn, geometry, material }) => {
+const tangentView = /* @__PURE__ */ Fn$4(({ subBuildFn, geometry, material }) => {
   let node;
   if (subBuildFn === "VERTEX" || geometry.hasAttribute("tangent")) {
-    node = modelViewMatrix.mul(vec4$1(tangentLocal, 0)).xyz.toVarying("v_tangentView").normalize();
+    node = modelViewMatrix.mul(vec4$3(tangentLocal, 0)).xyz.toVarying("v_tangentView").normalize();
   } else {
     node = tangentViewFrame;
   }
@@ -30156,7 +30156,7 @@ const tangentView = /* @__PURE__ */ Fn$1(({ subBuildFn, geometry, material }) =>
   return node;
 }, "vec3").once(["NORMAL", "VERTEX"])().toVar("tangentView");
 const tangentWorld = /* @__PURE__ */ tangentView.transformDirection(cameraViewMatrix).toVarying("v_tangentWorld").normalize().toVar("tangentWorld");
-const getBitangent = /* @__PURE__ */ Fn$1(([crossNormalTangent, varyingName], { subBuildFn, material }) => {
+const getBitangent = /* @__PURE__ */ Fn$4(([crossNormalTangent, varyingName], { subBuildFn, material }) => {
   let bitangent = crossNormalTangent.mul(tangentGeometry.w).xyz;
   if (subBuildFn === "NORMAL" && material.flatShading !== true) {
     bitangent = bitangent.toVarying(varyingName);
@@ -30165,7 +30165,7 @@ const getBitangent = /* @__PURE__ */ Fn$1(([crossNormalTangent, varyingName], { 
 }).once(["NORMAL"]);
 const bitangentGeometry = /* @__PURE__ */ getBitangent(normalGeometry.cross(tangentGeometry), "v_bitangentGeometry").normalize().toVar("bitangentGeometry");
 const bitangentLocal = /* @__PURE__ */ getBitangent(normalLocal.cross(tangentLocal), "v_bitangentLocal").normalize().toVar("bitangentLocal");
-const bitangentView = /* @__PURE__ */ Fn$1(({ subBuildFn, geometry, material }) => {
+const bitangentView = /* @__PURE__ */ Fn$4(({ subBuildFn, geometry, material }) => {
   let node;
   if (subBuildFn === "VERTEX" || geometry.hasAttribute("tangent")) {
     node = getBitangent(normalView.cross(tangentView), "v_bitangentView").normalize();
@@ -30181,7 +30181,7 @@ const bitangentWorld = /* @__PURE__ */ getBitangent(normalWorld.cross(tangentWor
 const TBNViewMatrix = /* @__PURE__ */ mat3(tangentView, bitangentView, normalView).toVar("TBNViewMatrix");
 const parallaxDirection = /* @__PURE__ */ positionViewDirection.mul(TBNViewMatrix);
 const parallaxUV = (uv2, scale) => uv2.sub(parallaxDirection.mul(scale));
-const bentNormalView = /* @__PURE__ */ Fn$1(() => {
+const bentNormalView = /* @__PURE__ */ Fn$4(() => {
   let bentNormal = anisotropyB.cross(positionViewDirection);
   bentNormal = bentNormal.cross(anisotropyB).normalize();
   bentNormal = mix(bentNormal, normalView, anisotropy.mul(roughness.oneMinus()).oneMinus().pow2().pow2()).normalize();
@@ -30189,7 +30189,7 @@ const bentNormalView = /* @__PURE__ */ Fn$1(() => {
 }).once()();
 const directionToColor = (node) => nodeObject(node).mul(0.5).add(0.5);
 const colorToDirection = (node) => nodeObject(node).mul(2).sub(1);
-const unpackNormal = (xy) => vec3$1(xy, sqrt$1(saturate(float$1(1).sub(dot$1(xy, xy)))));
+const unpackNormal = (xy) => vec3$2(xy, sqrt$3(saturate(float$4(1).sub(dot$3(xy, xy)))));
 class NormalMapNode extends TempNode {
   static get type() {
     return "NormalMapNode";
@@ -30228,7 +30228,7 @@ class NormalMapNode extends TempNode {
       if (material.flatShading === true) {
         scale = directionToFaceDirection(scale);
       }
-      normalMap2 = vec3$1(normalMap2.xy.mul(scale), normalMap2.z);
+      normalMap2 = vec3$2(normalMap2.xy.mul(scale), normalMap2.z);
     }
     let output2 = null;
     if (normalMapType === ObjectSpaceNormalMap) {
@@ -30243,15 +30243,15 @@ class NormalMapNode extends TempNode {
   }
 }
 const normalMap = /* @__PURE__ */ nodeProxy(NormalMapNode).setParameterLength(1, 2);
-const dHdxy_fwd = Fn$1(({ textureNode, bumpScale }) => {
+const dHdxy_fwd = Fn$4(({ textureNode, bumpScale }) => {
   const sampleTexture = (callback) => textureNode.isolate().context({ getUV: (texNode) => callback(texNode.uvNode || uv$1()), forceUVContext: true });
-  const Hll = float$1(sampleTexture((uvNode) => uvNode));
-  return vec2$1(
-    float$1(sampleTexture((uvNode) => uvNode.add(uvNode.dFdx()))).sub(Hll),
-    float$1(sampleTexture((uvNode) => uvNode.add(uvNode.dFdy()))).sub(Hll)
+  const Hll = float$4(sampleTexture((uvNode) => uvNode));
+  return vec2$2(
+    float$4(sampleTexture((uvNode) => uvNode.add(uvNode.dFdx()))).sub(Hll),
+    float$4(sampleTexture((uvNode) => uvNode.add(uvNode.dFdy()))).sub(Hll)
   ).mul(bumpScale);
 });
-const perturbNormalArb = Fn$1((inputs) => {
+const perturbNormalArb = Fn$4((inputs) => {
   const { surf_pos, surf_norm, dHdxy } = inputs;
   const vSigmaX = surf_pos.dFdx().normalize();
   const vSigmaY = surf_pos.dFdy().normalize();
@@ -30356,7 +30356,7 @@ class MaterialNode extends Node {
     const scope = this.scope;
     let node = null;
     if (scope === MaterialNode.COLOR) {
-      const colorNode = material.color !== void 0 ? this.getColor(scope) : vec3$1();
+      const colorNode = material.color !== void 0 ? this.getColor(scope) : vec3$2();
       if (material.map && material.map.isTexture === true) {
         node = colorNode.mul(this.getTexture("map"));
       } else {
@@ -30373,7 +30373,7 @@ class MaterialNode extends Node {
       if (material.specularMap && material.specularMap.isTexture === true) {
         node = this.getTexture("specular").r;
       } else {
-        node = float$1(1);
+        node = float$4(1);
       }
     } else if (scope === MaterialNode.SPECULAR_INTENSITY) {
       const specularIntensityNode = this.getFloat(scope);
@@ -30462,7 +30462,7 @@ class MaterialNode extends Node {
       if (material.anisotropyMap && material.anisotropyMap.isTexture === true) {
         const anisotropyPolar = this.getTexture(scope);
         const anisotropyMat = mat2(materialAnisotropyVector.x, materialAnisotropyVector.y, materialAnisotropyVector.y.negate(), materialAnisotropyVector.x);
-        node = anisotropyMat.mul(anisotropyPolar.rg.mul(2).sub(vec2$1(1)).normalize().mul(anisotropyPolar.b));
+        node = anisotropyMat.mul(anisotropyPolar.rg.mul(2).sub(vec2$2(1)).normalize().mul(anisotropyPolar.b));
       } else {
         node = materialAnisotropyVector;
       }
@@ -30495,7 +30495,7 @@ class MaterialNode extends Node {
     } else if (scope === MaterialNode.AO) {
       node = this.getTexture(scope).r.sub(1).mul(this.getFloat("aoMapIntensity")).add(1);
     } else if (scope === MaterialNode.LINE_DASH_OFFSET) {
-      node = material.dashOffset ? this.getFloat(scope) : float$1(0);
+      node = material.dashOffset ? this.getFloat(scope) : float$4(0);
     } else {
       const outputType = this.getNodeType(builder);
       node = this.getCache(scope, outputType);
@@ -30577,12 +30577,12 @@ const materialPointSize = /* @__PURE__ */ nodeImmutable(MaterialNode, MaterialNo
 const materialDispersion = /* @__PURE__ */ nodeImmutable(MaterialNode, MaterialNode.DISPERSION);
 const materialLightMap = /* @__PURE__ */ nodeImmutable(MaterialNode, MaterialNode.LIGHT_MAP);
 const materialAO = /* @__PURE__ */ nodeImmutable(MaterialNode, MaterialNode.AO);
-const materialAnisotropyVector = /* @__PURE__ */ uniform$1(new Vector2()).onReference(function(frame) {
+const materialAnisotropyVector = /* @__PURE__ */ uniform$2(new Vector2()).onReference(function(frame) {
   return frame.material;
 }).onRenderUpdate(function({ material }) {
   this.value.set(material.anisotropy * Math.cos(material.anisotropyRotation), material.anisotropy * Math.sin(material.anisotropyRotation));
 });
-const modelViewProjection = /* @__PURE__ */ Fn$1((builder) => {
+const modelViewProjection = /* @__PURE__ */ Fn$4((builder) => {
   return builder.context.setupModelViewProjection();
 }, "vec4").once()().toVarying("v_modelViewProjection");
 class StorageArrayElementNode extends ArrayElementNode {
@@ -30839,10 +30839,10 @@ class StorageBufferNode extends BufferNode {
     return output2;
   }
 }
-const storage$1 = (value, type = null, count = 0) => new StorageBufferNode(value, type, count);
+const storage = (value, type = null, count = 0) => new StorageBufferNode(value, type, count);
 const storageObject = (value, type, count) => {
   warn('TSL: "storageObject()" is deprecated. Use "storage().setPBO( true )" instead.');
-  return storage$1(value, type, count).setPBO(true);
+  return storage(value, type, count).setPBO(true);
 };
 class IndexNode extends Node {
   static get type() {
@@ -30894,7 +30894,7 @@ IndexNode.INVOCATION_LOCAL = "invocationLocal";
 IndexNode.INVOCATION_SUBGROUP = "invocationSubgroup";
 IndexNode.DRAW = "draw";
 const vertexIndex = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.VERTEX);
-const instanceIndex$1 = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.INSTANCE);
+const instanceIndex$2 = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.INSTANCE);
 const subgroupIndex = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.SUBGROUP);
 const invocationSubgroupIndex = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.INVOCATION_SUBGROUP);
 const invocationLocalIndex = /* @__PURE__ */ nodeImmutable(IndexNode, IndexNode.INVOCATION_LOCAL);
@@ -30952,10 +30952,10 @@ class InstanceNode extends Node {
     let { instanceMatrixNode, instanceColorNode } = this;
     if (instanceMatrixNode === null) {
       if (isStorageMatrix) {
-        instanceMatrixNode = storage$1(instanceMatrix, "mat4", Math.max(count, 1)).element(instanceIndex$1);
+        instanceMatrixNode = storage(instanceMatrix, "mat4", Math.max(count, 1)).element(instanceIndex$2);
       } else {
         if (count <= 1e3) {
-          instanceMatrixNode = buffer(instanceMatrix.array, "mat4", Math.max(count, 1)).element(instanceIndex$1);
+          instanceMatrixNode = buffer(instanceMatrix.array, "mat4", Math.max(count, 1)).element(instanceIndex$2);
         } else {
           const interleaved = new InstancedInterleavedBuffer(instanceMatrix.array, 16, 1);
           this.buffer = interleaved;
@@ -30973,12 +30973,12 @@ class InstanceNode extends Node {
     }
     if (instanceColor && instanceColorNode === null) {
       if (isStorageColor) {
-        instanceColorNode = storage$1(instanceColor, "vec3", Math.max(instanceColor.count, 1)).element(instanceIndex$1);
+        instanceColorNode = storage(instanceColor, "vec3", Math.max(instanceColor.count, 1)).element(instanceIndex$2);
       } else {
         const bufferAttribute2 = new InstancedBufferAttribute(instanceColor.array, 3);
         const bufferFn = instanceColor.usage === DynamicDrawUsage ? instancedDynamicBufferAttribute : instancedBufferAttribute;
         this.bufferColor = bufferAttribute2;
-        instanceColorNode = vec3$1(bufferFn(bufferAttribute2, "vec3", 3, 0));
+        instanceColorNode = vec3$2(bufferFn(bufferAttribute2, "vec3", 3, 0));
       }
       this.instanceColorNode = instanceColorNode;
     }
@@ -31055,16 +31055,16 @@ class BatchNode extends Node {
   setup(builder) {
     if (this.batchingIdNode === null) {
       if (builder.getDrawIndex() === null) {
-        this.batchingIdNode = instanceIndex$1;
+        this.batchingIdNode = instanceIndex$2;
       } else {
         this.batchingIdNode = drawIndex;
       }
     }
-    const getIndirectIndex = Fn$1(([id]) => {
-      const size2 = int$1(textureSize(textureLoad$1(this.batchMesh._indirectTexture), 0).x).toConst();
-      const x2 = int$1(id).mod(size2).toConst();
-      const y2 = int$1(id).div(size2).toConst();
-      return textureLoad$1(this.batchMesh._indirectTexture, ivec2(x2, y2)).x;
+    const getIndirectIndex = Fn$4(([id]) => {
+      const size2 = int$3(textureSize(textureLoad$2(this.batchMesh._indirectTexture), 0).x).toConst();
+      const x2 = int$3(id).mod(size2).toConst();
+      const y2 = int$3(id).div(size2).toConst();
+      return textureLoad$2(this.batchMesh._indirectTexture, ivec2$2(x2, y2)).x;
     }).setLayout({
       name: "getIndirectIndex",
       type: "uint",
@@ -31072,26 +31072,26 @@ class BatchNode extends Node {
         { name: "id", type: "int" }
       ]
     });
-    const indirectId = getIndirectIndex(int$1(this.batchingIdNode));
+    const indirectId = getIndirectIndex(int$3(this.batchingIdNode));
     const matricesTexture = this.batchMesh._matricesTexture;
-    const size = int$1(textureSize(textureLoad$1(matricesTexture), 0).x).toConst();
-    const j = float$1(indirectId).mul(4).toInt().toConst();
+    const size = int$3(textureSize(textureLoad$2(matricesTexture), 0).x).toConst();
+    const j = float$4(indirectId).mul(4).toInt().toConst();
     const x = j.mod(size).toConst();
     const y = j.div(size).toConst();
     const batchingMatrix = mat4(
-      textureLoad$1(matricesTexture, ivec2(x, y)),
-      textureLoad$1(matricesTexture, ivec2(x.add(1), y)),
-      textureLoad$1(matricesTexture, ivec2(x.add(2), y)),
-      textureLoad$1(matricesTexture, ivec2(x.add(3), y))
+      textureLoad$2(matricesTexture, ivec2$2(x, y)),
+      textureLoad$2(matricesTexture, ivec2$2(x.add(1), y)),
+      textureLoad$2(matricesTexture, ivec2$2(x.add(2), y)),
+      textureLoad$2(matricesTexture, ivec2$2(x.add(3), y))
     );
     const colorsTexture = this.batchMesh._colorsTexture;
     if (colorsTexture !== null) {
-      const getBatchingColor = Fn$1(([id]) => {
-        const size2 = int$1(textureSize(textureLoad$1(colorsTexture), 0).x).toConst();
+      const getBatchingColor = Fn$4(([id]) => {
+        const size2 = int$3(textureSize(textureLoad$2(colorsTexture), 0).x).toConst();
         const j2 = id;
         const x2 = j2.mod(size2).toConst();
         const y2 = j2.div(size2).toConst();
-        return textureLoad$1(colorsTexture, ivec2(x2, y2)).rgb;
+        return textureLoad$2(colorsTexture, ivec2$2(x2, y2)).rgb;
       }).setLayout({
         name: "getBatchingColor",
         type: "vec3",
@@ -31104,7 +31104,7 @@ class BatchNode extends Node {
     }
     const bm = mat3(batchingMatrix);
     positionLocal$1.assign(batchingMatrix.mul(positionLocal$1));
-    const transformedNormal = normalLocal.div(vec3$1(bm[0].dot(bm[0]), bm[1].dot(bm[1]), bm[2].dot(bm[2])));
+    const transformedNormal = normalLocal.div(vec3$2(bm[0].dot(bm[0]), bm[1].dot(bm[1]), bm[2].dot(bm[2])));
     const batchingNormal = bm.mul(transformedNormal).xyz;
     normalLocal.assign(batchingNormal);
     if (builder.hasGeometryAttribute("tangent")) {
@@ -31150,7 +31150,7 @@ class SkinningNode extends Node {
     const boneMatZ = boneMatrices.element(skinIndexNode.z);
     const boneMatW = boneMatrices.element(skinIndexNode.w);
     const skinVertex = bindMatrixNode.mul(position);
-    const skinned = add$1(
+    const skinned = add$3(
       boneMatX.mul(skinWeightNode.x).mul(skinVertex),
       boneMatY.mul(skinWeightNode.y).mul(skinVertex),
       boneMatZ.mul(skinWeightNode.z).mul(skinVertex),
@@ -31171,7 +31171,7 @@ class SkinningNode extends Node {
     const boneMatY = boneMatrices.element(skinIndexNode.y);
     const boneMatZ = boneMatrices.element(skinIndexNode.z);
     const boneMatW = boneMatrices.element(skinIndexNode.w);
-    let skinMatrix = add$1(
+    let skinMatrix = add$3(
       skinWeightNode.x.mul(boneMatX),
       skinWeightNode.y.mul(boneMatY),
       skinWeightNode.z.mul(boneMatZ),
@@ -31259,11 +31259,11 @@ class SkinningNode extends Node {
 const skinning = (skinnedMesh) => new SkinningNode(skinnedMesh);
 const computeSkinning = (skinnedMesh, toPosition = null) => {
   const node = new SkinningNode(skinnedMesh);
-  node.positionNode = storage$1(new InstancedBufferAttribute(skinnedMesh.geometry.getAttribute("position").array, 3), "vec3").setPBO(true).toReadOnly().element(instanceIndex$1).toVar();
-  node.skinIndexNode = storage$1(new InstancedBufferAttribute(new Uint32Array(skinnedMesh.geometry.getAttribute("skinIndex").array), 4), "uvec4").setPBO(true).toReadOnly().element(instanceIndex$1).toVar();
-  node.skinWeightNode = storage$1(new InstancedBufferAttribute(skinnedMesh.geometry.getAttribute("skinWeight").array, 4), "vec4").setPBO(true).toReadOnly().element(instanceIndex$1).toVar();
-  node.bindMatrixNode = uniform$1(skinnedMesh.bindMatrix, "mat4");
-  node.bindMatrixInverseNode = uniform$1(skinnedMesh.bindMatrixInverse, "mat4");
+  node.positionNode = storage(new InstancedBufferAttribute(skinnedMesh.geometry.getAttribute("position").array, 3), "vec3").setPBO(true).toReadOnly().element(instanceIndex$2).toVar();
+  node.skinIndexNode = storage(new InstancedBufferAttribute(new Uint32Array(skinnedMesh.geometry.getAttribute("skinIndex").array), 4), "uvec4").setPBO(true).toReadOnly().element(instanceIndex$2).toVar();
+  node.skinWeightNode = storage(new InstancedBufferAttribute(skinnedMesh.geometry.getAttribute("skinWeight").array, 4), "vec4").setPBO(true).toReadOnly().element(instanceIndex$2).toVar();
+  node.bindMatrixNode = uniform$2(skinnedMesh.bindMatrix, "mat4");
+  node.bindMatrixInverseNode = uniform$2(skinnedMesh.bindMatrixInverse, "mat4");
   node.boneMatricesNode = buffer(skinnedMesh.skeleton.boneMatrices, "mat4", skinnedMesh.skeleton.bones.length);
   node.toPositionNode = toPosition;
   return nodeObject(node);
@@ -31313,7 +31313,7 @@ class LoopNode extends Node {
     properties.stackNode = stack2;
     const baseParam = this.params[0];
     if (baseParam.isNode !== true && typeof baseParam.update === "function") {
-      const fnUpdateCall = Fn$1(this.params[0].update)(inputs);
+      const fnUpdateCall = Fn$4(this.params[0].update)(inputs);
       properties.updateNode = fnUpdateCall.context({ nodeLoop: fnUpdateCall });
     }
     builder.removeStack();
@@ -31430,11 +31430,11 @@ const Continue = () => expression("continue").toStack();
 const Break = () => expression("break").toStack();
 const _morphTextures = /* @__PURE__ */ new WeakMap();
 const _morphVec4 = /* @__PURE__ */ new Vector4();
-const getMorph = /* @__PURE__ */ Fn$1(({ bufferMap, influence, stride, width, depth: depth2, offset }) => {
-  const texelIndex = int$1(vertexIndex).mul(stride).add(offset);
+const getMorph = /* @__PURE__ */ Fn$4(({ bufferMap, influence, stride, width, depth: depth2, offset }) => {
+  const texelIndex = int$3(vertexIndex).mul(stride).add(offset);
   const y = texelIndex.div(width);
   const x = texelIndex.sub(y.mul(width));
-  const bufferAttrib = textureLoad$1(bufferMap, ivec2(x, y)).depth(depth2).xyz;
+  const bufferAttrib = textureLoad$2(bufferMap, ivec2$2(x, y)).depth(depth2).xyz;
   return bufferAttrib.mul(influence);
 });
 function getEntry(geometry) {
@@ -31523,7 +31523,7 @@ class MorphNode extends Node {
   constructor(mesh) {
     super("void");
     this.mesh = mesh;
-    this.morphBaseInfluence = uniform$1(1);
+    this.morphBaseInfluence = uniform$2(1);
     this.updateType = NodeUpdateType.OBJECT;
   }
   /**
@@ -31540,15 +31540,15 @@ class MorphNode extends Node {
     const { texture: bufferMap, stride, size } = getEntry(geometry);
     if (hasMorphPosition === true) positionLocal$1.mulAssign(this.morphBaseInfluence);
     if (hasMorphNormals === true) normalLocal.mulAssign(this.morphBaseInfluence);
-    const width = int$1(size.width);
+    const width = int$3(size.width);
     Loop(morphTargetsCount, ({ i }) => {
-      const influence = float$1(0).toVar();
+      const influence = float$4(0).toVar();
       if (this.mesh.count > 1 && (this.mesh.morphTexture !== null && this.mesh.morphTexture !== void 0)) {
-        influence.assign(textureLoad$1(this.mesh.morphTexture, ivec2(int$1(i).add(1), int$1(instanceIndex$1))).r);
+        influence.assign(textureLoad$2(this.mesh.morphTexture, ivec2$2(int$3(i).add(1), int$3(instanceIndex$2))).r);
       } else {
         influence.assign(reference("morphTargetInfluences", "float").element(i).toVar());
       }
-      If$1(influence.notEqual(0), () => {
+      If(influence.notEqual(0), () => {
         if (hasMorphPosition === true) {
           positionLocal$1.addAssign(getMorph({
             bufferMap,
@@ -31556,7 +31556,7 @@ class MorphNode extends Node {
             stride,
             width,
             depth: i,
-            offset: int$1(0)
+            offset: int$3(0)
           }));
         }
         if (hasMorphNormals === true) {
@@ -31566,7 +31566,7 @@ class MorphNode extends Node {
             stride,
             width,
             depth: i,
-            offset: int$1(1)
+            offset: int$3(1)
           }));
         }
       });
@@ -31650,7 +31650,7 @@ class LightingContextNode extends ContextNode {
    */
   getContext() {
     const { backdropNode, backdropAlphaNode } = this;
-    const directDiffuse = vec3$1().toVar("directDiffuse"), directSpecular = vec3$1().toVar("directSpecular"), indirectDiffuse = vec3$1().toVar("indirectDiffuse"), indirectSpecular = vec3$1().toVar("indirectSpecular");
+    const directDiffuse = vec3$2().toVar("directDiffuse"), directSpecular = vec3$2().toVar("directSpecular"), indirectDiffuse = vec3$2().toVar("indirectDiffuse"), indirectSpecular = vec3$2().toVar("indirectSpecular");
     const reflectedLight = {
       directDiffuse,
       directSpecular,
@@ -31658,10 +31658,10 @@ class LightingContextNode extends ContextNode {
       indirectSpecular
     };
     const context2 = {
-      radiance: vec3$1().toVar("radiance"),
-      irradiance: vec3$1().toVar("irradiance"),
-      iblIrradiance: vec3$1().toVar("iblIrradiance"),
-      ambientOcclusion: float$1(1).toVar("ambientOcclusion"),
+      radiance: vec3$2().toVar("radiance"),
+      irradiance: vec3$2().toVar("irradiance"),
+      iblIrradiance: vec3$2().toVar("iblIrradiance"),
+      ambientOcclusion: float$4(1).toVar("ambientOcclusion"),
       reflectedLight,
       backdrop: backdropNode,
       backdropAlpha: backdropAlphaNode
@@ -31874,8 +31874,8 @@ const viewZToLogarithmicDepth = (viewZ, near, far) => {
   return numerator.div(denominator);
 };
 const logarithmicDepthToViewZ = (depth2, near, far) => {
-  const exponent = depth2.mul(log(far.div(near)));
-  return float$1(Math.E).pow(exponent).mul(near).negate();
+  const exponent = depth2.mul(log$1(far.div(near)));
+  return float$4(Math.E).pow(exponent).mul(near).negate();
 };
 const depthBase = /* @__PURE__ */ nodeProxy(ViewportDepthNode, ViewportDepthNode.DEPTH_BASE);
 const depth = /* @__PURE__ */ nodeImmutable(ViewportDepthNode, ViewportDepthNode.DEPTH);
@@ -31923,10 +31923,10 @@ class ClippingNode extends Node {
    * @return {Node} The result node.
    */
   setupAlphaToCoverage(intersectionPlanes, unionPlanes) {
-    return Fn$1(() => {
-      const distanceToPlane = float$1().toVar("distanceToPlane");
-      const distanceGradient = float$1().toVar("distanceToGradient");
-      const clipOpacity = float$1(1).toVar("clipOpacity");
+    return Fn$4(() => {
+      const distanceToPlane = float$4().toVar("distanceToPlane");
+      const distanceGradient = float$4().toVar("distanceToGradient");
+      const clipOpacity = float$4(1).toVar("clipOpacity");
       const numUnionPlanes = unionPlanes.length;
       if (this.hardwareClipping === false && numUnionPlanes > 0) {
         const clippingPlanes = uniformArray(unionPlanes).setGroup(renderGroup);
@@ -31940,7 +31940,7 @@ class ClippingNode extends Node {
       const numIntersectionPlanes = intersectionPlanes.length;
       if (numIntersectionPlanes > 0) {
         const clippingPlanes = uniformArray(intersectionPlanes).setGroup(renderGroup);
-        const intersectionClipOpacity = float$1(1).toVar("intersectionClipOpacity");
+        const intersectionClipOpacity = float$4(1).toVar("intersectionClipOpacity");
         Loop(numIntersectionPlanes, ({ i }) => {
           const plane = clippingPlanes.element(i);
           distanceToPlane.assign(positionView.dot(plane.xyz).negate().add(plane.w));
@@ -31961,7 +31961,7 @@ class ClippingNode extends Node {
    * @return {Node} The result node.
    */
   setupDefault(intersectionPlanes, unionPlanes) {
-    return Fn$1(() => {
+    return Fn$4(() => {
       const numUnionPlanes = unionPlanes.length;
       if (this.hardwareClipping === false && numUnionPlanes > 0) {
         const clippingPlanes = uniformArray(unionPlanes).setGroup(renderGroup);
@@ -31992,7 +31992,7 @@ class ClippingNode extends Node {
   setupHardwareClipping(unionPlanes, builder) {
     const numUnionPlanes = unionPlanes.length;
     builder.enableHardwareClipping(numUnionPlanes);
-    return Fn$1(() => {
+    return Fn$4(() => {
       const clippingPlanes = uniformArray(unionPlanes).setGroup(renderGroup);
       const hw_clip_distances = builtin(builder.getClipDistance());
       Loop(numUnionPlanes, ({ i }) => {
@@ -32010,36 +32010,36 @@ const clipping = () => new ClippingNode();
 const clippingAlpha = () => new ClippingNode(ClippingNode.ALPHA_TO_COVERAGE);
 const hardwareClipping = () => new ClippingNode(ClippingNode.HARDWARE);
 const ALPHA_HASH_SCALE = 0.05;
-const hash2D = /* @__PURE__ */ Fn$1(([value]) => {
-  return fract(mul$1(1e4, sin$1(mul$1(17, value.x).add(mul$1(0.1, value.y)))).mul(add$1(0.1, abs$1(sin$1(mul$1(13, value.y).add(value.x))))));
+const hash2D = /* @__PURE__ */ Fn$4(([value]) => {
+  return fract(mul$3(1e4, sin$1(mul$3(17, value.x).add(mul$3(0.1, value.y)))).mul(add$3(0.1, abs$2(sin$1(mul$3(13, value.y).add(value.x))))));
 });
-const hash3D = /* @__PURE__ */ Fn$1(([value]) => {
-  return hash2D(vec2$1(hash2D(value.xy), value.z));
+const hash3D = /* @__PURE__ */ Fn$4(([value]) => {
+  return hash2D(vec2$2(hash2D(value.xy), value.z));
 });
-const getAlphaHashThreshold = /* @__PURE__ */ Fn$1(([position]) => {
-  const maxDeriv = max$1(
+const getAlphaHashThreshold = /* @__PURE__ */ Fn$4(([position]) => {
+  const maxDeriv = max$1$1(
     length(dFdx(position.xyz)),
     length(dFdy(position.xyz))
   );
-  const pixScale = float$1(1).div(float$1(ALPHA_HASH_SCALE).mul(maxDeriv)).toVar("pixScale");
-  const pixScales = vec2$1(
+  const pixScale = float$4(1).div(float$4(ALPHA_HASH_SCALE).mul(maxDeriv)).toVar("pixScale");
+  const pixScales = vec2$2(
     exp2(floor(log2(pixScale))),
     exp2(ceil(log2(pixScale)))
   );
-  const alpha = vec2$1(
+  const alpha = vec2$2(
     hash3D(floor(pixScales.x.mul(position.xyz))),
     hash3D(floor(pixScales.y.mul(position.xyz)))
   );
   const lerpFactor = fract(log2(pixScale));
-  const x = add$1(mul$1(lerpFactor.oneMinus(), alpha.x), mul$1(lerpFactor, alpha.y));
-  const a = min$1(lerpFactor, lerpFactor.oneMinus());
-  const cases = vec3$1(
-    x.mul(x).div(mul$1(2, a).mul(sub$1(1, a))),
-    x.sub(mul$1(0.5, a)).div(sub$1(1, a)),
-    sub$1(1, sub$1(1, x).mul(sub$1(1, x)).div(mul$1(2, a).mul(sub$1(1, a))))
+  const x = add$3(mul$3(lerpFactor.oneMinus(), alpha.x), mul$3(lerpFactor, alpha.y));
+  const a = min$1$1(lerpFactor, lerpFactor.oneMinus());
+  const cases = vec3$2(
+    x.mul(x).div(mul$3(2, a).mul(sub$3(1, a))),
+    x.sub(mul$3(0.5, a)).div(sub$3(1, a)),
+    sub$3(1, sub$3(1, x).mul(sub$3(1, x)).div(mul$3(2, a).mul(sub$3(1, a))))
   );
   const threshold = x.lessThan(a.oneMinus()).select(x.lessThan(a).select(cases.x, cases.y), cases.z);
-  return clamp(threshold, 1e-6, 1);
+  return clamp$1(threshold, 1e-6, 1);
 }).setLayout({
   name: "getAlphaHashThreshold",
   type: "float",
@@ -32092,8 +32092,8 @@ class VertexColorNode extends AttributeNode {
   }
 }
 const vertexColor = (index = 0) => new VertexColorNode(index);
-const blendBurn = /* @__PURE__ */ Fn$1(([base, blend]) => {
-  return min$1(1, base.oneMinus().div(blend)).oneMinus();
+const blendBurn = /* @__PURE__ */ Fn$4(([base, blend]) => {
+  return min$1$1(1, base.oneMinus().div(blend)).oneMinus();
 }).setLayout({
   name: "blendBurn",
   type: "vec3",
@@ -32102,8 +32102,8 @@ const blendBurn = /* @__PURE__ */ Fn$1(([base, blend]) => {
     { name: "blend", type: "vec3" }
   ]
 });
-const blendDodge = /* @__PURE__ */ Fn$1(([base, blend]) => {
-  return min$1(base.div(blend.oneMinus()), 1);
+const blendDodge = /* @__PURE__ */ Fn$4(([base, blend]) => {
+  return min$1$1(base.div(blend.oneMinus()), 1);
 }).setLayout({
   name: "blendDodge",
   type: "vec3",
@@ -32112,7 +32112,7 @@ const blendDodge = /* @__PURE__ */ Fn$1(([base, blend]) => {
     { name: "blend", type: "vec3" }
   ]
 });
-const blendScreen = /* @__PURE__ */ Fn$1(([base, blend]) => {
+const blendScreen = /* @__PURE__ */ Fn$4(([base, blend]) => {
   return base.oneMinus().mul(blend.oneMinus()).oneMinus();
 }).setLayout({
   name: "blendScreen",
@@ -32122,7 +32122,7 @@ const blendScreen = /* @__PURE__ */ Fn$1(([base, blend]) => {
     { name: "blend", type: "vec3" }
   ]
 });
-const blendOverlay = /* @__PURE__ */ Fn$1(([base, blend]) => {
+const blendOverlay = /* @__PURE__ */ Fn$4(([base, blend]) => {
   return mix(base.mul(2).mul(blend), base.oneMinus().mul(2).mul(blend.oneMinus()).oneMinus(), step(0.5, base));
 }).setLayout({
   name: "blendOverlay",
@@ -32132,9 +32132,9 @@ const blendOverlay = /* @__PURE__ */ Fn$1(([base, blend]) => {
     { name: "blend", type: "vec3" }
   ]
 });
-const blendColor = /* @__PURE__ */ Fn$1(([base, blend]) => {
+const blendColor = /* @__PURE__ */ Fn$4(([base, blend]) => {
   const outAlpha = blend.a.add(base.a.mul(blend.a.oneMinus()));
-  return vec4$1(blend.rgb.mul(blend.a).add(base.rgb.mul(base.a).mul(blend.a.oneMinus())).div(outAlpha), outAlpha);
+  return vec4$3(blend.rgb.mul(blend.a).add(base.rgb.mul(base.a).mul(blend.a.oneMinus())).div(outAlpha), outAlpha);
 }).setLayout({
   name: "blendColor",
   type: "vec4",
@@ -32143,12 +32143,12 @@ const blendColor = /* @__PURE__ */ Fn$1(([base, blend]) => {
     { name: "blend", type: "vec4" }
   ]
 });
-const premultiplyAlpha = /* @__PURE__ */ Fn$1(([color2]) => {
-  return vec4$1(color2.rgb.mul(color2.a), color2.a);
+const premultiplyAlpha = /* @__PURE__ */ Fn$4(([color2]) => {
+  return vec4$3(color2.rgb.mul(color2.a), color2.a);
 }, { color: "vec4", return: "vec4" });
-const unpremultiplyAlpha = /* @__PURE__ */ Fn$1(([color2]) => {
-  If$1(color2.a.equal(0), () => vec4$1(0));
-  return vec4$1(color2.rgb.div(color2.a), color2.a);
+const unpremultiplyAlpha = /* @__PURE__ */ Fn$4(([color2]) => {
+  If(color2.a.equal(0), () => vec4$3(0));
+  return vec4$3(color2.rgb.div(color2.a), color2.a);
 }, { color: "vec4", return: "vec4" });
 const burn = (...params) => {
   warn('TSL: "burn" has been renamed. Use "blendBurn" instead.');
@@ -32316,7 +32316,7 @@ class NodeMaterial extends Material {
       this.setupVariants(builder);
       const outgoingLightNode = this.setupLighting(builder);
       if (clippingNode !== null) builder.stack.addToStack(clippingNode);
-      const basicOutput = vec4$1(outgoingLightNode, diffuseColor.a).max(0);
+      const basicOutput = vec4$3(outgoingLightNode, diffuseColor.a).max(0);
       resultNode = this.setupOutput(builder, basicOutput);
       output.assign(resultNode);
       const isCustomOutput = this.outputNode !== null;
@@ -32340,7 +32340,7 @@ class NodeMaterial extends Material {
     } else {
       let fragmentNode = this.fragmentNode;
       if (fragmentNode.isOutputStructNode !== true) {
-        fragmentNode = vec4$1(fragmentNode);
+        fragmentNode = vec4$3(fragmentNode);
       }
       resultNode = this.setupOutput(builder, fragmentNode);
     }
@@ -32480,7 +32480,7 @@ class NodeMaterial extends Material {
     if (this.maskNode !== null) {
       bool(this.maskNode).not().discard();
     }
-    let colorNode = this.colorNode ? vec4$1(this.colorNode) : materialColor;
+    let colorNode = this.colorNode ? vec4$3(this.colorNode) : materialColor;
     if (this.vertexColors === true && geometry.hasAttribute("color")) {
       colorNode = colorNode.mul(vertexColor());
     }
@@ -32493,11 +32493,11 @@ class NodeMaterial extends Material {
       colorNode = batchColor.mul(colorNode);
     }
     diffuseColor.assign(colorNode);
-    const opacityNode = this.opacityNode ? float$1(this.opacityNode) : materialOpacity;
+    const opacityNode = this.opacityNode ? float$4(this.opacityNode) : materialOpacity;
     diffuseColor.a.assign(diffuseColor.a.mul(opacityNode));
     let alphaTestNode = null;
     if (this.alphaTestNode !== null || this.alphaTest > 0) {
-      alphaTestNode = this.alphaTestNode !== null ? float$1(this.alphaTestNode) : materialAlphaTest;
+      alphaTestNode = this.alphaTestNode !== null ? float$4(this.alphaTestNode) : materialAlphaTest;
       if (this.alphaToCoverage === true) {
         diffuseColor.a = smoothstep(alphaTestNode, alphaTestNode.add(fwidth(diffuseColor.a)), diffuseColor.a);
         diffuseColor.a.lessThanEqual(0).discard();
@@ -32527,7 +32527,7 @@ class NodeMaterial extends Material {
    * @return {Node<vec3>} The outgoing light node.
    */
   setupOutgoingLight() {
-    return this.lights === true ? vec3$1(0) : diffuseColor.rgb;
+    return this.lights === true ? vec3$2(0) : diffuseColor.rgb;
   }
   /**
    * Setups the normal node from the material.
@@ -32535,7 +32535,7 @@ class NodeMaterial extends Material {
    * @return {Node<vec3>} The normal node.
    */
   setupNormal() {
-    return this.normalNode ? vec3$1(this.normalNode) : materialNormal;
+    return this.normalNode ? vec3$2(this.normalNode) : materialNormal;
   }
   /**
    * Setups the environment node from the material.
@@ -32623,10 +32623,10 @@ class NodeMaterial extends Material {
       const lightingModel = this.setupLightingModel(builder) || null;
       outgoingLightNode = lightingContext(lightsNode, lightingModel, backdropNode, backdropAlphaNode);
     } else if (backdropNode !== null) {
-      outgoingLightNode = vec3$1(backdropAlphaNode !== null ? mix(outgoingLightNode, backdropNode, backdropAlphaNode) : backdropNode);
+      outgoingLightNode = vec3$2(backdropAlphaNode !== null ? mix(outgoingLightNode, backdropNode, backdropAlphaNode) : backdropNode);
     }
     if (emissiveNode && emissiveNode.isNode === true || material.emissive && material.emissive.isColor === true) {
-      emissive.assign(vec3$1(emissiveNode ? emissiveNode : materialEmissive));
+      emissive.assign(vec3$2(emissiveNode ? emissiveNode : materialEmissive));
       outgoingLightNode = outgoingLightNode.add(emissive);
     }
     return outgoingLightNode;
@@ -32642,7 +32642,7 @@ class NodeMaterial extends Material {
     const fogNode = builder.fogNode;
     if (fogNode) {
       output.assign(outputNode);
-      outputNode = vec4$1(fogNode.toVar());
+      outputNode = vec4$3(fogNode.toVar());
     }
     return outputNode;
   }
@@ -32796,27 +32796,27 @@ class ViewportSharedTextureNode extends ViewportTextureNode {
   }
 }
 const viewportSharedTexture = /* @__PURE__ */ nodeProxy(ViewportSharedTextureNode).setParameterLength(0, 2);
-const equirectUV = /* @__PURE__ */ Fn$1(([dir = positionWorldDirection]) => {
+const equirectUV = /* @__PURE__ */ Fn$4(([dir = positionWorldDirection]) => {
   const u = dir.z.atan(dir.x).mul(1 / (Math.PI * 2)).add(0.5);
   const v = dir.y.clamp(-1, 1).asin().mul(1 / Math.PI).add(0.5);
-  return vec2$1(u, v);
+  return vec2$2(u, v);
 });
-const F_Schlick = /* @__PURE__ */ Fn$1(({ f0, f90, dotVH }) => {
+const F_Schlick = /* @__PURE__ */ Fn$4(({ f0, f90, dotVH }) => {
   const fresnel = dotVH.mul(-5.55473).sub(6.98316).mul(dotVH).exp2();
   return f0.mul(fresnel.oneMinus()).add(f90.mul(fresnel));
 });
-const BRDF_Lambert = /* @__PURE__ */ Fn$1((inputs) => {
+const BRDF_Lambert = /* @__PURE__ */ Fn$4((inputs) => {
   return inputs.diffuseColor.mul(1 / Math.PI);
 });
-const getGeometryRoughness = /* @__PURE__ */ Fn$1((builder) => {
+const getGeometryRoughness = /* @__PURE__ */ Fn$4((builder) => {
   if (builder.geometry.hasAttribute("normal") === false) {
-    return float$1(0);
+    return float$4(0);
   }
   const dxy = normalViewGeometry.dFdx().abs().max(normalViewGeometry.dFdy().abs());
   const geometryRoughness = dxy.x.max(dxy.y).max(dxy.z);
   return geometryRoughness;
 });
-const getRoughness = /* @__PURE__ */ Fn$1((inputs) => {
+const getRoughness = /* @__PURE__ */ Fn$4((inputs) => {
   const { roughness: roughness2 } = inputs;
   const geometryRoughness = getGeometryRoughness();
   let roughnessFactor = roughness2.max(0.0525);
@@ -32824,11 +32824,11 @@ const getRoughness = /* @__PURE__ */ Fn$1((inputs) => {
   roughnessFactor = roughnessFactor.min(1);
   return roughnessFactor;
 });
-const V_GGX_SmithCorrelated = /* @__PURE__ */ Fn$1(({ alpha, dotNL, dotNV }) => {
+const V_GGX_SmithCorrelated = /* @__PURE__ */ Fn$4(({ alpha, dotNL, dotNV }) => {
   const a2 = alpha.pow2();
   const gv = dotNL.mul(a2.add(a2.oneMinus().mul(dotNV.pow2())).sqrt());
   const gl = dotNV.mul(a2.add(a2.oneMinus().mul(dotNL.pow2())).sqrt());
-  return div$1(0.5, gv.add(gl).max(EPSILON));
+  return div$2(0.5, gv.add(gl).max(EPSILON));
 }).setLayout({
   name: "V_GGX_SmithCorrelated",
   type: "float",
@@ -32838,10 +32838,10 @@ const V_GGX_SmithCorrelated = /* @__PURE__ */ Fn$1(({ alpha, dotNL, dotNV }) => 
     { name: "dotNV", type: "float" }
   ]
 });
-const V_GGX_SmithCorrelated_Anisotropic = /* @__PURE__ */ Fn$1(({ alphaT: alphaT2, alphaB, dotTV, dotBV, dotTL, dotBL, dotNV, dotNL }) => {
-  const gv = dotNL.mul(vec3$1(alphaT2.mul(dotTV), alphaB.mul(dotBV), dotNV).length());
-  const gl = dotNV.mul(vec3$1(alphaT2.mul(dotTL), alphaB.mul(dotBL), dotNL).length());
-  const v = div$1(0.5, gv.add(gl));
+const V_GGX_SmithCorrelated_Anisotropic = /* @__PURE__ */ Fn$4(({ alphaT: alphaT2, alphaB, dotTV, dotBV, dotTL, dotBL, dotNV, dotNL }) => {
+  const gv = dotNL.mul(vec3$2(alphaT2.mul(dotTV), alphaB.mul(dotBV), dotNV).length());
+  const gl = dotNV.mul(vec3$2(alphaT2.mul(dotTL), alphaB.mul(dotBL), dotNL).length());
+  const v = div$2(0.5, gv.add(gl));
   return v;
 }).setLayout({
   name: "V_GGX_SmithCorrelated_Anisotropic",
@@ -32857,7 +32857,7 @@ const V_GGX_SmithCorrelated_Anisotropic = /* @__PURE__ */ Fn$1(({ alphaT: alphaT
     { name: "dotNL", type: "float", qualifier: "in" }
   ]
 });
-const D_GGX = /* @__PURE__ */ Fn$1(({ alpha, dotNH }) => {
+const D_GGX = /* @__PURE__ */ Fn$4(({ alpha, dotNH }) => {
   const a2 = alpha.pow2();
   const denom = dotNH.pow2().mul(a2.oneMinus()).oneMinus();
   return a2.div(denom.pow2()).mul(1 / Math.PI);
@@ -32869,10 +32869,10 @@ const D_GGX = /* @__PURE__ */ Fn$1(({ alpha, dotNH }) => {
     { name: "dotNH", type: "float" }
   ]
 });
-const RECIPROCAL_PI = /* @__PURE__ */ float$1(1 / Math.PI);
-const D_GGX_Anisotropic = /* @__PURE__ */ Fn$1(({ alphaT: alphaT2, alphaB, dotNH, dotTH, dotBH }) => {
+const RECIPROCAL_PI = /* @__PURE__ */ float$4(1 / Math.PI);
+const D_GGX_Anisotropic = /* @__PURE__ */ Fn$4(({ alphaT: alphaT2, alphaB, dotNH, dotTH, dotBH }) => {
   const a2 = alphaT2.mul(alphaB);
-  const v = vec3$1(alphaB.mul(dotTH), alphaT2.mul(dotBH), a2.mul(dotNH));
+  const v = vec3$2(alphaB.mul(dotTH), alphaT2.mul(dotBH), a2.mul(dotNH));
   const v2 = v.dot(v);
   const w22 = a2.div(v2);
   return RECIPROCAL_PI.mul(a2.mul(w22.pow2()));
@@ -32887,7 +32887,7 @@ const D_GGX_Anisotropic = /* @__PURE__ */ Fn$1(({ alphaT: alphaT2, alphaB, dotNH
     { name: "dotBH", type: "float", qualifier: "in" }
   ]
 });
-const BRDF_GGX = /* @__PURE__ */ Fn$1(({ lightDirection, f0, f90, roughness: roughness2, f, normalView: normalView$1 = normalView, USE_IRIDESCENCE, USE_ANISOTROPY }) => {
+const BRDF_GGX = /* @__PURE__ */ Fn$4(({ lightDirection, f0, f90, roughness: roughness2, f, normalView: normalView$1 = normalView, USE_IRIDESCENCE, USE_ANISOTROPY }) => {
   const alpha = roughness2.pow2();
   const halfDir = lightDirection.add(positionViewDirection).normalize();
   const dotNL = normalView$1.dot(lightDirection).clamp();
@@ -33429,7 +33429,7 @@ const DATA = new Uint16Array([
   1183
 ]);
 let lut = null;
-const DFGLUT = /* @__PURE__ */ Fn$1(({ roughness: roughness2, dotNV }) => {
+const DFGLUT = /* @__PURE__ */ Fn$4(({ roughness: roughness2, dotNV }) => {
   if (lut === null) {
     lut = new DataTexture(DATA, 16, 16, RGFormat, HalfFloatType);
     lut.name = "DFG_LUT";
@@ -33440,14 +33440,14 @@ const DFGLUT = /* @__PURE__ */ Fn$1(({ roughness: roughness2, dotNV }) => {
     lut.generateMipmaps = false;
     lut.needsUpdate = true;
   }
-  const uv2 = vec2$1(roughness2, dotNV);
-  return texture$1(lut, uv2).rg;
+  const uv2 = vec2$2(roughness2, dotNV);
+  return texture$2(lut, uv2).rg;
 });
-const Schlick_to_F0 = /* @__PURE__ */ Fn$1(({ f, f90, dotVH }) => {
+const Schlick_to_F0 = /* @__PURE__ */ Fn$4(({ f, f90, dotVH }) => {
   const x = dotVH.oneMinus().saturate();
   const x2 = x.mul(x);
   const x5 = x.mul(x2, x2).clamp(0, 0.9999);
-  return f.sub(vec3$1(f90).mul(x5)).div(x5.oneMinus());
+  return f.sub(vec3$2(f90).mul(x5)).div(x5.oneMinus());
 }).setLayout({
   name: "Schlick_to_F0",
   type: "vec3",
@@ -33458,17 +33458,17 @@ const Schlick_to_F0 = /* @__PURE__ */ Fn$1(({ f, f90, dotVH }) => {
   ]
 });
 const bC = 1 / 6;
-const w0 = (a) => mul$1(bC, mul$1(a, mul$1(a, a.negate().add(3)).sub(3)).add(1));
-const w1 = (a) => mul$1(bC, mul$1(a, mul$1(a, mul$1(3, a).sub(6))).add(4));
-const w2 = (a) => mul$1(bC, mul$1(a, mul$1(a, mul$1(-3, a).add(3)).add(3)).add(1));
-const w3 = (a) => mul$1(bC, pow(a, 3));
+const w0 = (a) => mul$3(bC, mul$3(a, mul$3(a, a.negate().add(3)).sub(3)).add(1));
+const w1 = (a) => mul$3(bC, mul$3(a, mul$3(a, mul$3(3, a).sub(6))).add(4));
+const w2 = (a) => mul$3(bC, mul$3(a, mul$3(a, mul$3(-3, a).add(3)).add(3)).add(1));
+const w3 = (a) => mul$3(bC, pow(a, 3));
 const g0 = (a) => w0(a).add(w1(a));
 const g1 = (a) => w2(a).add(w3(a));
-const h0 = (a) => add$1(-1, w1(a).div(w0(a).add(w1(a))));
-const h1 = (a) => add$1(1, w3(a).div(w2(a).add(w3(a))));
+const h0 = (a) => add$3(-1, w1(a).div(w0(a).add(w1(a))));
+const h1 = (a) => add$3(1, w3(a).div(w2(a).add(w3(a))));
 const bicubic = (textureNode, texelSize, lod) => {
   const uv2 = textureNode.uvNode;
-  const uvScaled = mul$1(uv2, texelSize.zw).add(0.5);
+  const uvScaled = mul$3(uv2, texelSize.zw).add(0.5);
   const iuv = floor(uvScaled);
   const fuv = fract(uvScaled);
   const g0x = g0(fuv.x);
@@ -33477,55 +33477,55 @@ const bicubic = (textureNode, texelSize, lod) => {
   const h1x = h1(fuv.x);
   const h0y = h0(fuv.y);
   const h1y = h1(fuv.y);
-  const p0 = vec2$1(iuv.x.add(h0x), iuv.y.add(h0y)).sub(0.5).mul(texelSize.xy);
-  const p1 = vec2$1(iuv.x.add(h1x), iuv.y.add(h0y)).sub(0.5).mul(texelSize.xy);
-  const p2 = vec2$1(iuv.x.add(h0x), iuv.y.add(h1y)).sub(0.5).mul(texelSize.xy);
-  const p3 = vec2$1(iuv.x.add(h1x), iuv.y.add(h1y)).sub(0.5).mul(texelSize.xy);
-  const a = g0(fuv.y).mul(add$1(g0x.mul(textureNode.sample(p0).level(lod)), g1x.mul(textureNode.sample(p1).level(lod))));
-  const b = g1(fuv.y).mul(add$1(g0x.mul(textureNode.sample(p2).level(lod)), g1x.mul(textureNode.sample(p3).level(lod))));
+  const p0 = vec2$2(iuv.x.add(h0x), iuv.y.add(h0y)).sub(0.5).mul(texelSize.xy);
+  const p1 = vec2$2(iuv.x.add(h1x), iuv.y.add(h0y)).sub(0.5).mul(texelSize.xy);
+  const p2 = vec2$2(iuv.x.add(h0x), iuv.y.add(h1y)).sub(0.5).mul(texelSize.xy);
+  const p3 = vec2$2(iuv.x.add(h1x), iuv.y.add(h1y)).sub(0.5).mul(texelSize.xy);
+  const a = g0(fuv.y).mul(add$3(g0x.mul(textureNode.sample(p0).level(lod)), g1x.mul(textureNode.sample(p1).level(lod))));
+  const b = g1(fuv.y).mul(add$3(g0x.mul(textureNode.sample(p2).level(lod)), g1x.mul(textureNode.sample(p3).level(lod))));
   return a.add(b);
 };
-const textureBicubicLevel = /* @__PURE__ */ Fn$1(([textureNode, lodNode]) => {
-  const fLodSize = vec2$1(textureNode.size(int$1(lodNode)));
-  const cLodSize = vec2$1(textureNode.size(int$1(lodNode.add(1))));
-  const fLodSizeInv = div$1(1, fLodSize);
-  const cLodSizeInv = div$1(1, cLodSize);
-  const fSample = bicubic(textureNode, vec4$1(fLodSizeInv, fLodSize), floor(lodNode));
-  const cSample = bicubic(textureNode, vec4$1(cLodSizeInv, cLodSize), ceil(lodNode));
+const textureBicubicLevel = /* @__PURE__ */ Fn$4(([textureNode, lodNode]) => {
+  const fLodSize = vec2$2(textureNode.size(int$3(lodNode)));
+  const cLodSize = vec2$2(textureNode.size(int$3(lodNode.add(1))));
+  const fLodSizeInv = div$2(1, fLodSize);
+  const cLodSizeInv = div$2(1, cLodSize);
+  const fSample = bicubic(textureNode, vec4$3(fLodSizeInv, fLodSize), floor(lodNode));
+  const cSample = bicubic(textureNode, vec4$3(cLodSizeInv, cLodSize), ceil(lodNode));
   return fract(lodNode).mix(fSample, cSample);
 });
-const textureBicubic = /* @__PURE__ */ Fn$1(([textureNode, strength]) => {
+const textureBicubic = /* @__PURE__ */ Fn$4(([textureNode, strength]) => {
   const lod = strength.mul(maxMipLevel(textureNode));
   return textureBicubicLevel(textureNode, lod);
 });
-vec3$1(0.04);
-float$1(1);
-const cubeUV_r0 = /* @__PURE__ */ float$1(1);
-const cubeUV_m0 = /* @__PURE__ */ float$1(-2);
-const cubeUV_r1 = /* @__PURE__ */ float$1(0.8);
-const cubeUV_m1 = /* @__PURE__ */ float$1(-1);
-const cubeUV_r4 = /* @__PURE__ */ float$1(0.4);
-const cubeUV_m4 = /* @__PURE__ */ float$1(2);
-const cubeUV_r5 = /* @__PURE__ */ float$1(0.305);
-const cubeUV_m5 = /* @__PURE__ */ float$1(3);
-const cubeUV_r6 = /* @__PURE__ */ float$1(0.21);
-const cubeUV_m6 = /* @__PURE__ */ float$1(4);
-const cubeUV_minMipLevel = /* @__PURE__ */ float$1(4);
-const cubeUV_minTileSize = /* @__PURE__ */ float$1(16);
-const getFace = /* @__PURE__ */ Fn$1(([direction]) => {
-  const absDirection = vec3$1(abs$1(direction)).toVar();
-  const face = float$1(-1).toVar();
-  If$1(absDirection.x.greaterThan(absDirection.z), () => {
-    If$1(absDirection.x.greaterThan(absDirection.y), () => {
-      face.assign(select$1(direction.x.greaterThan(0), 0, 3));
+vec3$2(0.04);
+float$4(1);
+const cubeUV_r0 = /* @__PURE__ */ float$4(1);
+const cubeUV_m0 = /* @__PURE__ */ float$4(-2);
+const cubeUV_r1 = /* @__PURE__ */ float$4(0.8);
+const cubeUV_m1 = /* @__PURE__ */ float$4(-1);
+const cubeUV_r4 = /* @__PURE__ */ float$4(0.4);
+const cubeUV_m4 = /* @__PURE__ */ float$4(2);
+const cubeUV_r5 = /* @__PURE__ */ float$4(0.305);
+const cubeUV_m5 = /* @__PURE__ */ float$4(3);
+const cubeUV_r6 = /* @__PURE__ */ float$4(0.21);
+const cubeUV_m6 = /* @__PURE__ */ float$4(4);
+const cubeUV_minMipLevel = /* @__PURE__ */ float$4(4);
+const cubeUV_minTileSize = /* @__PURE__ */ float$4(16);
+const getFace = /* @__PURE__ */ Fn$4(([direction]) => {
+  const absDirection = vec3$2(abs$2(direction)).toVar();
+  const face = float$4(-1).toVar();
+  If(absDirection.x.greaterThan(absDirection.z), () => {
+    If(absDirection.x.greaterThan(absDirection.y), () => {
+      face.assign(select$3(direction.x.greaterThan(0), 0, 3));
     }).Else(() => {
-      face.assign(select$1(direction.y.greaterThan(0), 1, 4));
+      face.assign(select$3(direction.y.greaterThan(0), 1, 4));
     });
   }).Else(() => {
-    If$1(absDirection.z.greaterThan(absDirection.y), () => {
-      face.assign(select$1(direction.z.greaterThan(0), 2, 5));
+    If(absDirection.z.greaterThan(absDirection.y), () => {
+      face.assign(select$3(direction.z.greaterThan(0), 2, 5));
     }).Else(() => {
-      face.assign(select$1(direction.y.greaterThan(0), 1, 4));
+      face.assign(select$3(direction.y.greaterThan(0), 1, 4));
     });
   });
   return face;
@@ -33536,22 +33536,22 @@ const getFace = /* @__PURE__ */ Fn$1(([direction]) => {
     { name: "direction", type: "vec3" }
   ]
 });
-const getUV = /* @__PURE__ */ Fn$1(([direction, face]) => {
-  const uv2 = vec2$1().toVar();
-  If$1(face.equal(0), () => {
-    uv2.assign(vec2$1(direction.z, direction.y).div(abs$1(direction.x)));
+const getUV = /* @__PURE__ */ Fn$4(([direction, face]) => {
+  const uv2 = vec2$2().toVar();
+  If(face.equal(0), () => {
+    uv2.assign(vec2$2(direction.z, direction.y).div(abs$2(direction.x)));
   }).ElseIf(face.equal(1), () => {
-    uv2.assign(vec2$1(direction.x.negate(), direction.z.negate()).div(abs$1(direction.y)));
+    uv2.assign(vec2$2(direction.x.negate(), direction.z.negate()).div(abs$2(direction.y)));
   }).ElseIf(face.equal(2), () => {
-    uv2.assign(vec2$1(direction.x.negate(), direction.y).div(abs$1(direction.z)));
+    uv2.assign(vec2$2(direction.x.negate(), direction.y).div(abs$2(direction.z)));
   }).ElseIf(face.equal(3), () => {
-    uv2.assign(vec2$1(direction.z.negate(), direction.y).div(abs$1(direction.x)));
+    uv2.assign(vec2$2(direction.z.negate(), direction.y).div(abs$2(direction.x)));
   }).ElseIf(face.equal(4), () => {
-    uv2.assign(vec2$1(direction.x.negate(), direction.z).div(abs$1(direction.y)));
+    uv2.assign(vec2$2(direction.x.negate(), direction.z).div(abs$2(direction.y)));
   }).Else(() => {
-    uv2.assign(vec2$1(direction.x, direction.y).div(abs$1(direction.z)));
+    uv2.assign(vec2$2(direction.x, direction.y).div(abs$2(direction.z)));
   });
-  return mul$1(0.5, uv2.add(1));
+  return mul$3(0.5, uv2.add(1));
 }).setLayout({
   name: "getUV",
   type: "vec2",
@@ -33560,9 +33560,9 @@ const getUV = /* @__PURE__ */ Fn$1(([direction, face]) => {
     { name: "face", type: "float" }
   ]
 });
-const roughnessToMip = /* @__PURE__ */ Fn$1(([roughness2]) => {
-  const mip = float$1(0).toVar();
-  If$1(roughness2.greaterThanEqual(cubeUV_r1), () => {
+const roughnessToMip = /* @__PURE__ */ Fn$4(([roughness2]) => {
+  const mip = float$4(0).toVar();
+  If(roughness2.greaterThanEqual(cubeUV_r1), () => {
     mip.assign(cubeUV_r0.sub(roughness2).mul(cubeUV_m1.sub(cubeUV_m0)).div(cubeUV_r0.sub(cubeUV_r1)).add(cubeUV_m0));
   }).ElseIf(roughness2.greaterThanEqual(cubeUV_r4), () => {
     mip.assign(cubeUV_r1.sub(roughness2).mul(cubeUV_m4.sub(cubeUV_m1)).div(cubeUV_r1.sub(cubeUV_r4)).add(cubeUV_m1));
@@ -33571,7 +33571,7 @@ const roughnessToMip = /* @__PURE__ */ Fn$1(([roughness2]) => {
   }).ElseIf(roughness2.greaterThanEqual(cubeUV_r6), () => {
     mip.assign(cubeUV_r5.sub(roughness2).mul(cubeUV_m6.sub(cubeUV_m5)).div(cubeUV_r5.sub(cubeUV_r6)).add(cubeUV_m5));
   }).Else(() => {
-    mip.assign(float$1(-2).mul(log2(mul$1(1.16, roughness2))));
+    mip.assign(float$4(-2).mul(log2(mul$3(1.16, roughness2))));
   });
   return mip;
 }).setLayout({
@@ -33581,11 +33581,11 @@ const roughnessToMip = /* @__PURE__ */ Fn$1(([roughness2]) => {
     { name: "roughness", type: "float" }
   ]
 });
-const getDirection = /* @__PURE__ */ Fn$1(([uv_immutable, face]) => {
+const getDirection = /* @__PURE__ */ Fn$4(([uv_immutable, face]) => {
   const uv2 = uv_immutable.toVar();
-  uv2.assign(mul$1(2, uv2).sub(1));
-  const direction = vec3$1(uv2, 1).toVar();
-  If$1(face.equal(0), () => {
+  uv2.assign(mul$3(2, uv2).sub(1));
+  const direction = vec3$2(uv2, 1).toVar();
+  If(face.equal(0), () => {
     direction.assign(direction.zyx);
   }).ElseIf(face.equal(1), () => {
     direction.assign(direction.xzy);
@@ -33610,117 +33610,117 @@ const getDirection = /* @__PURE__ */ Fn$1(([uv_immutable, face]) => {
     { name: "face", type: "float" }
   ]
 });
-const textureCubeUV = /* @__PURE__ */ Fn$1(([envMap, sampleDir_immutable, roughness_immutable, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP]) => {
-  const roughness2 = float$1(roughness_immutable);
-  const sampleDir = vec3$1(sampleDir_immutable);
-  const mip = clamp(roughnessToMip(roughness2), cubeUV_m0, CUBEUV_MAX_MIP);
+const textureCubeUV = /* @__PURE__ */ Fn$4(([envMap, sampleDir_immutable, roughness_immutable, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP]) => {
+  const roughness2 = float$4(roughness_immutable);
+  const sampleDir = vec3$2(sampleDir_immutable);
+  const mip = clamp$1(roughnessToMip(roughness2), cubeUV_m0, CUBEUV_MAX_MIP);
   const mipF = fract(mip);
   const mipInt = floor(mip);
-  const color0 = vec3$1(bilinearCubeUV(envMap, sampleDir, mipInt, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP)).toVar();
-  If$1(mipF.notEqual(0), () => {
-    const color1 = vec3$1(bilinearCubeUV(envMap, sampleDir, mipInt.add(1), CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP)).toVar();
+  const color0 = vec3$2(bilinearCubeUV(envMap, sampleDir, mipInt, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP)).toVar();
+  If(mipF.notEqual(0), () => {
+    const color1 = vec3$2(bilinearCubeUV(envMap, sampleDir, mipInt.add(1), CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP)).toVar();
     color0.assign(mix(color0, color1, mipF));
   });
   return color0;
 });
-const bilinearCubeUV = /* @__PURE__ */ Fn$1(([envMap, direction_immutable, mipInt_immutable, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP]) => {
-  const mipInt = float$1(mipInt_immutable).toVar();
-  const direction = vec3$1(direction_immutable);
-  const face = float$1(getFace(direction)).toVar();
-  const filterInt = float$1(max$1(cubeUV_minMipLevel.sub(mipInt), 0)).toVar();
-  mipInt.assign(max$1(mipInt, cubeUV_minMipLevel));
-  const faceSize = float$1(exp2(mipInt)).toVar();
-  const uv2 = vec2$1(getUV(direction, face).mul(faceSize.sub(2)).add(1)).toVar();
-  If$1(face.greaterThan(2), () => {
+const bilinearCubeUV = /* @__PURE__ */ Fn$4(([envMap, direction_immutable, mipInt_immutable, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP]) => {
+  const mipInt = float$4(mipInt_immutable).toVar();
+  const direction = vec3$2(direction_immutable);
+  const face = float$4(getFace(direction)).toVar();
+  const filterInt = float$4(max$1$1(cubeUV_minMipLevel.sub(mipInt), 0)).toVar();
+  mipInt.assign(max$1$1(mipInt, cubeUV_minMipLevel));
+  const faceSize = float$4(exp2(mipInt)).toVar();
+  const uv2 = vec2$2(getUV(direction, face).mul(faceSize.sub(2)).add(1)).toVar();
+  If(face.greaterThan(2), () => {
     uv2.y.addAssign(faceSize);
     face.subAssign(3);
   });
   uv2.x.addAssign(face.mul(faceSize));
-  uv2.x.addAssign(filterInt.mul(mul$1(3, cubeUV_minTileSize)));
-  uv2.y.addAssign(mul$1(4, exp2(CUBEUV_MAX_MIP).sub(faceSize)));
+  uv2.x.addAssign(filterInt.mul(mul$3(3, cubeUV_minTileSize)));
+  uv2.y.addAssign(mul$3(4, exp2(CUBEUV_MAX_MIP).sub(faceSize)));
   uv2.x.mulAssign(CUBEUV_TEXEL_WIDTH);
   uv2.y.mulAssign(CUBEUV_TEXEL_HEIGHT);
-  return envMap.sample(uv2).grad(vec2$1(), vec2$1());
+  return envMap.sample(uv2).grad(vec2$2(), vec2$2());
 });
-const getSample = /* @__PURE__ */ Fn$1(({ envMap, mipInt, outputDirection, theta, axis, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
+const getSample = /* @__PURE__ */ Fn$4(({ envMap, mipInt, outputDirection, theta, axis, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
   const cosTheta = cos$1(theta);
   const sampleDirection = outputDirection.mul(cosTheta).add(axis.cross(outputDirection).mul(sin$1(theta))).add(axis.mul(axis.dot(outputDirection).mul(cosTheta.oneMinus())));
   return bilinearCubeUV(envMap, sampleDirection, mipInt, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP);
 });
-const blur = /* @__PURE__ */ Fn$1(({ n, latitudinal, poleAxis, outputDirection, weights, samples, dTheta, mipInt, envMap, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
-  const axis = vec3$1(select$1(latitudinal, poleAxis, cross$1(poleAxis, outputDirection))).toVar();
-  If$1(axis.equal(vec3$1(0)), () => {
-    axis.assign(vec3$1(outputDirection.z, 0, outputDirection.x.negate()));
+const blur = /* @__PURE__ */ Fn$4(({ n, latitudinal, poleAxis, outputDirection, weights, samples, dTheta, mipInt, envMap, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
+  const axis = vec3$2(select$3(latitudinal, poleAxis, cross$1(poleAxis, outputDirection))).toVar();
+  If(axis.equal(vec3$2(0)), () => {
+    axis.assign(vec3$2(outputDirection.z, 0, outputDirection.x.negate()));
   });
   axis.assign(normalize$1(axis));
-  const gl_FragColor = vec3$1().toVar();
+  const gl_FragColor = vec3$2().toVar();
   gl_FragColor.addAssign(weights.element(0).mul(getSample({ theta: 0, axis, outputDirection, mipInt, envMap, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP })));
-  Loop({ start: int$1(1), end: n }, ({ i }) => {
-    If$1(i.greaterThanEqual(samples), () => {
+  Loop({ start: int$3(1), end: n }, ({ i }) => {
+    If(i.greaterThanEqual(samples), () => {
       Break();
     });
-    const theta = float$1(dTheta.mul(float$1(i))).toVar();
+    const theta = float$4(dTheta.mul(float$4(i))).toVar();
     gl_FragColor.addAssign(weights.element(i).mul(getSample({ theta: theta.mul(-1), axis, outputDirection, mipInt, envMap, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP })));
     gl_FragColor.addAssign(weights.element(i).mul(getSample({ theta, axis, outputDirection, mipInt, envMap, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP })));
   });
-  return vec4$1(gl_FragColor, 1);
+  return vec4$3(gl_FragColor, 1);
 });
-const radicalInverse_VdC = /* @__PURE__ */ Fn$1(([bits_immutable]) => {
-  const bits2 = uint$1(bits_immutable).toVar();
-  bits2.assign(bits2.shiftLeft(uint$1(16)).bitOr(bits2.shiftRight(uint$1(16))));
-  bits2.assign(bits2.bitAnd(uint$1(1431655765)).shiftLeft(uint$1(1)).bitOr(bits2.bitAnd(uint$1(2863311530)).shiftRight(uint$1(1))));
-  bits2.assign(bits2.bitAnd(uint$1(858993459)).shiftLeft(uint$1(2)).bitOr(bits2.bitAnd(uint$1(3435973836)).shiftRight(uint$1(2))));
-  bits2.assign(bits2.bitAnd(uint$1(252645135)).shiftLeft(uint$1(4)).bitOr(bits2.bitAnd(uint$1(4042322160)).shiftRight(uint$1(4))));
-  bits2.assign(bits2.bitAnd(uint$1(16711935)).shiftLeft(uint$1(8)).bitOr(bits2.bitAnd(uint$1(4278255360)).shiftRight(uint$1(8))));
-  return float$1(bits2).mul(23283064365386963e-26);
+const radicalInverse_VdC = /* @__PURE__ */ Fn$4(([bits_immutable]) => {
+  const bits2 = uint$3(bits_immutable).toVar();
+  bits2.assign(bits2.shiftLeft(uint$3(16)).bitOr(bits2.shiftRight(uint$3(16))));
+  bits2.assign(bits2.bitAnd(uint$3(1431655765)).shiftLeft(uint$3(1)).bitOr(bits2.bitAnd(uint$3(2863311530)).shiftRight(uint$3(1))));
+  bits2.assign(bits2.bitAnd(uint$3(858993459)).shiftLeft(uint$3(2)).bitOr(bits2.bitAnd(uint$3(3435973836)).shiftRight(uint$3(2))));
+  bits2.assign(bits2.bitAnd(uint$3(252645135)).shiftLeft(uint$3(4)).bitOr(bits2.bitAnd(uint$3(4042322160)).shiftRight(uint$3(4))));
+  bits2.assign(bits2.bitAnd(uint$3(16711935)).shiftLeft(uint$3(8)).bitOr(bits2.bitAnd(uint$3(4278255360)).shiftRight(uint$3(8))));
+  return float$4(bits2).mul(23283064365386963e-26);
 });
-const hammersley = /* @__PURE__ */ Fn$1(([i, N2]) => {
-  return vec2$1(float$1(i).div(float$1(N2)), radicalInverse_VdC(i));
+const hammersley = /* @__PURE__ */ Fn$4(([i, N2]) => {
+  return vec2$2(float$4(i).div(float$4(N2)), radicalInverse_VdC(i));
 });
-const importanceSampleGGX_VNDF = /* @__PURE__ */ Fn$1(([Xi, V_immutable, roughness_immutable]) => {
-  const V = vec3$1(V_immutable).toVar();
-  const roughness2 = float$1(roughness_immutable);
+const importanceSampleGGX_VNDF = /* @__PURE__ */ Fn$4(([Xi, V_immutable, roughness_immutable]) => {
+  const V = vec3$2(V_immutable).toVar();
+  const roughness2 = float$4(roughness_immutable);
   const alpha = roughness2.mul(roughness2).toVar();
-  const Vh = normalize$1(vec3$1(alpha.mul(V.x), alpha.mul(V.y), V.z)).toVar();
+  const Vh = normalize$1(vec3$2(alpha.mul(V.x), alpha.mul(V.y), V.z)).toVar();
   const lensq = Vh.x.mul(Vh.x).add(Vh.y.mul(Vh.y));
-  const T1 = select$1(lensq.greaterThan(0), vec3$1(Vh.y.negate(), Vh.x, 0).div(sqrt$1(lensq)), vec3$1(1, 0, 0)).toVar();
+  const T1 = select$3(lensq.greaterThan(0), vec3$2(Vh.y.negate(), Vh.x, 0).div(sqrt$3(lensq)), vec3$2(1, 0, 0)).toVar();
   const T2 = cross$1(Vh, T1).toVar();
-  const r = sqrt$1(Xi.x);
-  const phi = mul$1(2, 3.14159265359).mul(Xi.y);
+  const r = sqrt$3(Xi.x);
+  const phi = mul$3(2, 3.14159265359).mul(Xi.y);
   const t1 = r.mul(cos$1(phi)).toVar();
   const t2 = r.mul(sin$1(phi)).toVar();
-  const s = mul$1(0.5, Vh.z.add(1));
-  t2.assign(s.oneMinus().mul(sqrt$1(t1.mul(t1).oneMinus())).add(s.mul(t2)));
-  const Nh = T1.mul(t1).add(T2.mul(t2)).add(Vh.mul(sqrt$1(max$1(0, t1.mul(t1).add(t2.mul(t2)).oneMinus()))));
-  return normalize$1(vec3$1(alpha.mul(Nh.x), alpha.mul(Nh.y), max$1(0, Nh.z)));
+  const s = mul$3(0.5, Vh.z.add(1));
+  t2.assign(s.oneMinus().mul(sqrt$3(t1.mul(t1).oneMinus())).add(s.mul(t2)));
+  const Nh = T1.mul(t1).add(T2.mul(t2)).add(Vh.mul(sqrt$3(max$1$1(0, t1.mul(t1).add(t2.mul(t2)).oneMinus()))));
+  return normalize$1(vec3$2(alpha.mul(Nh.x), alpha.mul(Nh.y), max$1$1(0, Nh.z)));
 });
-const ggxConvolution = /* @__PURE__ */ Fn$1(({ roughness: roughness2, mipInt, envMap, N_immutable, GGX_SAMPLES: GGX_SAMPLES2, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
-  const N2 = vec3$1(N_immutable).toVar();
-  const prefilteredColor = vec3$1(0).toVar();
-  const totalWeight = float$1(0).toVar();
-  If$1(roughness2.lessThan(1e-3), () => {
+const ggxConvolution = /* @__PURE__ */ Fn$4(({ roughness: roughness2, mipInt, envMap, N_immutable, GGX_SAMPLES: GGX_SAMPLES2, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP }) => {
+  const N2 = vec3$2(N_immutable).toVar();
+  const prefilteredColor = vec3$2(0).toVar();
+  const totalWeight = float$4(0).toVar();
+  If(roughness2.lessThan(1e-3), () => {
     prefilteredColor.assign(bilinearCubeUV(envMap, N2, mipInt, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP));
   }).Else(() => {
-    const up = select$1(abs$1(N2.z).lessThan(0.999), vec3$1(0, 0, 1), vec3$1(1, 0, 0));
+    const up = select$3(abs$2(N2.z).lessThan(0.999), vec3$2(0, 0, 1), vec3$2(1, 0, 0));
     const tangent = normalize$1(cross$1(up, N2)).toVar();
     const bitangent = cross$1(N2, tangent).toVar();
-    Loop({ start: uint$1(0), end: GGX_SAMPLES2 }, ({ i }) => {
+    Loop({ start: uint$3(0), end: GGX_SAMPLES2 }, ({ i }) => {
       const Xi = hammersley(i, GGX_SAMPLES2);
-      const H_tangent = importanceSampleGGX_VNDF(Xi, vec3$1(0, 0, 1), roughness2);
+      const H_tangent = importanceSampleGGX_VNDF(Xi, vec3$2(0, 0, 1), roughness2);
       const H = normalize$1(tangent.mul(H_tangent.x).add(bitangent.mul(H_tangent.y)).add(N2.mul(H_tangent.z)));
-      const L = normalize$1(H.mul(dot$1(N2, H).mul(2)).sub(N2));
-      const NdotL = max$1(dot$1(N2, L), 0);
-      If$1(NdotL.greaterThan(0), () => {
+      const L = normalize$1(H.mul(dot$3(N2, H).mul(2)).sub(N2));
+      const NdotL = max$1$1(dot$3(N2, L), 0);
+      If(NdotL.greaterThan(0), () => {
         const sampleColor = bilinearCubeUV(envMap, L, mipInt, CUBEUV_TEXEL_WIDTH, CUBEUV_TEXEL_HEIGHT, CUBEUV_MAX_MIP);
         prefilteredColor.addAssign(sampleColor.mul(NdotL));
         totalWeight.addAssign(NdotL);
       });
     });
-    If$1(totalWeight.greaterThan(0), () => {
+    If(totalWeight.greaterThan(0), () => {
       prefilteredColor.assign(prefilteredColor.div(totalWeight));
     });
   });
-  return vec4$1(prefilteredColor, 1);
+  return vec4$3(prefilteredColor, 1);
 });
 const LOD_MIN = 4;
 const EXTRA_LOD_SIGMA = [0.125, 0.215, 0.35, 0.446, 0.526, 0.582];
@@ -33743,7 +33743,7 @@ const _faceLib = [
   2
 ];
 const _direction = /* @__PURE__ */ getDirection(uv$1(), attribute$1("faceIndex")).normalize();
-const _outputDirection = /* @__PURE__ */ vec3$1(_direction.x, _direction.y, _direction.z);
+const _outputDirection = /* @__PURE__ */ vec3$2(_direction.x, _direction.y, _direction.z);
 class PMREMGenerator {
   /**
    * Constructs a new PMREM generator.
@@ -34327,16 +34327,16 @@ function _getMaterial(type) {
 }
 function _getBlurShader(lodMax, width, height) {
   const weights = uniformArray(new Array(MAX_SAMPLES).fill(0));
-  const poleAxis = uniform$1(new Vector3(0, 1, 0));
-  const dTheta = uniform$1(0);
-  const n = float$1(MAX_SAMPLES);
-  const latitudinal = uniform$1(0);
-  const samples = uniform$1(1);
-  const envMap = texture$1();
-  const mipInt = uniform$1(0);
-  const CUBEUV_TEXEL_WIDTH = float$1(1 / width);
-  const CUBEUV_TEXEL_HEIGHT = float$1(1 / height);
-  const CUBEUV_MAX_MIP = float$1(lodMax);
+  const poleAxis = uniform$2(new Vector3(0, 1, 0));
+  const dTheta = uniform$2(0);
+  const n = float$4(MAX_SAMPLES);
+  const latitudinal = uniform$2(0);
+  const samples = uniform$2(1);
+  const envMap = texture$2();
+  const mipInt = uniform$2(0);
+  const CUBEUV_TEXEL_WIDTH = float$4(1 / width);
+  const CUBEUV_TEXEL_HEIGHT = float$4(1 / height);
+  const CUBEUV_MAX_MIP = float$4(lodMax);
   const materialUniforms = {
     n,
     latitudinal,
@@ -34357,12 +34357,12 @@ function _getBlurShader(lodMax, width, height) {
   return material;
 }
 function _getGGXShader(lodMax, width, height) {
-  const envMap = texture$1();
-  const roughness2 = uniform$1(0);
-  const mipInt = uniform$1(0);
-  const CUBEUV_TEXEL_WIDTH = float$1(1 / width);
-  const CUBEUV_TEXEL_HEIGHT = float$1(1 / height);
-  const CUBEUV_MAX_MIP = float$1(lodMax);
+  const envMap = texture$2();
+  const roughness2 = uniform$2(0);
+  const mipInt = uniform$2(0);
+  const CUBEUV_TEXEL_WIDTH = float$4(1 / width);
+  const CUBEUV_TEXEL_HEIGHT = float$4(1 / height);
+  const CUBEUV_MAX_MIP = float$4(lodMax);
   const materialUniforms = {
     envMap,
     roughness: roughness2,
@@ -34375,7 +34375,7 @@ function _getGGXShader(lodMax, width, height) {
   material.fragmentNode = ggxConvolution({
     ...materialUniforms,
     N_immutable: _outputDirection,
-    GGX_SAMPLES: uint$1(GGX_SAMPLES)
+    GGX_SAMPLES: uint$3(GGX_SAMPLES)
   });
   _uniformsMap.set(material, materialUniforms);
   return material;
@@ -34387,7 +34387,7 @@ function _getCubemapMaterial(envTexture) {
 }
 function _getEquirectMaterial(envTexture) {
   const material = _getMaterial("equirect");
-  material.fragmentNode = texture$1(envTexture, equirectUV(_outputDirection), 0);
+  material.fragmentNode = texture$2(envTexture, equirectUV(_outputDirection), 0);
   return material;
 }
 const _cache = /* @__PURE__ */ new WeakMap();
@@ -34449,10 +34449,10 @@ class PMREMNode extends TempNode {
     this._generator = null;
     const defaultTexture = new Texture2();
     defaultTexture.isRenderTargetTexture = true;
-    this._texture = texture$1(defaultTexture);
-    this._width = uniform$1(0);
-    this._height = uniform$1(0);
-    this._maxMip = uniform$1(0);
+    this._texture = texture$2(defaultTexture);
+    this._width = uniform$2(0);
+    this._height = uniform$2(0);
+    this._maxMip = uniform$2(0);
     this.updateBeforeType = NodeUpdateType.RENDER;
   }
   set value(value) {
@@ -34504,7 +34504,7 @@ class PMREMNode extends TempNode {
     if (uvNode === null && builder.context.getUV) {
       uvNode = builder.context.getUV(this, builder);
     }
-    uvNode = materialEnvRotation.mul(vec3$1(uvNode.x, uvNode.y.negate(), uvNode.z));
+    uvNode = materialEnvRotation.mul(vec3$2(uvNode.x, uvNode.y.negate(), uvNode.z));
     let levelNode = this.levelNode;
     if (levelNode === null && builder.context.getTextureLevel) {
       levelNode = builder.context.getTextureLevel(this);
@@ -34530,10 +34530,10 @@ function isEquirectangularMapReady(image) {
   return image.height > 0;
 }
 const pmremTexture = /* @__PURE__ */ nodeProxy(PMREMNode).setParameterLength(1, 3);
-const matcapUV = /* @__PURE__ */ Fn$1(() => {
-  const x = vec3$1(positionViewDirection.z, 0, positionViewDirection.x.negate()).normalize();
+const matcapUV = /* @__PURE__ */ Fn$4(() => {
+  const x = vec3$2(positionViewDirection.z, 0, positionViewDirection.x.negate()).normalize();
   const y = positionViewDirection.cross(x);
-  return vec2$1(x.dot(normalView), y.dot(normalView)).mul(0.495).add(0.5);
+  return vec2$2(x.dot(normalView), y.dot(normalView)).mul(0.495).add(0.5);
 }).once(["NORMAL", "VERTEX"])().toVar("matcapUV");
 class RotateNode extends TempNode {
   static get type() {
@@ -34575,10 +34575,10 @@ class RotateNode extends TempNode {
       return rotationMatrix.mul(positionNode);
     } else {
       const rotation = rotationNode;
-      const rotationXMatrix = mat4(vec4$1(1, 0, 0, 0), vec4$1(0, cos$1(rotation.x), sin$1(rotation.x).negate(), 0), vec4$1(0, sin$1(rotation.x), cos$1(rotation.x), 0), vec4$1(0, 0, 0, 1));
-      const rotationYMatrix = mat4(vec4$1(cos$1(rotation.y), 0, sin$1(rotation.y), 0), vec4$1(0, 1, 0, 0), vec4$1(sin$1(rotation.y).negate(), 0, cos$1(rotation.y), 0), vec4$1(0, 0, 0, 1));
-      const rotationZMatrix = mat4(vec4$1(cos$1(rotation.z), sin$1(rotation.z).negate(), 0, 0), vec4$1(sin$1(rotation.z), cos$1(rotation.z), 0, 0), vec4$1(0, 0, 1, 0), vec4$1(0, 0, 0, 1));
-      return rotationXMatrix.mul(rotationYMatrix).mul(rotationZMatrix).mul(vec4$1(positionNode, 1)).xyz;
+      const rotationXMatrix = mat4(vec4$3(1, 0, 0, 0), vec4$3(0, cos$1(rotation.x), sin$1(rotation.x).negate(), 0), vec4$3(0, sin$1(rotation.x), cos$1(rotation.x), 0), vec4$3(0, 0, 0, 1));
+      const rotationYMatrix = mat4(vec4$3(cos$1(rotation.y), 0, sin$1(rotation.y), 0), vec4$3(0, 1, 0, 0), vec4$3(sin$1(rotation.y).negate(), 0, cos$1(rotation.y), 0), vec4$3(0, 0, 0, 1));
+      const rotationZMatrix = mat4(vec4$3(cos$1(rotation.z), sin$1(rotation.z).negate(), 0, 0), vec4$3(sin$1(rotation.z), cos$1(rotation.z), 0, 0), vec4$3(0, 0, 1, 0), vec4$3(0, 0, 0, 1));
+      return rotationXMatrix.mul(rotationYMatrix).mul(rotationZMatrix).mul(vec4$3(positionNode, 1)).xyz;
     }
   }
 }
@@ -34757,7 +34757,7 @@ class StackNode extends Node {
    */
   If(boolNode, method) {
     const methodNode = new ShaderNode(method);
-    this._currentCond = select$1(boolNode, methodNode);
+    this._currentCond = select$3(boolNode, methodNode);
     return this.addToStack(this._currentCond);
   }
   /**
@@ -34769,7 +34769,7 @@ class StackNode extends Node {
    */
   ElseIf(boolNode, method) {
     const methodNode = new ShaderNode(method);
-    const ifNode = select$1(boolNode, methodNode);
+    const ifNode = select$3(boolNode, methodNode);
     this._currentCond.elseNode = ifNode;
     this._currentCond = ifNode;
     return this;
@@ -34817,7 +34817,7 @@ class StackNode extends Node {
     for (let i = 1; i < caseNodes.length; i++) {
       caseNode = caseNode.or(caseNodes[i]);
     }
-    const condNode = select$1(caseNode, methodNode);
+    const condNode = select$3(caseNode, methodNode);
     if (this._currentCond === null) {
       this._currentCond = condNode;
       return this.addToStack(this._currentCond);
@@ -34854,9 +34854,9 @@ class StackNode extends Node {
     return this.outputNode && this.outputNode.isNode;
   }
   build(builder, ...params) {
-    const previousStack = getCurrentStack();
+    const previousStack = getCurrentStack$3();
     const buildStage = builder.buildStage;
-    setCurrentStack(this);
+    setCurrentStack$3(this);
     builder.setActiveStack(this);
     const buildNode = (node) => {
       this._currentNode = node;
@@ -34893,7 +34893,7 @@ class StackNode extends Node {
     } else {
       result = super.build(builder, ...params);
     }
-    setCurrentStack(previousStack);
+    setCurrentStack$3(previousStack);
     builder.removeActiveStack(this);
     return result;
   }
@@ -35107,7 +35107,7 @@ class MRTNode extends OutputStructNode {
     const textures = mrt2.textures;
     for (const name in outputNodes) {
       const index = getTextureIndex(textures, name);
-      members[index] = vec4$1(outputNodes[name]);
+      members[index] = vec4$3(outputNodes[name]);
     }
     this.members = members;
     return super.setup(builder);
@@ -35191,10 +35191,10 @@ class BitcountNode extends MathNode {
   _returnDataNode(inputType) {
     switch (inputType) {
       case "uint": {
-        return uint$1;
+        return uint$3;
       }
       case "int": {
-        return int$1;
+        return int$3;
       }
       case "uvec2": {
         return uvec2;
@@ -35206,10 +35206,10 @@ class BitcountNode extends MathNode {
         return uvec4;
       }
       case "ivec2": {
-        return ivec2;
+        return ivec2$2;
       }
       case "ivec3": {
-        return ivec3$1;
+        return ivec3$3;
       }
       case "ivec4": {
         return ivec4;
@@ -35226,10 +35226,10 @@ class BitcountNode extends MathNode {
    */
   _createTrailingZerosBaseLayout(method, elementType) {
     const outputConvertNode = this._returnDataNode(elementType);
-    const fnDef = Fn$1(([value]) => {
-      const v = uint$1(0);
+    const fnDef = Fn$4(([value]) => {
+      const v = uint$3(0);
       this._resolveElementType(value, v, elementType);
-      const f = float$1(v.bitAnd(negate(v)));
+      const f = float$4(v.bitAnd(negate(v)));
       const uintBits = floatBitsToUint(f);
       const numTrailingZeros = uintBits.shiftRight(23).sub(127);
       return outputConvertNode(numTrailingZeros);
@@ -35252,30 +35252,30 @@ class BitcountNode extends MathNode {
    */
   _createLeadingZerosBaseLayout(method, elementType) {
     const outputConvertNode = this._returnDataNode(elementType);
-    const fnDef = Fn$1(([value]) => {
-      If$1(value.equal(uint$1(0)), () => {
-        return uint$1(32);
+    const fnDef = Fn$4(([value]) => {
+      If(value.equal(uint$3(0)), () => {
+        return uint$3(32);
       });
-      const v = uint$1(0);
-      const n = uint$1(0);
+      const v = uint$3(0);
+      const n = uint$3(0);
       this._resolveElementType(value, v, elementType);
-      If$1(v.shiftRight(16).equal(0), () => {
+      If(v.shiftRight(16).equal(0), () => {
         n.addAssign(16);
         v.shiftLeftAssign(16);
       });
-      If$1(v.shiftRight(24).equal(0), () => {
+      If(v.shiftRight(24).equal(0), () => {
         n.addAssign(8);
         v.shiftLeftAssign(8);
       });
-      If$1(v.shiftRight(28).equal(0), () => {
+      If(v.shiftRight(28).equal(0), () => {
         n.addAssign(4);
         v.shiftLeftAssign(4);
       });
-      If$1(v.shiftRight(30).equal(0), () => {
+      If(v.shiftRight(30).equal(0), () => {
         n.addAssign(2);
         v.shiftLeftAssign(2);
       });
-      If$1(v.shiftRight(31).equal(0), () => {
+      If(v.shiftRight(31).equal(0), () => {
         n.addAssign(1);
       });
       return outputConvertNode(n);
@@ -35298,12 +35298,12 @@ class BitcountNode extends MathNode {
    */
   _createOneBitsBaseLayout(method, elementType) {
     const outputConvertNode = this._returnDataNode(elementType);
-    const fnDef = Fn$1(([value]) => {
-      const v = uint$1(0);
+    const fnDef = Fn$4(([value]) => {
+      const v = uint$3(0);
       this._resolveElementType(value, v, elementType);
-      v.assign(v.sub(v.shiftRight(uint$1(1)).bitAnd(uint$1(1431655765))));
-      v.assign(v.bitAnd(uint$1(858993459)).add(v.shiftRight(uint$1(2)).bitAnd(uint$1(858993459))));
-      const numBits = v.add(v.shiftRight(uint$1(4))).bitAnd(uint$1(252645135)).mul(uint$1(16843009)).shiftRight(uint$1(24));
+      v.assign(v.sub(v.shiftRight(uint$3(1)).bitAnd(uint$3(1431655765))));
+      v.assign(v.bitAnd(uint$3(858993459)).add(v.shiftRight(uint$3(2)).bitAnd(uint$3(858993459))));
+      const numBits = v.add(v.shiftRight(uint$3(4))).bitAnd(uint$3(252645135)).mul(uint$3(16843009)).shiftRight(uint$3(24));
       return outputConvertNode(numBits);
     }).setLayout({
       name: method,
@@ -35327,7 +35327,7 @@ class BitcountNode extends MathNode {
    */
   _createMainLayout(method, inputType, typeLength, baseFn) {
     const outputConvertNode = this._returnDataNode(inputType);
-    const fnDef = Fn$1(([value]) => {
+    const fnDef = Fn$4(([value]) => {
       if (typeLength === 1) {
         return outputConvertNode(baseFn(value));
       } else {
@@ -35382,7 +35382,7 @@ class BitcountNode extends MathNode {
       fn = this._createMainLayout(newMethod, inputType, typeLength, baseFn);
       registeredBitcountFunctions[newMethod] = fn;
     }
-    const output2 = Fn$1(() => {
+    const output2 = Fn$4(() => {
       return fn(
         aNode
       );
@@ -35396,15 +35396,15 @@ BitcountNode.COUNT_ONE_BITS = "countOneBits";
 const countTrailingZeros = /* @__PURE__ */ nodeProxyIntent(BitcountNode, BitcountNode.COUNT_TRAILING_ZEROS).setParameterLength(1);
 const countLeadingZeros = /* @__PURE__ */ nodeProxyIntent(BitcountNode, BitcountNode.COUNT_LEADING_ZEROS).setParameterLength(1);
 const countOneBits = /* @__PURE__ */ nodeProxyIntent(BitcountNode, BitcountNode.COUNT_ONE_BITS).setParameterLength(1);
-const hash = /* @__PURE__ */ Fn$1(([seed]) => {
+const hash = /* @__PURE__ */ Fn$4(([seed]) => {
   const state = seed.toUint().mul(747796405).add(2891336453);
   const word = state.shiftRight(state.shiftRight(28).add(4)).bitXor(state).mul(277803737);
   const result = word.shiftRight(22).bitXor(word);
   return result.toFloat().mul(1 / 2 ** 32);
 });
-const parabola = (x, k) => pow(mul$1(4, x.mul(sub$1(1, x))), k);
-const gain = (x, k) => x.lessThan(0.5) ? parabola(x.mul(2), k).div(2) : sub$1(1, parabola(mul$1(sub$1(1, x), 2), k).div(2));
-const pcurve = (x, a, b) => pow(div$1(pow(x, a), add$1(pow(x, a), pow(sub$1(1, x), b))), 1 / a);
+const parabola = (x, k) => pow(mul$3(4, x.mul(sub$3(1, x))), k);
+const gain = (x, k) => x.lessThan(0.5) ? parabola(x.mul(2), k).div(2) : sub$3(1, parabola(mul$3(sub$3(1, x), 2), k).div(2));
+const pcurve = (x, a, b) => pow(div$2(pow(x, a), add$3(pow(x, a), pow(sub$3(1, x), b))), 1 / a);
 const sinc = (x, k) => sin$1(PI$1.mul(k.mul(x).sub(1))).div(PI$1.mul(k.mul(x).sub(1)));
 class PackFloatNode extends TempNode {
   static get type() {
@@ -35458,7 +35458,7 @@ class UnpackFloatNode extends TempNode {
 const unpackSnorm2x16 = /* @__PURE__ */ nodeProxyIntent(UnpackFloatNode, "snorm").setParameterLength(1);
 const unpackUnorm2x16 = /* @__PURE__ */ nodeProxyIntent(UnpackFloatNode, "unorm").setParameterLength(1);
 const unpackHalf2x16$1 = /* @__PURE__ */ nodeProxyIntent(UnpackFloatNode, "float16").setParameterLength(1);
-const tri = /* @__PURE__ */ Fn$1(([x]) => {
+const tri = /* @__PURE__ */ Fn$4(([x]) => {
   return x.fract().sub(0.5).abs();
 }).setLayout({
   name: "tri",
@@ -35467,8 +35467,8 @@ const tri = /* @__PURE__ */ Fn$1(([x]) => {
     { name: "x", type: "float" }
   ]
 });
-const tri3 = /* @__PURE__ */ Fn$1(([p]) => {
-  return vec3$1(tri(p.z.add(tri(p.y.mul(1)))), tri(p.z.add(tri(p.x.mul(1)))), tri(p.y.add(tri(p.x.mul(1)))));
+const tri3 = /* @__PURE__ */ Fn$4(([p]) => {
+  return vec3$2(tri(p.z.add(tri(p.y.mul(1)))), tri(p.z.add(tri(p.x.mul(1)))), tri(p.y.add(tri(p.x.mul(1)))));
 }).setLayout({
   name: "tri3",
   type: "vec3",
@@ -35476,18 +35476,18 @@ const tri3 = /* @__PURE__ */ Fn$1(([p]) => {
     { name: "p", type: "vec3" }
   ]
 });
-const triNoise3D = /* @__PURE__ */ Fn$1(([position, speed, time2]) => {
-  const p = vec3$1(position).toVar();
-  const z = float$1(1.4).toVar();
-  const rz = float$1(0).toVar();
-  const bp = vec3$1(p).toVar();
-  Loop({ start: float$1(0), end: float$1(3), type: "float", condition: "<=" }, () => {
-    const dg = vec3$1(tri3(bp.mul(2))).toVar();
-    p.addAssign(dg.add(time2.mul(float$1(0.1).mul(speed))));
+const triNoise3D = /* @__PURE__ */ Fn$4(([position, speed, time2]) => {
+  const p = vec3$2(position).toVar();
+  const z = float$4(1.4).toVar();
+  const rz = float$4(0).toVar();
+  const bp = vec3$2(p).toVar();
+  Loop({ start: float$4(0), end: float$4(3), type: "float", condition: "<=" }, () => {
+    const dg = vec3$2(tri3(bp.mul(2))).toVar();
+    p.addAssign(dg.add(time2.mul(float$4(0.1).mul(speed))));
     bp.mulAssign(1.8);
     z.mulAssign(1.5);
     p.mulAssign(1.2);
-    const t = float$1(tri(p.z.add(tri(p.x.add(tri(p.y)))))).toVar();
+    const t = float$4(tri(p.z.add(tri(p.x.add(tri(p.y)))))).toVar();
     rz.addAssign(t.div(z));
     bp.addAssign(0.14);
   });
@@ -35580,9 +35580,9 @@ class FunctionOverloadingNode extends Node {
 }
 const overloadingBaseFn = /* @__PURE__ */ nodeProxy(FunctionOverloadingNode);
 const overloadingFn = (functionNodes) => (...params) => overloadingBaseFn(functionNodes, ...params);
-const time = /* @__PURE__ */ uniform$1(0).setGroup(renderGroup).onRenderUpdate((frame) => frame.time);
-const deltaTime = /* @__PURE__ */ uniform$1(0).setGroup(renderGroup).onRenderUpdate((frame) => frame.deltaTime);
-const frameId = /* @__PURE__ */ uniform$1(0, "uint").setGroup(renderGroup).onRenderUpdate((frame) => frame.frameId);
+const time = /* @__PURE__ */ uniform$2(0).setGroup(renderGroup).onRenderUpdate((frame) => frame.time);
+const deltaTime = /* @__PURE__ */ uniform$2(0).setGroup(renderGroup).onRenderUpdate((frame) => frame.deltaTime);
+const frameId = /* @__PURE__ */ uniform$2(0, "uint").setGroup(renderGroup).onRenderUpdate((frame) => frame.frameId);
 const oscSine = (t = time) => t.add(0.75).mul(Math.PI * 2).sin().mul(0.5).add(0.5);
 const oscSquare = (t = time) => t.fract().round();
 const oscTriangle = (t = time) => t.add(0.5).fract().mul(2).sub(1).abs();
@@ -35590,17 +35590,17 @@ const oscSawtooth = (t = time) => t.fract();
 function replaceDefaultUV(callback, node = null) {
   return context(node, { getUV: callback });
 }
-const rotateUV = /* @__PURE__ */ Fn$1(([uv2, rotation, center = vec2$1(0.5)]) => {
+const rotateUV = /* @__PURE__ */ Fn$4(([uv2, rotation, center = vec2$2(0.5)]) => {
   return rotate(uv2.sub(center), rotation).add(center);
 });
-const spherizeUV = /* @__PURE__ */ Fn$1(([uv2, strength, center = vec2$1(0.5)]) => {
+const spherizeUV = /* @__PURE__ */ Fn$4(([uv2, strength, center = vec2$2(0.5)]) => {
   const delta = uv2.sub(center);
   const delta2 = delta.dot(delta);
   const delta4 = delta2.mul(delta2);
   const deltaOffset = delta4.mul(strength);
   return uv2.add(delta.mul(deltaOffset));
 });
-const billboarding = /* @__PURE__ */ Fn$1(({ position = null, horizontal = true, vertical = false }) => {
+const billboarding = /* @__PURE__ */ Fn$4(({ position = null, horizontal = true, vertical = false }) => {
   let worldMatrix;
   if (position !== null) {
     worldMatrix = modelWorldMatrix.toVar();
@@ -35626,7 +35626,7 @@ const billboarding = /* @__PURE__ */ Fn$1(({ position = null, horizontal = true,
   modelViewMatrix2[2][2] = 1;
   return cameraProjectionMatrix.mul(modelViewMatrix2).mul(positionLocal$1);
 });
-const viewportSafeUV = /* @__PURE__ */ Fn$1(([uv2 = null]) => {
+const viewportSafeUV = /* @__PURE__ */ Fn$4(([uv2 = null]) => {
   const depth2 = linearDepth();
   const depthDiff = linearDepth(viewportDepthTexture(uv2)).sub(depth2);
   const finalUV = depthDiff.lessThan(0).select(screenUV, uv2);
@@ -35643,7 +35643,7 @@ class SpriteSheetUVNode extends Node {
    * @param {Node<vec2>} [uvNode=uv()] - The uv node.
    * @param {Node<float>} [frameNode=float()] - The node that defines the current frame/sprite.
    */
-  constructor(countNode, uvNode = uv$1(), frameNode = float$1(0)) {
+  constructor(countNode, uvNode = uv$1(), frameNode = float$4(0)) {
     super("vec2");
     this.countNode = countNode;
     this.uvNode = uvNode;
@@ -35656,24 +35656,24 @@ class SpriteSheetUVNode extends Node {
     const column = frameNum.mod(width);
     const row = height.sub(frameNum.add(1).div(width).ceil());
     const scale = countNode.reciprocal();
-    const uvFrameOffset = vec2$1(column, row);
+    const uvFrameOffset = vec2$2(column, row);
     return uvNode.add(uvFrameOffset).mul(scale);
   }
 }
 const spritesheetUV = /* @__PURE__ */ nodeProxy(SpriteSheetUVNode).setParameterLength(3);
-const triplanarTextures = /* @__PURE__ */ Fn$1(([textureXNode, textureYNode = null, textureZNode = null, scaleNode = float$1(1), positionNode = positionLocal$1, normalNode = normalLocal]) => {
+const triplanarTextures = /* @__PURE__ */ Fn$4(([textureXNode, textureYNode = null, textureZNode = null, scaleNode = float$4(1), positionNode = positionLocal$1, normalNode = normalLocal]) => {
   let bf = normalNode.abs().normalize();
-  bf = bf.div(bf.dot(vec3$1(1)));
+  bf = bf.div(bf.dot(vec3$2(1)));
   const tx = positionNode.yz.mul(scaleNode);
   const ty = positionNode.zx.mul(scaleNode);
   const tz = positionNode.xy.mul(scaleNode);
   const textureX = textureXNode.value;
   const textureY = textureYNode !== null ? textureYNode.value : textureX;
   const textureZ = textureZNode !== null ? textureZNode.value : textureX;
-  const cx = texture$1(textureX, tx).mul(bf.x);
-  const cy = texture$1(textureY, ty).mul(bf.y);
-  const cz = texture$1(textureZ, tz).mul(bf.z);
-  return add$1(cx, cy, cz);
+  const cx = texture$2(textureX, tx).mul(bf.x);
+  const cy = texture$2(textureY, ty).mul(bf.y);
+  const cz = texture$2(textureZ, tz).mul(bf.z);
+  return add$3(cx, cy, cz);
 });
 const triplanarTexture = (...params) => triplanarTextures(...params);
 const _reflectorPlane = new Plane();
@@ -36132,45 +36132,45 @@ const convertToTexture = (node, ...params) => {
   if (node.isPassNode) return node.getTextureNode();
   return rtt(node, ...params);
 };
-const getViewPosition = /* @__PURE__ */ Fn$1(([screenPosition, depth2, projectionMatrixInverse], builder) => {
+const getViewPosition = /* @__PURE__ */ Fn$4(([screenPosition, depth2, projectionMatrixInverse], builder) => {
   let clipSpacePosition;
   if (builder.renderer.coordinateSystem === WebGPUCoordinateSystem) {
-    screenPosition = vec2$1(screenPosition.x, screenPosition.y.oneMinus()).mul(2).sub(1);
-    clipSpacePosition = vec4$1(vec3$1(screenPosition, depth2), 1);
+    screenPosition = vec2$2(screenPosition.x, screenPosition.y.oneMinus()).mul(2).sub(1);
+    clipSpacePosition = vec4$3(vec3$2(screenPosition, depth2), 1);
   } else {
-    clipSpacePosition = vec4$1(vec3$1(screenPosition.x, screenPosition.y.oneMinus(), depth2).mul(2).sub(1), 1);
+    clipSpacePosition = vec4$3(vec3$2(screenPosition.x, screenPosition.y.oneMinus(), depth2).mul(2).sub(1), 1);
   }
-  const viewSpacePosition = vec4$1(projectionMatrixInverse.mul(clipSpacePosition));
+  const viewSpacePosition = vec4$3(projectionMatrixInverse.mul(clipSpacePosition));
   return viewSpacePosition.xyz.div(viewSpacePosition.w);
 });
-const getScreenPosition = /* @__PURE__ */ Fn$1(([viewPosition, projectionMatrix]) => {
-  const sampleClipPos = projectionMatrix.mul(vec4$1(viewPosition, 1));
+const getScreenPosition = /* @__PURE__ */ Fn$4(([viewPosition, projectionMatrix]) => {
+  const sampleClipPos = projectionMatrix.mul(vec4$3(viewPosition, 1));
   const sampleUv = sampleClipPos.xy.div(sampleClipPos.w).mul(0.5).add(0.5).toVar();
-  return vec2$1(sampleUv.x, sampleUv.y.oneMinus());
+  return vec2$2(sampleUv.x, sampleUv.y.oneMinus());
 });
-const getNormalFromDepth = /* @__PURE__ */ Fn$1(([uv2, depthTexture, projectionMatrixInverse]) => {
-  const size = textureSize(textureLoad$1(depthTexture));
-  const p = ivec2(uv2.mul(size)).toVar();
-  const c0 = textureLoad$1(depthTexture, p).toVar();
-  const l2 = textureLoad$1(depthTexture, p.sub(ivec2(2, 0))).toVar();
-  const l1 = textureLoad$1(depthTexture, p.sub(ivec2(1, 0))).toVar();
-  const r1 = textureLoad$1(depthTexture, p.add(ivec2(1, 0))).toVar();
-  const r2 = textureLoad$1(depthTexture, p.add(ivec2(2, 0))).toVar();
-  const b22 = textureLoad$1(depthTexture, p.add(ivec2(0, 2))).toVar();
-  const b1 = textureLoad$1(depthTexture, p.add(ivec2(0, 1))).toVar();
-  const t1 = textureLoad$1(depthTexture, p.sub(ivec2(0, 1))).toVar();
-  const t2 = textureLoad$1(depthTexture, p.sub(ivec2(0, 2))).toVar();
-  const dl = abs$1(sub$1(float$1(2).mul(l1).sub(l2), c0)).toVar();
-  const dr = abs$1(sub$1(float$1(2).mul(r1).sub(r2), c0)).toVar();
-  const db = abs$1(sub$1(float$1(2).mul(b1).sub(b22), c0)).toVar();
-  const dt = abs$1(sub$1(float$1(2).mul(t1).sub(t2), c0)).toVar();
+const getNormalFromDepth = /* @__PURE__ */ Fn$4(([uv2, depthTexture, projectionMatrixInverse]) => {
+  const size = textureSize(textureLoad$2(depthTexture));
+  const p = ivec2$2(uv2.mul(size)).toVar();
+  const c0 = textureLoad$2(depthTexture, p).toVar();
+  const l2 = textureLoad$2(depthTexture, p.sub(ivec2$2(2, 0))).toVar();
+  const l1 = textureLoad$2(depthTexture, p.sub(ivec2$2(1, 0))).toVar();
+  const r1 = textureLoad$2(depthTexture, p.add(ivec2$2(1, 0))).toVar();
+  const r2 = textureLoad$2(depthTexture, p.add(ivec2$2(2, 0))).toVar();
+  const b22 = textureLoad$2(depthTexture, p.add(ivec2$2(0, 2))).toVar();
+  const b1 = textureLoad$2(depthTexture, p.add(ivec2$2(0, 1))).toVar();
+  const t1 = textureLoad$2(depthTexture, p.sub(ivec2$2(0, 1))).toVar();
+  const t2 = textureLoad$2(depthTexture, p.sub(ivec2$2(0, 2))).toVar();
+  const dl = abs$2(sub$3(float$4(2).mul(l1).sub(l2), c0)).toVar();
+  const dr = abs$2(sub$3(float$4(2).mul(r1).sub(r2), c0)).toVar();
+  const db = abs$2(sub$3(float$4(2).mul(b1).sub(b22), c0)).toVar();
+  const dt = abs$2(sub$3(float$4(2).mul(t1).sub(t2), c0)).toVar();
   const ce = getViewPosition(uv2, c0, projectionMatrixInverse).toVar();
-  const dpdx = dl.lessThan(dr).select(ce.sub(getViewPosition(uv2.sub(vec2$1(float$1(1).div(size.x), 0)), l1, projectionMatrixInverse)), ce.negate().add(getViewPosition(uv2.add(vec2$1(float$1(1).div(size.x), 0)), r1, projectionMatrixInverse)));
-  const dpdy = db.lessThan(dt).select(ce.sub(getViewPosition(uv2.add(vec2$1(0, float$1(1).div(size.y))), b1, projectionMatrixInverse)), ce.negate().add(getViewPosition(uv2.sub(vec2$1(0, float$1(1).div(size.y))), t1, projectionMatrixInverse)));
+  const dpdx = dl.lessThan(dr).select(ce.sub(getViewPosition(uv2.sub(vec2$2(float$4(1).div(size.x), 0)), l1, projectionMatrixInverse)), ce.negate().add(getViewPosition(uv2.add(vec2$2(float$4(1).div(size.x), 0)), r1, projectionMatrixInverse)));
+  const dpdy = db.lessThan(dt).select(ce.sub(getViewPosition(uv2.add(vec2$2(0, float$4(1).div(size.y))), b1, projectionMatrixInverse)), ce.negate().add(getViewPosition(uv2.sub(vec2$2(0, float$4(1).div(size.y))), t1, projectionMatrixInverse)));
   return normalize$1(cross$1(dpdx, dpdy));
 });
-const interleavedGradientNoise = Fn$1(([position]) => {
-  return fract(float$1(52.9829189).mul(fract(dot$1(position, vec2$1(0.06711056, 583715e-8)))));
+const interleavedGradientNoise = Fn$4(([position]) => {
+  return fract(float$4(52.9829189).mul(fract(dot$3(position, vec2$2(0.06711056, 583715e-8)))));
 }).setLayout({
   name: "interleavedGradientNoise",
   type: "float",
@@ -36178,11 +36178,11 @@ const interleavedGradientNoise = Fn$1(([position]) => {
     { name: "position", type: "vec2" }
   ]
 });
-const vogelDiskSample = Fn$1(([sampleIndex, samplesCount, phi]) => {
-  const goldenAngle = float$1(2.399963229728653);
-  const r = sqrt$1(float$1(sampleIndex).add(0.5).div(float$1(samplesCount)));
-  const theta = float$1(sampleIndex).mul(goldenAngle).add(phi);
-  return vec2$1(cos$1(theta), sin$1(theta)).mul(r);
+const vogelDiskSample = Fn$4(([sampleIndex, samplesCount, phi]) => {
+  const goldenAngle = float$4(2.399963229728653);
+  const r = sqrt$3(float$4(sampleIndex).add(0.5).div(float$4(samplesCount)));
+  const theta = float$4(sampleIndex).mul(goldenAngle).add(phi);
+  return vec2$2(cos$1(theta), sin$1(theta)).mul(r);
 }).setLayout({
   name: "vogelDiskSample",
   type: "vec2",
@@ -36304,7 +36304,7 @@ class StorageBufferAttribute extends BufferAttribute {
     this.isStorageBufferAttribute = true;
   }
 }
-const attributeArray = (count, type = "float") => {
+const attributeArray$2 = (count, type = "float") => {
   let itemSize, typedArray;
   if (type.isStruct === true) {
     itemSize = type.layout.getLength();
@@ -36314,7 +36314,7 @@ const attributeArray = (count, type = "float") => {
     typedArray = getTypedArrayFromType(type);
   }
   const buffer2 = new StorageBufferAttribute(count, itemSize, typedArray);
-  const node = storage$1(buffer2, type, count);
+  const node = storage(buffer2, type, count);
   return node;
 };
 const instancedArray = (count, type = "float") => {
@@ -36327,7 +36327,7 @@ const instancedArray = (count, type = "float") => {
     typedArray = getTypedArrayFromType(type);
   }
   const buffer2 = new StorageInstancedBufferAttribute(count, itemSize, typedArray);
-  const node = storage$1(buffer2, type, count);
+  const node = storage(buffer2, type, count);
   return node;
 };
 class PointUVNode extends Node {
@@ -36379,7 +36379,7 @@ class SceneNode extends Node {
     } else if (scope === SceneNode.BACKGROUND_INTENSITY) {
       output2 = reference("backgroundIntensity", "float", scene);
     } else if (scope === SceneNode.BACKGROUND_ROTATION) {
-      output2 = uniform$1("mat4").setName("backgroundRotation").setGroup(renderGroup).onRenderUpdate(() => {
+      output2 = uniform$2("mat4").setName("backgroundRotation").setGroup(renderGroup).onRenderUpdate(() => {
         const background = scene.background;
         if (background !== null && background.isTexture && background.mapping !== UVMapping) {
           _e1.copy(scene.backgroundRotation);
@@ -36526,27 +36526,27 @@ const textureStore = (value, uvNode, storeNode) => {
   if (storeNode !== null) node.toStack();
   return node;
 };
-const normal = Fn$1(({ texture: texture2, uv: uv2 }) => {
+const normal = Fn$4(({ texture: texture2, uv: uv2 }) => {
   const epsilon = 1e-4;
-  const ret = vec3$1().toVar();
-  If$1(uv2.x.lessThan(epsilon), () => {
-    ret.assign(vec3$1(1, 0, 0));
+  const ret = vec3$2().toVar();
+  If(uv2.x.lessThan(epsilon), () => {
+    ret.assign(vec3$2(1, 0, 0));
   }).ElseIf(uv2.y.lessThan(epsilon), () => {
-    ret.assign(vec3$1(0, 1, 0));
+    ret.assign(vec3$2(0, 1, 0));
   }).ElseIf(uv2.z.lessThan(epsilon), () => {
-    ret.assign(vec3$1(0, 0, 1));
+    ret.assign(vec3$2(0, 0, 1));
   }).ElseIf(uv2.x.greaterThan(1 - epsilon), () => {
-    ret.assign(vec3$1(-1, 0, 0));
+    ret.assign(vec3$2(-1, 0, 0));
   }).ElseIf(uv2.y.greaterThan(1 - epsilon), () => {
-    ret.assign(vec3$1(0, -1, 0));
+    ret.assign(vec3$2(0, -1, 0));
   }).ElseIf(uv2.z.greaterThan(1 - epsilon), () => {
-    ret.assign(vec3$1(0, 0, -1));
+    ret.assign(vec3$2(0, 0, -1));
   }).Else(() => {
     const step2 = 0.01;
-    const x = texture2.sample(uv2.add(vec3$1(-step2, 0, 0))).r.sub(texture2.sample(uv2.add(vec3$1(step2, 0, 0))).r);
-    const y = texture2.sample(uv2.add(vec3$1(0, -step2, 0))).r.sub(texture2.sample(uv2.add(vec3$1(0, step2, 0))).r);
-    const z = texture2.sample(uv2.add(vec3$1(0, 0, -step2))).r.sub(texture2.sample(uv2.add(vec3$1(0, 0, step2))).r);
-    ret.assign(vec3$1(x, y, z));
+    const x = texture2.sample(uv2.add(vec3$2(-step2, 0, 0))).r.sub(texture2.sample(uv2.add(vec3$2(step2, 0, 0))).r);
+    const y = texture2.sample(uv2.add(vec3$2(0, -step2, 0))).r.sub(texture2.sample(uv2.add(vec3$2(0, step2, 0))).r);
+    const z = texture2.sample(uv2.add(vec3$2(0, 0, -step2))).r.sub(texture2.sample(uv2.add(vec3$2(0, 0, step2))).r);
+    ret.assign(vec3$2(x, y, z));
   });
   return ret.normalize();
 });
@@ -36581,7 +36581,7 @@ class Texture3DNode extends TextureNode {
    * @return {Node<vec3>} The default uv node.
    */
   getDefaultUV() {
-    return vec3$1(0.5, 0.5, 0.5);
+    return vec3$2(0.5, 0.5, 0.5);
   }
   /**
    * Overwritten with an empty implementation since the `updateMatrix` flag is ignored
@@ -36605,7 +36605,7 @@ class Texture3DNode extends TextureNode {
       if (this.sampler) {
         uvNode = uvNode.flipY();
       } else {
-        uvNode = uvNode.setY(int$1(textureSize(this, this.levelNode).y).sub(uvNode.y).sub(1));
+        uvNode = uvNode.setY(int$3(textureSize(this, this.levelNode).y).sub(uvNode.y).sub(1));
       }
     }
     return uvNode;
@@ -36684,9 +36684,9 @@ class VelocityNode extends TempNode {
     this.projectionMatrix = null;
     this.updateType = NodeUpdateType.OBJECT;
     this.updateAfterType = NodeUpdateType.OBJECT;
-    this.previousModelWorldMatrix = uniform$1(new Matrix4());
-    this.previousProjectionMatrix = uniform$1(new Matrix4()).setGroup(renderGroup);
-    this.previousCameraViewMatrix = uniform$1(new Matrix4());
+    this.previousModelWorldMatrix = uniform$2(new Matrix4());
+    this.previousProjectionMatrix = uniform$2(new Matrix4()).setGroup(renderGroup);
+    this.previousCameraViewMatrix = uniform$2(new Matrix4());
   }
   /**
    * Sets the given projection matrix.
@@ -36739,13 +36739,13 @@ class VelocityNode extends TempNode {
    * @return {Node<vec2>} The motion vector.
    */
   setup() {
-    const projectionMatrix = this.projectionMatrix === null ? cameraProjectionMatrix : uniform$1(this.projectionMatrix);
+    const projectionMatrix = this.projectionMatrix === null ? cameraProjectionMatrix : uniform$2(this.projectionMatrix);
     const previousModelViewMatrix = this.previousCameraViewMatrix.mul(this.previousModelWorldMatrix);
     const clipPositionCurrent = projectionMatrix.mul(modelViewMatrix).mul(positionLocal$1);
     const clipPositionPrevious = this.previousProjectionMatrix.mul(previousModelViewMatrix).mul(positionPrevious);
     const ndcPositionCurrent = clipPositionCurrent.xy.div(clipPositionCurrent.w);
     const ndcPositionPrevious = clipPositionPrevious.xy.div(clipPositionPrevious.w);
-    const velocity2 = sub$1(ndcPositionCurrent, ndcPositionPrevious);
+    const velocity2 = sub$3(ndcPositionCurrent, ndcPositionPrevious);
     return velocity2;
   }
 }
@@ -36767,47 +36767,47 @@ function getPreviousMatrix(object, index = 0) {
   return matrix;
 }
 const velocity = /* @__PURE__ */ nodeImmutable(VelocityNode);
-const grayscale = /* @__PURE__ */ Fn$1(([color2]) => {
+const grayscale = /* @__PURE__ */ Fn$4(([color2]) => {
   return luminance(color2.rgb);
 });
-const saturation = /* @__PURE__ */ Fn$1(([color2, adjustment = float$1(1)]) => {
+const saturation = /* @__PURE__ */ Fn$4(([color2, adjustment = float$4(1)]) => {
   return adjustment.mix(luminance(color2.rgb), color2.rgb);
 });
-const vibrance = /* @__PURE__ */ Fn$1(([color2, adjustment = float$1(1)]) => {
-  const average = add$1(color2.r, color2.g, color2.b).div(3);
+const vibrance = /* @__PURE__ */ Fn$4(([color2, adjustment = float$4(1)]) => {
+  const average = add$3(color2.r, color2.g, color2.b).div(3);
   const mx = color2.r.max(color2.g.max(color2.b));
   const amt = mx.sub(average).mul(adjustment).mul(-3);
   return mix(color2.rgb, mx, amt);
 });
-const hue = /* @__PURE__ */ Fn$1(([color2, adjustment = float$1(1)]) => {
-  const k = vec3$1(0.57735, 0.57735, 0.57735);
+const hue = /* @__PURE__ */ Fn$4(([color2, adjustment = float$4(1)]) => {
+  const k = vec3$2(0.57735, 0.57735, 0.57735);
   const cosAngle = adjustment.cos();
-  return vec3$1(color2.rgb.mul(cosAngle).add(k.cross(color2.rgb).mul(adjustment.sin()).add(k.mul(dot$1(k, color2.rgb).mul(cosAngle.oneMinus())))));
+  return vec3$2(color2.rgb.mul(cosAngle).add(k.cross(color2.rgb).mul(adjustment.sin()).add(k.mul(dot$3(k, color2.rgb).mul(cosAngle.oneMinus())))));
 });
-const luminance = (color2, luminanceCoefficients = vec3$1(ColorManagement.getLuminanceCoefficients(new Vector3()))) => dot$1(color2, luminanceCoefficients);
-const cdl = /* @__PURE__ */ Fn$1(([
+const luminance = (color2, luminanceCoefficients = vec3$2(ColorManagement.getLuminanceCoefficients(new Vector3()))) => dot$3(color2, luminanceCoefficients);
+const cdl = /* @__PURE__ */ Fn$4(([
   color2,
-  slope = vec3$1(1),
-  offset = vec3$1(0),
-  power = vec3$1(1),
-  saturation2 = float$1(1),
+  slope = vec3$2(1),
+  offset = vec3$2(0),
+  power = vec3$2(1),
+  saturation2 = float$4(1),
   // ASC CDL v1.2 explicitly requires Rec. 709 luminance coefficients.
-  luminanceCoefficients = vec3$1(ColorManagement.getLuminanceCoefficients(new Vector3(), LinearSRGBColorSpace))
+  luminanceCoefficients = vec3$2(ColorManagement.getLuminanceCoefficients(new Vector3(), LinearSRGBColorSpace))
 ]) => {
-  const luma = color2.rgb.dot(vec3$1(luminanceCoefficients));
-  const v = max$1(color2.rgb.mul(slope).add(offset), 0).toVar();
+  const luma = color2.rgb.dot(vec3$2(luminanceCoefficients));
+  const v = max$1$1(color2.rgb.mul(slope).add(offset), 0).toVar();
   const pv = v.pow(power).toVar();
-  If$1(v.r.greaterThan(0), () => {
+  If(v.r.greaterThan(0), () => {
     v.r.assign(pv.r);
   });
-  If$1(v.g.greaterThan(0), () => {
+  If(v.g.greaterThan(0), () => {
     v.g.assign(pv.g);
   });
-  If$1(v.b.greaterThan(0), () => {
+  If(v.b.greaterThan(0), () => {
     v.b.assign(pv.b);
   });
   v.assign(luma.add(v.sub(luma).mul(saturation2)));
-  return vec4$1(v.rgb, color2.a);
+  return vec4$3(v.rgb, color2.a);
 });
 class PosterizeNode extends TempNode {
   static get type() {
@@ -36935,8 +36935,8 @@ class PassNode extends TempNode {
     this._viewZNodes = {};
     this._previousTextures = {};
     this._previousTextureNodes = {};
-    this._cameraNear = uniform$1(0);
-    this._cameraFar = uniform$1(0);
+    this._cameraNear = uniform$2(0);
+    this._cameraFar = uniform$2(0);
     this._mrt = null;
     this._layers = null;
     this._resolutionScale = 1;
@@ -37354,12 +37354,12 @@ class ToonOutlinePassNode extends PassNode {
     material.side = BackSide;
     const outlineNormal = normalLocal.negate();
     const mvp = cameraProjectionMatrix.mul(modelViewMatrix);
-    const ratio = float$1(1);
-    const pos = mvp.mul(vec4$1(positionLocal$1, 1));
-    const pos2 = mvp.mul(vec4$1(positionLocal$1.add(outlineNormal), 1));
+    const ratio = float$4(1);
+    const pos = mvp.mul(vec4$3(positionLocal$1, 1));
+    const pos2 = mvp.mul(vec4$3(positionLocal$1.add(outlineNormal), 1));
     const norm = normalize$1(pos.sub(pos2));
     material.vertexNode = pos.add(norm.mul(this.thicknessNode).mul(pos.w).mul(ratio));
-    material.colorNode = vec4$1(this.colorNode, this.alphaNode);
+    material.colorNode = vec4$3(this.colorNode, this.alphaNode);
     return material;
   }
   /**
@@ -37380,7 +37380,7 @@ class ToonOutlinePassNode extends PassNode {
   }
 }
 const toonOutlinePass = (scene, camera, color2 = new Color(0, 0, 0), thickness2 = 3e-3, alpha = 1) => nodeObject(new ToonOutlinePassNode(scene, camera, nodeObject(color2), nodeObject(thickness2), nodeObject(alpha)));
-const linearToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
+const linearToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
   return color2.mul(exposure).clamp();
 }).setLayout({
   name: "linearToneMapping",
@@ -37390,7 +37390,7 @@ const linearToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
     { name: "exposure", type: "float" }
   ]
 });
-const reinhardToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
+const reinhardToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
   color2 = color2.mul(exposure);
   return color2.div(color2.add(1)).clamp();
 }).setLayout({
@@ -37401,7 +37401,7 @@ const reinhardToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
     { name: "exposure", type: "float" }
   ]
 });
-const cineonToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
+const cineonToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
   color2 = color2.mul(exposure);
   color2 = color2.sub(4e-3).max(0);
   const a = color2.mul(color2.mul(6.2).add(0.5));
@@ -37415,12 +37415,12 @@ const cineonToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
     { name: "exposure", type: "float" }
   ]
 });
-const RRTAndODTFit = /* @__PURE__ */ Fn$1(([color2]) => {
+const RRTAndODTFit = /* @__PURE__ */ Fn$4(([color2]) => {
   const a = color2.mul(color2.add(0.0245786)).sub(90537e-9);
   const b = color2.mul(color2.add(0.432951).mul(0.983729)).add(0.238081);
   return a.div(b);
 });
-const acesFilmicToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
+const acesFilmicToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
   const ACESInputMat = mat3(
     0.59719,
     0.35458,
@@ -37456,32 +37456,32 @@ const acesFilmicToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
     { name: "exposure", type: "float" }
   ]
 });
-const LINEAR_REC2020_TO_LINEAR_SRGB = /* @__PURE__ */ mat3(vec3$1(1.6605, -0.1246, -0.0182), vec3$1(-0.5876, 1.1329, -0.1006), vec3$1(-0.0728, -83e-4, 1.1187));
-const LINEAR_SRGB_TO_LINEAR_REC2020 = /* @__PURE__ */ mat3(vec3$1(0.6274, 0.0691, 0.0164), vec3$1(0.3293, 0.9195, 0.088), vec3$1(0.0433, 0.0113, 0.8956));
-const agxDefaultContrastApprox = /* @__PURE__ */ Fn$1(([x_immutable]) => {
-  const x = vec3$1(x_immutable).toVar();
-  const x2 = vec3$1(x.mul(x)).toVar();
-  const x4 = vec3$1(x2.mul(x2)).toVar();
-  return float$1(15.5).mul(x4.mul(x2)).sub(mul$1(40.14, x4.mul(x))).add(mul$1(31.96, x4).sub(mul$1(6.868, x2.mul(x))).add(mul$1(0.4298, x2).add(mul$1(0.1191, x).sub(232e-5))));
+const LINEAR_REC2020_TO_LINEAR_SRGB = /* @__PURE__ */ mat3(vec3$2(1.6605, -0.1246, -0.0182), vec3$2(-0.5876, 1.1329, -0.1006), vec3$2(-0.0728, -83e-4, 1.1187));
+const LINEAR_SRGB_TO_LINEAR_REC2020 = /* @__PURE__ */ mat3(vec3$2(0.6274, 0.0691, 0.0164), vec3$2(0.3293, 0.9195, 0.088), vec3$2(0.0433, 0.0113, 0.8956));
+const agxDefaultContrastApprox = /* @__PURE__ */ Fn$4(([x_immutable]) => {
+  const x = vec3$2(x_immutable).toVar();
+  const x2 = vec3$2(x.mul(x)).toVar();
+  const x4 = vec3$2(x2.mul(x2)).toVar();
+  return float$4(15.5).mul(x4.mul(x2)).sub(mul$3(40.14, x4.mul(x))).add(mul$3(31.96, x4).sub(mul$3(6.868, x2.mul(x))).add(mul$3(0.4298, x2).add(mul$3(0.1191, x).sub(232e-5))));
 });
-const agxToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
-  const colortone = vec3$1(color2).toVar();
-  const AgXInsetMatrix = mat3(vec3$1(0.856627153315983, 0.137318972929847, 0.11189821299995), vec3$1(0.0951212405381588, 0.761241990602591, 0.0767994186031903), vec3$1(0.0482516061458583, 0.101439036467562, 0.811302368396859));
-  const AgXOutsetMatrix = mat3(vec3$1(1.1271005818144368, -0.1413297634984383, -0.14132976349843826), vec3$1(-0.11060664309660323, 1.157823702216272, -0.11060664309660294), vec3$1(-0.016493938717834573, -0.016493938717834257, 1.2519364065950405));
-  const AgxMinEv = float$1(-12.47393);
-  const AgxMaxEv = float$1(4.026069);
+const agxToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
+  const colortone = vec3$2(color2).toVar();
+  const AgXInsetMatrix = mat3(vec3$2(0.856627153315983, 0.137318972929847, 0.11189821299995), vec3$2(0.0951212405381588, 0.761241990602591, 0.0767994186031903), vec3$2(0.0482516061458583, 0.101439036467562, 0.811302368396859));
+  const AgXOutsetMatrix = mat3(vec3$2(1.1271005818144368, -0.1413297634984383, -0.14132976349843826), vec3$2(-0.11060664309660323, 1.157823702216272, -0.11060664309660294), vec3$2(-0.016493938717834573, -0.016493938717834257, 1.2519364065950405));
+  const AgxMinEv = float$4(-12.47393);
+  const AgxMaxEv = float$4(4.026069);
   colortone.mulAssign(exposure);
   colortone.assign(LINEAR_SRGB_TO_LINEAR_REC2020.mul(colortone));
   colortone.assign(AgXInsetMatrix.mul(colortone));
-  colortone.assign(max$1(colortone, 1e-10));
+  colortone.assign(max$1$1(colortone, 1e-10));
   colortone.assign(log2(colortone));
   colortone.assign(colortone.sub(AgxMinEv).div(AgxMaxEv.sub(AgxMinEv)));
-  colortone.assign(clamp(colortone, 0, 1));
+  colortone.assign(clamp$1(colortone, 0, 1));
   colortone.assign(agxDefaultContrastApprox(colortone));
   colortone.assign(AgXOutsetMatrix.mul(colortone));
-  colortone.assign(pow(max$1(vec3$1(0), colortone), vec3$1(2.2)));
+  colortone.assign(pow(max$1$1(vec3$2(0), colortone), vec3$2(2.2)));
   colortone.assign(LINEAR_REC2020_TO_LINEAR_SRGB.mul(colortone));
-  colortone.assign(clamp(colortone, 0, 1));
+  colortone.assign(clamp$1(colortone, 0, 1));
   return colortone;
 }).setLayout({
   name: "agxToneMapping",
@@ -37491,22 +37491,22 @@ const agxToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
     { name: "exposure", type: "float" }
   ]
 });
-const neutralToneMapping = /* @__PURE__ */ Fn$1(([color2, exposure]) => {
-  const StartCompression = float$1(0.8 - 0.04);
-  const Desaturation = float$1(0.15);
+const neutralToneMapping = /* @__PURE__ */ Fn$4(([color2, exposure]) => {
+  const StartCompression = float$4(0.8 - 0.04);
+  const Desaturation = float$4(0.15);
   color2 = color2.mul(exposure);
-  const x = min$1(color2.r, min$1(color2.g, color2.b));
-  const offset = select$1(x.lessThan(0.08), x.sub(mul$1(6.25, x.mul(x))), 0.04);
+  const x = min$1$1(color2.r, min$1$1(color2.g, color2.b));
+  const offset = select$3(x.lessThan(0.08), x.sub(mul$3(6.25, x.mul(x))), 0.04);
   color2.subAssign(offset);
-  const peak = max$1(color2.r, max$1(color2.g, color2.b));
-  If$1(peak.lessThan(StartCompression), () => {
+  const peak = max$1$1(color2.r, max$1$1(color2.g, color2.b));
+  If(peak.lessThan(StartCompression), () => {
     return color2;
   });
-  const d = sub$1(1, StartCompression);
-  const newPeak = sub$1(1, d.mul(d).div(peak.add(d.sub(StartCompression))));
+  const d = sub$3(1, StartCompression);
+  const newPeak = sub$3(1, d.mul(d).div(peak.add(d.sub(StartCompression))));
   color2.mulAssign(newPeak.div(peak));
-  const g = sub$1(1, div$1(1, Desaturation.mul(peak.sub(newPeak)).add(1)));
-  return mix(color2, vec3$1(newPeak), g);
+  const g = sub$3(1, div$2(1, Desaturation.mul(peak.sub(newPeak)).add(1)));
+  return mix(color2, vec3$2(newPeak), g);
 }).setLayout({
   name: "neutralToneMapping",
   type: "vec3",
@@ -37746,7 +37746,7 @@ class ScriptableValueNode extends Node {
     return this.value && this.value.isNode ? this.value.getNodeType(builder) : "float";
   }
   setup() {
-    return this.value && this.value.isNode ? this.value : float$1();
+    return this.value && this.value.isNode ? this.value : float$4();
   }
   serialize(data) {
     super.serialize(data);
@@ -38101,7 +38101,7 @@ class ScriptableNode extends Node {
     if (output2 && output2.isNode) {
       return output2;
     }
-    return float$1();
+    return float$4();
   }
   /**
    * Returns default output of the script.
@@ -38195,16 +38195,16 @@ function getViewZNode(builder) {
   }
   return (viewZ || positionView.z).negate();
 }
-const rangeFogFactor = Fn$1(([near, far], builder) => {
+const rangeFogFactor = Fn$4(([near, far], builder) => {
   const viewZ = getViewZNode(builder);
   return smoothstep(near, far, viewZ);
 });
-const densityFogFactor = Fn$1(([density], builder) => {
+const densityFogFactor = Fn$4(([density], builder) => {
   const viewZ = getViewZNode(builder);
   return density.mul(density, viewZ, viewZ).negate().exp().oneMinus();
 });
-const fog = Fn$1(([color2, factor]) => {
-  return vec4$1(factor.toFloat().mix(output.rgb, color2.toVec3()), output.a);
+const fog = Fn$4(([color2, factor]) => {
+  return vec4$3(factor.toFloat().mix(output.rgb, color2.toVec3()), output.a);
 });
 function rangeFog(color2, near, far) {
   warn('TSL: "rangeFog( color, near, far )" is deprecated. Use "fog( color, rangeFogFactor( near, far ) )" instead.');
@@ -38226,7 +38226,7 @@ class RangeNode extends Node {
    * @param {Node<any>} [minNode=float()] - A node defining the lower bound of the range.
    * @param {Node<any>} [maxNode=float()] - A node defining the upper bound of the range.
    */
-  constructor(minNode = float$1(), maxNode = float$1()) {
+  constructor(minNode = float$4(), maxNode = float$4()) {
     super();
     this.minNode = minNode;
     this.maxNode = maxNode;
@@ -38302,14 +38302,14 @@ class RangeNode extends Node {
       }
       const nodeType = this.getNodeType(builder);
       if (object.count <= 4096) {
-        output2 = buffer(array2, "vec4", object.count).element(instanceIndex$1).convert(nodeType);
+        output2 = buffer(array2, "vec4", object.count).element(instanceIndex$2).convert(nodeType);
       } else {
         const bufferAttribute2 = new InstancedBufferAttribute(array2, 4);
         builder.geometry.setAttribute("__range" + this.id, bufferAttribute2);
         output2 = instancedBufferAttribute(bufferAttribute2).convert(nodeType);
       }
     } else {
-      output2 = float$1(0);
+      output2 = float$4(0);
     }
     return output2;
   }
@@ -38745,7 +38745,7 @@ function getLightData(light) {
 }
 function lightShadowMatrix(light) {
   const data = getLightData(light);
-  return data.shadowMatrix || (data.shadowMatrix = uniform$1("mat4").setGroup(renderGroup).onRenderUpdate((frame) => {
+  return data.shadowMatrix || (data.shadowMatrix = uniform$2("mat4").setGroup(renderGroup).onRenderUpdate((frame) => {
     if (light.castShadow !== true || frame.renderer.shadowMap.enabled === false) {
       if (light.shadow.camera.coordinateSystem !== frame.camera.coordinateSystem) {
         light.shadow.camera.coordinateSystem = frame.camera.coordinateSystem;
@@ -38763,15 +38763,15 @@ function lightProjectionUV(light, position = positionWorld) {
 }
 function lightPosition(light) {
   const data = getLightData(light);
-  return data.position || (data.position = uniform$1(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self2) => self2.value.setFromMatrixPosition(light.matrixWorld)));
+  return data.position || (data.position = uniform$2(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self2) => self2.value.setFromMatrixPosition(light.matrixWorld)));
 }
 function lightTargetPosition(light) {
   const data = getLightData(light);
-  return data.targetPosition || (data.targetPosition = uniform$1(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self2) => self2.value.setFromMatrixPosition(light.target.matrixWorld)));
+  return data.targetPosition || (data.targetPosition = uniform$2(new Vector3()).setGroup(renderGroup).onRenderUpdate((_, self2) => self2.value.setFromMatrixPosition(light.target.matrixWorld)));
 }
 function lightViewPosition(light) {
   const data = getLightData(light);
-  return data.viewPosition || (data.viewPosition = uniform$1(new Vector3()).setGroup(renderGroup).onRenderUpdate(({ camera }, self2) => {
+  return data.viewPosition || (data.viewPosition = uniform$2(new Vector3()).setGroup(renderGroup).onRenderUpdate(({ camera }, self2) => {
     self2.value = self2.value || new Vector3();
     self2.value.setFromMatrixPosition(light.matrixWorld);
     self2.value.applyMatrix4(camera.matrixWorldInverse);
@@ -38957,9 +38957,9 @@ class LightsNode extends Node {
       let totalDiffuse = directDiffuse.add(indirectDiffuse);
       if (backdrop !== null) {
         if (backdropAlpha !== null) {
-          totalDiffuse = vec3$1(backdropAlpha.mix(totalDiffuse, backdrop));
+          totalDiffuse = vec3$2(backdropAlpha.mix(totalDiffuse, backdrop));
         } else {
-          totalDiffuse = vec3$1(backdrop);
+          totalDiffuse = vec3$2(backdrop);
         }
       }
       totalDiffuseNode.assign(totalDiffuse);
@@ -39092,16 +39092,16 @@ function restoreRendererAndSceneState(renderer, scene, state) {
   restoreSceneState(scene, state);
 }
 const shadowMaterialLib = /* @__PURE__ */ new WeakMap();
-const BasicShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, depthLayer }) => {
-  let basic = texture$1(depthTexture, shadowCoord.xy).setName("t_basic");
+const BasicShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, shadowCoord, depthLayer }) => {
+  let basic = texture$2(depthTexture, shadowCoord.xy).setName("t_basic");
   if (depthTexture.isArrayTexture) {
     basic = basic.depth(depthLayer);
   }
   return basic.compare(shadowCoord.z);
 });
-const PCFShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, shadow: shadow2, depthLayer }) => {
+const PCFShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, shadowCoord, shadow: shadow2, depthLayer }) => {
   const depthCompare = (uv2, compare) => {
-    let depth2 = texture$1(depthTexture, uv2);
+    let depth2 = texture$2(depthTexture, uv2);
     if (depthTexture.isArrayTexture) {
       depth2 = depth2.depth(depthLayer);
     }
@@ -39109,10 +39109,10 @@ const PCFShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, shado
   };
   const mapSize = reference("mapSize", "vec2", shadow2).setGroup(renderGroup);
   const radius = reference("radius", "float", shadow2).setGroup(renderGroup);
-  const texelSize = vec2$1(1).div(mapSize);
+  const texelSize = vec2$2(1).div(mapSize);
   const radiusScaled = radius.mul(texelSize.x);
   const phi = interleavedGradientNoise(screenCoordinate.xy).mul(6.28318530718);
-  return add$1(
+  return add$3(
     depthCompare(shadowCoord.xy.add(vogelDiskSample(0, 5, phi).mul(radiusScaled)), shadowCoord.z),
     depthCompare(shadowCoord.xy.add(vogelDiskSample(1, 5, phi).mul(radiusScaled)), shadowCoord.z),
     depthCompare(shadowCoord.xy.add(vogelDiskSample(2, 5, phi).mul(radiusScaled)), shadowCoord.z),
@@ -39120,79 +39120,79 @@ const PCFShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, shado
     depthCompare(shadowCoord.xy.add(vogelDiskSample(4, 5, phi).mul(radiusScaled)), shadowCoord.z)
   ).mul(1 / 5);
 });
-const PCFSoftShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, shadow: shadow2, depthLayer }) => {
+const PCFSoftShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, shadowCoord, shadow: shadow2, depthLayer }) => {
   const depthCompare = (uv3, compare) => {
-    let depth2 = texture$1(depthTexture, uv3);
+    let depth2 = texture$2(depthTexture, uv3);
     if (depthTexture.isArrayTexture) {
       depth2 = depth2.depth(depthLayer);
     }
     return depth2.compare(compare);
   };
   const mapSize = reference("mapSize", "vec2", shadow2).setGroup(renderGroup);
-  const texelSize = vec2$1(1).div(mapSize);
+  const texelSize = vec2$2(1).div(mapSize);
   const dx = texelSize.x;
   const dy = texelSize.y;
   const uv2 = shadowCoord.xy;
   const f = fract(uv2.mul(mapSize).add(0.5));
   uv2.subAssign(f.mul(texelSize));
-  return add$1(
+  return add$3(
     depthCompare(uv2, shadowCoord.z),
-    depthCompare(uv2.add(vec2$1(dx, 0)), shadowCoord.z),
-    depthCompare(uv2.add(vec2$1(0, dy)), shadowCoord.z),
+    depthCompare(uv2.add(vec2$2(dx, 0)), shadowCoord.z),
+    depthCompare(uv2.add(vec2$2(0, dy)), shadowCoord.z),
     depthCompare(uv2.add(texelSize), shadowCoord.z),
     mix(
-      depthCompare(uv2.add(vec2$1(dx.negate(), 0)), shadowCoord.z),
-      depthCompare(uv2.add(vec2$1(dx.mul(2), 0)), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx.negate(), 0)), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx.mul(2), 0)), shadowCoord.z),
       f.x
     ),
     mix(
-      depthCompare(uv2.add(vec2$1(dx.negate(), dy)), shadowCoord.z),
-      depthCompare(uv2.add(vec2$1(dx.mul(2), dy)), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx.negate(), dy)), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx.mul(2), dy)), shadowCoord.z),
       f.x
     ),
     mix(
-      depthCompare(uv2.add(vec2$1(0, dy.negate())), shadowCoord.z),
-      depthCompare(uv2.add(vec2$1(0, dy.mul(2))), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(0, dy.negate())), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(0, dy.mul(2))), shadowCoord.z),
       f.y
     ),
     mix(
-      depthCompare(uv2.add(vec2$1(dx, dy.negate())), shadowCoord.z),
-      depthCompare(uv2.add(vec2$1(dx, dy.mul(2))), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx, dy.negate())), shadowCoord.z),
+      depthCompare(uv2.add(vec2$2(dx, dy.mul(2))), shadowCoord.z),
       f.y
     ),
     mix(
       mix(
-        depthCompare(uv2.add(vec2$1(dx.negate(), dy.negate())), shadowCoord.z),
-        depthCompare(uv2.add(vec2$1(dx.mul(2), dy.negate())), shadowCoord.z),
+        depthCompare(uv2.add(vec2$2(dx.negate(), dy.negate())), shadowCoord.z),
+        depthCompare(uv2.add(vec2$2(dx.mul(2), dy.negate())), shadowCoord.z),
         f.x
       ),
       mix(
-        depthCompare(uv2.add(vec2$1(dx.negate(), dy.mul(2))), shadowCoord.z),
-        depthCompare(uv2.add(vec2$1(dx.mul(2), dy.mul(2))), shadowCoord.z),
+        depthCompare(uv2.add(vec2$2(dx.negate(), dy.mul(2))), shadowCoord.z),
+        depthCompare(uv2.add(vec2$2(dx.mul(2), dy.mul(2))), shadowCoord.z),
         f.x
       ),
       f.y
     )
   ).mul(1 / 9);
 });
-const VSMShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, shadowCoord, depthLayer }) => {
-  let distribution = texture$1(depthTexture).sample(shadowCoord.xy);
+const VSMShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, shadowCoord, depthLayer }) => {
+  let distribution = texture$2(depthTexture).sample(shadowCoord.xy);
   if (depthTexture.isArrayTexture) {
     distribution = distribution.depth(depthLayer);
   }
   distribution = distribution.rg;
   const mean = distribution.x;
-  const variance = max$1(1e-7, distribution.y.mul(distribution.y));
+  const variance = max$1$1(1e-7, distribution.y.mul(distribution.y));
   const hardShadow = step(shadowCoord.z, mean);
-  If$1(hardShadow.equal(1), () => {
-    return float$1(1);
+  If(hardShadow.equal(1), () => {
+    return float$4(1);
   });
   const d = shadowCoord.z.sub(mean);
   let p_max = variance.div(variance.add(d.mul(d)));
-  p_max = clamp(sub$1(p_max, 0.3).div(0.65));
-  return max$1(hardShadow, p_max);
+  p_max = clamp$1(sub$3(p_max, 0.3).div(0.65));
+  return max$1$1(hardShadow, p_max);
 });
-const linearDistance = /* @__PURE__ */ Fn$1(([position, cameraNear2, cameraFar2]) => {
+const linearDistance = /* @__PURE__ */ Fn$4(([position, cameraNear2, cameraFar2]) => {
   let dist = positionWorld.sub(position).length();
   dist = dist.sub(cameraNear2).div(cameraFar2.sub(cameraNear2));
   dist = dist.saturate();
@@ -39210,7 +39210,7 @@ const getShadowMaterial = (light) => {
   if (material === void 0) {
     const depthNode = light.isPointLight ? linearShadowDistance(light) : null;
     material = new NodeMaterial();
-    material.colorNode = vec4$1(0, 0, 0, 1);
+    material.colorNode = vec4$3(0, 0, 0, 1);
     material.depthNode = depthNode;
     material.isShadowPassMaterial = true;
     material.name = "ShadowMaterial";
@@ -39251,14 +39251,14 @@ const getShadowRenderObjectFunction = (renderer, shadow2, shadowType, useVelocit
   _shadowRenderObjectKeys[1] = null;
   return renderObjectFunction;
 };
-const VSMPassVertical = /* @__PURE__ */ Fn$1(({ samples, radius, size, shadowPass, depthLayer }) => {
-  const mean = float$1(0).toVar("meanVertical");
-  const squaredMean = float$1(0).toVar("squareMeanVertical");
-  const uvStride = samples.lessThanEqual(float$1(1)).select(float$1(0), float$1(2).div(samples.sub(1)));
-  const uvStart = samples.lessThanEqual(float$1(1)).select(float$1(0), float$1(-1));
-  Loop({ start: int$1(0), end: int$1(samples), type: "int", condition: "<" }, ({ i }) => {
-    const uvOffset = uvStart.add(float$1(i).mul(uvStride));
-    let depth2 = shadowPass.sample(add$1(screenCoordinate.xy, vec2$1(0, uvOffset).mul(radius)).div(size));
+const VSMPassVertical = /* @__PURE__ */ Fn$4(({ samples, radius, size, shadowPass, depthLayer }) => {
+  const mean = float$4(0).toVar("meanVertical");
+  const squaredMean = float$4(0).toVar("squareMeanVertical");
+  const uvStride = samples.lessThanEqual(float$4(1)).select(float$4(0), float$4(2).div(samples.sub(1)));
+  const uvStart = samples.lessThanEqual(float$4(1)).select(float$4(0), float$4(-1));
+  Loop({ start: int$3(0), end: int$3(samples), type: "int", condition: "<" }, ({ i }) => {
+    const uvOffset = uvStart.add(float$4(i).mul(uvStride));
+    let depth2 = shadowPass.sample(add$3(screenCoordinate.xy, vec2$2(0, uvOffset).mul(radius)).div(size));
     if (shadowPass.value.isArrayTexture) {
       depth2 = depth2.depth(depthLayer);
     }
@@ -39268,27 +39268,27 @@ const VSMPassVertical = /* @__PURE__ */ Fn$1(({ samples, radius, size, shadowPas
   });
   mean.divAssign(samples);
   squaredMean.divAssign(samples);
-  const std_dev = sqrt$1(squaredMean.sub(mean.mul(mean)).max(0));
-  return vec2$1(mean, std_dev);
+  const std_dev = sqrt$3(squaredMean.sub(mean.mul(mean)).max(0));
+  return vec2$2(mean, std_dev);
 });
-const VSMPassHorizontal = /* @__PURE__ */ Fn$1(({ samples, radius, size, shadowPass, depthLayer }) => {
-  const mean = float$1(0).toVar("meanHorizontal");
-  const squaredMean = float$1(0).toVar("squareMeanHorizontal");
-  const uvStride = samples.lessThanEqual(float$1(1)).select(float$1(0), float$1(2).div(samples.sub(1)));
-  const uvStart = samples.lessThanEqual(float$1(1)).select(float$1(0), float$1(-1));
-  Loop({ start: int$1(0), end: int$1(samples), type: "int", condition: "<" }, ({ i }) => {
-    const uvOffset = uvStart.add(float$1(i).mul(uvStride));
-    let distribution = shadowPass.sample(add$1(screenCoordinate.xy, vec2$1(uvOffset, 0).mul(radius)).div(size));
+const VSMPassHorizontal = /* @__PURE__ */ Fn$4(({ samples, radius, size, shadowPass, depthLayer }) => {
+  const mean = float$4(0).toVar("meanHorizontal");
+  const squaredMean = float$4(0).toVar("squareMeanHorizontal");
+  const uvStride = samples.lessThanEqual(float$4(1)).select(float$4(0), float$4(2).div(samples.sub(1)));
+  const uvStart = samples.lessThanEqual(float$4(1)).select(float$4(0), float$4(-1));
+  Loop({ start: int$3(0), end: int$3(samples), type: "int", condition: "<" }, ({ i }) => {
+    const uvOffset = uvStart.add(float$4(i).mul(uvStride));
+    let distribution = shadowPass.sample(add$3(screenCoordinate.xy, vec2$2(uvOffset, 0).mul(radius)).div(size));
     if (shadowPass.value.isArrayTexture) {
       distribution = distribution.depth(depthLayer);
     }
     mean.addAssign(distribution.x);
-    squaredMean.addAssign(add$1(distribution.y.mul(distribution.y), distribution.x.mul(distribution.x)));
+    squaredMean.addAssign(add$3(distribution.y.mul(distribution.y), distribution.x.mul(distribution.x)));
   });
   mean.divAssign(samples);
   squaredMean.divAssign(samples);
-  const std_dev = sqrt$1(squaredMean.sub(mean.mul(mean)).max(0));
-  return vec2$1(mean, std_dev);
+  const std_dev = sqrt$3(squaredMean.sub(mean.mul(mean)).max(0));
+  return vec2$2(mean, std_dev);
 });
 const _shadowFilterLib = [BasicShadowFilter, PCFShadowFilter, PCFSoftShadowFilter, VSMShadowFilter];
 let _rendererState;
@@ -39331,7 +39331,7 @@ class ShadowNode extends ShadowBaseNode {
   setupShadowFilter(builder, { filterFn, depthTexture, shadowCoord, shadow: shadow2, depthLayer }) {
     const frustumTest = shadowCoord.x.greaterThanEqual(0).and(shadowCoord.x.lessThanEqual(1)).and(shadowCoord.y.greaterThanEqual(0)).and(shadowCoord.y.lessThanEqual(1)).and(shadowCoord.z.lessThanEqual(1));
     const shadowNode = filterFn({ depthTexture, shadowCoord, shadow: shadow2, depthLayer });
-    return frustumTest.select(shadowNode, float$1(1));
+    return frustumTest.select(shadowNode, float$4(1));
   }
   /**
    * Setups the shadow coordinates.
@@ -39359,7 +39359,7 @@ class ShadowNode extends ShadowBaseNode {
       const cameraFarLocal = reference("far", "float", shadow2.camera).setGroup(renderGroup);
       coordZ = viewZToLogarithmicDepth(w.negate(), cameraNearLocal, cameraFarLocal);
     }
-    shadowCoord = vec3$1(
+    shadowCoord = vec3$2(
       shadowCoord.x,
       shadowCoord.y.oneMinus(),
       // follow webgpu standards
@@ -39416,11 +39416,11 @@ class ShadowNode extends ShadowBaseNode {
         this.vsmShadowMapVertical = builder.createRenderTarget(shadow2.mapSize.width, shadow2.mapSize.height, { format: RGFormat, type: HalfFloatType, depthBuffer: false });
         this.vsmShadowMapHorizontal = builder.createRenderTarget(shadow2.mapSize.width, shadow2.mapSize.height, { format: RGFormat, type: HalfFloatType, depthBuffer: false });
       }
-      let shadowPassVertical = texture$1(depthTexture);
+      let shadowPassVertical = texture$2(depthTexture);
       if (depthTexture.isArrayTexture) {
         shadowPassVertical = shadowPassVertical.depth(this.depthLayer);
       }
-      let shadowPassHorizontal = texture$1(this.vsmShadowMapVertical.texture);
+      let shadowPassHorizontal = texture$2(this.vsmShadowMapVertical.texture);
       if (depthTexture.isArrayTexture) {
         shadowPassHorizontal = shadowPassHorizontal.depth(this.depthLayer);
       }
@@ -39448,7 +39448,7 @@ class ShadowNode extends ShadowBaseNode {
     if (shadowMap.texture.isCubeTexture) {
       shadowColor = cubeTexture(shadowMap.texture, shadowCoord.xyz);
     } else {
-      shadowColor = texture$1(shadowMap.texture, shadowCoord);
+      shadowColor = texture$2(shadowMap.texture, shadowCoord);
       if (depthTexture.isArrayTexture) {
         shadowColor = shadowColor.depth(this.depthLayer);
       }
@@ -39461,12 +39461,12 @@ class ShadowNode extends ShadowBaseNode {
       if (this.shadowMap.texture.isCubeTexture) {
         return cubeTexture(this.shadowMap.texture);
       }
-      return texture$1(this.shadowMap.texture);
+      return texture$2(this.shadowMap.texture);
     }).toInspector(`${inspectName} / Depth`, () => {
       if (this.shadowMap.texture.isCubeTexture) {
         return cubeTexture(this.shadowMap.texture).r.oneMinus();
       }
-      return textureLoad$1(this.shadowMap.depthTexture, uv$1().mul(textureSize(texture$1(this.shadowMap.depthTexture)))).r.oneMinus();
+      return textureLoad$2(this.shadowMap.depthTexture, uv$1().mul(textureSize(texture$2(this.shadowMap.depthTexture)))).r.oneMinus();
     });
   }
   /**
@@ -39478,7 +39478,7 @@ class ShadowNode extends ShadowBaseNode {
    */
   setup(builder) {
     if (builder.renderer.shadowMap.enabled === false) return;
-    return Fn$1(() => {
+    return Fn$4(() => {
       const currentShadowType = builder.renderer.shadowMap.type;
       if (this._currentShadowType !== currentShadowType) {
         this._reset();
@@ -39656,15 +39656,15 @@ const _cubeUpsWebGL = [
   /* @__PURE__ */ new Vector3(0, -1, 0),
   /* @__PURE__ */ new Vector3(0, -1, 0)
 ];
-const BasicPointShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, bd3D, dp }) => {
+const BasicPointShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, bd3D, dp }) => {
   return cubeTexture(depthTexture, bd3D).compare(dp);
 });
-const PointShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, bd3D, dp, shadow: shadow2 }) => {
+const PointShadowFilter = /* @__PURE__ */ Fn$4(({ depthTexture, bd3D, dp, shadow: shadow2 }) => {
   const radius = reference("radius", "float", shadow2).setGroup(renderGroup);
   const mapSize = reference("mapSize", "vec2", shadow2).setGroup(renderGroup);
   const texelSize = radius.div(mapSize.x);
-  const absDir = abs$1(bd3D);
-  const tangent = normalize$1(cross$1(bd3D, absDir.x.greaterThan(absDir.z).select(vec3$1(0, 1, 0), vec3$1(1, 0, 0))));
+  const absDir = abs$2(bd3D);
+  const tangent = normalize$1(cross$1(bd3D, absDir.x.greaterThan(absDir.z).select(vec3$2(0, 1, 0), vec3$2(1, 0, 0))));
   const bitangent = cross$1(bd3D, tangent);
   const phi = interleavedGradientNoise(screenCoordinate.xy).mul(6.28318530718);
   const sample0 = vogelDiskSample(0, 5, phi);
@@ -39674,14 +39674,14 @@ const PointShadowFilter = /* @__PURE__ */ Fn$1(({ depthTexture, bd3D, dp, shadow
   const sample4 = vogelDiskSample(4, 5, phi);
   return cubeTexture(depthTexture, bd3D.add(tangent.mul(sample0.x).add(bitangent.mul(sample0.y)).mul(texelSize))).compare(dp).add(cubeTexture(depthTexture, bd3D.add(tangent.mul(sample1.x).add(bitangent.mul(sample1.y)).mul(texelSize))).compare(dp)).add(cubeTexture(depthTexture, bd3D.add(tangent.mul(sample2.x).add(bitangent.mul(sample2.y)).mul(texelSize))).compare(dp)).add(cubeTexture(depthTexture, bd3D.add(tangent.mul(sample3.x).add(bitangent.mul(sample3.y)).mul(texelSize))).compare(dp)).add(cubeTexture(depthTexture, bd3D.add(tangent.mul(sample4.x).add(bitangent.mul(sample4.y)).mul(texelSize))).compare(dp)).mul(1 / 5);
 });
-const pointShadowFilter = /* @__PURE__ */ Fn$1(({ filterFn, depthTexture, shadowCoord, shadow: shadow2 }) => {
+const pointShadowFilter = /* @__PURE__ */ Fn$4(({ filterFn, depthTexture, shadowCoord, shadow: shadow2 }) => {
   const lightToPosition = shadowCoord.xyz.toVar();
   const lightToPositionLength = lightToPosition.length();
-  const cameraNearLocal = uniform$1("float").setGroup(renderGroup).onRenderUpdate(() => shadow2.camera.near);
-  const cameraFarLocal = uniform$1("float").setGroup(renderGroup).onRenderUpdate(() => shadow2.camera.far);
+  const cameraNearLocal = uniform$2("float").setGroup(renderGroup).onRenderUpdate(() => shadow2.camera.near);
+  const cameraFarLocal = uniform$2("float").setGroup(renderGroup).onRenderUpdate(() => shadow2.camera.far);
   const bias = reference("bias", "float", shadow2).setGroup(renderGroup);
-  const result = float$1(1).toVar();
-  If$1(lightToPositionLength.sub(cameraFarLocal).lessThanEqual(0).and(lightToPositionLength.sub(cameraNearLocal).greaterThanEqual(0)), () => {
+  const result = float$4(1).toVar();
+  If(lightToPositionLength.sub(cameraFarLocal).lessThanEqual(0).and(lightToPositionLength.sub(cameraNearLocal).greaterThanEqual(0)), () => {
     const dp = lightToPositionLength.sub(cameraNearLocal).div(cameraFarLocal.sub(cameraNearLocal)).toVar();
     dp.addAssign(bias);
     const bd3D = lightToPosition.normalize();
@@ -39801,7 +39801,7 @@ class PointShadowNode extends ShadowNode {
   }
 }
 const pointShadow = (light, shadow2) => new PointShadowNode(light, shadow2);
-const getDistanceAttenuation = /* @__PURE__ */ Fn$1(({ lightDistance, cutoffDistance, decayExponent }) => {
+const getDistanceAttenuation = /* @__PURE__ */ Fn$4(({ lightDistance, cutoffDistance, decayExponent }) => {
   const distanceFalloff = lightDistance.pow(decayExponent).max(0.01).reciprocal();
   return cutoffDistance.greaterThan(0).select(
     distanceFalloff.mul(lightDistance.div(cutoffDistance).pow4().oneMinus().clamp().pow2()),
@@ -39819,29 +39819,29 @@ const directPointLight = ({ color: color2, lightVector, cutoffDistance, decayExp
   const lightColor = color2.mul(attenuation);
   return { lightDirection, lightColor };
 };
-const checker = /* @__PURE__ */ Fn$1(([coord = uv$1()]) => {
+const checker = /* @__PURE__ */ Fn$4(([coord = uv$1()]) => {
   const uv2 = coord.mul(2);
   const cx = uv2.x.floor();
   const cy = uv2.y.floor();
   const result = cx.add(cy).mod(2);
   return result.sign();
 });
-const shapeCircle = Fn$1(([coord = uv$1()], { renderer, material }) => {
+const shapeCircle = Fn$4(([coord = uv$1()], { renderer, material }) => {
   const len2 = lengthSq(coord.mul(2).sub(1));
   let alpha;
   if (material.alphaToCoverage && renderer.currentSamples > 0) {
-    const dlen = float$1(len2.fwidth()).toVar();
+    const dlen = float$4(len2.fwidth()).toVar();
     alpha = smoothstep(dlen.oneMinus(), dlen.add(1), len2).oneMinus();
   } else {
-    alpha = select$1(len2.greaterThan(1), 0, 1);
+    alpha = select$3(len2.greaterThan(1), 0, 1);
   }
   return alpha;
 });
-const mx_select = /* @__PURE__ */ Fn$1(([b_immutable, t_immutable, f_immutable]) => {
-  const f = float$1(f_immutable).toVar();
-  const t = float$1(t_immutable).toVar();
+const mx_select = /* @__PURE__ */ Fn$4(([b_immutable, t_immutable, f_immutable]) => {
+  const f = float$4(f_immutable).toVar();
+  const t = float$4(t_immutable).toVar();
   const b = bool(b_immutable).toVar();
-  return select$1(b, t, f);
+  return select$3(b, t, f);
 }).setLayout({
   name: "mx_select",
   type: "float",
@@ -39851,10 +39851,10 @@ const mx_select = /* @__PURE__ */ Fn$1(([b_immutable, t_immutable, f_immutable])
     { name: "f", type: "float" }
   ]
 });
-const mx_negate_if = /* @__PURE__ */ Fn$1(([val_immutable, b_immutable]) => {
+const mx_negate_if = /* @__PURE__ */ Fn$4(([val_immutable, b_immutable]) => {
   const b = bool(b_immutable).toVar();
-  const val = float$1(val_immutable).toVar();
-  return select$1(b, val.negate(), val);
+  const val = float$4(val_immutable).toVar();
+  return select$3(b, val.negate(), val);
 }).setLayout({
   name: "mx_negate_if",
   type: "float",
@@ -39863,9 +39863,9 @@ const mx_negate_if = /* @__PURE__ */ Fn$1(([val_immutable, b_immutable]) => {
     { name: "b", type: "bool" }
   ]
 });
-const mx_floor = /* @__PURE__ */ Fn$1(([x_immutable]) => {
-  const x = float$1(x_immutable).toVar();
-  return int$1(floor(x));
+const mx_floor = /* @__PURE__ */ Fn$4(([x_immutable]) => {
+  const x = float$4(x_immutable).toVar();
+  return int$3(floor(x));
 }).setLayout({
   name: "mx_floor",
   type: "int",
@@ -39873,20 +39873,20 @@ const mx_floor = /* @__PURE__ */ Fn$1(([x_immutable]) => {
     { name: "x", type: "float" }
   ]
 });
-const mx_floorfrac = /* @__PURE__ */ Fn$1(([x_immutable, i]) => {
-  const x = float$1(x_immutable).toVar();
+const mx_floorfrac = /* @__PURE__ */ Fn$4(([x_immutable, i]) => {
+  const x = float$4(x_immutable).toVar();
   i.assign(mx_floor(x));
-  return x.sub(float$1(i));
+  return x.sub(float$4(i));
 });
-const mx_bilerp_0 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, s_immutable, t_immutable]) => {
-  const t = float$1(t_immutable).toVar();
-  const s = float$1(s_immutable).toVar();
-  const v3 = float$1(v3_immutable).toVar();
-  const v2 = float$1(v2_immutable).toVar();
-  const v1 = float$1(v1_immutable).toVar();
-  const v0 = float$1(v0_immutable).toVar();
-  const s1 = float$1(sub$1(1, s)).toVar();
-  return sub$1(1, t).mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))));
+const mx_bilerp_0 = /* @__PURE__ */ Fn$4(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, s_immutable, t_immutable]) => {
+  const t = float$4(t_immutable).toVar();
+  const s = float$4(s_immutable).toVar();
+  const v3 = float$4(v3_immutable).toVar();
+  const v2 = float$4(v2_immutable).toVar();
+  const v1 = float$4(v1_immutable).toVar();
+  const v0 = float$4(v0_immutable).toVar();
+  const s1 = float$4(sub$3(1, s)).toVar();
+  return sub$3(1, t).mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))));
 }).setLayout({
   name: "mx_bilerp_0",
   type: "float",
@@ -39899,15 +39899,15 @@ const mx_bilerp_0 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immuta
     { name: "t", type: "float" }
   ]
 });
-const mx_bilerp_1 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, s_immutable, t_immutable]) => {
-  const t = float$1(t_immutable).toVar();
-  const s = float$1(s_immutable).toVar();
-  const v3 = vec3$1(v3_immutable).toVar();
-  const v2 = vec3$1(v2_immutable).toVar();
-  const v1 = vec3$1(v1_immutable).toVar();
-  const v0 = vec3$1(v0_immutable).toVar();
-  const s1 = float$1(sub$1(1, s)).toVar();
-  return sub$1(1, t).mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))));
+const mx_bilerp_1 = /* @__PURE__ */ Fn$4(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, s_immutable, t_immutable]) => {
+  const t = float$4(t_immutable).toVar();
+  const s = float$4(s_immutable).toVar();
+  const v3 = vec3$2(v3_immutable).toVar();
+  const v2 = vec3$2(v2_immutable).toVar();
+  const v1 = vec3$2(v1_immutable).toVar();
+  const v0 = vec3$2(v0_immutable).toVar();
+  const s1 = float$4(sub$3(1, s)).toVar();
+  return sub$3(1, t).mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))));
 }).setLayout({
   name: "mx_bilerp_1",
   type: "vec3",
@@ -39921,21 +39921,21 @@ const mx_bilerp_1 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immuta
   ]
 });
 const mx_bilerp = /* @__PURE__ */ overloadingFn([mx_bilerp_0, mx_bilerp_1]);
-const mx_trilerp_0 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, v4_immutable, v5_immutable, v6_immutable, v7_immutable, s_immutable, t_immutable, r_immutable]) => {
-  const r = float$1(r_immutable).toVar();
-  const t = float$1(t_immutable).toVar();
-  const s = float$1(s_immutable).toVar();
-  const v7 = float$1(v7_immutable).toVar();
-  const v6 = float$1(v6_immutable).toVar();
-  const v5 = float$1(v5_immutable).toVar();
-  const v4 = float$1(v4_immutable).toVar();
-  const v3 = float$1(v3_immutable).toVar();
-  const v2 = float$1(v2_immutable).toVar();
-  const v1 = float$1(v1_immutable).toVar();
-  const v0 = float$1(v0_immutable).toVar();
-  const s1 = float$1(sub$1(1, s)).toVar();
-  const t1 = float$1(sub$1(1, t)).toVar();
-  const r1 = float$1(sub$1(1, r)).toVar();
+const mx_trilerp_0 = /* @__PURE__ */ Fn$4(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, v4_immutable, v5_immutable, v6_immutable, v7_immutable, s_immutable, t_immutable, r_immutable]) => {
+  const r = float$4(r_immutable).toVar();
+  const t = float$4(t_immutable).toVar();
+  const s = float$4(s_immutable).toVar();
+  const v7 = float$4(v7_immutable).toVar();
+  const v6 = float$4(v6_immutable).toVar();
+  const v5 = float$4(v5_immutable).toVar();
+  const v4 = float$4(v4_immutable).toVar();
+  const v3 = float$4(v3_immutable).toVar();
+  const v2 = float$4(v2_immutable).toVar();
+  const v1 = float$4(v1_immutable).toVar();
+  const v0 = float$4(v0_immutable).toVar();
+  const s1 = float$4(sub$3(1, s)).toVar();
+  const t1 = float$4(sub$3(1, t)).toVar();
+  const r1 = float$4(sub$3(1, r)).toVar();
   return r1.mul(t1.mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))))).add(r.mul(t1.mul(v4.mul(s1).add(v5.mul(s))).add(t.mul(v6.mul(s1).add(v7.mul(s))))));
 }).setLayout({
   name: "mx_trilerp_0",
@@ -39954,21 +39954,21 @@ const mx_trilerp_0 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immut
     { name: "r", type: "float" }
   ]
 });
-const mx_trilerp_1 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, v4_immutable, v5_immutable, v6_immutable, v7_immutable, s_immutable, t_immutable, r_immutable]) => {
-  const r = float$1(r_immutable).toVar();
-  const t = float$1(t_immutable).toVar();
-  const s = float$1(s_immutable).toVar();
-  const v7 = vec3$1(v7_immutable).toVar();
-  const v6 = vec3$1(v6_immutable).toVar();
-  const v5 = vec3$1(v5_immutable).toVar();
-  const v4 = vec3$1(v4_immutable).toVar();
-  const v3 = vec3$1(v3_immutable).toVar();
-  const v2 = vec3$1(v2_immutable).toVar();
-  const v1 = vec3$1(v1_immutable).toVar();
-  const v0 = vec3$1(v0_immutable).toVar();
-  const s1 = float$1(sub$1(1, s)).toVar();
-  const t1 = float$1(sub$1(1, t)).toVar();
-  const r1 = float$1(sub$1(1, r)).toVar();
+const mx_trilerp_1 = /* @__PURE__ */ Fn$4(([v0_immutable, v1_immutable, v2_immutable, v3_immutable, v4_immutable, v5_immutable, v6_immutable, v7_immutable, s_immutable, t_immutable, r_immutable]) => {
+  const r = float$4(r_immutable).toVar();
+  const t = float$4(t_immutable).toVar();
+  const s = float$4(s_immutable).toVar();
+  const v7 = vec3$2(v7_immutable).toVar();
+  const v6 = vec3$2(v6_immutable).toVar();
+  const v5 = vec3$2(v5_immutable).toVar();
+  const v4 = vec3$2(v4_immutable).toVar();
+  const v3 = vec3$2(v3_immutable).toVar();
+  const v2 = vec3$2(v2_immutable).toVar();
+  const v1 = vec3$2(v1_immutable).toVar();
+  const v0 = vec3$2(v0_immutable).toVar();
+  const s1 = float$4(sub$3(1, s)).toVar();
+  const t1 = float$4(sub$3(1, t)).toVar();
+  const r1 = float$4(sub$3(1, r)).toVar();
   return r1.mul(t1.mul(v0.mul(s1).add(v1.mul(s))).add(t.mul(v2.mul(s1).add(v3.mul(s))))).add(r.mul(t1.mul(v4.mul(s1).add(v5.mul(s))).add(t.mul(v6.mul(s1).add(v7.mul(s))))));
 }).setLayout({
   name: "mx_trilerp_1",
@@ -39988,14 +39988,14 @@ const mx_trilerp_1 = /* @__PURE__ */ Fn$1(([v0_immutable, v1_immutable, v2_immut
   ]
 });
 const mx_trilerp = /* @__PURE__ */ overloadingFn([mx_trilerp_0, mx_trilerp_1]);
-const mx_gradient_float_0 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y_immutable]) => {
-  const y = float$1(y_immutable).toVar();
-  const x = float$1(x_immutable).toVar();
-  const hash5 = uint$1(hash_immutable).toVar();
-  const h = uint$1(hash5.bitAnd(uint$1(7))).toVar();
-  const u = float$1(mx_select(h.lessThan(uint$1(4)), x, y)).toVar();
-  const v = float$1(mul$1(2, mx_select(h.lessThan(uint$1(4)), y, x))).toVar();
-  return mx_negate_if(u, bool(h.bitAnd(uint$1(1)))).add(mx_negate_if(v, bool(h.bitAnd(uint$1(2)))));
+const mx_gradient_float_0 = /* @__PURE__ */ Fn$4(([hash_immutable, x_immutable, y_immutable]) => {
+  const y = float$4(y_immutable).toVar();
+  const x = float$4(x_immutable).toVar();
+  const hash5 = uint$3(hash_immutable).toVar();
+  const h = uint$3(hash5.bitAnd(uint$3(7))).toVar();
+  const u = float$4(mx_select(h.lessThan(uint$3(4)), x, y)).toVar();
+  const v = float$4(mul$3(2, mx_select(h.lessThan(uint$3(4)), y, x))).toVar();
+  return mx_negate_if(u, bool(h.bitAnd(uint$3(1)))).add(mx_negate_if(v, bool(h.bitAnd(uint$3(2)))));
 }).setLayout({
   name: "mx_gradient_float_0",
   type: "float",
@@ -40005,15 +40005,15 @@ const mx_gradient_float_0 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, 
     { name: "y", type: "float" }
   ]
 });
-const mx_gradient_float_1 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y_immutable, z_immutable]) => {
-  const z = float$1(z_immutable).toVar();
-  const y = float$1(y_immutable).toVar();
-  const x = float$1(x_immutable).toVar();
-  const hash5 = uint$1(hash_immutable).toVar();
-  const h = uint$1(hash5.bitAnd(uint$1(15))).toVar();
-  const u = float$1(mx_select(h.lessThan(uint$1(8)), x, y)).toVar();
-  const v = float$1(mx_select(h.lessThan(uint$1(4)), y, mx_select(h.equal(uint$1(12)).or(h.equal(uint$1(14))), x, z))).toVar();
-  return mx_negate_if(u, bool(h.bitAnd(uint$1(1)))).add(mx_negate_if(v, bool(h.bitAnd(uint$1(2)))));
+const mx_gradient_float_1 = /* @__PURE__ */ Fn$4(([hash_immutable, x_immutable, y_immutable, z_immutable]) => {
+  const z = float$4(z_immutable).toVar();
+  const y = float$4(y_immutable).toVar();
+  const x = float$4(x_immutable).toVar();
+  const hash5 = uint$3(hash_immutable).toVar();
+  const h = uint$3(hash5.bitAnd(uint$3(15))).toVar();
+  const u = float$4(mx_select(h.lessThan(uint$3(8)), x, y)).toVar();
+  const v = float$4(mx_select(h.lessThan(uint$3(4)), y, mx_select(h.equal(uint$3(12)).or(h.equal(uint$3(14))), x, z))).toVar();
+  return mx_negate_if(u, bool(h.bitAnd(uint$3(1)))).add(mx_negate_if(v, bool(h.bitAnd(uint$3(2)))));
 }).setLayout({
   name: "mx_gradient_float_1",
   type: "float",
@@ -40025,11 +40025,11 @@ const mx_gradient_float_1 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, 
   ]
 });
 const mx_gradient_float = /* @__PURE__ */ overloadingFn([mx_gradient_float_0, mx_gradient_float_1]);
-const mx_gradient_vec3_0 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y_immutable]) => {
-  const y = float$1(y_immutable).toVar();
-  const x = float$1(x_immutable).toVar();
+const mx_gradient_vec3_0 = /* @__PURE__ */ Fn$4(([hash_immutable, x_immutable, y_immutable]) => {
+  const y = float$4(y_immutable).toVar();
+  const x = float$4(x_immutable).toVar();
   const hash5 = uvec3(hash_immutable).toVar();
-  return vec3$1(mx_gradient_float(hash5.x, x, y), mx_gradient_float(hash5.y, x, y), mx_gradient_float(hash5.z, x, y));
+  return vec3$2(mx_gradient_float(hash5.x, x, y), mx_gradient_float(hash5.y, x, y), mx_gradient_float(hash5.z, x, y));
 }).setLayout({
   name: "mx_gradient_vec3_0",
   type: "vec3",
@@ -40039,12 +40039,12 @@ const mx_gradient_vec3_0 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y
     { name: "y", type: "float" }
   ]
 });
-const mx_gradient_vec3_1 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y_immutable, z_immutable]) => {
-  const z = float$1(z_immutable).toVar();
-  const y = float$1(y_immutable).toVar();
-  const x = float$1(x_immutable).toVar();
+const mx_gradient_vec3_1 = /* @__PURE__ */ Fn$4(([hash_immutable, x_immutable, y_immutable, z_immutable]) => {
+  const z = float$4(z_immutable).toVar();
+  const y = float$4(y_immutable).toVar();
+  const x = float$4(x_immutable).toVar();
   const hash5 = uvec3(hash_immutable).toVar();
-  return vec3$1(mx_gradient_float(hash5.x, x, y, z), mx_gradient_float(hash5.y, x, y, z), mx_gradient_float(hash5.z, x, y, z));
+  return vec3$2(mx_gradient_float(hash5.x, x, y, z), mx_gradient_float(hash5.y, x, y, z), mx_gradient_float(hash5.z, x, y, z));
 }).setLayout({
   name: "mx_gradient_vec3_1",
   type: "vec3",
@@ -40056,9 +40056,9 @@ const mx_gradient_vec3_1 = /* @__PURE__ */ Fn$1(([hash_immutable, x_immutable, y
   ]
 });
 const mx_gradient_vec3 = /* @__PURE__ */ overloadingFn([mx_gradient_vec3_0, mx_gradient_vec3_1]);
-const mx_gradient_scale2d_0 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
-  const v = float$1(v_immutable).toVar();
-  return mul$1(0.6616, v);
+const mx_gradient_scale2d_0 = /* @__PURE__ */ Fn$4(([v_immutable]) => {
+  const v = float$4(v_immutable).toVar();
+  return mul$3(0.6616, v);
 }).setLayout({
   name: "mx_gradient_scale2d_0",
   type: "float",
@@ -40066,9 +40066,9 @@ const mx_gradient_scale2d_0 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
     { name: "v", type: "float" }
   ]
 });
-const mx_gradient_scale3d_0 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
-  const v = float$1(v_immutable).toVar();
-  return mul$1(0.982, v);
+const mx_gradient_scale3d_0 = /* @__PURE__ */ Fn$4(([v_immutable]) => {
+  const v = float$4(v_immutable).toVar();
+  return mul$3(0.982, v);
 }).setLayout({
   name: "mx_gradient_scale3d_0",
   type: "float",
@@ -40076,9 +40076,9 @@ const mx_gradient_scale3d_0 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
     { name: "v", type: "float" }
   ]
 });
-const mx_gradient_scale2d_1 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
-  const v = vec3$1(v_immutable).toVar();
-  return mul$1(0.6616, v);
+const mx_gradient_scale2d_1 = /* @__PURE__ */ Fn$4(([v_immutable]) => {
+  const v = vec3$2(v_immutable).toVar();
+  return mul$3(0.6616, v);
 }).setLayout({
   name: "mx_gradient_scale2d_1",
   type: "vec3",
@@ -40087,9 +40087,9 @@ const mx_gradient_scale2d_1 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
   ]
 });
 const mx_gradient_scale2d = /* @__PURE__ */ overloadingFn([mx_gradient_scale2d_0, mx_gradient_scale2d_1]);
-const mx_gradient_scale3d_1 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
-  const v = vec3$1(v_immutable).toVar();
-  return mul$1(0.982, v);
+const mx_gradient_scale3d_1 = /* @__PURE__ */ Fn$4(([v_immutable]) => {
+  const v = vec3$2(v_immutable).toVar();
+  return mul$3(0.982, v);
 }).setLayout({
   name: "mx_gradient_scale3d_1",
   type: "vec3",
@@ -40098,10 +40098,10 @@ const mx_gradient_scale3d_1 = /* @__PURE__ */ Fn$1(([v_immutable]) => {
   ]
 });
 const mx_gradient_scale3d = /* @__PURE__ */ overloadingFn([mx_gradient_scale3d_0, mx_gradient_scale3d_1]);
-const mx_rotl32 = /* @__PURE__ */ Fn$1(([x_immutable, k_immutable]) => {
-  const k = int$1(k_immutable).toVar();
-  const x = uint$1(x_immutable).toVar();
-  return x.shiftLeft(k).bitOr(x.shiftRight(int$1(32).sub(k)));
+const mx_rotl32 = /* @__PURE__ */ Fn$4(([x_immutable, k_immutable]) => {
+  const k = int$3(k_immutable).toVar();
+  const x = uint$3(x_immutable).toVar();
+  return x.shiftLeft(k).bitOr(x.shiftRight(int$3(32).sub(k)));
 }).setLayout({
   name: "mx_rotl32",
   type: "uint",
@@ -40110,44 +40110,44 @@ const mx_rotl32 = /* @__PURE__ */ Fn$1(([x_immutable, k_immutable]) => {
     { name: "k", type: "int" }
   ]
 });
-const mx_bjmix = /* @__PURE__ */ Fn$1(([a, b, c]) => {
+const mx_bjmix = /* @__PURE__ */ Fn$4(([a, b, c]) => {
   a.subAssign(c);
-  a.bitXorAssign(mx_rotl32(c, int$1(4)));
+  a.bitXorAssign(mx_rotl32(c, int$3(4)));
   c.addAssign(b);
   b.subAssign(a);
-  b.bitXorAssign(mx_rotl32(a, int$1(6)));
+  b.bitXorAssign(mx_rotl32(a, int$3(6)));
   a.addAssign(c);
   c.subAssign(b);
-  c.bitXorAssign(mx_rotl32(b, int$1(8)));
+  c.bitXorAssign(mx_rotl32(b, int$3(8)));
   b.addAssign(a);
   a.subAssign(c);
-  a.bitXorAssign(mx_rotl32(c, int$1(16)));
+  a.bitXorAssign(mx_rotl32(c, int$3(16)));
   c.addAssign(b);
   b.subAssign(a);
-  b.bitXorAssign(mx_rotl32(a, int$1(19)));
+  b.bitXorAssign(mx_rotl32(a, int$3(19)));
   a.addAssign(c);
   c.subAssign(b);
-  c.bitXorAssign(mx_rotl32(b, int$1(4)));
+  c.bitXorAssign(mx_rotl32(b, int$3(4)));
   b.addAssign(a);
 });
-const mx_bjfinal = /* @__PURE__ */ Fn$1(([a_immutable, b_immutable, c_immutable]) => {
-  const c = uint$1(c_immutable).toVar();
-  const b = uint$1(b_immutable).toVar();
-  const a = uint$1(a_immutable).toVar();
+const mx_bjfinal = /* @__PURE__ */ Fn$4(([a_immutable, b_immutable, c_immutable]) => {
+  const c = uint$3(c_immutable).toVar();
+  const b = uint$3(b_immutable).toVar();
+  const a = uint$3(a_immutable).toVar();
   c.bitXorAssign(b);
-  c.subAssign(mx_rotl32(b, int$1(14)));
+  c.subAssign(mx_rotl32(b, int$3(14)));
   a.bitXorAssign(c);
-  a.subAssign(mx_rotl32(c, int$1(11)));
+  a.subAssign(mx_rotl32(c, int$3(11)));
   b.bitXorAssign(a);
-  b.subAssign(mx_rotl32(a, int$1(25)));
+  b.subAssign(mx_rotl32(a, int$3(25)));
   c.bitXorAssign(b);
-  c.subAssign(mx_rotl32(b, int$1(16)));
+  c.subAssign(mx_rotl32(b, int$3(16)));
   a.bitXorAssign(c);
-  a.subAssign(mx_rotl32(c, int$1(4)));
+  a.subAssign(mx_rotl32(c, int$3(4)));
   b.bitXorAssign(a);
-  b.subAssign(mx_rotl32(a, int$1(14)));
+  b.subAssign(mx_rotl32(a, int$3(14)));
   c.bitXorAssign(b);
-  c.subAssign(mx_rotl32(b, int$1(24)));
+  c.subAssign(mx_rotl32(b, int$3(24)));
   return c;
 }).setLayout({
   name: "mx_bjfinal",
@@ -40158,9 +40158,9 @@ const mx_bjfinal = /* @__PURE__ */ Fn$1(([a_immutable, b_immutable, c_immutable]
     { name: "c", type: "uint" }
   ]
 });
-const mx_bits_to_01 = /* @__PURE__ */ Fn$1(([bits_immutable]) => {
-  const bits2 = uint$1(bits_immutable).toVar();
-  return float$1(bits2).div(float$1(uint$1(int$1(4294967295))));
+const mx_bits_to_01 = /* @__PURE__ */ Fn$4(([bits_immutable]) => {
+  const bits2 = uint$3(bits_immutable).toVar();
+  return float$4(bits2).div(float$4(uint$3(int$3(4294967295))));
 }).setLayout({
   name: "mx_bits_to_01",
   type: "float",
@@ -40168,8 +40168,8 @@ const mx_bits_to_01 = /* @__PURE__ */ Fn$1(([bits_immutable]) => {
     { name: "bits", type: "uint" }
   ]
 });
-const mx_fade = /* @__PURE__ */ Fn$1(([t_immutable]) => {
-  const t = float$1(t_immutable).toVar();
+const mx_fade = /* @__PURE__ */ Fn$4(([t_immutable]) => {
+  const t = float$4(t_immutable).toVar();
   return t.mul(t).mul(t).mul(t.mul(t.mul(6).sub(15)).add(10));
 }).setLayout({
   name: "mx_fade",
@@ -40178,11 +40178,11 @@ const mx_fade = /* @__PURE__ */ Fn$1(([t_immutable]) => {
     { name: "t", type: "float" }
   ]
 });
-const mx_hash_int_0 = /* @__PURE__ */ Fn$1(([x_immutable]) => {
-  const x = int$1(x_immutable).toVar();
-  const len = uint$1(uint$1(1)).toVar();
-  const seed = uint$1(uint$1(int$1(3735928559)).add(len.shiftLeft(uint$1(2))).add(uint$1(13))).toVar();
-  return mx_bjfinal(seed.add(uint$1(x)), seed, seed);
+const mx_hash_int_0 = /* @__PURE__ */ Fn$4(([x_immutable]) => {
+  const x = int$3(x_immutable).toVar();
+  const len = uint$3(uint$3(1)).toVar();
+  const seed = uint$3(uint$3(int$3(3735928559)).add(len.shiftLeft(uint$3(2))).add(uint$3(13))).toVar();
+  return mx_bjfinal(seed.add(uint$3(x)), seed, seed);
 }).setLayout({
   name: "mx_hash_int_0",
   type: "uint",
@@ -40190,14 +40190,14 @@ const mx_hash_int_0 = /* @__PURE__ */ Fn$1(([x_immutable]) => {
     { name: "x", type: "int" }
   ]
 });
-const mx_hash_int_1 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable]) => {
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const len = uint$1(uint$1(2)).toVar();
-  const a = uint$1().toVar(), b = uint$1().toVar(), c = uint$1().toVar();
-  a.assign(b.assign(c.assign(uint$1(int$1(3735928559)).add(len.shiftLeft(uint$1(2))).add(uint$1(13)))));
-  a.addAssign(uint$1(x));
-  b.addAssign(uint$1(y));
+const mx_hash_int_1 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable]) => {
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const len = uint$3(uint$3(2)).toVar();
+  const a = uint$3().toVar(), b = uint$3().toVar(), c = uint$3().toVar();
+  a.assign(b.assign(c.assign(uint$3(int$3(3735928559)).add(len.shiftLeft(uint$3(2))).add(uint$3(13)))));
+  a.addAssign(uint$3(x));
+  b.addAssign(uint$3(y));
   return mx_bjfinal(a, b, c);
 }).setLayout({
   name: "mx_hash_int_1",
@@ -40207,16 +40207,16 @@ const mx_hash_int_1 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable]) => {
     { name: "y", type: "int" }
   ]
 });
-const mx_hash_int_2 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutable]) => {
-  const z = int$1(z_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const len = uint$1(uint$1(3)).toVar();
-  const a = uint$1().toVar(), b = uint$1().toVar(), c = uint$1().toVar();
-  a.assign(b.assign(c.assign(uint$1(int$1(3735928559)).add(len.shiftLeft(uint$1(2))).add(uint$1(13)))));
-  a.addAssign(uint$1(x));
-  b.addAssign(uint$1(y));
-  c.addAssign(uint$1(z));
+const mx_hash_int_2 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable, z_immutable]) => {
+  const z = int$3(z_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const len = uint$3(uint$3(3)).toVar();
+  const a = uint$3().toVar(), b = uint$3().toVar(), c = uint$3().toVar();
+  a.assign(b.assign(c.assign(uint$3(int$3(3735928559)).add(len.shiftLeft(uint$3(2))).add(uint$3(13)))));
+  a.addAssign(uint$3(x));
+  b.addAssign(uint$3(y));
+  c.addAssign(uint$3(z));
   return mx_bjfinal(a, b, c);
 }).setLayout({
   name: "mx_hash_int_2",
@@ -40227,19 +40227,19 @@ const mx_hash_int_2 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutab
     { name: "z", type: "int" }
   ]
 });
-const mx_hash_int_3 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutable, xx_immutable]) => {
-  const xx = int$1(xx_immutable).toVar();
-  const z = int$1(z_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const len = uint$1(uint$1(4)).toVar();
-  const a = uint$1().toVar(), b = uint$1().toVar(), c = uint$1().toVar();
-  a.assign(b.assign(c.assign(uint$1(int$1(3735928559)).add(len.shiftLeft(uint$1(2))).add(uint$1(13)))));
-  a.addAssign(uint$1(x));
-  b.addAssign(uint$1(y));
-  c.addAssign(uint$1(z));
+const mx_hash_int_3 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable, z_immutable, xx_immutable]) => {
+  const xx = int$3(xx_immutable).toVar();
+  const z = int$3(z_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const len = uint$3(uint$3(4)).toVar();
+  const a = uint$3().toVar(), b = uint$3().toVar(), c = uint$3().toVar();
+  a.assign(b.assign(c.assign(uint$3(int$3(3735928559)).add(len.shiftLeft(uint$3(2))).add(uint$3(13)))));
+  a.addAssign(uint$3(x));
+  b.addAssign(uint$3(y));
+  c.addAssign(uint$3(z));
   mx_bjmix(a, b, c);
-  a.addAssign(uint$1(xx));
+  a.addAssign(uint$3(xx));
   return mx_bjfinal(a, b, c);
 }).setLayout({
   name: "mx_hash_int_3",
@@ -40251,21 +40251,21 @@ const mx_hash_int_3 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutab
     { name: "xx", type: "int" }
   ]
 });
-const mx_hash_int_4 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutable, xx_immutable, yy_immutable]) => {
-  const yy = int$1(yy_immutable).toVar();
-  const xx = int$1(xx_immutable).toVar();
-  const z = int$1(z_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const len = uint$1(uint$1(5)).toVar();
-  const a = uint$1().toVar(), b = uint$1().toVar(), c = uint$1().toVar();
-  a.assign(b.assign(c.assign(uint$1(int$1(3735928559)).add(len.shiftLeft(uint$1(2))).add(uint$1(13)))));
-  a.addAssign(uint$1(x));
-  b.addAssign(uint$1(y));
-  c.addAssign(uint$1(z));
+const mx_hash_int_4 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable, z_immutable, xx_immutable, yy_immutable]) => {
+  const yy = int$3(yy_immutable).toVar();
+  const xx = int$3(xx_immutable).toVar();
+  const z = int$3(z_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const len = uint$3(uint$3(5)).toVar();
+  const a = uint$3().toVar(), b = uint$3().toVar(), c = uint$3().toVar();
+  a.assign(b.assign(c.assign(uint$3(int$3(3735928559)).add(len.shiftLeft(uint$3(2))).add(uint$3(13)))));
+  a.addAssign(uint$3(x));
+  b.addAssign(uint$3(y));
+  c.addAssign(uint$3(z));
   mx_bjmix(a, b, c);
-  a.addAssign(uint$1(xx));
-  b.addAssign(uint$1(yy));
+  a.addAssign(uint$3(xx));
+  b.addAssign(uint$3(yy));
   return mx_bjfinal(a, b, c);
 }).setLayout({
   name: "mx_hash_int_4",
@@ -40279,14 +40279,14 @@ const mx_hash_int_4 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutab
   ]
 });
 const mx_hash_int = /* @__PURE__ */ overloadingFn([mx_hash_int_0, mx_hash_int_1, mx_hash_int_2, mx_hash_int_3, mx_hash_int_4]);
-const mx_hash_vec3_0 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable]) => {
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const h = uint$1(mx_hash_int(x, y)).toVar();
+const mx_hash_vec3_0 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable]) => {
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const h = uint$3(mx_hash_int(x, y)).toVar();
   const result = uvec3().toVar();
-  result.x.assign(h.bitAnd(int$1(255)));
-  result.y.assign(h.shiftRight(int$1(8)).bitAnd(int$1(255)));
-  result.z.assign(h.shiftRight(int$1(16)).bitAnd(int$1(255)));
+  result.x.assign(h.bitAnd(int$3(255)));
+  result.y.assign(h.shiftRight(int$3(8)).bitAnd(int$3(255)));
+  result.z.assign(h.shiftRight(int$3(16)).bitAnd(int$3(255)));
   return result;
 }).setLayout({
   name: "mx_hash_vec3_0",
@@ -40296,15 +40296,15 @@ const mx_hash_vec3_0 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable]) => {
     { name: "y", type: "int" }
   ]
 });
-const mx_hash_vec3_1 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immutable]) => {
-  const z = int$1(z_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const h = uint$1(mx_hash_int(x, y, z)).toVar();
+const mx_hash_vec3_1 = /* @__PURE__ */ Fn$4(([x_immutable, y_immutable, z_immutable]) => {
+  const z = int$3(z_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const h = uint$3(mx_hash_int(x, y, z)).toVar();
   const result = uvec3().toVar();
-  result.x.assign(h.bitAnd(int$1(255)));
-  result.y.assign(h.shiftRight(int$1(8)).bitAnd(int$1(255)));
-  result.z.assign(h.shiftRight(int$1(16)).bitAnd(int$1(255)));
+  result.x.assign(h.bitAnd(int$3(255)));
+  result.y.assign(h.shiftRight(int$3(8)).bitAnd(int$3(255)));
+  result.z.assign(h.shiftRight(int$3(16)).bitAnd(int$3(255)));
   return result;
 }).setLayout({
   name: "mx_hash_vec3_1",
@@ -40316,14 +40316,14 @@ const mx_hash_vec3_1 = /* @__PURE__ */ Fn$1(([x_immutable, y_immutable, z_immuta
   ]
 });
 const mx_hash_vec3 = /* @__PURE__ */ overloadingFn([mx_hash_vec3_0, mx_hash_vec3_1]);
-const mx_perlin_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec2$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar();
-  const fx = float$1(mx_floorfrac(p.x, X)).toVar();
-  const fy = float$1(mx_floorfrac(p.y, Y)).toVar();
-  const u = float$1(mx_fade(fx)).toVar();
-  const v = float$1(mx_fade(fy)).toVar();
-  const result = float$1(mx_bilerp(mx_gradient_float(mx_hash_int(X, Y), fx, fy), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y), fx.sub(1), fy), mx_gradient_float(mx_hash_int(X, Y.add(int$1(1))), fx, fy.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y.add(int$1(1))), fx.sub(1), fy.sub(1)), u, v)).toVar();
+const mx_perlin_noise_float_0 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec2$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar();
+  const fx = float$4(mx_floorfrac(p.x, X)).toVar();
+  const fy = float$4(mx_floorfrac(p.y, Y)).toVar();
+  const u = float$4(mx_fade(fx)).toVar();
+  const v = float$4(mx_fade(fy)).toVar();
+  const result = float$4(mx_bilerp(mx_gradient_float(mx_hash_int(X, Y), fx, fy), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y), fx.sub(1), fy), mx_gradient_float(mx_hash_int(X, Y.add(int$3(1))), fx, fy.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y.add(int$3(1))), fx.sub(1), fy.sub(1)), u, v)).toVar();
   return mx_gradient_scale2d(result);
 }).setLayout({
   name: "mx_perlin_noise_float_0",
@@ -40332,16 +40332,16 @@ const mx_perlin_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec2" }
   ]
 });
-const mx_perlin_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec3$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar(), Z = int$1().toVar();
-  const fx = float$1(mx_floorfrac(p.x, X)).toVar();
-  const fy = float$1(mx_floorfrac(p.y, Y)).toVar();
-  const fz = float$1(mx_floorfrac(p.z, Z)).toVar();
-  const u = float$1(mx_fade(fx)).toVar();
-  const v = float$1(mx_fade(fy)).toVar();
-  const w = float$1(mx_fade(fz)).toVar();
-  const result = float$1(mx_trilerp(mx_gradient_float(mx_hash_int(X, Y, Z), fx, fy, fz), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y, Z), fx.sub(1), fy, fz), mx_gradient_float(mx_hash_int(X, Y.add(int$1(1)), Z), fx, fy.sub(1), fz), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y.add(int$1(1)), Z), fx.sub(1), fy.sub(1), fz), mx_gradient_float(mx_hash_int(X, Y, Z.add(int$1(1))), fx, fy, fz.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y, Z.add(int$1(1))), fx.sub(1), fy, fz.sub(1)), mx_gradient_float(mx_hash_int(X, Y.add(int$1(1)), Z.add(int$1(1))), fx, fy.sub(1), fz.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$1(1)), Y.add(int$1(1)), Z.add(int$1(1))), fx.sub(1), fy.sub(1), fz.sub(1)), u, v, w)).toVar();
+const mx_perlin_noise_float_1 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec3$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar(), Z = int$3().toVar();
+  const fx = float$4(mx_floorfrac(p.x, X)).toVar();
+  const fy = float$4(mx_floorfrac(p.y, Y)).toVar();
+  const fz = float$4(mx_floorfrac(p.z, Z)).toVar();
+  const u = float$4(mx_fade(fx)).toVar();
+  const v = float$4(mx_fade(fy)).toVar();
+  const w = float$4(mx_fade(fz)).toVar();
+  const result = float$4(mx_trilerp(mx_gradient_float(mx_hash_int(X, Y, Z), fx, fy, fz), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y, Z), fx.sub(1), fy, fz), mx_gradient_float(mx_hash_int(X, Y.add(int$3(1)), Z), fx, fy.sub(1), fz), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y.add(int$3(1)), Z), fx.sub(1), fy.sub(1), fz), mx_gradient_float(mx_hash_int(X, Y, Z.add(int$3(1))), fx, fy, fz.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y, Z.add(int$3(1))), fx.sub(1), fy, fz.sub(1)), mx_gradient_float(mx_hash_int(X, Y.add(int$3(1)), Z.add(int$3(1))), fx, fy.sub(1), fz.sub(1)), mx_gradient_float(mx_hash_int(X.add(int$3(1)), Y.add(int$3(1)), Z.add(int$3(1))), fx.sub(1), fy.sub(1), fz.sub(1)), u, v, w)).toVar();
   return mx_gradient_scale3d(result);
 }).setLayout({
   name: "mx_perlin_noise_float_1",
@@ -40351,14 +40351,14 @@ const mx_perlin_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
   ]
 });
 const mx_perlin_noise_float = /* @__PURE__ */ overloadingFn([mx_perlin_noise_float_0, mx_perlin_noise_float_1]);
-const mx_perlin_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec2$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar();
-  const fx = float$1(mx_floorfrac(p.x, X)).toVar();
-  const fy = float$1(mx_floorfrac(p.y, Y)).toVar();
-  const u = float$1(mx_fade(fx)).toVar();
-  const v = float$1(mx_fade(fy)).toVar();
-  const result = vec3$1(mx_bilerp(mx_gradient_vec3(mx_hash_vec3(X, Y), fx, fy), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y), fx.sub(1), fy), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$1(1))), fx, fy.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y.add(int$1(1))), fx.sub(1), fy.sub(1)), u, v)).toVar();
+const mx_perlin_noise_vec3_0 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec2$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar();
+  const fx = float$4(mx_floorfrac(p.x, X)).toVar();
+  const fy = float$4(mx_floorfrac(p.y, Y)).toVar();
+  const u = float$4(mx_fade(fx)).toVar();
+  const v = float$4(mx_fade(fy)).toVar();
+  const result = vec3$2(mx_bilerp(mx_gradient_vec3(mx_hash_vec3(X, Y), fx, fy), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y), fx.sub(1), fy), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$3(1))), fx, fy.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y.add(int$3(1))), fx.sub(1), fy.sub(1)), u, v)).toVar();
   return mx_gradient_scale2d(result);
 }).setLayout({
   name: "mx_perlin_noise_vec3_0",
@@ -40367,16 +40367,16 @@ const mx_perlin_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec2" }
   ]
 });
-const mx_perlin_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec3$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar(), Z = int$1().toVar();
-  const fx = float$1(mx_floorfrac(p.x, X)).toVar();
-  const fy = float$1(mx_floorfrac(p.y, Y)).toVar();
-  const fz = float$1(mx_floorfrac(p.z, Z)).toVar();
-  const u = float$1(mx_fade(fx)).toVar();
-  const v = float$1(mx_fade(fy)).toVar();
-  const w = float$1(mx_fade(fz)).toVar();
-  const result = vec3$1(mx_trilerp(mx_gradient_vec3(mx_hash_vec3(X, Y, Z), fx, fy, fz), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y, Z), fx.sub(1), fy, fz), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$1(1)), Z), fx, fy.sub(1), fz), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y.add(int$1(1)), Z), fx.sub(1), fy.sub(1), fz), mx_gradient_vec3(mx_hash_vec3(X, Y, Z.add(int$1(1))), fx, fy, fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y, Z.add(int$1(1))), fx.sub(1), fy, fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$1(1)), Z.add(int$1(1))), fx, fy.sub(1), fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$1(1)), Y.add(int$1(1)), Z.add(int$1(1))), fx.sub(1), fy.sub(1), fz.sub(1)), u, v, w)).toVar();
+const mx_perlin_noise_vec3_1 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec3$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar(), Z = int$3().toVar();
+  const fx = float$4(mx_floorfrac(p.x, X)).toVar();
+  const fy = float$4(mx_floorfrac(p.y, Y)).toVar();
+  const fz = float$4(mx_floorfrac(p.z, Z)).toVar();
+  const u = float$4(mx_fade(fx)).toVar();
+  const v = float$4(mx_fade(fy)).toVar();
+  const w = float$4(mx_fade(fz)).toVar();
+  const result = vec3$2(mx_trilerp(mx_gradient_vec3(mx_hash_vec3(X, Y, Z), fx, fy, fz), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y, Z), fx.sub(1), fy, fz), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$3(1)), Z), fx, fy.sub(1), fz), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y.add(int$3(1)), Z), fx.sub(1), fy.sub(1), fz), mx_gradient_vec3(mx_hash_vec3(X, Y, Z.add(int$3(1))), fx, fy, fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y, Z.add(int$3(1))), fx.sub(1), fy, fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X, Y.add(int$3(1)), Z.add(int$3(1))), fx, fy.sub(1), fz.sub(1)), mx_gradient_vec3(mx_hash_vec3(X.add(int$3(1)), Y.add(int$3(1)), Z.add(int$3(1))), fx.sub(1), fy.sub(1), fz.sub(1)), u, v, w)).toVar();
   return mx_gradient_scale3d(result);
 }).setLayout({
   name: "mx_perlin_noise_vec3_1",
@@ -40386,9 +40386,9 @@ const mx_perlin_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
   ]
 });
 const mx_perlin_noise_vec3 = /* @__PURE__ */ overloadingFn([mx_perlin_noise_vec3_0, mx_perlin_noise_vec3_1]);
-const mx_cell_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = float$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p)).toVar();
+const mx_cell_noise_float_0 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = float$4(p_immutable).toVar();
+  const ix = int$3(mx_floor(p)).toVar();
   return mx_bits_to_01(mx_hash_int(ix));
 }).setLayout({
   name: "mx_cell_noise_float_0",
@@ -40397,10 +40397,10 @@ const mx_cell_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "float" }
   ]
 });
-const mx_cell_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec2$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
+const mx_cell_noise_float_1 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec2$2(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
   return mx_bits_to_01(mx_hash_int(ix, iy));
 }).setLayout({
   name: "mx_cell_noise_float_1",
@@ -40409,11 +40409,11 @@ const mx_cell_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec2" }
   ]
 });
-const mx_cell_noise_float_2 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec3$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
-  const iz = int$1(mx_floor(p.z)).toVar();
+const mx_cell_noise_float_2 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec3$2(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
+  const iz = int$3(mx_floor(p.z)).toVar();
   return mx_bits_to_01(mx_hash_int(ix, iy, iz));
 }).setLayout({
   name: "mx_cell_noise_float_2",
@@ -40422,12 +40422,12 @@ const mx_cell_noise_float_2 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec3" }
   ]
 });
-const mx_cell_noise_float_3 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec4$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
-  const iz = int$1(mx_floor(p.z)).toVar();
-  const iw = int$1(mx_floor(p.w)).toVar();
+const mx_cell_noise_float_3 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec4$3(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
+  const iz = int$3(mx_floor(p.z)).toVar();
+  const iw = int$3(mx_floor(p.w)).toVar();
   return mx_bits_to_01(mx_hash_int(ix, iy, iz, iw));
 }).setLayout({
   name: "mx_cell_noise_float_3",
@@ -40437,10 +40437,10 @@ const mx_cell_noise_float_3 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
   ]
 });
 const mx_cell_noise_float$1 = /* @__PURE__ */ overloadingFn([mx_cell_noise_float_0, mx_cell_noise_float_1, mx_cell_noise_float_2, mx_cell_noise_float_3]);
-const mx_cell_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = float$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p)).toVar();
-  return vec3$1(mx_bits_to_01(mx_hash_int(ix, int$1(0))), mx_bits_to_01(mx_hash_int(ix, int$1(1))), mx_bits_to_01(mx_hash_int(ix, int$1(2))));
+const mx_cell_noise_vec3_0 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = float$4(p_immutable).toVar();
+  const ix = int$3(mx_floor(p)).toVar();
+  return vec3$2(mx_bits_to_01(mx_hash_int(ix, int$3(0))), mx_bits_to_01(mx_hash_int(ix, int$3(1))), mx_bits_to_01(mx_hash_int(ix, int$3(2))));
 }).setLayout({
   name: "mx_cell_noise_vec3_0",
   type: "vec3",
@@ -40448,11 +40448,11 @@ const mx_cell_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "float" }
   ]
 });
-const mx_cell_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec2$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
-  return vec3$1(mx_bits_to_01(mx_hash_int(ix, iy, int$1(0))), mx_bits_to_01(mx_hash_int(ix, iy, int$1(1))), mx_bits_to_01(mx_hash_int(ix, iy, int$1(2))));
+const mx_cell_noise_vec3_1 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec2$2(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
+  return vec3$2(mx_bits_to_01(mx_hash_int(ix, iy, int$3(0))), mx_bits_to_01(mx_hash_int(ix, iy, int$3(1))), mx_bits_to_01(mx_hash_int(ix, iy, int$3(2))));
 }).setLayout({
   name: "mx_cell_noise_vec3_1",
   type: "vec3",
@@ -40460,12 +40460,12 @@ const mx_cell_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec2" }
   ]
 });
-const mx_cell_noise_vec3_2 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec3$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
-  const iz = int$1(mx_floor(p.z)).toVar();
-  return vec3$1(mx_bits_to_01(mx_hash_int(ix, iy, iz, int$1(0))), mx_bits_to_01(mx_hash_int(ix, iy, iz, int$1(1))), mx_bits_to_01(mx_hash_int(ix, iy, iz, int$1(2))));
+const mx_cell_noise_vec3_2 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec3$2(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
+  const iz = int$3(mx_floor(p.z)).toVar();
+  return vec3$2(mx_bits_to_01(mx_hash_int(ix, iy, iz, int$3(0))), mx_bits_to_01(mx_hash_int(ix, iy, iz, int$3(1))), mx_bits_to_01(mx_hash_int(ix, iy, iz, int$3(2))));
 }).setLayout({
   name: "mx_cell_noise_vec3_2",
   type: "vec3",
@@ -40473,13 +40473,13 @@ const mx_cell_noise_vec3_2 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
     { name: "p", type: "vec3" }
   ]
 });
-const mx_cell_noise_vec3_3 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
-  const p = vec4$1(p_immutable).toVar();
-  const ix = int$1(mx_floor(p.x)).toVar();
-  const iy = int$1(mx_floor(p.y)).toVar();
-  const iz = int$1(mx_floor(p.z)).toVar();
-  const iw = int$1(mx_floor(p.w)).toVar();
-  return vec3$1(mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$1(0))), mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$1(1))), mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$1(2))));
+const mx_cell_noise_vec3_3 = /* @__PURE__ */ Fn$4(([p_immutable]) => {
+  const p = vec4$3(p_immutable).toVar();
+  const ix = int$3(mx_floor(p.x)).toVar();
+  const iy = int$3(mx_floor(p.y)).toVar();
+  const iz = int$3(mx_floor(p.z)).toVar();
+  const iw = int$3(mx_floor(p.w)).toVar();
+  return vec3$2(mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$3(0))), mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$3(1))), mx_bits_to_01(mx_hash_int(ix, iy, iz, iw, int$3(2))));
 }).setLayout({
   name: "mx_cell_noise_vec3_3",
   type: "vec3",
@@ -40488,13 +40488,13 @@ const mx_cell_noise_vec3_3 = /* @__PURE__ */ Fn$1(([p_immutable]) => {
   ]
 });
 const mx_cell_noise_vec3 = /* @__PURE__ */ overloadingFn([mx_cell_noise_vec3_0, mx_cell_noise_vec3_1, mx_cell_noise_vec3_2, mx_cell_noise_vec3_3]);
-const mx_fractal_noise_float$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
-  const diminish = float$1(diminish_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const result = float$1(0).toVar();
-  const amplitude = float$1(1).toVar();
+const mx_fractal_noise_float$1 = /* @__PURE__ */ Fn$4(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
+  const diminish = float$4(diminish_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const result = float$4(0).toVar();
+  const amplitude = float$4(1).toVar();
   Loop(octaves, () => {
     result.addAssign(amplitude.mul(mx_perlin_noise_float(p)));
     amplitude.mulAssign(diminish);
@@ -40511,13 +40511,13 @@ const mx_fractal_noise_float$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_imm
     { name: "diminish", type: "float" }
   ]
 });
-const mx_fractal_noise_vec3$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
-  const diminish = float$1(diminish_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const result = vec3$1(0).toVar();
-  const amplitude = float$1(1).toVar();
+const mx_fractal_noise_vec3$1 = /* @__PURE__ */ Fn$4(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
+  const diminish = float$4(diminish_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const result = vec3$2(0).toVar();
+  const amplitude = float$4(1).toVar();
   Loop(octaves, () => {
     result.addAssign(amplitude.mul(mx_perlin_noise_vec3(p)));
     amplitude.mulAssign(diminish);
@@ -40534,12 +40534,12 @@ const mx_fractal_noise_vec3$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immu
     { name: "diminish", type: "float" }
   ]
 });
-const mx_fractal_noise_vec2$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
-  const diminish = float$1(diminish_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  return vec2$1(mx_fractal_noise_float$1(p, octaves, lacunarity, diminish), mx_fractal_noise_float$1(p.add(vec3$1(int$1(19), int$1(193), int$1(17))), octaves, lacunarity, diminish));
+const mx_fractal_noise_vec2$1 = /* @__PURE__ */ Fn$4(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
+  const diminish = float$4(diminish_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  return vec2$2(mx_fractal_noise_float$1(p, octaves, lacunarity, diminish), mx_fractal_noise_float$1(p.add(vec3$2(int$3(19), int$3(193), int$3(17))), octaves, lacunarity, diminish));
 }).setLayout({
   name: "mx_fractal_noise_vec2",
   type: "vec2",
@@ -40550,14 +40550,14 @@ const mx_fractal_noise_vec2$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immu
     { name: "diminish", type: "float" }
   ]
 });
-const mx_fractal_noise_vec4$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
-  const diminish = float$1(diminish_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const c = vec3$1(mx_fractal_noise_vec3$1(p, octaves, lacunarity, diminish)).toVar();
-  const f = float$1(mx_fractal_noise_float$1(p.add(vec3$1(int$1(19), int$1(193), int$1(17))), octaves, lacunarity, diminish)).toVar();
-  return vec4$1(c, f);
+const mx_fractal_noise_vec4$1 = /* @__PURE__ */ Fn$4(([p_immutable, octaves_immutable, lacunarity_immutable, diminish_immutable]) => {
+  const diminish = float$4(diminish_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const c = vec3$2(mx_fractal_noise_vec3$1(p, octaves, lacunarity, diminish)).toVar();
+  const f = float$4(mx_fractal_noise_float$1(p.add(vec3$2(int$3(19), int$3(193), int$3(17))), octaves, lacunarity, diminish)).toVar();
+  return vec4$3(c, f);
 }).setLayout({
   name: "mx_fractal_noise_vec4",
   type: "vec4",
@@ -40568,28 +40568,28 @@ const mx_fractal_noise_vec4$1 = /* @__PURE__ */ Fn$1(([p_immutable, octaves_immu
     { name: "diminish", type: "float" }
   ]
 });
-const mx_worley_distance_0 = /* @__PURE__ */ Fn$1(([p_immutable, x_immutable, y_immutable, xoff_immutable, yoff_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const yoff = int$1(yoff_immutable).toVar();
-  const xoff = int$1(xoff_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const p = vec2$1(p_immutable).toVar();
-  const tmp = vec3$1(mx_cell_noise_vec3(vec2$1(x.add(xoff), y.add(yoff)))).toVar();
-  const off = vec2$1(tmp.x, tmp.y).toVar();
+const mx_worley_distance_0 = /* @__PURE__ */ Fn$4(([p_immutable, x_immutable, y_immutable, xoff_immutable, yoff_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const yoff = int$3(yoff_immutable).toVar();
+  const xoff = int$3(xoff_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const p = vec2$2(p_immutable).toVar();
+  const tmp = vec3$2(mx_cell_noise_vec3(vec2$2(x.add(xoff), y.add(yoff)))).toVar();
+  const off = vec2$2(tmp.x, tmp.y).toVar();
   off.subAssign(0.5);
   off.mulAssign(jitter);
   off.addAssign(0.5);
-  const cellpos = vec2$1(vec2$1(float$1(x), float$1(y)).add(off)).toVar();
-  const diff = vec2$1(cellpos.sub(p)).toVar();
-  If$1(metric.equal(int$1(2)), () => {
-    return abs$1(diff.x).add(abs$1(diff.y));
+  const cellpos = vec2$2(vec2$2(float$4(x), float$4(y)).add(off)).toVar();
+  const diff = vec2$2(cellpos.sub(p)).toVar();
+  If(metric.equal(int$3(2)), () => {
+    return abs$2(diff.x).add(abs$2(diff.y));
   });
-  If$1(metric.equal(int$1(3)), () => {
-    return max$1(abs$1(diff.x), abs$1(diff.y));
+  If(metric.equal(int$3(3)), () => {
+    return max$1$1(abs$2(diff.x), abs$2(diff.y));
   });
-  return dot$1(diff, diff);
+  return dot$3(diff, diff);
 }).setLayout({
   name: "mx_worley_distance_0",
   type: "float",
@@ -40603,29 +40603,29 @@ const mx_worley_distance_0 = /* @__PURE__ */ Fn$1(([p_immutable, x_immutable, y_
     { name: "metric", type: "int" }
   ]
 });
-const mx_worley_distance_1 = /* @__PURE__ */ Fn$1(([p_immutable, x_immutable, y_immutable, z_immutable, xoff_immutable, yoff_immutable, zoff_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const zoff = int$1(zoff_immutable).toVar();
-  const yoff = int$1(yoff_immutable).toVar();
-  const xoff = int$1(xoff_immutable).toVar();
-  const z = int$1(z_immutable).toVar();
-  const y = int$1(y_immutable).toVar();
-  const x = int$1(x_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const off = vec3$1(mx_cell_noise_vec3(vec3$1(x.add(xoff), y.add(yoff), z.add(zoff)))).toVar();
+const mx_worley_distance_1 = /* @__PURE__ */ Fn$4(([p_immutable, x_immutable, y_immutable, z_immutable, xoff_immutable, yoff_immutable, zoff_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const zoff = int$3(zoff_immutable).toVar();
+  const yoff = int$3(yoff_immutable).toVar();
+  const xoff = int$3(xoff_immutable).toVar();
+  const z = int$3(z_immutable).toVar();
+  const y = int$3(y_immutable).toVar();
+  const x = int$3(x_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const off = vec3$2(mx_cell_noise_vec3(vec3$2(x.add(xoff), y.add(yoff), z.add(zoff)))).toVar();
   off.subAssign(0.5);
   off.mulAssign(jitter);
   off.addAssign(0.5);
-  const cellpos = vec3$1(vec3$1(float$1(x), float$1(y), float$1(z)).add(off)).toVar();
-  const diff = vec3$1(cellpos.sub(p)).toVar();
-  If$1(metric.equal(int$1(2)), () => {
-    return abs$1(diff.x).add(abs$1(diff.y)).add(abs$1(diff.z));
+  const cellpos = vec3$2(vec3$2(float$4(x), float$4(y), float$4(z)).add(off)).toVar();
+  const diff = vec3$2(cellpos.sub(p)).toVar();
+  If(metric.equal(int$3(2)), () => {
+    return abs$2(diff.x).add(abs$2(diff.y)).add(abs$2(diff.z));
   });
-  If$1(metric.equal(int$1(3)), () => {
-    return max$1(abs$1(diff.x), abs$1(diff.y), abs$1(diff.z));
+  If(metric.equal(int$3(3)), () => {
+    return max$1$1(abs$2(diff.x), abs$2(diff.y), abs$2(diff.z));
   });
-  return dot$1(diff, diff);
+  return dot$3(diff, diff);
 }).setLayout({
   name: "mx_worley_distance_1",
   type: "float",
@@ -40642,21 +40642,21 @@ const mx_worley_distance_1 = /* @__PURE__ */ Fn$1(([p_immutable, x_immutable, y_
   ]
 });
 const mx_worley_distance = /* @__PURE__ */ overloadingFn([mx_worley_distance_0, mx_worley_distance_1]);
-const mx_worley_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec2$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar();
-  const localpos = vec2$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
-  const sqdist = float$1(1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      const dist = float$1(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
-      sqdist.assign(min$1(sqdist, dist));
+const mx_worley_noise_float_0 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec2$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar();
+  const localpos = vec2$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
+  const sqdist = float$4(1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      const dist = float$4(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
+      sqdist.assign(min$1$1(sqdist, dist));
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40668,17 +40668,17 @@ const mx_worley_noise_float_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immut
     { name: "metric", type: "int" }
   ]
 });
-const mx_worley_noise_vec2_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec2$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar();
-  const localpos = vec2$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
-  const sqdist = vec2$1(1e6, 1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      const dist = float$1(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
-      If$1(dist.lessThan(sqdist.x), () => {
+const mx_worley_noise_vec2_0 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec2$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar();
+  const localpos = vec2$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
+  const sqdist = vec2$2(1e6, 1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      const dist = float$4(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
+      If(dist.lessThan(sqdist.x), () => {
         sqdist.y.assign(sqdist.x);
         sqdist.x.assign(dist);
       }).ElseIf(dist.lessThan(sqdist.y), () => {
@@ -40686,8 +40686,8 @@ const mx_worley_noise_vec2_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
       });
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40699,17 +40699,17 @@ const mx_worley_noise_vec2_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
     { name: "metric", type: "int" }
   ]
 });
-const mx_worley_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec2$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar();
-  const localpos = vec2$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
-  const sqdist = vec3$1(1e6, 1e6, 1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      const dist = float$1(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
-      If$1(dist.lessThan(sqdist.x), () => {
+const mx_worley_noise_vec3_0 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec2$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar();
+  const localpos = vec2$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y)).toVar();
+  const sqdist = vec3$2(1e6, 1e6, 1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      const dist = float$4(mx_worley_distance(localpos, x, y, X, Y, jitter, metric)).toVar();
+      If(dist.lessThan(sqdist.x), () => {
         sqdist.z.assign(sqdist.y);
         sqdist.y.assign(sqdist.x);
         sqdist.x.assign(dist);
@@ -40721,8 +40721,8 @@ const mx_worley_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
       });
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40734,23 +40734,23 @@ const mx_worley_noise_vec3_0 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
     { name: "metric", type: "int" }
   ]
 });
-const mx_worley_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar(), Z = int$1().toVar();
-  const localpos = vec3$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
-  const sqdist = float$1(1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      Loop({ start: -1, end: int$1(1), name: "z", condition: "<=" }, ({ z }) => {
-        const dist = float$1(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
-        sqdist.assign(min$1(sqdist, dist));
+const mx_worley_noise_float_1 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar(), Z = int$3().toVar();
+  const localpos = vec3$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
+  const sqdist = float$4(1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      Loop({ start: -1, end: int$3(1), name: "z", condition: "<=" }, ({ z }) => {
+        const dist = float$4(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
+        sqdist.assign(min$1$1(sqdist, dist));
       });
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40763,18 +40763,18 @@ const mx_worley_noise_float_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immut
   ]
 });
 const mx_worley_noise_float$1 = /* @__PURE__ */ overloadingFn([mx_worley_noise_float_0, mx_worley_noise_float_1]);
-const mx_worley_noise_vec2_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar(), Z = int$1().toVar();
-  const localpos = vec3$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
-  const sqdist = vec2$1(1e6, 1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      Loop({ start: -1, end: int$1(1), name: "z", condition: "<=" }, ({ z }) => {
-        const dist = float$1(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
-        If$1(dist.lessThan(sqdist.x), () => {
+const mx_worley_noise_vec2_1 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar(), Z = int$3().toVar();
+  const localpos = vec3$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
+  const sqdist = vec2$2(1e6, 1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      Loop({ start: -1, end: int$3(1), name: "z", condition: "<=" }, ({ z }) => {
+        const dist = float$4(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
+        If(dist.lessThan(sqdist.x), () => {
           sqdist.y.assign(sqdist.x);
           sqdist.x.assign(dist);
         }).ElseIf(dist.lessThan(sqdist.y), () => {
@@ -40783,8 +40783,8 @@ const mx_worley_noise_vec2_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
       });
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40797,18 +40797,18 @@ const mx_worley_noise_vec2_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
   ]
 });
 const mx_worley_noise_vec2$1 = /* @__PURE__ */ overloadingFn([mx_worley_noise_vec2_0, mx_worley_noise_vec2_1]);
-const mx_worley_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immutable, metric_immutable]) => {
-  const metric = int$1(metric_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const p = vec3$1(p_immutable).toVar();
-  const X = int$1().toVar(), Y = int$1().toVar(), Z = int$1().toVar();
-  const localpos = vec3$1(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
-  const sqdist = vec3$1(1e6, 1e6, 1e6).toVar();
-  Loop({ start: -1, end: int$1(1), name: "x", condition: "<=" }, ({ x }) => {
-    Loop({ start: -1, end: int$1(1), name: "y", condition: "<=" }, ({ y }) => {
-      Loop({ start: -1, end: int$1(1), name: "z", condition: "<=" }, ({ z }) => {
-        const dist = float$1(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
-        If$1(dist.lessThan(sqdist.x), () => {
+const mx_worley_noise_vec3_1 = /* @__PURE__ */ Fn$4(([p_immutable, jitter_immutable, metric_immutable]) => {
+  const metric = int$3(metric_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const p = vec3$2(p_immutable).toVar();
+  const X = int$3().toVar(), Y = int$3().toVar(), Z = int$3().toVar();
+  const localpos = vec3$2(mx_floorfrac(p.x, X), mx_floorfrac(p.y, Y), mx_floorfrac(p.z, Z)).toVar();
+  const sqdist = vec3$2(1e6, 1e6, 1e6).toVar();
+  Loop({ start: -1, end: int$3(1), name: "x", condition: "<=" }, ({ x }) => {
+    Loop({ start: -1, end: int$3(1), name: "y", condition: "<=" }, ({ y }) => {
+      Loop({ start: -1, end: int$3(1), name: "z", condition: "<=" }, ({ z }) => {
+        const dist = float$4(mx_worley_distance(localpos, x, y, z, X, Y, Z, jitter, metric)).toVar();
+        If(dist.lessThan(sqdist.x), () => {
           sqdist.z.assign(sqdist.y);
           sqdist.y.assign(sqdist.x);
           sqdist.x.assign(dist);
@@ -40821,8 +40821,8 @@ const mx_worley_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
       });
     });
   });
-  If$1(metric.equal(int$1(0)), () => {
-    sqdist.assign(sqrt$1(sqdist));
+  If(metric.equal(int$3(0)), () => {
+    sqdist.assign(sqrt$3(sqdist));
   });
   return sqdist;
 }).setLayout({
@@ -40835,7 +40835,7 @@ const mx_worley_noise_vec3_1 = /* @__PURE__ */ Fn$1(([p_immutable, jitter_immuta
   ]
 });
 const mx_worley_noise_vec3$1 = /* @__PURE__ */ overloadingFn([mx_worley_noise_vec3_0, mx_worley_noise_vec3_1]);
-const mx_unifiednoise2d$1 = /* @__PURE__ */ Fn$1(([
+const mx_unifiednoise2d$1 = /* @__PURE__ */ Fn$4(([
   noiseType_immutable,
   texcoord_immutable,
   freq_immutable,
@@ -40848,34 +40848,34 @@ const mx_unifiednoise2d$1 = /* @__PURE__ */ Fn$1(([
   lacunarity_immutable,
   diminish_immutable
 ]) => {
-  const noiseType = int$1(noiseType_immutable).toVar();
-  const texcoord = vec2$1(texcoord_immutable).toVar();
-  const freq = vec2$1(freq_immutable).toVar();
-  const offset = vec2$1(offset_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const outmin = float$1(outmin_immutable).toVar();
-  const outmax = float$1(outmax_immutable).toVar();
+  const noiseType = int$3(noiseType_immutable).toVar();
+  const texcoord = vec2$2(texcoord_immutable).toVar();
+  const freq = vec2$2(freq_immutable).toVar();
+  const offset = vec2$2(offset_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const outmin = float$4(outmin_immutable).toVar();
+  const outmax = float$4(outmax_immutable).toVar();
   const clampoutput = bool(clampoutput_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const diminish = float$1(diminish_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const diminish = float$4(diminish_immutable).toVar();
   const p = texcoord.mul(freq).add(offset);
-  const result = float$1(0).toVar();
-  If$1(noiseType.equal(int$1(0)), () => {
+  const result = float$4(0).toVar();
+  If(noiseType.equal(int$3(0)), () => {
     result.assign(mx_perlin_noise_vec3(p));
   });
-  If$1(noiseType.equal(int$1(1)), () => {
+  If(noiseType.equal(int$3(1)), () => {
     result.assign(mx_cell_noise_vec3(p));
   });
-  If$1(noiseType.equal(int$1(2)), () => {
-    result.assign(mx_worley_noise_vec3$1(p, jitter, int$1(0)));
+  If(noiseType.equal(int$3(2)), () => {
+    result.assign(mx_worley_noise_vec3$1(p, jitter, int$3(0)));
   });
-  If$1(noiseType.equal(int$1(3)), () => {
-    result.assign(mx_fractal_noise_vec3$1(vec3$1(p, 0), octaves, lacunarity, diminish));
+  If(noiseType.equal(int$3(3)), () => {
+    result.assign(mx_fractal_noise_vec3$1(vec3$2(p, 0), octaves, lacunarity, diminish));
   });
   result.assign(result.mul(outmax.sub(outmin)).add(outmin));
-  If$1(clampoutput, () => {
-    result.assign(clamp(result, outmin, outmax));
+  If(clampoutput, () => {
+    result.assign(clamp$1(result, outmin, outmax));
   });
   return result;
 }).setLayout({
@@ -40895,7 +40895,7 @@ const mx_unifiednoise2d$1 = /* @__PURE__ */ Fn$1(([
     { name: "diminish", type: "float" }
   ]
 });
-const mx_unifiednoise3d$1 = /* @__PURE__ */ Fn$1(([
+const mx_unifiednoise3d$1 = /* @__PURE__ */ Fn$4(([
   noiseType_immutable,
   position_immutable,
   freq_immutable,
@@ -40908,34 +40908,34 @@ const mx_unifiednoise3d$1 = /* @__PURE__ */ Fn$1(([
   lacunarity_immutable,
   diminish_immutable
 ]) => {
-  const noiseType = int$1(noiseType_immutable).toVar();
-  const position = vec3$1(position_immutable).toVar();
-  const freq = vec3$1(freq_immutable).toVar();
-  const offset = vec3$1(offset_immutable).toVar();
-  const jitter = float$1(jitter_immutable).toVar();
-  const outmin = float$1(outmin_immutable).toVar();
-  const outmax = float$1(outmax_immutable).toVar();
+  const noiseType = int$3(noiseType_immutable).toVar();
+  const position = vec3$2(position_immutable).toVar();
+  const freq = vec3$2(freq_immutable).toVar();
+  const offset = vec3$2(offset_immutable).toVar();
+  const jitter = float$4(jitter_immutable).toVar();
+  const outmin = float$4(outmin_immutable).toVar();
+  const outmax = float$4(outmax_immutable).toVar();
   const clampoutput = bool(clampoutput_immutable).toVar();
-  const octaves = int$1(octaves_immutable).toVar();
-  const lacunarity = float$1(lacunarity_immutable).toVar();
-  const diminish = float$1(diminish_immutable).toVar();
+  const octaves = int$3(octaves_immutable).toVar();
+  const lacunarity = float$4(lacunarity_immutable).toVar();
+  const diminish = float$4(diminish_immutable).toVar();
   const p = position.mul(freq).add(offset);
-  const result = float$1(0).toVar();
-  If$1(noiseType.equal(int$1(0)), () => {
+  const result = float$4(0).toVar();
+  If(noiseType.equal(int$3(0)), () => {
     result.assign(mx_perlin_noise_vec3(p));
   });
-  If$1(noiseType.equal(int$1(1)), () => {
+  If(noiseType.equal(int$3(1)), () => {
     result.assign(mx_cell_noise_vec3(p));
   });
-  If$1(noiseType.equal(int$1(2)), () => {
-    result.assign(mx_worley_noise_vec3$1(p, jitter, int$1(0)));
+  If(noiseType.equal(int$3(2)), () => {
+    result.assign(mx_worley_noise_vec3$1(p, jitter, int$3(0)));
   });
-  If$1(noiseType.equal(int$1(3)), () => {
+  If(noiseType.equal(int$3(3)), () => {
     result.assign(mx_fractal_noise_vec3$1(p, octaves, lacunarity, diminish));
   });
   result.assign(result.mul(outmax.sub(outmin)).add(outmin));
-  If$1(clampoutput, () => {
-    result.assign(clamp(result, outmin, outmax));
+  If(clampoutput, () => {
+    result.assign(clamp$1(result, outmin, outmax));
   });
   return result;
 }).setLayout({
@@ -40955,32 +40955,32 @@ const mx_unifiednoise3d$1 = /* @__PURE__ */ Fn$1(([
     { name: "diminish", type: "float" }
   ]
 });
-const mx_hsvtorgb = /* @__PURE__ */ Fn$1(([hsv]) => {
+const mx_hsvtorgb = /* @__PURE__ */ Fn$4(([hsv]) => {
   const s = hsv.y;
   const v = hsv.z;
-  const result = vec3$1().toVar();
-  If$1(s.lessThan(1e-4), () => {
-    result.assign(vec3$1(v, v, v));
+  const result = vec3$2().toVar();
+  If(s.lessThan(1e-4), () => {
+    result.assign(vec3$2(v, v, v));
   }).Else(() => {
     let h = hsv.x;
     h = h.sub(floor(h)).mul(6).toVar();
-    const hi = int$1(trunc(h));
-    const f = h.sub(float$1(hi));
+    const hi = int$3(trunc(h));
+    const f = h.sub(float$4(hi));
     const p = v.mul(s.oneMinus());
     const q = v.mul(s.mul(f).oneMinus());
     const t = v.mul(s.mul(f.oneMinus()).oneMinus());
-    If$1(hi.equal(int$1(0)), () => {
-      result.assign(vec3$1(v, t, p));
-    }).ElseIf(hi.equal(int$1(1)), () => {
-      result.assign(vec3$1(q, v, p));
-    }).ElseIf(hi.equal(int$1(2)), () => {
-      result.assign(vec3$1(p, v, t));
-    }).ElseIf(hi.equal(int$1(3)), () => {
-      result.assign(vec3$1(p, q, v));
-    }).ElseIf(hi.equal(int$1(4)), () => {
-      result.assign(vec3$1(t, p, v));
+    If(hi.equal(int$3(0)), () => {
+      result.assign(vec3$2(v, t, p));
+    }).ElseIf(hi.equal(int$3(1)), () => {
+      result.assign(vec3$2(q, v, p));
+    }).ElseIf(hi.equal(int$3(2)), () => {
+      result.assign(vec3$2(p, v, t));
+    }).ElseIf(hi.equal(int$3(3)), () => {
+      result.assign(vec3$2(p, q, v));
+    }).ElseIf(hi.equal(int$3(4)), () => {
+      result.assign(vec3$2(t, p, v));
     }).Else(() => {
-      result.assign(vec3$1(v, p, q));
+      result.assign(vec3$2(v, p, q));
     });
   });
   return result;
@@ -40991,37 +40991,37 @@ const mx_hsvtorgb = /* @__PURE__ */ Fn$1(([hsv]) => {
     { name: "hsv", type: "vec3" }
   ]
 });
-const mx_rgbtohsv = /* @__PURE__ */ Fn$1(([c_immutable]) => {
-  const c = vec3$1(c_immutable).toVar();
-  const r = float$1(c.x).toVar();
-  const g = float$1(c.y).toVar();
-  const b = float$1(c.z).toVar();
-  const mincomp = float$1(min$1(r, min$1(g, b))).toVar();
-  const maxcomp = float$1(max$1(r, max$1(g, b))).toVar();
-  const delta = float$1(maxcomp.sub(mincomp)).toVar();
-  const h = float$1().toVar(), s = float$1().toVar(), v = float$1().toVar();
+const mx_rgbtohsv = /* @__PURE__ */ Fn$4(([c_immutable]) => {
+  const c = vec3$2(c_immutable).toVar();
+  const r = float$4(c.x).toVar();
+  const g = float$4(c.y).toVar();
+  const b = float$4(c.z).toVar();
+  const mincomp = float$4(min$1$1(r, min$1$1(g, b))).toVar();
+  const maxcomp = float$4(max$1$1(r, max$1$1(g, b))).toVar();
+  const delta = float$4(maxcomp.sub(mincomp)).toVar();
+  const h = float$4().toVar(), s = float$4().toVar(), v = float$4().toVar();
   v.assign(maxcomp);
-  If$1(maxcomp.greaterThan(0), () => {
+  If(maxcomp.greaterThan(0), () => {
     s.assign(delta.div(maxcomp));
   }).Else(() => {
     s.assign(0);
   });
-  If$1(s.lessThanEqual(0), () => {
+  If(s.lessThanEqual(0), () => {
     h.assign(0);
   }).Else(() => {
-    If$1(r.greaterThanEqual(maxcomp), () => {
+    If(r.greaterThanEqual(maxcomp), () => {
       h.assign(g.sub(b).div(delta));
     }).ElseIf(g.greaterThanEqual(maxcomp), () => {
-      h.assign(add$1(2, b.sub(r).div(delta)));
+      h.assign(add$3(2, b.sub(r).div(delta)));
     }).Else(() => {
-      h.assign(add$1(4, r.sub(g).div(delta)));
+      h.assign(add$3(4, r.sub(g).div(delta)));
     });
     h.mulAssign(1 / 6);
-    If$1(h.lessThan(0), () => {
+    If(h.lessThan(0), () => {
       h.addAssign(1);
     });
   });
-  return vec3$1(h, s, v);
+  return vec3$2(h, s, v);
 }).setLayout({
   name: "mx_rgbtohsv",
   type: "vec3",
@@ -41029,11 +41029,11 @@ const mx_rgbtohsv = /* @__PURE__ */ Fn$1(([c_immutable]) => {
     { name: "c", type: "vec3" }
   ]
 });
-const mx_srgb_texture_to_lin_rec709 = /* @__PURE__ */ Fn$1(([color_immutable]) => {
-  const color2 = vec3$1(color_immutable).toVar();
-  const isAbove = bvec3(greaterThan(color2, vec3$1(0.04045))).toVar();
-  const linSeg = vec3$1(color2.div(12.92)).toVar();
-  const powSeg = vec3$1(pow(max$1(color2.add(vec3$1(0.055)), vec3$1(0)).div(1.055), vec3$1(2.4))).toVar();
+const mx_srgb_texture_to_lin_rec709 = /* @__PURE__ */ Fn$4(([color_immutable]) => {
+  const color2 = vec3$2(color_immutable).toVar();
+  const isAbove = bvec3(greaterThan(color2, vec3$2(0.04045))).toVar();
+  const linSeg = vec3$2(color2.div(12.92)).toVar();
+  const powSeg = vec3$2(pow(max$1$1(color2.add(vec3$2(0.055)), vec3$2(0)).div(1.055), vec3$2(2.4))).toVar();
   return mix(linSeg, powSeg, isAbove);
 }).setLayout({
   name: "mx_srgb_texture_to_lin_rec709",
@@ -41043,9 +41043,9 @@ const mx_srgb_texture_to_lin_rec709 = /* @__PURE__ */ Fn$1(([color_immutable]) =
   ]
 });
 const mx_aastep = (threshold, value) => {
-  threshold = float$1(threshold);
-  value = float$1(value);
-  const afwidth = vec2$1(value.dFdx(), value.dFdy()).length().mul(0.7071067811865476);
+  threshold = float$4(threshold);
+  value = float$4(value);
+  const afwidth = vec2$2(value.dFdx(), value.dFdy()).length().mul(0.7071067811865476);
   return smoothstep(threshold.sub(afwidth), threshold.add(afwidth), value);
 };
 const _ramp = (a, b, uv2, p) => mix(a, b, uv2[p].clamp());
@@ -41063,37 +41063,37 @@ const mx_splitlr = (valuel, valuer, center, texcoord = uv$1()) => _split(valuel,
 const mx_splittb = (valuet, valueb, center, texcoord = uv$1()) => _split(valuet, valueb, center, texcoord, "y");
 const mx_transform_uv = (uv_scale = 1, uv_offset = 0, uv_geo = uv$1()) => uv_geo.mul(uv_scale).add(uv_offset);
 const mx_safepower = (in1, in2 = 1) => {
-  in1 = float$1(in1);
+  in1 = float$4(in1);
   return in1.abs().pow(in2).mul(in1.sign());
 };
-const mx_contrast = (input, amount = 1, pivot = 0.5) => float$1(input).sub(pivot).mul(amount).add(pivot);
+const mx_contrast = (input, amount = 1, pivot = 0.5) => float$4(input).sub(pivot).mul(amount).add(pivot);
 const mx_noise_float = (texcoord = uv$1(), amplitude = 1, pivot = 0) => mx_perlin_noise_float(texcoord.convert("vec2|vec3")).mul(amplitude).add(pivot);
 const mx_noise_vec3 = (texcoord = uv$1(), amplitude = 1, pivot = 0) => mx_perlin_noise_vec3(texcoord.convert("vec2|vec3")).mul(amplitude).add(pivot);
 const mx_noise_vec4 = (texcoord = uv$1(), amplitude = 1, pivot = 0) => {
   texcoord = texcoord.convert("vec2|vec3");
-  const noise_vec4 = vec4$1(mx_perlin_noise_vec3(texcoord), mx_perlin_noise_float(texcoord.add(vec2$1(19, 73))));
+  const noise_vec4 = vec4$3(mx_perlin_noise_vec3(texcoord), mx_perlin_noise_float(texcoord.add(vec2$2(19, 73))));
   return noise_vec4.mul(amplitude).add(pivot);
 };
-const mx_unifiednoise2d = (noiseType, texcoord = uv$1(), freq = vec2$1(1, 1), offset = vec2$1(0, 0), jitter = 1, outmin = 0, outmax = 1, clampoutput = false, octaves = 1, lacunarity = 2, diminish = 0.5) => mx_unifiednoise2d$1(noiseType, texcoord.convert("vec2|vec3"), freq, offset, jitter, outmin, outmax, clampoutput, octaves, lacunarity, diminish);
-const mx_unifiednoise3d = (noiseType, texcoord = uv$1(), freq = vec2$1(1, 1), offset = vec2$1(0, 0), jitter = 1, outmin = 0, outmax = 1, clampoutput = false, octaves = 1, lacunarity = 2, diminish = 0.5) => mx_unifiednoise3d$1(noiseType, texcoord.convert("vec2|vec3"), freq, offset, jitter, outmin, outmax, clampoutput, octaves, lacunarity, diminish);
-const mx_worley_noise_float = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_float$1(texcoord.convert("vec2|vec3"), jitter, int$1(1));
-const mx_worley_noise_vec2 = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_vec2$1(texcoord.convert("vec2|vec3"), jitter, int$1(1));
-const mx_worley_noise_vec3 = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_vec3$1(texcoord.convert("vec2|vec3"), jitter, int$1(1));
+const mx_unifiednoise2d = (noiseType, texcoord = uv$1(), freq = vec2$2(1, 1), offset = vec2$2(0, 0), jitter = 1, outmin = 0, outmax = 1, clampoutput = false, octaves = 1, lacunarity = 2, diminish = 0.5) => mx_unifiednoise2d$1(noiseType, texcoord.convert("vec2|vec3"), freq, offset, jitter, outmin, outmax, clampoutput, octaves, lacunarity, diminish);
+const mx_unifiednoise3d = (noiseType, texcoord = uv$1(), freq = vec2$2(1, 1), offset = vec2$2(0, 0), jitter = 1, outmin = 0, outmax = 1, clampoutput = false, octaves = 1, lacunarity = 2, diminish = 0.5) => mx_unifiednoise3d$1(noiseType, texcoord.convert("vec2|vec3"), freq, offset, jitter, outmin, outmax, clampoutput, octaves, lacunarity, diminish);
+const mx_worley_noise_float = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_float$1(texcoord.convert("vec2|vec3"), jitter, int$3(1));
+const mx_worley_noise_vec2 = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_vec2$1(texcoord.convert("vec2|vec3"), jitter, int$3(1));
+const mx_worley_noise_vec3 = (texcoord = uv$1(), jitter = 1) => mx_worley_noise_vec3$1(texcoord.convert("vec2|vec3"), jitter, int$3(1));
 const mx_cell_noise_float = (texcoord = uv$1()) => mx_cell_noise_float$1(texcoord.convert("vec2|vec3"));
-const mx_fractal_noise_float = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_float$1(position, int$1(octaves), lacunarity, diminish).mul(amplitude);
-const mx_fractal_noise_vec2 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec2$1(position, int$1(octaves), lacunarity, diminish).mul(amplitude);
-const mx_fractal_noise_vec3 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec3$1(position, int$1(octaves), lacunarity, diminish).mul(amplitude);
-const mx_fractal_noise_vec4 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec4$1(position, int$1(octaves), lacunarity, diminish).mul(amplitude);
-const mx_add = (in1, in2 = float$1(0)) => add$1(in1, in2);
-const mx_subtract = (in1, in2 = float$1(0)) => sub$1(in1, in2);
-const mx_multiply = (in1, in2 = float$1(1)) => mul$1(in1, in2);
-const mx_divide = (in1, in2 = float$1(1)) => div$1(in1, in2);
-const mx_modulo = (in1, in2 = float$1(1)) => mod(in1, in2);
-const mx_power = (in1, in2 = float$1(1)) => pow(in1, in2);
-const mx_atan2 = (in1 = float$1(0), in2 = float$1(1)) => atan(in1, in2);
+const mx_fractal_noise_float = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_float$1(position, int$3(octaves), lacunarity, diminish).mul(amplitude);
+const mx_fractal_noise_vec2 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec2$1(position, int$3(octaves), lacunarity, diminish).mul(amplitude);
+const mx_fractal_noise_vec3 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec3$1(position, int$3(octaves), lacunarity, diminish).mul(amplitude);
+const mx_fractal_noise_vec4 = (position = uv$1(), octaves = 3, lacunarity = 2, diminish = 0.5, amplitude = 1) => mx_fractal_noise_vec4$1(position, int$3(octaves), lacunarity, diminish).mul(amplitude);
+const mx_add = (in1, in2 = float$4(0)) => add$3(in1, in2);
+const mx_subtract = (in1, in2 = float$4(0)) => sub$3(in1, in2);
+const mx_multiply = (in1, in2 = float$4(1)) => mul$3(in1, in2);
+const mx_divide = (in1, in2 = float$4(1)) => div$2(in1, in2);
+const mx_modulo = (in1, in2 = float$4(1)) => mod(in1, in2);
+const mx_power = (in1, in2 = float$4(1)) => pow(in1, in2);
+const mx_atan2 = (in1 = float$4(0), in2 = float$4(1)) => atan(in1, in2);
 const mx_timer = () => time;
 const mx_frame = () => frameId;
-const mx_invert = (in1, amount = float$1(1)) => sub$1(amount, in1);
+const mx_invert = (in1, amount = float$4(1)) => sub$3(amount, in1);
 const mx_ifgreater = (value1, value2, in1, in2) => value1.greaterThan(value2).mix(in1, in2);
 const mx_ifgreatereq = (value1, value2, in1, in2) => value1.greaterThanEqual(value2).mix(in1, in2);
 const mx_ifequal = (value1, value2, in1, in2) => value1.equal(value2).mix(in1, in2);
@@ -41112,7 +41112,7 @@ const mx_separate = (in1, channelOrOut = null) => {
   }
   return in1;
 };
-const mx_place2d = (texcoord, pivot = vec2$1(0.5, 0.5), scale = vec2$1(1, 1), rotate2 = float$1(0), offset = vec2$1(0, 0)) => {
+const mx_place2d = (texcoord, pivot = vec2$2(0.5, 0.5), scale = vec2$2(1, 1), rotate2 = float$4(0), offset = vec2$2(0, 0)) => {
   let uv2 = texcoord;
   if (pivot) uv2 = uv2.sub(pivot);
   if (scale) uv2 = uv2.mul(scale);
@@ -41120,7 +41120,7 @@ const mx_place2d = (texcoord, pivot = vec2$1(0.5, 0.5), scale = vec2$1(1, 1), ro
     const rad = rotate2.mul(Math.PI / 180);
     const cosR = rad.cos();
     const sinR = rad.sin();
-    uv2 = vec2$1(
+    uv2 = vec2$2(
       uv2.x.mul(cosR).sub(uv2.y.mul(sinR)),
       uv2.x.mul(sinR).add(uv2.y.mul(cosR))
     );
@@ -41130,41 +41130,41 @@ const mx_place2d = (texcoord, pivot = vec2$1(0.5, 0.5), scale = vec2$1(1, 1), ro
   return uv2;
 };
 const mx_rotate2d = (input, amount) => {
-  input = vec2$1(input);
-  amount = float$1(amount);
+  input = vec2$2(input);
+  amount = float$4(amount);
   const radians2 = amount.mul(Math.PI / 180);
   return rotate(input, radians2);
 };
 const mx_rotate3d = (input, amount, axis) => {
-  input = vec3$1(input);
-  amount = float$1(amount);
-  axis = vec3$1(axis);
+  input = vec3$2(input);
+  amount = float$4(amount);
+  axis = vec3$2(axis);
   const radians2 = amount.mul(Math.PI / 180);
   const nAxis = axis.normalize();
   const cosA = radians2.cos();
   const sinA = radians2.sin();
-  const oneMinusCosA = float$1(1).sub(cosA);
+  const oneMinusCosA = float$4(1).sub(cosA);
   const rot = input.mul(cosA).add(nAxis.cross(input).mul(sinA)).add(nAxis.mul(nAxis.dot(input)).mul(oneMinusCosA));
   return rot;
 };
 const mx_heighttonormal = (input, scale) => {
-  input = vec3$1(input);
-  scale = float$1(scale);
+  input = vec3$2(input);
+  scale = float$4(scale);
   return bumpMap(input, scale);
 };
-const getParallaxCorrectNormal = /* @__PURE__ */ Fn$1(([normal2, cubeSize, cubePos]) => {
+const getParallaxCorrectNormal = /* @__PURE__ */ Fn$4(([normal2, cubeSize, cubePos]) => {
   const nDir = normalize$1(normal2).toVar();
-  const rbmax = sub$1(float$1(0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar();
-  const rbmin = sub$1(float$1(-0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar();
-  const rbminmax = vec3$1().toVar();
-  rbminmax.x = nDir.x.greaterThan(float$1(0)).select(rbmax.x, rbmin.x);
-  rbminmax.y = nDir.y.greaterThan(float$1(0)).select(rbmax.y, rbmin.y);
-  rbminmax.z = nDir.z.greaterThan(float$1(0)).select(rbmax.z, rbmin.z);
-  const correction = min$1(rbminmax.x, rbminmax.y, rbminmax.z).toVar();
+  const rbmax = sub$3(float$4(0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar();
+  const rbmin = sub$3(float$4(-0.5).mul(cubeSize.sub(cubePos)), positionWorld).div(nDir).toVar();
+  const rbminmax = vec3$2().toVar();
+  rbminmax.x = nDir.x.greaterThan(float$4(0)).select(rbmax.x, rbmin.x);
+  rbminmax.y = nDir.y.greaterThan(float$4(0)).select(rbmax.y, rbmin.y);
+  rbminmax.z = nDir.z.greaterThan(float$4(0)).select(rbmax.z, rbmin.z);
+  const correction = min$1$1(rbminmax.x, rbminmax.y, rbminmax.z).toVar();
   const boxIntersection = positionWorld.add(nDir.mul(correction)).toVar();
   return boxIntersection.sub(cubePos);
 });
-const getShIrradianceAt = /* @__PURE__ */ Fn$1(([normal2, shCoefficients]) => {
+const getShIrradianceAt = /* @__PURE__ */ Fn$4(([normal2, shCoefficients]) => {
   const x = normal2.x, y = normal2.y, z = normal2.z;
   let result = shCoefficients.element(0).mul(0.886227);
   result = result.add(shCoefficients.element(1).mul(2 * 0.511664).mul(y));
@@ -41174,7 +41174,7 @@ const getShIrradianceAt = /* @__PURE__ */ Fn$1(([normal2, shCoefficients]) => {
   result = result.add(shCoefficients.element(5).mul(2 * 0.429043).mul(y).mul(z));
   result = result.add(shCoefficients.element(6).mul(z.mul(z).mul(0.743125).sub(0.247708)));
   result = result.add(shCoefficients.element(7).mul(2 * 0.429043).mul(x).mul(z));
-  result = result.add(shCoefficients.element(8).mul(0.429043).mul(mul$1(x, x).sub(mul$1(y, y))));
+  result = result.add(shCoefficients.element(8).mul(0.429043).mul(mul$3(x, x).sub(mul$3(y, y))));
   return result;
 });
 var TSL = /* @__PURE__ */ Object.freeze({
@@ -41191,10 +41191,10 @@ var TSL = /* @__PURE__ */ Object.freeze({
   Discard: Discard$1,
   EPSILON,
   F_Schlick,
-  Fn: Fn$1,
+  Fn: Fn$4,
   HALF_PI,
   INFINITY,
-  If: If$1,
+  If,
   Loop,
   NodeAccess,
   NodeShaderStage,
@@ -41221,10 +41221,10 @@ var TSL = /* @__PURE__ */ Object.freeze({
   V_GGX_SmithCorrelated,
   Var,
   VarIntent,
-  abs: abs$1,
+  abs: abs$2,
   acesFilmicToneMapping,
   acos,
-  add: add$1,
+  add: add$3,
   addMethodChaining,
   addNodeElement,
   agxToneMapping,
@@ -41255,7 +41255,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   attenuationColor,
   attenuationDistance,
   attribute: attribute$1,
-  attributeArray,
+  attributeArray: attributeArray$2,
   backgroundBlurriness,
   backgroundIntensity,
   backgroundRotation,
@@ -41306,7 +41306,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   ceil,
   checker,
   cineonToneMapping,
-  clamp,
+  clamp: clamp$1,
   clearcoat,
   clearcoatNormalView,
   clearcoatRoughness,
@@ -41353,9 +41353,9 @@ var TSL = /* @__PURE__ */ Object.freeze({
   dispersion,
   disposeShadowMaterial,
   distance,
-  div: div$1,
+  div: div$2,
   dodge,
-  dot: dot$1,
+  dot: dot$3,
   drawIndex,
   dynamicBufferAttribute,
   element,
@@ -41363,13 +41363,13 @@ var TSL = /* @__PURE__ */ Object.freeze({
   equal,
   equals,
   equirectUV,
-  exp: exp$1,
+  exp: exp$2,
   exp2,
   expression,
   faceDirection,
   faceForward,
   faceforward,
-  float: float$1,
+  float: float$4,
   floatBitsToInt,
   floatBitsToUint,
   floor,
@@ -41382,7 +41382,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   gain,
   gapSize,
   getConstNodeType,
-  getCurrentStack,
+  getCurrentStack: getCurrentStack$3,
   getDirection,
   getDistanceAttenuation,
   getGeometryRoughness,
@@ -41410,12 +41410,12 @@ var TSL = /* @__PURE__ */ Object.freeze({
   incrementBefore,
   inspector,
   instance,
-  instanceIndex: instanceIndex$1,
+  instanceIndex: instanceIndex$2,
   instancedArray,
   instancedBufferAttribute,
   instancedDynamicBufferAttribute,
   instancedMesh,
-  int: int$1,
+  int: int$3,
   intBitsToFloat,
   interleavedGradientNoise,
   inverse,
@@ -41428,8 +41428,8 @@ var TSL = /* @__PURE__ */ Object.freeze({
   iridescenceIOR,
   iridescenceThickness,
   isolate,
-  ivec2,
-  ivec3: ivec3$1,
+  ivec2: ivec2$2,
+  ivec3: ivec3$3,
   ivec4,
   js,
   label,
@@ -41448,7 +41448,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   linearDepth,
   linearToneMapping,
   localId,
-  log,
+  log: log$1,
   log2,
   logarithmicDepthToViewZ,
   luminance,
@@ -41498,11 +41498,11 @@ var TSL = /* @__PURE__ */ Object.freeze({
   materialSpecularStrength,
   materialThickness,
   materialTransmission,
-  max: max$1,
+  max: max$1$1,
   maxMipLevel,
   mediumpModelViewMatrix,
   metalness,
-  min: min$1,
+  min: min$1$1,
   mix,
   mixElement,
   mod,
@@ -41519,7 +41519,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   modelWorldMatrixInverse,
   morphReference,
   mrt,
-  mul: mul$1,
+  mul: mul$3,
   mx_aastep,
   mx_add,
   mx_atan2,
@@ -41676,8 +41676,8 @@ var TSL = /* @__PURE__ */ Object.freeze({
   screenUV,
   scriptable,
   scriptableValue,
-  select: select$1,
-  setCurrentStack,
+  select: select$3,
+  setCurrentStack: setCurrentStack$3,
   setName,
   shaderStages,
   shadow,
@@ -41686,7 +41686,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   sharedUniformGroup,
   sheen,
   sheenRoughness,
-  shiftLeft,
+  shiftLeft: shiftLeft$1,
   shiftRight: shiftRight$1,
   shininess,
   sign,
@@ -41701,17 +41701,17 @@ var TSL = /* @__PURE__ */ Object.freeze({
   spherizeUV,
   split,
   spritesheetUV,
-  sqrt: sqrt$1,
+  sqrt: sqrt$3,
   stack,
   step,
   stepElement,
-  storage: storage$1,
+  storage,
   storageBarrier,
   storageObject,
   storageTexture,
   string,
   struct,
-  sub: sub$1,
+  sub: sub$3,
   subBuild,
   subgroupAdd,
   subgroupAll,
@@ -41741,7 +41741,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   tangentLocal,
   tangentView,
   tangentWorld,
-  texture: texture$1,
+  texture: texture$2,
   texture3D,
   texture3DLevel,
   texture3DLoad,
@@ -41750,7 +41750,7 @@ var TSL = /* @__PURE__ */ Object.freeze({
   textureBicubicLevel,
   textureCubeUV,
   textureLevel,
-  textureLoad: textureLoad$1,
+  textureLoad: textureLoad$2,
   textureSize,
   textureStore,
   thickness,
@@ -41770,9 +41770,9 @@ var TSL = /* @__PURE__ */ Object.freeze({
   triplanarTexture,
   triplanarTextures,
   trunc,
-  uint: uint$1,
+  uint: uint$3,
   uintBitsToFloat,
-  uniform: uniform$1,
+  uniform: uniform$2,
   uniformArray,
   uniformCubeTexture,
   uniformFlow,
@@ -41790,9 +41790,9 @@ var TSL = /* @__PURE__ */ Object.freeze({
   uvec4,
   varying,
   varyingProperty: varyingProperty$1,
-  vec2: vec2$1,
-  vec3: vec3$1,
-  vec4: vec4$1,
+  vec2: vec2$2,
+  vec3: vec3$2,
+  vec4: vec4$3,
   vectorComponents,
   velocity,
   vertexColor,
@@ -41895,640 +41895,6 @@ const typedArraysToVertexFormatPrefix = /* @__PURE__ */ new Map([
 if (typeof Float16Array !== "undefined") {
   typedArraysToVertexFormatPrefix.set(Float16Array, ["float16"]);
 }
-/**
- * @license
- * Copyright 2010-2025 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
-TSL.BRDF_GGX;
-TSL.BRDF_Lambert;
-TSL.BasicPointShadowFilter;
-TSL.BasicShadowFilter;
-TSL.Break;
-TSL.Const;
-TSL.Continue;
-TSL.DFGLUT;
-TSL.D_GGX;
-const Discard = TSL.Discard;
-TSL.EPSILON;
-TSL.F_Schlick;
-const Fn = TSL.Fn;
-TSL.INFINITY;
-const If = TSL.If;
-TSL.Loop;
-TSL.NodeAccess;
-TSL.NodeShaderStage;
-TSL.NodeType;
-TSL.NodeUpdateType;
-TSL.PCFShadowFilter;
-TSL.PCFSoftShadowFilter;
-TSL.PI;
-TSL.PI2;
-TSL.TWO_PI;
-TSL.HALF_PI;
-TSL.PointShadowFilter;
-TSL.Return;
-TSL.Schlick_to_F0;
-TSL.ScriptableNodeResources;
-TSL.ShaderNode;
-TSL.Stack;
-TSL.Switch;
-TSL.TBNViewMatrix;
-TSL.VSMShadowFilter;
-TSL.V_GGX_SmithCorrelated;
-TSL.Var;
-TSL.VarIntent;
-const abs = TSL.abs;
-TSL.acesFilmicToneMapping;
-TSL.acos;
-const add = TSL.add;
-TSL.addMethodChaining;
-TSL.addNodeElement;
-TSL.agxToneMapping;
-TSL.all;
-TSL.alphaT;
-TSL.and;
-TSL.anisotropy;
-TSL.anisotropyB;
-TSL.anisotropyT;
-TSL.any;
-TSL.append;
-TSL.array;
-TSL.arrayBuffer;
-TSL.asin;
-TSL.assign;
-TSL.atan;
-TSL.atan2;
-TSL.atomicAdd;
-TSL.atomicAnd;
-TSL.atomicFunc;
-TSL.atomicLoad;
-TSL.atomicMax;
-TSL.atomicMin;
-TSL.atomicOr;
-TSL.atomicStore;
-TSL.atomicSub;
-TSL.atomicXor;
-TSL.attenuationColor;
-TSL.attenuationDistance;
-const attribute = TSL.attribute;
-TSL.attributeArray;
-TSL.backgroundBlurriness;
-TSL.backgroundIntensity;
-TSL.backgroundRotation;
-TSL.batch;
-TSL.bentNormalView;
-TSL.billboarding;
-const bitAnd = TSL.bitAnd;
-TSL.bitNot;
-const bitOr = TSL.bitOr;
-TSL.bitXor;
-TSL.bitangentGeometry;
-TSL.bitangentLocal;
-TSL.bitangentView;
-TSL.bitangentWorld;
-TSL.bitcast;
-TSL.blendBurn;
-TSL.blendColor;
-TSL.blendDodge;
-TSL.blendOverlay;
-TSL.blendScreen;
-TSL.blur;
-TSL.bool;
-TSL.buffer;
-TSL.bufferAttribute;
-TSL.bumpMap;
-TSL.burn;
-TSL.builtin;
-TSL.builtinAOContext;
-TSL.builtinShadowContext;
-TSL.bvec2;
-TSL.bvec3;
-TSL.bvec4;
-TSL.bypass;
-TSL.cache;
-TSL.call;
-TSL.cameraFar;
-TSL.cameraIndex;
-TSL.cameraNear;
-TSL.cameraNormalMatrix;
-TSL.cameraPosition;
-TSL.cameraProjectionMatrix;
-TSL.cameraProjectionMatrixInverse;
-TSL.cameraViewMatrix;
-TSL.cameraViewport;
-TSL.cameraWorldMatrix;
-TSL.cbrt;
-TSL.cdl;
-TSL.ceil;
-TSL.checker;
-TSL.cineonToneMapping;
-TSL.clamp;
-TSL.clearcoat;
-TSL.clearcoatNormalView;
-TSL.clearcoatRoughness;
-TSL.code;
-TSL.color;
-TSL.colorSpaceToWorking;
-TSL.colorToDirection;
-TSL.compute;
-TSL.computeKernel;
-TSL.computeSkinning;
-TSL.context;
-TSL.convert;
-TSL.convertColorSpace;
-TSL.convertToTexture;
-TSL.countLeadingZeros;
-TSL.countOneBits;
-TSL.countTrailingZeros;
-const cos = TSL.cos;
-const cross = TSL.cross;
-TSL.cubeTexture;
-TSL.cubeTextureBase;
-TSL.dFdx;
-TSL.dFdy;
-TSL.dashSize;
-TSL.debug;
-TSL.decrement;
-TSL.decrementBefore;
-TSL.defaultBuildStages;
-TSL.defaultShaderStages;
-TSL.defined;
-TSL.degrees;
-TSL.deltaTime;
-TSL.densityFog;
-TSL.densityFogFactor;
-TSL.depth;
-TSL.depthPass;
-TSL.determinant;
-TSL.difference;
-TSL.diffuseColor;
-TSL.directPointLight;
-TSL.directionToColor;
-TSL.directionToFaceDirection;
-TSL.dispersion;
-TSL.distance;
-const div = TSL.div;
-TSL.dodge;
-const dot = TSL.dot;
-TSL.drawIndex;
-TSL.dynamicBufferAttribute;
-TSL.element;
-TSL.emissive;
-TSL.equal;
-TSL.equals;
-TSL.equirectUV;
-const exp = TSL.exp;
-TSL.exp2;
-TSL.expression;
-TSL.faceDirection;
-TSL.faceForward;
-TSL.faceforward;
-const float = TSL.float;
-TSL.floatBitsToInt;
-TSL.floatBitsToUint;
-TSL.floor;
-TSL.fog;
-TSL.fract;
-TSL.frameGroup;
-TSL.frameId;
-TSL.frontFacing;
-TSL.fwidth;
-TSL.gain;
-TSL.gapSize;
-TSL.getConstNodeType;
-TSL.getCurrentStack;
-TSL.getDirection;
-TSL.getDistanceAttenuation;
-TSL.getGeometryRoughness;
-TSL.getNormalFromDepth;
-TSL.interleavedGradientNoise;
-TSL.vogelDiskSample;
-TSL.getParallaxCorrectNormal;
-TSL.getRoughness;
-TSL.getScreenPosition;
-TSL.getShIrradianceAt;
-TSL.getShadowMaterial;
-TSL.getShadowRenderObjectFunction;
-TSL.getTextureIndex;
-TSL.getViewPosition;
-TSL.globalId;
-TSL.glsl;
-TSL.glslFn;
-TSL.grayscale;
-TSL.greaterThan;
-TSL.greaterThanEqual;
-TSL.hash;
-TSL.highpModelNormalViewMatrix;
-TSL.highpModelViewMatrix;
-TSL.hue;
-TSL.increment;
-TSL.incrementBefore;
-TSL.instance;
-const instanceIndex = TSL.instanceIndex;
-TSL.instancedArray;
-TSL.instancedBufferAttribute;
-TSL.instancedDynamicBufferAttribute;
-TSL.instancedMesh;
-const int = TSL.int;
-TSL.intBitsToFloat;
-TSL.inverse;
-TSL.inverseSqrt;
-TSL.inversesqrt;
-TSL.invocationLocalIndex;
-TSL.invocationSubgroupIndex;
-TSL.ior;
-TSL.iridescence;
-TSL.iridescenceIOR;
-TSL.iridescenceThickness;
-TSL.ivec2;
-const ivec3 = TSL.ivec3;
-TSL.ivec4;
-TSL.js;
-TSL.label;
-TSL.length;
-TSL.lengthSq;
-TSL.lessThan;
-TSL.lessThanEqual;
-TSL.lightPosition;
-TSL.lightProjectionUV;
-TSL.lightShadowMatrix;
-TSL.lightTargetDirection;
-TSL.lightTargetPosition;
-TSL.lightViewPosition;
-TSL.lightingContext;
-TSL.lights;
-TSL.linearDepth;
-TSL.linearToneMapping;
-TSL.localId;
-TSL.log;
-TSL.log2;
-TSL.logarithmicDepthToViewZ;
-TSL.luminance;
-TSL.mat2;
-TSL.mat3;
-TSL.mat4;
-TSL.matcapUV;
-TSL.materialAO;
-TSL.materialAlphaTest;
-TSL.materialAnisotropy;
-TSL.materialAnisotropyVector;
-TSL.materialAttenuationColor;
-TSL.materialAttenuationDistance;
-TSL.materialClearcoat;
-TSL.materialClearcoatNormal;
-TSL.materialClearcoatRoughness;
-TSL.materialColor;
-TSL.materialDispersion;
-TSL.materialEmissive;
-TSL.materialEnvIntensity;
-TSL.materialEnvRotation;
-TSL.materialIOR;
-TSL.materialIridescence;
-TSL.materialIridescenceIOR;
-TSL.materialIridescenceThickness;
-TSL.materialLightMap;
-TSL.materialLineDashOffset;
-TSL.materialLineDashSize;
-TSL.materialLineGapSize;
-TSL.materialLineScale;
-TSL.materialLineWidth;
-TSL.materialMetalness;
-TSL.materialNormal;
-TSL.materialOpacity;
-TSL.materialPointSize;
-TSL.materialReference;
-TSL.materialReflectivity;
-TSL.materialRefractionRatio;
-TSL.materialRotation;
-TSL.materialRoughness;
-TSL.materialSheen;
-TSL.materialSheenRoughness;
-TSL.materialShininess;
-TSL.materialSpecular;
-TSL.materialSpecularColor;
-TSL.materialSpecularIntensity;
-TSL.materialSpecularStrength;
-TSL.materialThickness;
-TSL.materialTransmission;
-const max = TSL.max;
-TSL.maxMipLevel;
-TSL.mediumpModelViewMatrix;
-TSL.metalness;
-const min = TSL.min;
-TSL.mix;
-TSL.mixElement;
-TSL.mod;
-TSL.modInt;
-TSL.modelDirection;
-TSL.modelNormalMatrix;
-TSL.modelPosition;
-TSL.modelRadius;
-TSL.modelScale;
-TSL.modelViewMatrix;
-TSL.modelViewPosition;
-TSL.modelViewProjection;
-TSL.modelWorldMatrix;
-TSL.modelWorldMatrixInverse;
-TSL.morphReference;
-TSL.mrt;
-const mul = TSL.mul;
-TSL.mx_aastep;
-TSL.mx_add;
-TSL.mx_atan2;
-TSL.mx_cell_noise_float;
-TSL.mx_contrast;
-TSL.mx_divide;
-TSL.mx_fractal_noise_float;
-TSL.mx_fractal_noise_vec2;
-TSL.mx_fractal_noise_vec3;
-TSL.mx_fractal_noise_vec4;
-TSL.mx_frame;
-TSL.mx_heighttonormal;
-TSL.mx_hsvtorgb;
-TSL.mx_ifequal;
-TSL.mx_ifgreater;
-TSL.mx_ifgreatereq;
-TSL.mx_invert;
-TSL.mx_modulo;
-TSL.mx_multiply;
-TSL.mx_noise_float;
-TSL.mx_noise_vec3;
-TSL.mx_noise_vec4;
-TSL.mx_place2d;
-TSL.mx_power;
-TSL.mx_ramp4;
-TSL.mx_ramplr;
-TSL.mx_ramptb;
-TSL.mx_rgbtohsv;
-TSL.mx_rotate2d;
-TSL.mx_rotate3d;
-TSL.mx_safepower;
-TSL.mx_separate;
-TSL.mx_splitlr;
-TSL.mx_splittb;
-TSL.mx_srgb_texture_to_lin_rec709;
-TSL.mx_subtract;
-TSL.mx_timer;
-TSL.mx_transform_uv;
-TSL.mx_unifiednoise2d;
-TSL.mx_unifiednoise3d;
-TSL.mx_worley_noise_float;
-TSL.mx_worley_noise_vec2;
-TSL.mx_worley_noise_vec3;
-TSL.negate;
-TSL.neutralToneMapping;
-TSL.nodeArray;
-TSL.nodeImmutable;
-TSL.nodeObject;
-TSL.nodeObjectIntent;
-TSL.nodeObjects;
-TSL.nodeProxy;
-TSL.nodeProxyIntent;
-TSL.normalFlat;
-TSL.normalGeometry;
-TSL.normalLocal;
-TSL.normalMap;
-TSL.normalView;
-TSL.normalViewGeometry;
-TSL.normalWorld;
-TSL.normalWorldGeometry;
-const normalize = TSL.normalize;
-TSL.not;
-TSL.notEqual;
-TSL.numWorkgroups;
-TSL.objectDirection;
-TSL.objectGroup;
-TSL.objectPosition;
-TSL.objectRadius;
-TSL.objectScale;
-TSL.objectViewPosition;
-TSL.objectWorldMatrix;
-TSL.OnBeforeObjectUpdate;
-TSL.OnBeforeMaterialUpdate;
-TSL.OnObjectUpdate;
-TSL.OnMaterialUpdate;
-TSL.oneMinus;
-TSL.or;
-TSL.orthographicDepthToViewZ;
-TSL.oscSawtooth;
-TSL.oscSine;
-TSL.oscSquare;
-TSL.oscTriangle;
-TSL.output;
-TSL.outputStruct;
-TSL.overlay;
-TSL.overloadingFn;
-TSL.packHalf2x16;
-TSL.packSnorm2x16;
-TSL.packUnorm2x16;
-TSL.parabola;
-TSL.parallaxDirection;
-TSL.parallaxUV;
-TSL.parameter;
-TSL.pass;
-TSL.passTexture;
-TSL.pcurve;
-TSL.perspectiveDepthToViewZ;
-TSL.pmremTexture;
-TSL.pointShadow;
-TSL.pointUV;
-TSL.pointWidth;
-TSL.positionGeometry;
-const positionLocal = TSL.positionLocal;
-TSL.positionPrevious;
-TSL.positionView;
-TSL.positionViewDirection;
-TSL.positionWorld;
-TSL.positionWorldDirection;
-TSL.posterize;
-TSL.pow;
-TSL.pow2;
-TSL.pow3;
-TSL.pow4;
-TSL.premultiplyAlpha;
-TSL.property;
-TSL.radians;
-TSL.rand;
-TSL.range;
-TSL.rangeFog;
-TSL.rangeFogFactor;
-TSL.reciprocal;
-TSL.reference;
-TSL.referenceBuffer;
-TSL.reflect;
-TSL.reflectVector;
-TSL.reflectView;
-TSL.reflector;
-TSL.refract;
-TSL.refractVector;
-TSL.refractView;
-TSL.reinhardToneMapping;
-TSL.remap;
-TSL.remapClamp;
-TSL.renderGroup;
-TSL.renderOutput;
-TSL.rendererReference;
-TSL.replaceDefaultUV;
-TSL.rotate;
-TSL.rotateUV;
-TSL.roughness;
-TSL.round;
-TSL.rtt;
-TSL.sRGBTransferEOTF;
-TSL.sRGBTransferOETF;
-TSL.sample;
-TSL.sampler;
-TSL.samplerComparison;
-TSL.saturate;
-TSL.saturation;
-TSL.screen;
-TSL.screenCoordinate;
-TSL.screenDPR;
-TSL.screenSize;
-TSL.screenUV;
-TSL.scriptable;
-TSL.scriptableValue;
-const select = TSL.select;
-TSL.setCurrentStack;
-TSL.setName;
-TSL.shaderStages;
-TSL.shadow;
-TSL.shadowPositionWorld;
-TSL.shapeCircle;
-TSL.sharedUniformGroup;
-TSL.sheen;
-TSL.sheenRoughness;
-TSL.shiftLeft;
-const shiftRight = TSL.shiftRight;
-TSL.shininess;
-TSL.sign;
-const sin = TSL.sin;
-TSL.sinc;
-TSL.skinning;
-TSL.smoothstep;
-TSL.smoothstepElement;
-TSL.specularColor;
-TSL.specularF90;
-TSL.spherizeUV;
-TSL.split;
-TSL.spritesheetUV;
-const sqrt = TSL.sqrt;
-TSL.stack;
-TSL.step;
-TSL.stepElement;
-const storage = TSL.storage;
-TSL.storageBarrier;
-TSL.storageObject;
-TSL.storageTexture;
-TSL.string;
-TSL.struct;
-const sub = TSL.sub;
-TSL.subgroupAdd;
-TSL.subgroupAll;
-TSL.subgroupAnd;
-TSL.subgroupAny;
-TSL.subgroupBallot;
-TSL.subgroupBroadcast;
-TSL.subgroupBroadcastFirst;
-TSL.subBuild;
-TSL.subgroupElect;
-TSL.subgroupExclusiveAdd;
-TSL.subgroupExclusiveMul;
-TSL.subgroupInclusiveAdd;
-TSL.subgroupInclusiveMul;
-TSL.subgroupIndex;
-TSL.subgroupMax;
-TSL.subgroupMin;
-TSL.subgroupMul;
-TSL.subgroupOr;
-TSL.subgroupShuffle;
-TSL.subgroupShuffleDown;
-TSL.subgroupShuffleUp;
-TSL.subgroupShuffleXor;
-TSL.subgroupSize;
-TSL.subgroupXor;
-TSL.tan;
-TSL.tangentGeometry;
-TSL.tangentLocal;
-TSL.tangentView;
-TSL.tangentWorld;
-const texture = TSL.texture;
-TSL.texture3D;
-TSL.textureBarrier;
-TSL.textureBicubic;
-TSL.textureBicubicLevel;
-TSL.textureCubeUV;
-const textureLoad = TSL.textureLoad;
-TSL.textureSize;
-TSL.textureLevel;
-TSL.textureStore;
-TSL.thickness;
-TSL.time;
-TSL.toneMapping;
-TSL.toneMappingExposure;
-TSL.toonOutlinePass;
-TSL.transformDirection;
-TSL.transformNormal;
-TSL.transformNormalToView;
-TSL.transformedClearcoatNormalView;
-TSL.transformedNormalView;
-TSL.transformedNormalWorld;
-TSL.transmission;
-TSL.transpose;
-TSL.triNoise3D;
-TSL.triplanarTexture;
-TSL.triplanarTextures;
-TSL.trunc;
-const uint = TSL.uint;
-TSL.uintBitsToFloat;
-const uniform = TSL.uniform;
-TSL.uniformArray;
-TSL.uniformCubeTexture;
-TSL.uniformGroup;
-TSL.uniformFlow;
-TSL.uniformTexture;
-const unpackHalf2x16 = TSL.unpackHalf2x16;
-TSL.unpackSnorm2x16;
-TSL.unpackUnorm2x16;
-TSL.unpremultiplyAlpha;
-TSL.userData;
-TSL.uv;
-TSL.uvec2;
-TSL.uvec3;
-TSL.uvec4;
-TSL.varying;
-const varyingProperty = TSL.varyingProperty;
-const vec2 = TSL.vec2;
-const vec3 = TSL.vec3;
-const vec4 = TSL.vec4;
-TSL.vectorComponents;
-TSL.velocity;
-TSL.vertexColor;
-TSL.vertexIndex;
-TSL.vertexStage;
-TSL.vibrance;
-TSL.viewZToLogarithmicDepth;
-TSL.viewZToOrthographicDepth;
-TSL.viewZToPerspectiveDepth;
-TSL.viewport;
-TSL.viewportCoordinate;
-TSL.viewportDepthTexture;
-TSL.viewportLinearDepth;
-TSL.viewportMipTexture;
-TSL.viewportResolution;
-TSL.viewportSafeUV;
-TSL.viewportSharedTexture;
-TSL.viewportSize;
-TSL.viewportTexture;
-TSL.viewportUV;
-TSL.wgsl;
-TSL.wgslFn;
-TSL.workgroupArray;
-TSL.workgroupBarrier;
-TSL.workgroupId;
-TSL.workingToColorSpace;
-TSL.xor;
 const SPLAT_TEX_WIDTH_BITS = 11;
 const SPLAT_TEX_HEIGHT_BITS = 11;
 const SPLAT_TEX_LAYER_BITS = SPLAT_TEX_WIDTH_BITS + SPLAT_TEX_HEIGHT_BITS;
@@ -42539,104 +41905,137 @@ const SPLAT_TEX_HEIGHT_MASK = SPLAT_TEX_HEIGHT - 1;
 const PI = 3.14159265359;
 const DEFAULT_MAX_SPLATS = 1024 * 1024;
 const QUAD_INDICES = [0, 1, 2, 0, 2, 3];
-Fn(([index]) => {
-  const x = bitAnd(index, uint(SPLAT_TEX_WIDTH_MASK));
+const {
+  Fn: Fn$3,
+  abs: abs$1,
+  add: add$2,
+  bitAnd,
+  bitOr,
+  clamp,
+  cos,
+  cross,
+  div: div$1,
+  dot: dot$2,
+  exp: exp$1,
+  float: float$3,
+  int: int$2,
+  ivec3: ivec3$2,
+  log,
+  max: max$1,
+  min: min$1,
+  mul: mul$2,
+  normalize,
+  select: select$2,
+  shiftLeft,
+  shiftRight,
+  sin,
+  sqrt: sqrt$2,
+  sub: sub$2,
+  uint: uint$2,
+  unpackHalf2x16,
+  vec2: vec2$1,
+  vec3: vec3$1,
+  vec4: vec4$2
+} = TSL;
+Fn$3(([index]) => {
+  const x = bitAnd(index, uint$2(SPLAT_TEX_WIDTH_MASK));
   const y = bitAnd(
-    shiftRight(index, uint(SPLAT_TEX_WIDTH_BITS)),
-    uint(SPLAT_TEX_HEIGHT_MASK)
+    shiftRight(index, uint$2(SPLAT_TEX_WIDTH_BITS)),
+    uint$2(SPLAT_TEX_HEIGHT_MASK)
   );
-  const z = shiftRight(index, uint(SPLAT_TEX_LAYER_BITS));
-  return ivec3(int(x), int(y), int(z));
+  const z = shiftRight(index, uint$2(SPLAT_TEX_LAYER_BITS));
+  return ivec3$2(int$2(x), int$2(y), int$2(z));
 });
-const quatVec = Fn(([q, v]) => {
-  const qxyz = vec3(q.x, q.y, q.z);
-  const t = mul(float(2), cross(qxyz, v));
-  return add(v, add(mul(q.w, t), cross(qxyz, t)));
+const quatVec = Fn$3(([q, v]) => {
+  const qxyz = q.xyz;
+  const t = mul$2(float$3(2), cross(qxyz, v));
+  return add$2(v, add$2(mul$2(q.w, t), cross(qxyz, t)));
 });
-const quatQuat = Fn(([q12, q2]) => {
-  return vec4(
-    add(
-      add(add(mul(q12.w, q2.x), mul(q12.x, q2.w)), mul(q12.y, q2.z)),
-      mul(float(-1), mul(q12.z, q2.y))
+const quatQuat = Fn$3(([q12, q2]) => {
+  return vec4$2(
+    add$2(
+      add$2(add$2(mul$2(q12.w, q2.x), mul$2(q12.x, q2.w)), mul$2(q12.y, q2.z)),
+      mul$2(float$3(-1), mul$2(q12.z, q2.y))
     ),
-    add(
-      add(sub(mul(q12.w, q2.y), mul(q12.x, q2.z)), mul(q12.y, q2.w)),
-      mul(q12.z, q2.x)
+    add$2(
+      add$2(sub$2(mul$2(q12.w, q2.y), mul$2(q12.x, q2.z)), mul$2(q12.y, q2.w)),
+      mul$2(q12.z, q2.x)
     ),
-    add(
-      sub(add(mul(q12.w, q2.z), mul(q12.x, q2.y)), mul(q12.y, q2.x)),
-      mul(q12.z, q2.w)
+    add$2(
+      sub$2(add$2(mul$2(q12.w, q2.z), mul$2(q12.x, q2.y)), mul$2(q12.y, q2.x)),
+      mul$2(q12.z, q2.w)
     ),
-    sub(
-      sub(sub(mul(q12.w, q2.w), mul(q12.x, q2.x)), mul(q12.y, q2.y)),
-      mul(q12.z, q2.z)
+    sub$2(
+      sub$2(sub$2(mul$2(q12.w, q2.w), mul$2(q12.x, q2.x)), mul$2(q12.y, q2.y)),
+      mul$2(q12.z, q2.z)
     )
   );
 });
-const decodeQuatOctXy88R8 = Fn(([encoded]) => {
-  const quantU = bitAnd(encoded, uint(255));
-  const quantV = bitAnd(shiftRight(encoded, uint(8)), uint(255));
-  const angleInt = shiftRight(encoded, uint(16));
-  const u_f = div(float(quantU), float(255));
-  const v_f = div(float(quantV), float(255));
-  const fx = sub(mul(u_f, float(2)), float(1));
-  const fy = sub(mul(v_f, float(2)), float(1));
-  const axisZ = sub(sub(float(1), abs(fx)), abs(fy));
-  const t = max(mul(float(-1), axisZ), float(0));
-  const axisX = add(
+const decodeQuatOctXy88R8 = Fn$3(([encoded]) => {
+  const quantU = bitAnd(encoded, uint$2(255));
+  const quantV = bitAnd(shiftRight(encoded, uint$2(8)), uint$2(255));
+  const angleInt = shiftRight(encoded, uint$2(16));
+  const u_f = div$1(float$3(quantU), float$3(255));
+  const v_f = div$1(float$3(quantV), float$3(255));
+  const fx = sub$2(mul$2(u_f, float$3(2)), float$3(1));
+  const fy = sub$2(mul$2(v_f, float$3(2)), float$3(1));
+  const axisZ = sub$2(sub$2(float$3(1), abs$1(fx)), abs$1(fy));
+  const t = max$1(mul$2(float$3(-1), axisZ), float$3(0));
+  const axisX = add$2(
     fx,
-    select(fx.greaterThanEqual(float(0)), mul(float(-1), t), t)
+    select$2(fx.greaterThanEqual(float$3(0)), mul$2(float$3(-1), t), t)
   );
-  const axisY = add(
+  const axisY = add$2(
     fy,
-    select(fy.greaterThanEqual(float(0)), mul(float(-1), t), t)
+    select$2(fy.greaterThanEqual(float$3(0)), mul$2(float$3(-1), t), t)
   );
-  const axis = normalize(vec3(axisX, axisY, axisZ));
-  const theta = mul(div(float(angleInt), float(255)), float(PI));
-  const halfTheta = mul(theta, float(0.5));
+  const axis = normalize(vec3$1(axisX, axisY, axisZ));
+  const theta = mul$2(div$1(float$3(angleInt), float$3(255)), float$3(PI));
+  const halfTheta = mul$2(theta, float$3(0.5));
   const s = sin(halfTheta);
   const w = cos(halfTheta);
-  return vec4(mul(axis, s), w);
+  return vec4$2(mul$2(axis, s), w);
 });
 function unpackSplatEncoding(packed, rgbMinMaxLnScaleMinMax) {
   const word0 = packed.x;
   const word1 = packed.y;
   const word2 = packed.z;
   const word3 = packed.w;
-  const uR = bitAnd(word0, uint(255));
-  const uG = bitAnd(shiftRight(word0, uint(8)), uint(255));
-  const uB = bitAnd(shiftRight(word0, uint(16)), uint(255));
-  const uA = shiftRight(word0, uint(24));
+  const uR = bitAnd(word0, uint$2(255));
+  const uG = bitAnd(shiftRight(word0, uint$2(8)), uint$2(255));
+  const uB = bitAnd(shiftRight(word0, uint$2(16)), uint$2(255));
+  const uA = shiftRight(word0, uint$2(24));
   const rgbMin = rgbMinMaxLnScaleMinMax.x;
   const rgbMax = rgbMinMaxLnScaleMinMax.y;
-  const r = add(mul(div(float(uR), float(255)), sub(rgbMax, rgbMin)), rgbMin);
-  const g = add(mul(div(float(uG), float(255)), sub(rgbMax, rgbMin)), rgbMin);
-  const b = add(mul(div(float(uB), float(255)), sub(rgbMax, rgbMin)), rgbMin);
-  const a = div(float(uA), float(255));
-  const rgba = vec4(r, g, b, a);
+  const r = add$2(mul$2(div$1(float$3(uR), float$3(255)), sub$2(rgbMax, rgbMin)), rgbMin);
+  const g = add$2(mul$2(div$1(float$3(uG), float$3(255)), sub$2(rgbMax, rgbMin)), rgbMin);
+  const b = add$2(mul$2(div$1(float$3(uB), float$3(255)), sub$2(rgbMax, rgbMin)), rgbMin);
+  const a = div$1(float$3(uA), float$3(255));
+  const rgba = vec4$2(r, g, b, a);
   const centerXY = unpackHalf2x16(word1);
-  const centerZPart = unpackHalf2x16(bitAnd(word2, uint(65535)));
-  const center = vec3(centerXY.x, centerXY.y, centerZPart.x);
-  const uScaleX = bitAnd(word3, uint(255));
-  const uScaleY = bitAnd(shiftRight(word3, uint(8)), uint(255));
-  const uScaleZ = bitAnd(shiftRight(word3, uint(16)), uint(255));
+  const centerZPart = unpackHalf2x16(bitAnd(word2, uint$2(65535)));
+  const centerZ = float$3(centerZPart.x);
+  const center = vec3$1(centerXY, centerZ);
+  const uScaleX = bitAnd(word3, uint$2(255));
+  const uScaleY = bitAnd(shiftRight(word3, uint$2(8)), uint$2(255));
+  const uScaleZ = bitAnd(shiftRight(word3, uint$2(16)), uint$2(255));
   const lnScaleMin = rgbMinMaxLnScaleMinMax.z;
   const lnScaleMax = rgbMinMaxLnScaleMinMax.w;
-  const lnScaleScale = div(sub(lnScaleMax, lnScaleMin), float(254));
+  const lnScaleScale = div$1(sub$2(lnScaleMax, lnScaleMin), float$3(254));
   const decodeScale = (uScale) => {
-    const isZero = uScale.equal(uint(0));
-    const decoded = exp(
-      add(lnScaleMin, mul(sub(float(uScale), float(1)), lnScaleScale))
+    const isZero = uScale.equal(uint$2(0));
+    const decoded = exp$1(
+      add$2(lnScaleMin, mul$2(sub$2(float$3(uScale), float$3(1)), lnScaleScale))
     );
-    return select(isZero, float(0), decoded);
+    return select$2(isZero, float$3(0), decoded);
   };
-  const scales = vec3(
+  const scales = vec3$1(
     decodeScale(uScaleX),
     decodeScale(uScaleY),
     decodeScale(uScaleZ)
   );
-  const quatLower = bitAnd(shiftRight(word2, uint(16)), uint(65535));
-  const quatUpper = bitAnd(shiftRight(word3, uint(8)), uint(16711680));
+  const quatLower = bitAnd(shiftRight(word2, uint$2(16)), uint$2(65535));
+  const quatUpper = bitAnd(shiftRight(word3, uint$2(8)), uint$2(16711680));
   const uQuat = bitOr(quatLower, quatUpper);
   const quaternion = decodeQuatOctXy88R8(uQuat);
   return { center, scales, quaternion, rgba };
@@ -42646,112 +42045,135 @@ function scaleQuaternionToMatrix(s, q) {
   const qy = q.y;
   const qz = q.z;
   const qw = q.w;
-  const m00 = mul(
+  const m00 = mul$2(
     s.x,
-    sub(float(1), mul(float(2), add(mul(qy, qy), mul(qz, qz))))
+    sub$2(float$3(1), mul$2(float$3(2), add$2(mul$2(qy, qy), mul$2(qz, qz))))
   );
-  const m01 = mul(s.x, mul(float(2), add(mul(qx, qy), mul(qw, qz))));
-  const m02 = mul(s.x, mul(float(2), sub(mul(qx, qz), mul(qw, qy))));
-  const m10 = mul(s.y, mul(float(2), sub(mul(qx, qy), mul(qw, qz))));
-  const m11 = mul(
+  const m01 = mul$2(s.x, mul$2(float$3(2), add$2(mul$2(qx, qy), mul$2(qw, qz))));
+  const m02 = mul$2(s.x, mul$2(float$3(2), sub$2(mul$2(qx, qz), mul$2(qw, qy))));
+  const m10 = mul$2(s.y, mul$2(float$3(2), sub$2(mul$2(qx, qy), mul$2(qw, qz))));
+  const m11 = mul$2(
     s.y,
-    sub(float(1), mul(float(2), add(mul(qx, qx), mul(qz, qz))))
+    sub$2(float$3(1), mul$2(float$3(2), add$2(mul$2(qx, qx), mul$2(qz, qz))))
   );
-  const m12 = mul(s.y, mul(float(2), add(mul(qy, qz), mul(qw, qx))));
-  const m20 = mul(s.z, mul(float(2), add(mul(qx, qz), mul(qw, qy))));
-  const m21 = mul(s.z, mul(float(2), sub(mul(qy, qz), mul(qw, qx))));
-  const m22 = mul(
+  const m12 = mul$2(s.y, mul$2(float$3(2), add$2(mul$2(qy, qz), mul$2(qw, qx))));
+  const m20 = mul$2(s.z, mul$2(float$3(2), add$2(mul$2(qx, qz), mul$2(qw, qy))));
+  const m21 = mul$2(s.z, mul$2(float$3(2), sub$2(mul$2(qy, qz), mul$2(qw, qx))));
+  const m22 = mul$2(
     s.z,
-    sub(float(1), mul(float(2), add(mul(qx, qx), mul(qy, qy))))
+    sub$2(float$3(1), mul$2(float$3(2), add$2(mul$2(qx, qx), mul$2(qy, qy))))
   );
   return { m00, m01, m02, m10, m11, m12, m20, m21, m22 };
 }
 function computeCov3D(RS) {
-  const c00 = add(
-    add(mul(RS.m00, RS.m00), mul(RS.m10, RS.m10)),
-    mul(RS.m20, RS.m20)
+  const c00 = add$2(
+    add$2(mul$2(RS.m00, RS.m00), mul$2(RS.m10, RS.m10)),
+    mul$2(RS.m20, RS.m20)
   );
-  const c01 = add(
-    add(mul(RS.m00, RS.m01), mul(RS.m10, RS.m11)),
-    mul(RS.m20, RS.m21)
+  const c01 = add$2(
+    add$2(mul$2(RS.m00, RS.m01), mul$2(RS.m10, RS.m11)),
+    mul$2(RS.m20, RS.m21)
   );
-  const c02 = add(
-    add(mul(RS.m00, RS.m02), mul(RS.m10, RS.m12)),
-    mul(RS.m20, RS.m22)
+  const c02 = add$2(
+    add$2(mul$2(RS.m00, RS.m02), mul$2(RS.m10, RS.m12)),
+    mul$2(RS.m20, RS.m22)
   );
-  const c11 = add(
-    add(mul(RS.m01, RS.m01), mul(RS.m11, RS.m11)),
-    mul(RS.m21, RS.m21)
+  const c11 = add$2(
+    add$2(mul$2(RS.m01, RS.m01), mul$2(RS.m11, RS.m11)),
+    mul$2(RS.m21, RS.m21)
   );
-  const c12 = add(
-    add(mul(RS.m01, RS.m02), mul(RS.m11, RS.m12)),
-    mul(RS.m21, RS.m22)
+  const c12 = add$2(
+    add$2(mul$2(RS.m01, RS.m02), mul$2(RS.m11, RS.m12)),
+    mul$2(RS.m21, RS.m22)
   );
-  const c22 = add(
-    add(mul(RS.m02, RS.m02), mul(RS.m12, RS.m12)),
-    mul(RS.m22, RS.m22)
+  const c22 = add$2(
+    add$2(mul$2(RS.m02, RS.m02), mul$2(RS.m12, RS.m12)),
+    mul$2(RS.m22, RS.m22)
   );
   return { c00, c01, c02, c11, c12, c22 };
 }
 function projectCov3DTo2D(viewCenter, cov3D, focal, isOrthographic) {
-  const invZ = div(float(1), viewCenter.z);
-  const invZ2 = mul(invZ, invZ);
-  const J00 = mul(focal.x, invZ);
-  const J02 = mul(mul(float(-1), focal.x), mul(viewCenter.x, invZ2));
-  const J11 = mul(focal.y, invZ);
-  const J12 = mul(mul(float(-1), focal.y), mul(viewCenter.y, invZ2));
-  const a = add(
-    add(
-      mul(mul(J00, J00), cov3D.c00),
-      mul(mul(float(2), mul(J00, J02)), cov3D.c02)
+  const invZ = div$1(float$3(1), viewCenter.z);
+  const invZ2 = mul$2(invZ, invZ);
+  const J00 = mul$2(focal.x, invZ);
+  const J02 = mul$2(mul$2(float$3(-1), focal.x), mul$2(viewCenter.x, invZ2));
+  const J11 = mul$2(focal.y, invZ);
+  const J12 = mul$2(mul$2(float$3(-1), focal.y), mul$2(viewCenter.y, invZ2));
+  const a = add$2(
+    add$2(
+      mul$2(mul$2(J00, J00), cov3D.c00),
+      mul$2(mul$2(float$3(2), mul$2(J00, J02)), cov3D.c02)
     ),
-    mul(mul(J02, J02), cov3D.c22)
+    mul$2(mul$2(J02, J02), cov3D.c22)
   );
-  const b = add(
-    add(
-      add(mul(mul(J00, J11), cov3D.c01), mul(mul(J00, J12), cov3D.c02)),
-      mul(mul(J02, J11), cov3D.c12)
+  const b = add$2(
+    add$2(
+      add$2(mul$2(mul$2(J00, J11), cov3D.c01), mul$2(mul$2(J00, J12), cov3D.c02)),
+      mul$2(mul$2(J02, J11), cov3D.c12)
     ),
-    mul(mul(J02, J12), cov3D.c22)
+    mul$2(mul$2(J02, J12), cov3D.c22)
   );
-  const d = add(
-    add(
-      mul(mul(J11, J11), cov3D.c11),
-      mul(mul(float(2), mul(J11, J12)), cov3D.c12)
+  const d = add$2(
+    add$2(
+      mul$2(mul$2(J11, J11), cov3D.c11),
+      mul$2(mul$2(float$3(2), mul$2(J11, J12)), cov3D.c12)
     ),
-    mul(mul(J12, J12), cov3D.c22)
+    mul$2(mul$2(J12, J12), cov3D.c22)
   );
   return { a, b, d };
 }
 function eigenDecompose2x2(a, b, d) {
-  const eigenAvg = mul(float(0.5), add(a, d));
-  const det2 = sub(mul(a, d), mul(b, b));
-  const eigenDelta = sqrt(max(float(0), sub(mul(eigenAvg, eigenAvg), det2)));
-  const eigen1 = add(eigenAvg, eigenDelta);
-  const eigen2 = sub(eigenAvg, eigenDelta);
-  const bSmall = abs(b).lessThan(float(1e-3));
-  const evx = select(bSmall, float(1), b);
-  const evy = select(bSmall, float(0), sub(eigen1, a));
-  const eigenVec1 = normalize(vec2(evx, evy));
-  const eigenVec2 = vec2(eigenVec1.y, mul(float(-1), eigenVec1.x));
+  const eigenAvg = mul$2(float$3(0.5), add$2(a, d));
+  const det2 = sub$2(mul$2(a, d), mul$2(b, b));
+  const eigenDelta = sqrt$2(max$1(float$3(0), sub$2(mul$2(eigenAvg, eigenAvg), det2)));
+  const eigen1 = add$2(eigenAvg, eigenDelta);
+  const eigen2 = sub$2(eigenAvg, eigenDelta);
+  const bSmall = abs$1(b).lessThan(float$3(1e-3));
+  const evx = select$2(bSmall, float$3(1), b);
+  const evy = select$2(bSmall, float$3(0), sub$2(eigen1, a));
+  const eigenVec1 = normalize(vec2$1(evx, evy));
+  const eigenVec2 = vec2$1(eigenVec1.y, mul$2(float$3(-1), eigenVec1.x));
   return { eigen1, eigen2, eigenVec1, eigenVec2 };
 }
+const {
+  Fn: Fn$2,
+  abs,
+  add: add$1,
+  attributeArray: attributeArray$1,
+  div,
+  float: float$2,
+  getCurrentStack: getCurrentStack$2,
+  setCurrentStack: setCurrentStack$2,
+  instanceIndex: instanceIndex$1,
+  int: int$1,
+  ivec2: ivec2$1,
+  ivec3: ivec3$1,
+  max,
+  min,
+  mul: mul$1,
+  select: select$1,
+  sqrt: sqrt$1,
+  sub: sub$1,
+  texture: texture$1,
+  textureLoad: textureLoad$1,
+  uint: uint$1,
+  uniform: uniform$1,
+  vec2,
+  vec3,
+  vec4: vec4$1
+} = TSL;
 class RenderComputePass {
-  constructor(renderer, maxSplats = DEFAULT_MAX_SPLATS) {
-    this.currentTexture = null;
-    this.computeNode = null;
-    this.sortedIndicesStorage = null;
-    this.useSortedIndices = false;
+  constructor(renderer, maxSplats = DEFAULT_MAX_SPLATS, sortedIndicesStorage = null) {
     this.renderer = renderer;
     this.maxSplats = maxSplats;
     const vertexCount = maxSplats * 4;
-    this.positionAttr = new StorageBufferAttribute(vertexCount, 3);
-    this.colorAttr = new StorageBufferAttribute(vertexCount, 4);
-    this.uvAttr = new StorageBufferAttribute(vertexCount, 2);
+    this.positionBuffer = attributeArray$1(vertexCount, "vec3");
+    this.colorBuffer = attributeArray$1(vertexCount, "vec4");
+    this.uvBuffer = attributeArray$1(vertexCount, "vec2");
     this.geometry = new THREE.BufferGeometry();
-    this.geometry.setAttribute("position", this.positionAttr);
-    this.geometry.setAttribute("color", this.colorAttr);
-    this.geometry.setAttribute("uv", this.uvAttr);
+    this.geometry.setAttribute("position", this.positionBuffer.value);
+    this.geometry.setAttribute("color", this.colorBuffer.value);
+    this.geometry.setAttribute("uv", this.uvBuffer.value);
     const indices = new Uint32Array(maxSplats * 6);
     for (let i = 0; i < maxSplats; i++) {
       const vi = i * 4;
@@ -42765,26 +42187,22 @@ class RenderComputePass {
     }
     this.geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     this.geometry.setDrawRange(0, 0);
-    this.positionStorage = storage(this.positionAttr, "float", vertexCount * 3);
-    this.colorStorage = storage(this.colorAttr, "vec4", vertexCount);
-    this.uvStorage = storage(this.uvAttr, "vec2", vertexCount);
     this.uniforms = {
-      numSplats: uniform(0),
-      renderToViewQuat: uniform(new THREE.Vector4(0, 0, 0, 1)),
-      renderToViewPos: uniform(new THREE.Vector3(0, 0, 0)),
-      projMatrix: uniform(new THREE.Matrix4()),
-      renderSize: uniform(new THREE.Vector2(1, 1)),
-      rgbMinMaxLnScaleMinMax: uniform(new THREE.Vector4(0, 1, -12, 9)),
-      maxStdDev: uniform(3),
-      minAlpha: uniform(1 / 255),
-      minPixelRadius: uniform(0),
-      maxPixelRadius: uniform(2048),
-      clipXY: uniform(1.2),
-      focalAdjustment: uniform(1),
-      blurAmount: uniform(0.3),
-      preBlurAmount: uniform(0),
-      isOrthographic: uniform(0)
-      // Use int: 0 = perspective, 1 = orthographic
+      numSplats: uniform$1(0),
+      renderToViewQuat: uniform$1(new THREE.Vector4(0, 0, 0, 1)),
+      renderToViewPos: uniform$1(new THREE.Vector3(0, 0, 0)),
+      projMatrix: uniform$1(new THREE.Matrix4()),
+      renderSize: uniform$1(new THREE.Vector2(1, 1)),
+      rgbMinMaxLnScaleMinMax: uniform$1(new THREE.Vector4(0, 1, -12, 9)),
+      maxStdDev: uniform$1(3),
+      minAlpha: uniform$1(1 / 255),
+      minPixelRadius: uniform$1(0),
+      maxPixelRadius: uniform$1(2048),
+      clipXY: uniform$1(1.2),
+      focalAdjustment: uniform$1(1),
+      blurAmount: uniform$1(0.3),
+      preBlurAmount: uniform$1(0),
+      isOrthographic: uniform$1(0)
     };
     const placeholderTexture = new THREE.DataArrayTexture(
       new Uint32Array(4),
@@ -42796,49 +42214,43 @@ class RenderComputePass {
     placeholderTexture.type = THREE.UnsignedIntType;
     placeholderTexture.internalFormat = "RGBA32UI";
     placeholderTexture.needsUpdate = true;
-    this.packedSplatsTextureUniform = texture(placeholderTexture);
-    this.buildComputeNode();
+    this.packedSplatsTextureUniform = texture$1(placeholderTexture);
+    this.computeNode = this.buildComputeNode(sortedIndicesStorage);
   }
   /**
-   * Set sorted indices storage for reading splats in sorted order.
+   * Build the compute shader node (called once in constructor).
    */
-  setSortedIndicesStorage(sortedIndicesStorage) {
-    this.sortedIndicesStorage = sortedIndicesStorage;
-    this.useSortedIndices = sortedIndicesStorage !== null;
-  }
-  /**
-   * Build the compute shader node.
-   * Uses select() instead of If/Return for TSL compatibility.
-   */
-  buildComputeNode() {
-    const posStorage = this.positionStorage;
-    const colStorage = this.colorStorage;
-    const uvStorage = this.uvStorage;
+  buildComputeNode(sortedIndicesStorage) {
+    const posBuffer = this.positionBuffer;
+    const colBuffer = this.colorBuffer;
+    const uvBuf = this.uvBuffer;
     const uniforms = this.uniforms;
     const packedSplatsTexture = this.packedSplatsTextureUniform;
-    const sortedIndicesStorage = this.sortedIndicesStorage;
-    const useSorted = this.useSortedIndices;
-    this.computeNode = Fn(() => {
-      const splatIdx = instanceIndex;
+    const useSorted = sortedIndicesStorage !== null;
+    return Fn$2((builder) => {
+      var _a2;
+      if (getCurrentStack$2() === null && ((_a2 = builder == null ? void 0 : builder.stack) == null ? void 0 : _a2.isStackNode)) {
+        setCurrentStack$2(builder.stack);
+      }
+      const splatIdx = instanceIndex$1;
       const degeneratePos = vec3(0, 0, 2);
-      const degenerateColor = vec4(0, 0, 0, 0);
+      const degenerateColor = vec4$1(0, 0, 0, 0);
       const degenerateUv = vec2(0, 0);
       const withinRange = splatIdx.lessThan(uniforms.numSplats);
       const actualIdx = useSorted && sortedIndicesStorage ? sortedIndicesStorage.element(splatIdx) : splatIdx;
-      const ix = int(uint(actualIdx).bitAnd(uint(SPLAT_TEX_WIDTH_MASK)));
-      const iy = int(
-        uint(actualIdx).shiftRight(uint(SPLAT_TEX_WIDTH_BITS)).bitAnd(uint(SPLAT_TEX_HEIGHT_MASK))
+      const ix = int$1(uint$1(actualIdx).bitAnd(uint$1(SPLAT_TEX_WIDTH_MASK)));
+      const iy = int$1(
+        uint$1(actualIdx).shiftRight(uint$1(SPLAT_TEX_WIDTH_BITS)).bitAnd(uint$1(SPLAT_TEX_HEIGHT_MASK))
       );
-      const iz = int(uint(actualIdx).shiftRight(uint(SPLAT_TEX_LAYER_BITS)));
-      const texCoord = ivec3(ix, iy, iz);
-      const packed = textureLoad(packedSplatsTexture, texCoord, int(0));
+      const iz = int$1(uint$1(actualIdx).shiftRight(uint$1(SPLAT_TEX_LAYER_BITS)));
+      const packed = textureLoad$1(packedSplatsTexture, ivec2$1(ix, iy)).depth(iz);
       const { center, scales, quaternion, rgba } = unpackSplatEncoding(
         packed,
         uniforms.rgbMinMaxLnScaleMinMax
       );
       const alphaValid = rgba.w.greaterThanEqual(uniforms.minAlpha);
-      const hasNonZeroScale = scales.x.greaterThan(float(0)).or(scales.y.greaterThan(float(0))).or(scales.z.greaterThan(float(0)));
-      const viewQuat = vec4(
+      const hasNonZeroScale = scales.x.greaterThan(float$2(0)).or(scales.y.greaterThan(float$2(0))).or(scales.z.greaterThan(float$2(0)));
+      const viewQuat = vec4$1(
         uniforms.renderToViewQuat.x,
         uniforms.renderToViewQuat.y,
         uniforms.renderToViewQuat.z,
@@ -42849,45 +42261,45 @@ class RenderComputePass {
         uniforms.renderToViewPos.y,
         uniforms.renderToViewPos.z
       );
-      const viewCenter = add(quatVec(viewQuat, center), viewPos);
-      const inFrontOfCamera = viewCenter.z.lessThan(float(0));
-      const clipCenter = uniforms.projMatrix.mul(vec4(viewCenter, float(1)));
+      const viewCenter = add$1(quatVec(viewQuat, center), viewPos);
+      const inFrontOfCamera = viewCenter.z.lessThan(float$2(0));
+      const clipCenter = uniforms.projMatrix.mul(vec4$1(viewCenter, float$2(1)));
       const withinDepthRange = abs(clipCenter.z).lessThan(clipCenter.w);
-      const clipLimit = mul(uniforms.clipXY, clipCenter.w);
+      const clipLimit = mul$1(uniforms.clipXY, clipCenter.w);
       const withinXYFrustum = abs(clipCenter.x).lessThanEqual(clipLimit).and(abs(clipCenter.y).lessThanEqual(clipLimit));
-      const safeW = select(
-        clipCenter.w.equal(float(0)),
-        float(1),
+      const safeW = select$1(
+        clipCenter.w.equal(float$2(0)),
+        float$2(1),
         clipCenter.w
       );
       const ndcCenter = div(clipCenter.xyz, safeW);
       const viewQuaternion = quatQuat(viewQuat, quaternion);
       const RS = scaleQuaternionToMatrix(scales, viewQuaternion);
       const cov3D = computeCov3D(RS);
-      const scaledRenderSize = mul(
+      const scaledRenderSize = mul$1(
         uniforms.renderSize,
         uniforms.focalAdjustment
       );
-      const fx = mul(
-        mul(float(0.5), scaledRenderSize.x),
+      const fx = mul$1(
+        mul$1(float$2(0.5), scaledRenderSize.x),
         uniforms.projMatrix.element(0).element(0)
       );
-      const fy = mul(
-        mul(float(0.5), scaledRenderSize.y),
+      const fy = mul$1(
+        mul$1(float$2(0.5), scaledRenderSize.y),
         uniforms.projMatrix.element(1).element(1)
       );
       const focal = vec2(fx, fy);
       const cov2D = projectCov3DTo2D(viewCenter, cov3D, focal);
-      const a = add(cov2D.a, uniforms.preBlurAmount);
+      const a = add$1(cov2D.a, uniforms.preBlurAmount);
       const b = cov2D.b;
-      const d = add(cov2D.d, uniforms.preBlurAmount);
-      const detOrig = sub(mul(a, d), mul(b, b));
-      const aBlur = add(a, uniforms.blurAmount);
-      const dBlur = add(d, uniforms.blurAmount);
-      const det2 = sub(mul(aBlur, dBlur), mul(b, b));
-      const safeDet = max(float(1e-10), det2);
-      const blurAdjust = sqrt(max(float(0), div(detOrig, safeDet)));
-      const finalAlpha = mul(rgba.w, blurAdjust);
+      const d = add$1(cov2D.d, uniforms.preBlurAmount);
+      const detOrig = sub$1(mul$1(a, d), mul$1(b, b));
+      const aBlur = add$1(a, uniforms.blurAmount);
+      const dBlur = add$1(d, uniforms.blurAmount);
+      const det2 = sub$1(mul$1(aBlur, dBlur), mul$1(b, b));
+      const safeDet = max(float$2(1e-10), det2);
+      const blurAdjust = sqrt$1(max(float$2(0), div(detOrig, safeDet)));
+      const finalAlpha = mul$1(rgba.w, blurAdjust);
       const finalAlphaValid = finalAlpha.greaterThanEqual(uniforms.minAlpha);
       const { eigen1, eigen2, eigenVec1, eigenVec2 } = eigenDecompose2x2(
         aBlur,
@@ -42896,57 +42308,53 @@ class RenderComputePass {
       );
       const scale1 = min(
         uniforms.maxPixelRadius,
-        mul(uniforms.maxStdDev, sqrt(max(float(0), eigen1)))
+        mul$1(uniforms.maxStdDev, sqrt$1(max(float$2(0), eigen1)))
       );
       const scale2 = min(
         uniforms.maxPixelRadius,
-        mul(uniforms.maxStdDev, sqrt(max(float(0), eigen2)))
+        mul$1(uniforms.maxStdDev, sqrt$1(max(float$2(0), eigen2)))
       );
       const hasMinRadius = scale1.greaterThanEqual(uniforms.minPixelRadius).or(scale2.greaterThanEqual(uniforms.minPixelRadius));
       const isValid = withinRange.and(alphaValid).and(hasNonZeroScale).and(inFrontOfCamera).and(withinDepthRange).and(withinXYFrustum).and(finalAlphaValid).and(hasMinRadius);
-      const finalRgba = vec4(rgba.x, rgba.y, rgba.z, finalAlpha);
-      const baseVertex = mul(splatIdx, uint(4));
-      const invRenderSize = div(float(2), scaledRenderSize);
+      const finalRgba = vec4$1(rgba.xyz, finalAlpha);
+      const baseVertex = mul$1(splatIdx, uint$1(4));
+      const invRenderSize = div(float$2(2), scaledRenderSize);
       const computeCornerPos = (cornerX, cornerY) => {
-        const pixelOffset = add(
-          mul(mul(cornerX, eigenVec1), scale1),
-          mul(mul(cornerY, eigenVec2), scale2)
+        const pixelOffset = add$1(
+          mul$1(mul$1(cornerX, eigenVec1), scale1),
+          mul$1(mul$1(cornerY, eigenVec2), scale2)
         );
-        const ndcOffset = mul(invRenderSize, pixelOffset);
-        return vec3(
-          add(ndcCenter.x, ndcOffset.x),
-          add(ndcCenter.y, ndcOffset.y),
-          ndcCenter.z
-        );
+        const ndcOffset = mul$1(invRenderSize, pixelOffset);
+        return vec3(add$1(ndcCenter.xy, ndcOffset), ndcCenter.z);
       };
-      const corner0 = vec2(float(-1), float(-1));
+      const corner0 = vec2(float$2(-1), float$2(-1));
       const pos0 = computeCornerPos(corner0.x, corner0.y);
-      const uv0 = mul(corner0, uniforms.maxStdDev);
-      const vertexIdx0 = add(baseVertex, uint(0));
-      posStorage.element(vertexIdx0).assign(select(isValid, pos0, degeneratePos));
-      colStorage.element(vertexIdx0).assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx0).assign(select(isValid, uv0, degenerateUv));
-      const corner1 = vec2(float(1), float(-1));
+      const uv0 = mul$1(corner0, uniforms.maxStdDev);
+      const vertexIdx0 = add$1(baseVertex, uint$1(0));
+      posBuffer.element(vertexIdx0).assign(select$1(isValid, pos0, degeneratePos));
+      colBuffer.element(vertexIdx0).assign(select$1(isValid, finalRgba, degenerateColor));
+      uvBuf.element(vertexIdx0).assign(select$1(isValid, uv0, degenerateUv));
+      const corner1 = vec2(float$2(1), float$2(-1));
       const pos1 = computeCornerPos(corner1.x, corner1.y);
-      const uv1 = mul(corner1, uniforms.maxStdDev);
-      const vertexIdx1 = add(baseVertex, uint(1));
-      posStorage.element(vertexIdx1).assign(select(isValid, pos1, degeneratePos));
-      colStorage.element(vertexIdx1).assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx1).assign(select(isValid, uv1, degenerateUv));
-      const corner2 = vec2(float(1), float(1));
+      const uv1 = mul$1(corner1, uniforms.maxStdDev);
+      const vertexIdx1 = add$1(baseVertex, uint$1(1));
+      posBuffer.element(vertexIdx1).assign(select$1(isValid, pos1, degeneratePos));
+      colBuffer.element(vertexIdx1).assign(select$1(isValid, finalRgba, degenerateColor));
+      uvBuf.element(vertexIdx1).assign(select$1(isValid, uv1, degenerateUv));
+      const corner2 = vec2(float$2(1), float$2(1));
       const pos2 = computeCornerPos(corner2.x, corner2.y);
-      const uv2 = mul(corner2, uniforms.maxStdDev);
-      const vertexIdx2 = add(baseVertex, uint(2));
-      posStorage.element(vertexIdx2).assign(select(isValid, pos2, degeneratePos));
-      colStorage.element(vertexIdx2).assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx2).assign(select(isValid, uv2, degenerateUv));
-      const corner3 = vec2(float(-1), float(1));
+      const uv2 = mul$1(corner2, uniforms.maxStdDev);
+      const vertexIdx2 = add$1(baseVertex, uint$1(2));
+      posBuffer.element(vertexIdx2).assign(select$1(isValid, pos2, degeneratePos));
+      colBuffer.element(vertexIdx2).assign(select$1(isValid, finalRgba, degenerateColor));
+      uvBuf.element(vertexIdx2).assign(select$1(isValid, uv2, degenerateUv));
+      const corner3 = vec2(float$2(-1), float$2(1));
       const pos3 = computeCornerPos(corner3.x, corner3.y);
-      const uv3 = mul(corner3, uniforms.maxStdDev);
-      const vertexIdx3 = add(baseVertex, uint(3));
-      posStorage.element(vertexIdx3).assign(select(isValid, pos3, degeneratePos));
-      colStorage.element(vertexIdx3).assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx3).assign(select(isValid, uv3, degenerateUv));
+      const uv3 = mul$1(corner3, uniforms.maxStdDev);
+      const vertexIdx3 = add$1(baseVertex, uint$1(3));
+      posBuffer.element(vertexIdx3).assign(select$1(isValid, pos3, degeneratePos));
+      colBuffer.element(vertexIdx3).assign(select$1(isValid, finalRgba, degenerateColor));
+      uvBuf.element(vertexIdx3).assign(select$1(isValid, uv3, degenerateUv));
     })().compute(this.maxSplats);
   }
   /**
@@ -42975,10 +42383,8 @@ class RenderComputePass {
     this.uniforms.blurAmount.value = params.blurAmount;
     this.uniforms.preBlurAmount.value = params.preBlurAmount;
     this.uniforms.isOrthographic.value = params.isOrthographic ? 1 : 0;
-    if (this.currentTexture !== params.packedSplatsTexture) {
-      this.currentTexture = params.packedSplatsTexture;
-      this.packedSplatsTextureUniform = texture(params.packedSplatsTexture);
-      this.buildComputeNode();
+    if (this.packedSplatsTextureUniform.value !== params.packedSplatsTexture) {
+      this.packedSplatsTextureUniform.value = params.packedSplatsTexture;
     }
     await this.renderer.computeAsync(this.computeNode);
     this.geometry.setDrawRange(0, params.numSplats * 6);
@@ -42990,22 +42396,33 @@ class RenderComputePass {
     this.geometry.dispose();
   }
 }
+const {
+  Fn: Fn$1,
+  add,
+  attributeArray,
+  dot: dot$1,
+  float: float$1,
+  getCurrentStack: getCurrentStack$1,
+  setCurrentStack: setCurrentStack$1,
+  instanceIndex,
+  int,
+  ivec2,
+  ivec3,
+  select,
+  sqrt,
+  sub,
+  texture,
+  textureLoad,
+  uint,
+  uniform
+} = TSL;
 class SortComputePass {
   constructor(renderer, maxSplats = DEFAULT_MAX_SPLATS) {
-    this.distanceComputeNode = null;
-    this.currentTexture = null;
     this.renderer = renderer;
     this.maxSplats = maxSplats;
-    this.distanceAttr = new StorageBufferAttribute(maxSplats, 1);
-    this.distanceStorage = storage(this.distanceAttr, "float", maxSplats);
-    this.distanceArray = new Float32Array(maxSplats);
+    this.distanceBuffer = attributeArray(maxSplats, "float");
+    this.sortedIndicesBuffer = attributeArray(maxSplats, "uint");
     this.indicesArray = new Uint32Array(maxSplats);
-    this.sortedIndicesAttr = new StorageBufferAttribute(maxSplats, 1);
-    this.sortedIndicesStorage = storage(
-      this.sortedIndicesAttr,
-      "uint",
-      maxSplats
-    );
     for (let i = 0; i < maxSplats; i++) {
       this.indicesArray[i] = i;
     }
@@ -43029,16 +42446,20 @@ class SortComputePass {
     placeholderTexture.internalFormat = "RGBA32UI";
     placeholderTexture.needsUpdate = true;
     this.packedSplatsTextureUniform = texture(placeholderTexture);
+    this.distanceComputeNode = this.buildDistanceComputeNode();
   }
   /**
-   * Build the distance computation shader.
-   * Uses select() instead of If/Return for better TSL compatibility.
+   * Build the distance computation shader (called once in constructor).
    */
   buildDistanceComputeNode() {
-    const distStorage = this.distanceStorage;
+    const distBuffer = this.distanceBuffer;
     const uniforms = this.uniforms;
     const packedSplatsTexture = this.packedSplatsTextureUniform;
-    this.distanceComputeNode = Fn(() => {
+    return Fn$1((builder) => {
+      var _a2;
+      if (getCurrentStack$1() === null && ((_a2 = builder == null ? void 0 : builder.stack) == null ? void 0 : _a2.isStackNode)) {
+        setCurrentStack$1(builder.stack);
+      }
       const splatIdx = instanceIndex;
       const isValid = splatIdx.lessThan(uniforms.numSplats);
       const ix = int(uint(splatIdx).bitAnd(uint(SPLAT_TEX_WIDTH_MASK)));
@@ -43046,16 +42467,15 @@ class SortComputePass {
         uint(splatIdx).shiftRight(uint(SPLAT_TEX_WIDTH_BITS)).bitAnd(uint(SPLAT_TEX_HEIGHT_MASK))
       );
       const iz = int(uint(splatIdx).shiftRight(uint(SPLAT_TEX_LAYER_BITS)));
-      const texCoord = ivec3(ix, iy, iz);
-      const packed = textureLoad(packedSplatsTexture, texCoord, int(0));
+      const packed = textureLoad(packedSplatsTexture, ivec2(ix, iy)).depth(iz);
       const { center } = unpackSplatEncoding(
         packed,
         uniforms.rgbMinMaxLnScaleMinMax
       );
       const toSplat = sub(center, uniforms.viewOrigin);
-      const radialDist = sqrt(dot(toSplat, toSplat));
+      const radialDist = sqrt(dot$1(toSplat, toSplat));
       const depthDist = add(
-        dot(toSplat, uniforms.viewDirection),
+        dot$1(toSplat, uniforms.viewDirection),
         uniforms.depthBias
       );
       const computedDistance = select(
@@ -43063,8 +42483,8 @@ class SortComputePass {
         radialDist,
         depthDist
       );
-      const finalDistance = select(isValid, computedDistance, float(1e30));
-      distStorage.element(splatIdx).assign(finalDistance);
+      const finalDistance = select(isValid, computedDistance, float$1(1e30));
+      distBuffer.element(splatIdx).assign(finalDistance);
     })().compute(this.maxSplats);
   }
   /**
@@ -43073,7 +42493,7 @@ class SortComputePass {
   async sort(params) {
     const { numSplats } = params;
     if (numSplats === 0) {
-      return this.sortedIndicesAttr;
+      return;
     }
     this.uniforms.numSplats.value = numSplats;
     this.uniforms.viewOrigin.value.copy(params.viewOrigin);
@@ -43083,20 +42503,17 @@ class SortComputePass {
     );
     this.uniforms.sortRadial.value = params.sortRadial ? 1 : 0;
     this.uniforms.depthBias.value = params.depthBias;
-    if (this.currentTexture !== params.packedSplatsTexture) {
-      this.currentTexture = params.packedSplatsTexture;
-      this.packedSplatsTextureUniform = texture(params.packedSplatsTexture);
-      this.buildDistanceComputeNode();
+    if (this.packedSplatsTextureUniform.value !== params.packedSplatsTexture) {
+      this.packedSplatsTextureUniform.value = params.packedSplatsTexture;
     }
-    if (this.distanceComputeNode) {
-      await this.renderer.computeAsync(this.distanceComputeNode);
-    }
+    await this.renderer.computeAsync(this.distanceComputeNode);
+    const distanceAttr = this.distanceBuffer.value;
     let distArray;
     try {
-      const buffer2 = await this.renderer.getArrayBufferAsync(this.distanceAttr);
+      const buffer2 = await this.renderer.getArrayBufferAsync(distanceAttr);
       distArray = new Float32Array(buffer2);
     } catch (e) {
-      return this.sortedIndicesAttr;
+      return;
     }
     for (let i = 0; i < numSplats; i++) {
       this.indicesArray[i] = i;
@@ -43121,16 +42538,16 @@ class SortComputePass {
         indices[i] = indexArray[i];
       }
     }
-    const sortedArray = this.sortedIndicesAttr.array;
+    const sortedAttr = this.sortedIndicesBuffer.value;
+    const sortedArray = sortedAttr.array;
     sortedArray.set(indices.subarray(0, numSplats));
-    this.sortedIndicesAttr.needsUpdate = true;
-    return this.sortedIndicesAttr;
+    sortedAttr.needsUpdate = true;
   }
   /**
-   * Get the sorted indices storage for use in render pass.
+   * Get the sorted indices storage node for use in render pass.
    */
   getSortedIndicesStorage() {
-    return this.sortedIndicesStorage;
+    return this.sortedIndicesBuffer;
   }
   /**
    * Dispose of GPU resources.
@@ -43138,6 +42555,20 @@ class SortComputePass {
   dispose() {
   }
 }
+const {
+  Discard,
+  Fn,
+  attribute,
+  dot,
+  exp,
+  float,
+  getCurrentStack,
+  setCurrentStack,
+  mul,
+  positionLocal,
+  varyingProperty,
+  vec4
+} = TSL;
 function createWebGPUSplatMaterial(options = {}) {
   const {
     falloff = 1,
@@ -43153,7 +42584,11 @@ function createWebGPUSplatMaterial(options = {}) {
   material.side = THREE.DoubleSide;
   const vColor = varyingProperty("vec4", "vColor");
   const vUv = varyingProperty("vec2", "vUv");
-  material.positionNode = Fn(() => {
+  material.positionNode = Fn((builder) => {
+    var _a2;
+    if (getCurrentStack() === null && ((_a2 = builder == null ? void 0 : builder.stack) == null ? void 0 : _a2.isStackNode)) {
+      setCurrentStack(builder.stack);
+    }
     const colorAttr = attribute("color");
     const uvAttr = attribute("uv");
     vColor.assign(colorAttr);
@@ -43171,18 +42606,11 @@ function createWebGPUSplatMaterial(options = {}) {
       const gaussian = exp(mul(float(-0.5), mul(distSq, float(falloff))));
       alpha = mul(color2.w, gaussian);
     }
-    If(alpha.lessThan(float(minAlpha)), () => {
-      Discard();
-    });
+    Discard(alpha.lessThan(float(minAlpha)));
     if (premultipliedAlpha) {
-      return vec4(
-        mul(color2.x, alpha),
-        mul(color2.y, alpha),
-        mul(color2.z, alpha),
-        alpha
-      );
+      return vec4(mul(color2.xyz, alpha), alpha);
     } else {
-      return vec4(color2.x, color2.y, color2.z, alpha);
+      return vec4(color2.xyz, alpha);
     }
   })();
   if (premultipliedAlpha) {
@@ -43215,7 +42643,11 @@ class WebGPUSplatPipeline {
     this.renderer = renderer;
     this.maxSplats = options.maxSplats ?? DEFAULT_MAX_SPLATS;
     this.sortPass = new SortComputePass(renderer, this.maxSplats);
-    this.renderPass = new RenderComputePass(renderer, this.maxSplats);
+    this.renderPass = new RenderComputePass(
+      renderer,
+      this.maxSplats,
+      this.sortPass.getSortedIndicesStorage()
+    );
     if (options.debug) {
       this.material = createDebugSplatMaterial();
     } else {
@@ -43278,13 +42710,9 @@ class WebGPUSplatPipeline {
       depthBias
     };
     await this.sortPass.sort(sortParams);
-    const sortedIndicesStorage = this.sortPass.getSortedIndicesStorage();
-    this.renderPass.setSortedIndicesStorage(sortedIndicesStorage);
     const renderParams = {
       packedSplatsTexture,
       numSplats,
-      sortedIndices: this.sortPass.sortedIndicesAttr,
-      // Use sorted indices from sort pass
       renderToViewQuat: this.renderToViewQuat,
       renderToViewPos: this.renderToViewPos,
       projectionMatrix: camera.projectionMatrix,
@@ -45524,9 +44952,9 @@ function staticBox({
           throw new Error("index is undefined");
         }
         const cellX = imod(index, dynoX);
-        const index2 = div$2(index, dynoX);
+        const index2 = div$3(index, dynoX);
         const cellY = imod(index2, dynoY);
-        const cellZ = div$2(index2, dynoY);
+        const cellZ = div$3(index2, dynoY);
         const cell = combine({
           vectorType: "ivec3",
           x: cellX,
@@ -45538,8 +44966,8 @@ function staticBox({
         const random = hashVec3(inputs);
         const min2 = dynoConst("vec3", box.min);
         const max2 = dynoConst("vec3", box.max);
-        const size = sub$2(max2, min2);
-        const coord = div$2(add$2(vec3$2(cell), random), dynoConst("vec3", cells));
+        const size = sub$4(max2, min2);
+        const coord = div$3(add$4(vec3$3(cell), random), dynoConst("vec3", cells));
         let r;
         let g;
         let b;
@@ -45557,8 +44985,8 @@ function staticBox({
           b,
           a: dynoConst("float", opacity)
         });
-        const center = add$2(min2, mul$2(size, coord));
-        const scales = vec3$2(dynoConst("float", dotScale));
+        const center = add$4(min2, mul$4(size, coord));
+        const scales = vec3$3(dynoConst("float", dotScale));
         const quaternion = dynoConst("vec4", new THREE.Quaternion(0, 0, 0, 1));
         let gsplat = combineGsplat({
           flags: dynoLiteral("uint", "GSPLAT_FLAG_ACTIVE"),
@@ -45674,7 +45102,7 @@ function snowBox({
   const dynoMin = dynoVec3(box.min);
   const dynoMax = dynoVec3(box.max);
   const dynoMinY = dynoFloat(minY ?? Number.NEGATIVE_INFINITY);
-  const minMax = sub$2(dynoMax, dynoMin);
+  const minMax = sub$4(dynoMax, dynoMin);
   const snow = new SplatGenerator({
     numSplats,
     generator: dynoBlock(
@@ -45686,15 +45114,15 @@ function snowBox({
         }
         const random = hashVec4(index);
         const randomW = split$1(random).outputs.w;
-        let position = vec3$2(random);
-        let size = fract$1(mul$2(randomW, dynoConst("float", 100)));
-        size = sin$2(mul$2(dynoLiteral("float", "PI"), size));
-        size = add$2(dynoMinScale, mul$2(size, sub$2(dynoMaxScale, dynoMinScale)));
-        const scales = mul$2(size, dynoAnisoScale);
-        const intensity = fract$1(mul$2(randomW, dynoConst("float", 10)));
+        let position = vec3$3(random);
+        let size = fract$1(mul$4(randomW, dynoConst("float", 100)));
+        size = sin$2(mul$4(dynoLiteral("float", "PI"), size));
+        size = add$4(dynoMinScale, mul$4(size, sub$4(dynoMaxScale, dynoMinScale)));
+        const scales = mul$4(size, dynoAnisoScale);
+        const intensity = fract$1(mul$4(randomW, dynoConst("float", 10)));
         const hue2 = fract$1(randomW);
         const color3 = mix$1(dynoColor1, dynoColor2, hue2);
-        const rgb = mul$2(color3, intensity);
+        const rgb = mul$4(color3, intensity);
         const random2 = hashVec4(
           combine({
             vectorType: "ivec2",
@@ -45702,19 +45130,19 @@ function snowBox({
             y: dynoConst("int", 6837)
           })
         );
-        let perturb = vec3$2(random2);
-        let timeOffset = mul$2(split$1(random2).outputs.w, dynoWanderVariance);
-        timeOffset = add$2(dynoTime, timeOffset);
-        position = add$2(position, globalOffset);
+        let perturb = vec3$3(random2);
+        let timeOffset = mul$4(split$1(random2).outputs.w, dynoWanderVariance);
+        timeOffset = add$4(dynoTime, timeOffset);
+        position = add$4(position, globalOffset);
         const modulo = mod$1(
           position,
           dynoConst("vec3", new THREE.Vector3(1, 1, 1))
         );
-        position = add$2(dynoMin, mul$2(minMax, modulo));
+        position = add$4(dynoMin, mul$4(minMax, modulo));
         const quaternion = dynoConst("vec4", new THREE.Quaternion(0, 0, 0, 1));
-        perturb = sin$2(add$2(vec3$2(timeOffset), perturb));
-        perturb = mul$2(perturb, dynoWanderScale);
-        let center = add$2(position, perturb);
+        perturb = sin$2(add$4(vec3$3(timeOffset), perturb));
+        perturb = mul$4(perturb, dynoWanderScale);
+        let center = add$4(position, perturb);
         let centerY = split$1(center).outputs.y;
         centerY = max$3(dynoMinY, centerY);
         center = combine({ vector: center, y: centerY });
@@ -45778,11 +45206,11 @@ function makeNormalColorModifier(splatToView) {
     const viewGsplat = splatToView.applyGsplat(gsplat);
     const viewCenter = splitGsplat(viewGsplat).outputs.center;
     const viewNormal = gsplatNormal(viewGsplat);
-    const splatDot = dot$2(viewCenter, viewNormal);
+    const splatDot = dot$4(viewCenter, viewNormal);
     const sameDir = greaterThanEqual$1(splatDot, dynoConst("float", 0));
-    normal2 = select$2(sameDir, neg(normal2), normal2);
-    const rgb = add$2(
-      mul$2(normal2, dynoConst("float", 0.5)),
+    normal2 = select$4(sameDir, neg(normal2), normal2);
+    const rgb = add$4(
+      mul$4(normal2, dynoConst("float", 0.5)),
       dynoConst("float", 0.5)
     );
     gsplat = combineGsplat({ gsplat, rgb });
@@ -45803,7 +45231,7 @@ function makeDepthColorModifier(splatToView, minDepth, maxDepth, reverse) {
     center = splatToView.apply(center);
     const { z } = split$1(center).outputs;
     let depth2 = normalizedDepth(neg(z), minDepth, maxDepth);
-    depth2 = select$2(reverse, sub$2(dynoConst("float", 1), depth2), depth2);
+    depth2 = select$4(reverse, sub$4(dynoConst("float", 1), depth2), depth2);
     gsplat = combineGsplat({ gsplat, r: depth2, g: depth2, b: depth2 });
     return { gsplat };
   });

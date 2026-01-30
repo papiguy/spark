@@ -1,27 +1,24 @@
-/**
- * TSL (Three.js Shading Language) helper functions for WebGPU splat rendering.
- * These are ports of the GLSL functions from splatDefines.glsl.
- */
+import { TSL } from 'three/webgpu';
 /**
  * Compute texture coordinates from splat index.
  * Equivalent to GLSL: ivec3 splatTexCoord(int index)
  */
-export declare const splatTexCoord: import('three/src/nodes/TSL.js').ShaderNodeFn<[number | import('three/webgpu').Node]>;
+export declare const splatTexCoord: TSL.ShaderNodeFn<[number | import('three/webgpu').Node]>;
 /**
  * Rotate vector v by quaternion q.
  * Equivalent to GLSL: vec3 quatVec(vec4 q, vec3 v)
  */
-export declare const quatVec: import('three/src/nodes/TSL.js').ShaderNodeFn<[number | import('three/webgpu').Node, number | import('three/webgpu').Node]>;
+export declare const quatVec: TSL.ShaderNodeFn<[number | import('three/webgpu').Node, number | import('three/webgpu').Node]>;
 /**
  * Apply quaternion q1 after quaternion q2.
  * Equivalent to GLSL: vec4 quatQuat(vec4 q1, vec4 q2)
  */
-export declare const quatQuat: import('three/src/nodes/TSL.js').ShaderNodeFn<[number | import('three/webgpu').Node, number | import('three/webgpu').Node]>;
+export declare const quatQuat: TSL.ShaderNodeFn<[number | import('three/webgpu').Node, number | import('three/webgpu').Node]>;
 /**
  * Decode a 24-bit encoded uint into a quaternion using folded octahedral inverse.
  * Equivalent to GLSL: vec4 decodeQuatOctXy88R8(uint encoded)
  */
-export declare const decodeQuatOctXy88R8: import('three/src/nodes/TSL.js').ShaderNodeFn<[number | import('three/webgpu').Node]>;
+export declare const decodeQuatOctXy88R8: TSL.ShaderNodeFn<[number | import('three/webgpu').Node]>;
 /**
  * Unpack splat encoding from packed uvec4 data.
  * Returns: { center: vec3, scales: vec3, quaternion: vec4, rgba: vec4 }

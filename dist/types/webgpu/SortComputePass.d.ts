@@ -1,4 +1,3 @@
-import { StorageBufferAttribute } from 'three/webgpu';
 /**
  * SortComputePass: GPU-assisted sorting for splat ordering.
  *
@@ -9,6 +8,10 @@ import { StorageBufferAttribute } from 'three/webgpu';
  * 1. GPU compute shader to calculate distances (parallel, fast)
  * 2. CPU radix sort for the actual sorting (reliable, well-tested)
  * 3. GPU storage buffer for sorted indices (used by render pass)
+ *
+ * The compute node is built ONCE and the texture is updated via uniform .value
+ * to avoid repeated Fn() callback evaluation (which causes "No stack defined"
+ * warnings when the TSL build context is not active).
  */
 import * as THREE from "three";
 export interface SortComputeParams {
@@ -31,32 +34,29 @@ export interface SortComputeParams {
  * SortComputePass computes sorted indices for splat rendering.
  *
  * Uses GPU for distance computation, CPU for sorting (reliable approach).
+ * The compute shader is built once at construction time; the texture uniform
+ * is updated via .value to avoid rebuilding the shader node graph.
  */
 export declare class SortComputePass {
     private renderer;
     private maxSplats;
-    private distanceAttr;
-    private distanceStorage;
-    private distanceArray;
+    private distanceBuffer;
     private indicesArray;
-    sortedIndicesAttr: InstanceType<typeof StorageBufferAttribute>;
-    sortedIndicesStorage: any;
+    sortedIndicesBuffer: any;
     private uniforms;
     private packedSplatsTextureUniform;
     private distanceComputeNode;
-    private currentTexture;
     constructor(renderer: any, maxSplats?: number);
     /**
-     * Build the distance computation shader.
-     * Uses select() instead of If/Return for better TSL compatibility.
+     * Build the distance computation shader (called once in constructor).
      */
     private buildDistanceComputeNode;
     /**
      * Sort splats and return sorted indices storage.
      */
-    sort(params: SortComputeParams): Promise<InstanceType<typeof StorageBufferAttribute>>;
+    sort(params: SortComputeParams): Promise<void>;
     /**
-     * Get the sorted indices storage for use in render pass.
+     * Get the sorted indices storage node for use in render pass.
      */
     getSortedIndicesStorage(): any;
     /**

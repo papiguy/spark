@@ -3,10 +3,10 @@
  * These are ports of the GLSL functions from splatDefines.glsl.
  */
 
-import {
+import { TSL } from "three/webgpu";
+
+const {
   Fn,
-  If,
-  Return,
   abs,
   add,
   bitAnd,
@@ -36,7 +36,7 @@ import {
   vec2,
   vec3,
   vec4,
-} from "three/tsl";
+} = TSL;
 
 import {
   PI,
@@ -76,7 +76,7 @@ export const splatTexCoord = Fn(([index]: [TSLUint]) => {
  */
 export const quatVec = Fn(([q, v]: [TSLVec4, TSLVec3]) => {
   // t = 2.0 * cross(q.xyz, v)
-  const qxyz = vec3(q.x, q.y, q.z);
+  const qxyz = q.xyz;
   const t = mul(float(2.0), cross(qxyz, v));
   // return v + q.w * t + cross(q.xyz, t)
   return add(v, add(mul(q.w, t), cross(qxyz, t)));
@@ -186,7 +186,9 @@ export function unpackSplatEncoding(
   const centerXY = unpackHalf2x16(word1);
   // word2 lower 16 bits contains Z as half-float
   const centerZPart = unpackHalf2x16(bitAnd(word2, uint(0xffff)));
-  const center = vec3(centerXY.x, centerXY.y, centerZPart.x);
+  // Use vec2 + float constructor to avoid parameter count issues with swizzle
+  const centerZ = float(centerZPart.x);
+  const center = vec3(centerXY, centerZ);
 
   // Unpack scales (word3)
   const uScaleX = bitAnd(word3, uint(0xff));

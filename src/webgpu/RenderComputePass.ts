@@ -4,25 +4,33 @@
  * This reads packed splat data from a texture, unpacks it, transforms to view space,
  * projects to 2D, computes Gaussian covariance, and outputs 4 vertices per splat
  * as a quad suitable for rendering.
+ *
+ * The compute node is built ONCE at construction time. The texture uniform and all
+ * other parameters are updated via uniform .value to avoid rebuilding the shader
+ * node graph (which causes "No stack defined" warnings).
  */
 
 import * as THREE from "three";
-import {
+import { TSL } from "three/webgpu";
+
+const {
   Fn,
   abs,
   add,
+  attributeArray,
   div,
   float,
+  getCurrentStack,
+  setCurrentStack,
   instanceIndex,
   int,
+  ivec2,
   ivec3,
   max,
   min,
   mul,
-  normalize,
   select,
   sqrt,
-  storage,
   sub,
   texture,
   textureLoad,
@@ -31,8 +39,7 @@ import {
   vec2,
   vec3,
   vec4,
-} from "three/tsl";
-import { StorageBufferAttribute } from "three/webgpu";
+} = TSL;
 
 import {
   DEFAULT_MAX_SPLATS,
@@ -58,8 +65,6 @@ export interface RenderComputeParams {
   packedSplatsTexture: THREE.DataArrayTexture;
   /** Number of splats to render */
   numSplats: number;
-  /** Sorted indices buffer (or null for unsorted) */
-  sortedIndices: InstanceType<typeof StorageBufferAttribute> | null;
   /** Render-to-view quaternion */
   renderToViewQuat: THREE.Quaternion;
   /** Render-to-view position */
@@ -92,21 +97,17 @@ export interface RenderComputeParams {
 
 /**
  * RenderComputePass generates quad vertices from packed splat data.
- * Uses select() instead of If/Return for TSL compatibility.
+ * The compute shader is built once at construction time; all parameters
+ * are updated via uniform .value. Uses select() instead of If/Return.
  */
 export class RenderComputePass {
   private renderer: any;
   private maxSplats: number;
 
-  // Storage buffer attributes (4 vertices per splat)
-  private positionAttr: InstanceType<typeof StorageBufferAttribute>;
-  private colorAttr: InstanceType<typeof StorageBufferAttribute>;
-  private uvAttr: InstanceType<typeof StorageBufferAttribute>;
-
-  // TSL storage wrappers
-  private positionStorage: any;
-  private colorStorage: any;
-  private uvStorage: any;
+  // Storage buffer nodes (4 vertices per splat)
+  private positionBuffer: any;
+  private colorBuffer: any;
+  private uvBuffer: any;
 
   // Uniforms
   private uniforms: {
@@ -127,36 +128,35 @@ export class RenderComputePass {
     isOrthographic: any;
   };
 
-  // Texture uniform
+  // Texture uniform (updated via .value, never recreated)
   private packedSplatsTextureUniform: any;
-  private currentTexture: THREE.DataArrayTexture | null = null;
 
-  // Compute node
-  private computeNode: any = null;
+  // Compute node (built once, never rebuilt)
+  private computeNode: any;
 
   // Output geometry
   public geometry: THREE.BufferGeometry;
 
-  // Sorted indices (optional)
-  private sortedIndicesStorage: any = null;
-  private useSortedIndices = false;
-
-  constructor(renderer: any, maxSplats = DEFAULT_MAX_SPLATS) {
+  constructor(
+    renderer: any,
+    maxSplats = DEFAULT_MAX_SPLATS,
+    sortedIndicesStorage: any = null,
+  ) {
     this.renderer = renderer;
     this.maxSplats = maxSplats;
 
     const vertexCount = maxSplats * 4; // 4 vertices per splat quad
 
-    // Create storage buffer attributes
-    this.positionAttr = new StorageBufferAttribute(vertexCount, 3);
-    this.colorAttr = new StorageBufferAttribute(vertexCount, 4);
-    this.uvAttr = new StorageBufferAttribute(vertexCount, 2);
+    // Create storage buffer nodes
+    this.positionBuffer = attributeArray(vertexCount, "vec3");
+    this.colorBuffer = attributeArray(vertexCount, "vec4");
+    this.uvBuffer = attributeArray(vertexCount, "vec2");
 
-    // Create geometry
+    // Create geometry using the underlying BufferAttribute from each storage node
     this.geometry = new THREE.BufferGeometry();
-    this.geometry.setAttribute("position", this.positionAttr);
-    this.geometry.setAttribute("color", this.colorAttr);
-    this.geometry.setAttribute("uv", this.uvAttr);
+    this.geometry.setAttribute("position", this.positionBuffer.value);
+    this.geometry.setAttribute("color", this.colorBuffer.value);
+    this.geometry.setAttribute("uv", this.uvBuffer.value);
 
     // Create index buffer for quads (6 indices per quad)
     const indices = new Uint32Array(maxSplats * 6);
@@ -172,12 +172,6 @@ export class RenderComputePass {
     }
     this.geometry.setIndex(new THREE.BufferAttribute(indices, 1));
     this.geometry.setDrawRange(0, 0); // Start with nothing visible
-
-    // Create storage wrappers for compute access
-    // Note: Position buffer is tightly packed (stride 12), so we must access it as floats
-    this.positionStorage = storage(this.positionAttr, "float", vertexCount * 3);
-    this.colorStorage = storage(this.colorAttr, "vec4", vertexCount);
-    this.uvStorage = storage(this.uvAttr, "vec2", vertexCount);
 
     // Create uniforms
     this.uniforms = {
@@ -195,10 +189,10 @@ export class RenderComputePass {
       focalAdjustment: uniform(1.0),
       blurAmount: uniform(0.3),
       preBlurAmount: uniform(0.0),
-      isOrthographic: uniform(0), // Use int: 0 = perspective, 1 = orthographic
+      isOrthographic: uniform(0),
     };
 
-    // Create a placeholder texture (will be replaced on update)
+    // Create texture uniform with placeholder — will be updated via .value
     const placeholderTexture = new THREE.DataArrayTexture(
       new Uint32Array(4),
       1,
@@ -212,36 +206,32 @@ export class RenderComputePass {
 
     this.packedSplatsTextureUniform = texture(placeholderTexture);
 
-    // Build the compute node
-    this.buildComputeNode();
+    // Build compute node ONCE — sorted indices are captured at construction time.
+    // The texture uniform's .value is updated at runtime without rebuilding.
+    this.computeNode = this.buildComputeNode(sortedIndicesStorage);
   }
 
   /**
-   * Set sorted indices storage for reading splats in sorted order.
+   * Build the compute shader node (called once in constructor).
    */
-  setSortedIndicesStorage(sortedIndicesStorage: any): void {
-    this.sortedIndicesStorage = sortedIndicesStorage;
-    this.useSortedIndices = sortedIndicesStorage !== null;
-  }
-
-  /**
-   * Build the compute shader node.
-   * Uses select() instead of If/Return for TSL compatibility.
-   */
-  private buildComputeNode(): void {
-    const posStorage = this.positionStorage;
-    const colStorage = this.colorStorage;
-    const uvStorage = this.uvStorage;
+  private buildComputeNode(sortedIndicesStorage: any): any {
+    const posBuffer = this.positionBuffer;
+    const colBuffer = this.colorBuffer;
+    const uvBuf = this.uvBuffer;
     const uniforms = this.uniforms;
     const packedSplatsTexture = this.packedSplatsTextureUniform;
-    const sortedIndicesStorage = this.sortedIndicesStorage;
-    const useSorted = this.useSortedIndices;
+    const useSorted = sortedIndicesStorage !== null;
 
-    // Main compute kernel
-    this.computeNode = Fn(() => {
+    return Fn((builder: any) => {
+      // WORKAROUND: Three.js TSL r182 doesn't set currentStack before Fn callback
+      // in compute shaders. Manually set it from builder.stack if needed.
+      if (getCurrentStack() === null && builder?.stack?.isStackNode) {
+        setCurrentStack(builder.stack);
+      }
+
       const splatIdx = instanceIndex;
 
-      // Degenerate quad values (outside frustum, invisible) - must be inside Fn()
+      // Degenerate quad values (outside frustum, invisible)
       const degeneratePos = vec3(0.0, 0.0, 2.0);
       const degenerateColor = vec4(0.0, 0.0, 0.0, 0.0);
       const degenerateUv = vec2(0.0, 0.0);
@@ -263,10 +253,9 @@ export class RenderComputePass {
           .bitAnd(uint(SPLAT_TEX_HEIGHT_MASK)),
       );
       const iz = int(uint(actualIdx).shiftRight(uint(SPLAT_TEX_LAYER_BITS)));
-      const texCoord = ivec3(ix, iy, iz);
 
-      // Read packed splat data from texture
-      const packed = textureLoad(packedSplatsTexture, texCoord, int(0));
+      // Read packed splat data from texture (use .depth() for array index)
+      const packed = textureLoad(packedSplatsTexture, ivec2(ix, iy)).depth(iz);
 
       // Unpack splat data
       const { center, scales, quaternion, rgba } = unpackSplatEncoding(
@@ -397,7 +386,7 @@ export class RenderComputePass {
         .and(hasMinRadius);
 
       // Final color with alpha adjustment
-      const finalRgba = vec4(rgba.x, rgba.y, rgba.z, finalAlpha);
+      const finalRgba = vec4(rgba.xyz, finalAlpha);
 
       // Generate 4 quad corners
       const baseVertex = mul(splatIdx, uint(4));
@@ -410,11 +399,8 @@ export class RenderComputePass {
           mul(mul(cornerY, eigenVec2), scale2),
         );
         const ndcOffset = mul(invRenderSize, pixelOffset);
-        return vec3(
-          add(ndcCenter.x, ndcOffset.x),
-          add(ndcCenter.y, ndcOffset.y),
-          ndcCenter.z,
-        );
+        // Use vec2 + float construction to avoid TSL swizzle expansion issues
+        return vec3(add(ndcCenter.xy, ndcOffset), ndcCenter.z);
       };
 
       // Corner 0: (-1, -1)
@@ -422,52 +408,52 @@ export class RenderComputePass {
       const pos0 = computeCornerPos(corner0.x, corner0.y);
       const uv0 = mul(corner0, uniforms.maxStdDev);
       const vertexIdx0 = add(baseVertex, uint(0));
-      posStorage
+      posBuffer
         .element(vertexIdx0)
         .assign(select(isValid, pos0, degeneratePos));
-      colStorage
+      colBuffer
         .element(vertexIdx0)
         .assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx0).assign(select(isValid, uv0, degenerateUv));
+      uvBuf.element(vertexIdx0).assign(select(isValid, uv0, degenerateUv));
 
       // Corner 1: (1, -1)
       const corner1 = vec2(float(1.0), float(-1.0));
       const pos1 = computeCornerPos(corner1.x, corner1.y);
       const uv1 = mul(corner1, uniforms.maxStdDev);
       const vertexIdx1 = add(baseVertex, uint(1));
-      posStorage
+      posBuffer
         .element(vertexIdx1)
         .assign(select(isValid, pos1, degeneratePos));
-      colStorage
+      colBuffer
         .element(vertexIdx1)
         .assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx1).assign(select(isValid, uv1, degenerateUv));
+      uvBuf.element(vertexIdx1).assign(select(isValid, uv1, degenerateUv));
 
       // Corner 2: (1, 1)
       const corner2 = vec2(float(1.0), float(1.0));
       const pos2 = computeCornerPos(corner2.x, corner2.y);
       const uv2 = mul(corner2, uniforms.maxStdDev);
       const vertexIdx2 = add(baseVertex, uint(2));
-      posStorage
+      posBuffer
         .element(vertexIdx2)
         .assign(select(isValid, pos2, degeneratePos));
-      colStorage
+      colBuffer
         .element(vertexIdx2)
         .assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx2).assign(select(isValid, uv2, degenerateUv));
+      uvBuf.element(vertexIdx2).assign(select(isValid, uv2, degenerateUv));
 
       // Corner 3: (-1, 1)
       const corner3 = vec2(float(-1.0), float(1.0));
       const pos3 = computeCornerPos(corner3.x, corner3.y);
       const uv3 = mul(corner3, uniforms.maxStdDev);
       const vertexIdx3 = add(baseVertex, uint(3));
-      posStorage
+      posBuffer
         .element(vertexIdx3)
         .assign(select(isValid, pos3, degeneratePos));
-      colStorage
+      colBuffer
         .element(vertexIdx3)
         .assign(select(isValid, finalRgba, degenerateColor));
-      uvStorage.element(vertexIdx3).assign(select(isValid, uv3, degenerateUv));
+      uvBuf.element(vertexIdx3).assign(select(isValid, uv3, degenerateUv));
     })().compute(this.maxSplats);
   }
 
@@ -499,11 +485,9 @@ export class RenderComputePass {
     this.uniforms.preBlurAmount.value = params.preBlurAmount;
     this.uniforms.isOrthographic.value = params.isOrthographic ? 1 : 0;
 
-    // Update texture and rebuild only if changed
-    if (this.currentTexture !== params.packedSplatsTexture) {
-      this.currentTexture = params.packedSplatsTexture;
-      this.packedSplatsTextureUniform = texture(params.packedSplatsTexture);
-      this.buildComputeNode();
+    // Update texture uniform value (no rebuild needed)
+    if (this.packedSplatsTextureUniform.value !== params.packedSplatsTexture) {
+      this.packedSplatsTextureUniform.value = params.packedSplatsTexture;
     }
 
     // Run compute shader

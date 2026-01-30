@@ -8,33 +8,38 @@
  * 1. GPU compute shader to calculate distances (parallel, fast)
  * 2. CPU radix sort for the actual sorting (reliable, well-tested)
  * 3. GPU storage buffer for sorted indices (used by render pass)
+ *
+ * The compute node is built ONCE and the texture is updated via uniform .value
+ * to avoid repeated Fn() callback evaluation (which causes "No stack defined"
+ * warnings when the TSL build context is not active).
  */
 
 import * as THREE from "three";
-import {
+import { TSL } from "three/webgpu";
+
+const {
   Fn,
   add,
+  attributeArray,
   dot,
   float,
+  getCurrentStack,
+  setCurrentStack,
   instanceIndex,
   int,
+  ivec2,
   ivec3,
-  mul,
   select,
   sqrt,
-  storage,
   sub,
   texture,
   textureLoad,
   uint,
   uniform,
-  vec3,
-} from "three/tsl";
-import { StorageBufferAttribute } from "three/webgpu";
+} = TSL;
 
 import {
   DEFAULT_MAX_SPLATS,
-  SPLAT_TEX_HEIGHT_BITS,
   SPLAT_TEX_HEIGHT_MASK,
   SPLAT_TEX_LAYER_BITS,
   SPLAT_TEX_WIDTH_BITS,
@@ -64,22 +69,21 @@ export interface SortComputeParams {
  * SortComputePass computes sorted indices for splat rendering.
  *
  * Uses GPU for distance computation, CPU for sorting (reliable approach).
+ * The compute shader is built once at construction time; the texture uniform
+ * is updated via .value to avoid rebuilding the shader node graph.
  */
 export class SortComputePass {
   private renderer: any;
   private maxSplats: number;
 
-  // Distance buffer for GPU computation
-  private distanceAttr: InstanceType<typeof StorageBufferAttribute>;
-  private distanceStorage: any;
+  // Distance storage buffer (GPU compute writes distances here)
+  private distanceBuffer: any;
 
   // CPU-side buffers for sorting
-  private distanceArray: Float32Array;
   private indicesArray: Uint32Array;
 
   // Output sorted indices (uploaded to GPU after CPU sort)
-  public sortedIndicesAttr: InstanceType<typeof StorageBufferAttribute>;
-  public sortedIndicesStorage: any;
+  public sortedIndicesBuffer: any;
 
   // Uniforms
   private uniforms: {
@@ -91,34 +95,22 @@ export class SortComputePass {
     depthBias: any;
   };
 
-  // Texture uniform
+  // Texture uniform (updated via .value, never recreated)
   private packedSplatsTextureUniform: any;
 
-  // Compute node
-  private distanceComputeNode: any = null;
-
-  // Track current texture for rebuild detection
-  private currentTexture: THREE.DataArrayTexture | null = null;
+  // Compute node (built once, never rebuilt)
+  private distanceComputeNode: any;
 
   constructor(renderer: any, maxSplats = DEFAULT_MAX_SPLATS) {
     this.renderer = renderer;
     this.maxSplats = maxSplats;
 
-    // Create GPU storage buffer for distances
-    this.distanceAttr = new StorageBufferAttribute(maxSplats, 1);
-    this.distanceStorage = storage(this.distanceAttr, "float", maxSplats);
+    // Create GPU storage buffers
+    this.distanceBuffer = attributeArray(maxSplats, "float");
+    this.sortedIndicesBuffer = attributeArray(maxSplats, "uint");
 
-    // Create CPU-side buffers
-    this.distanceArray = new Float32Array(maxSplats);
+    // Create CPU-side buffer for sorting
     this.indicesArray = new Uint32Array(maxSplats);
-
-    // Create GPU storage buffer for sorted indices
-    this.sortedIndicesAttr = new StorageBufferAttribute(maxSplats, 1);
-    this.sortedIndicesStorage = storage(
-      this.sortedIndicesAttr,
-      "uint",
-      maxSplats,
-    );
 
     // Initialize indices to identity
     for (let i = 0; i < maxSplats; i++) {
@@ -135,7 +127,7 @@ export class SortComputePass {
       depthBias: uniform(1.0),
     };
 
-    // Create a placeholder texture
+    // Create texture uniform with placeholder — will be updated via .value
     const placeholderTexture = new THREE.DataArrayTexture(
       new Uint32Array(4),
       1,
@@ -148,18 +140,27 @@ export class SortComputePass {
     placeholderTexture.needsUpdate = true;
 
     this.packedSplatsTextureUniform = texture(placeholderTexture);
+
+    // Build compute node ONCE — closure captures the texture uniform node,
+    // whose .value will be updated at runtime without rebuilding the shader.
+    this.distanceComputeNode = this.buildDistanceComputeNode();
   }
 
   /**
-   * Build the distance computation shader.
-   * Uses select() instead of If/Return for better TSL compatibility.
+   * Build the distance computation shader (called once in constructor).
    */
-  private buildDistanceComputeNode(): void {
-    const distStorage = this.distanceStorage;
+  private buildDistanceComputeNode(): any {
+    const distBuffer = this.distanceBuffer;
     const uniforms = this.uniforms;
     const packedSplatsTexture = this.packedSplatsTextureUniform;
 
-    this.distanceComputeNode = Fn(() => {
+    return Fn((builder: any) => {
+      // WORKAROUND: Three.js TSL r182 doesn't set currentStack before Fn callback
+      // in compute shaders. Manually set it from builder.stack if needed.
+      if (getCurrentStack() === null && builder?.stack?.isStackNode) {
+        setCurrentStack(builder.stack);
+      }
+
       const splatIdx = instanceIndex;
 
       // Check if this splat is valid (within numSplats)
@@ -173,10 +174,9 @@ export class SortComputePass {
           .bitAnd(uint(SPLAT_TEX_HEIGHT_MASK)),
       );
       const iz = int(uint(splatIdx).shiftRight(uint(SPLAT_TEX_LAYER_BITS)));
-      const texCoord = ivec3(ix, iy, iz);
 
-      // Read packed splat data from texture
-      const packed = textureLoad(packedSplatsTexture, texCoord, int(0));
+      // Read packed splat data from texture (use .depth() for array index)
+      const packed = textureLoad(packedSplatsTexture, ivec2(ix, iy)).depth(iz);
 
       // Unpack to get center position
       const { center } = unpackSplatEncoding(
@@ -205,20 +205,18 @@ export class SortComputePass {
       const finalDistance = select(isValid, computedDistance, float(1e30));
 
       // Store distance
-      distStorage.element(splatIdx).assign(finalDistance);
+      distBuffer.element(splatIdx).assign(finalDistance);
     })().compute(this.maxSplats);
   }
 
   /**
    * Sort splats and return sorted indices storage.
    */
-  async sort(
-    params: SortComputeParams,
-  ): Promise<InstanceType<typeof StorageBufferAttribute>> {
+  async sort(params: SortComputeParams): Promise<void> {
     const { numSplats } = params;
 
     if (numSplats === 0) {
-      return this.sortedIndicesAttr;
+      return;
     }
 
     // Update uniforms
@@ -231,41 +229,33 @@ export class SortComputePass {
     this.uniforms.sortRadial.value = params.sortRadial ? 1 : 0;
     this.uniforms.depthBias.value = params.depthBias;
 
-    // Rebuild compute node if texture changed
-    if (this.currentTexture !== params.packedSplatsTexture) {
-      this.currentTexture = params.packedSplatsTexture;
-      this.packedSplatsTextureUniform = texture(params.packedSplatsTexture);
-      this.buildDistanceComputeNode();
+    // Update texture uniform value (no rebuild needed)
+    if (this.packedSplatsTextureUniform.value !== params.packedSplatsTexture) {
+      this.packedSplatsTextureUniform.value = params.packedSplatsTexture;
     }
 
     // Step 1: Compute distances on GPU
-    if (this.distanceComputeNode) {
-      await this.renderer.computeAsync(this.distanceComputeNode);
-    }
+    await this.renderer.computeAsync(this.distanceComputeNode);
 
     // Step 2: Read back distances to CPU
+    const distanceAttr = this.distanceBuffer.value;
     let distArray: Float32Array;
     try {
-      const buffer = await this.renderer.getArrayBufferAsync(this.distanceAttr);
+      const buffer = await this.renderer.getArrayBufferAsync(distanceAttr);
       distArray = new Float32Array(buffer);
     } catch (e) {
-      // Buffer might not be ready yet (e.g. first frame or optimize-out)
-      // console.warn("SortComputePass: Readback failed", e);
-      return this.sortedIndicesAttr;
+      // Buffer might not be ready yet (e.g. first frame)
+      return;
     }
 
     // Step 3: Sort indices on CPU (back-to-front ordering for alpha blending)
-    // Initialize indices
     for (let i = 0; i < numSplats; i++) {
       this.indicesArray[i] = i;
     }
 
-    // Sort by distance (descending - furthest first for correct alpha blending)
     const indices = this.indicesArray;
     const distances = distArray;
 
-    // Use a simple but effective sorting approach
-    // For small counts, use insertion sort; for larger, use Array.sort
     if (numSplats < 1000) {
       // Insertion sort for small arrays
       for (let i = 1; i < numSplats; i++) {
@@ -288,18 +278,17 @@ export class SortComputePass {
     }
 
     // Step 4: Upload sorted indices to GPU
-    const sortedArray = this.sortedIndicesAttr.array as Uint32Array;
+    const sortedAttr = this.sortedIndicesBuffer.value;
+    const sortedArray = sortedAttr.array as Uint32Array;
     sortedArray.set(indices.subarray(0, numSplats));
-    this.sortedIndicesAttr.needsUpdate = true;
-
-    return this.sortedIndicesAttr;
+    sortedAttr.needsUpdate = true;
   }
 
   /**
-   * Get the sorted indices storage for use in render pass.
+   * Get the sorted indices storage node for use in render pass.
    */
   getSortedIndicesStorage(): any {
-    return this.sortedIndicesStorage;
+    return this.sortedIndicesBuffer;
   }
 
   /**

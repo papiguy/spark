@@ -4,23 +4,22 @@
  */
 
 import * as THREE from "three";
-import {
+import { NodeMaterial, TSL } from "three/webgpu";
+
+const {
   Discard,
   Fn,
-  If,
-  add,
   attribute,
   dot,
   exp,
   float,
+  getCurrentStack,
+  setCurrentStack,
   mul,
   positionLocal,
-  sub,
-  varying,
   varyingProperty,
   vec4,
-} from "three/tsl";
-import { NodeMaterial } from "three/webgpu";
+} = TSL;
 
 export interface WebGPUSplatMaterialOptions {
   /** Falloff multiplier for Gaussian (default: 1.0) */
@@ -70,7 +69,12 @@ export function createWebGPUSplatMaterial(
   const vUv = varyingProperty("vec2", "vUv");
 
   // Vertex shader: pass through position and forward attributes to fragment
-  material.positionNode = Fn(() => {
+  material.positionNode = Fn((builder: any) => {
+    // WORKAROUND: Three.js TSL r182 may not set currentStack before Fn callback
+    if (getCurrentStack() === null && builder?.stack?.isStackNode) {
+      setCurrentStack(builder.stack);
+    }
+
     // Get attributes from geometry (written by compute shader)
     const colorAttr = attribute("color");
     const uvAttr = attribute("uv");
@@ -103,21 +107,14 @@ export function createWebGPUSplatMaterial(
     }
 
     // Discard nearly transparent fragments
-    If(alpha.lessThan(float(minAlpha)), () => {
-      Discard();
-    });
+    Discard(alpha.lessThan(float(minAlpha)));
 
     // Output color
     if (premultipliedAlpha) {
       // Premultiplied alpha: rgb * alpha
-      return vec4(
-        mul(color.x, alpha),
-        mul(color.y, alpha),
-        mul(color.z, alpha),
-        alpha,
-      );
+      return vec4(mul(color.xyz, alpha), alpha);
     } else {
-      return vec4(color.x, color.y, color.z, alpha);
+      return vec4(color.xyz, alpha);
     }
   })();
 
